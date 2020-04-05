@@ -14,6 +14,12 @@
 		0CC82602243A132F00F1A047 /* MealListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CC82601243A132F00F1A047 /* MealListViewController.swift */; };
 		0CC82604243A133B00F1A047 /* MealListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CC82603243A133B00F1A047 /* MealListViewModel.swift */; };
 		0CC82607243A182100F1A047 /* UIColor+CustomColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CC82606243A182100F1A047 /* UIColor+CustomColors.swift */; };
+		0CC8260D243A1A1F00F1A047 /* MealListHeaderTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CC8260B243A1A1F00F1A047 /* MealListHeaderTableViewCell.swift */; };
+		0CC8260E243A1A1F00F1A047 /* MealListHeaderTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0CC8260C243A1A1F00F1A047 /* MealListHeaderTableViewCell.xib */; };
+		0CC82610243A1B4C00F1A047 /* MealListHeaderTableViewCellModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CC8260F243A1B4C00F1A047 /* MealListHeaderTableViewCellModel.swift */; };
+		0CC82614243A1CC900F1A047 /* MealListDishTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CC82612243A1CC900F1A047 /* MealListDishTableViewCell.swift */; };
+		0CC82615243A1CC900F1A047 /* MealListDishTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0CC82613243A1CC900F1A047 /* MealListDishTableViewCell.xib */; };
+		0CC82617243A1CD600F1A047 /* MealListDishTableViewCellModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CC82616243A1CD600F1A047 /* MealListDishTableViewCellModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +32,12 @@
 		0CC82601243A132F00F1A047 /* MealListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealListViewController.swift; sourceTree = "<group>"; };
 		0CC82603243A133B00F1A047 /* MealListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealListViewModel.swift; sourceTree = "<group>"; };
 		0CC82606243A182100F1A047 /* UIColor+CustomColors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+CustomColors.swift"; sourceTree = "<group>"; };
+		0CC8260B243A1A1F00F1A047 /* MealListHeaderTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealListHeaderTableViewCell.swift; sourceTree = "<group>"; };
+		0CC8260C243A1A1F00F1A047 /* MealListHeaderTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MealListHeaderTableViewCell.xib; sourceTree = "<group>"; };
+		0CC8260F243A1B4C00F1A047 /* MealListHeaderTableViewCellModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealListHeaderTableViewCellModel.swift; sourceTree = "<group>"; };
+		0CC82612243A1CC900F1A047 /* MealListDishTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealListDishTableViewCell.swift; sourceTree = "<group>"; };
+		0CC82613243A1CC900F1A047 /* MealListDishTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MealListDishTableViewCell.xib; sourceTree = "<group>"; };
+		0CC82616243A1CD600F1A047 /* MealListDishTableViewCellModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealListDishTableViewCellModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,6 +72,7 @@
 			children = (
 				0CC825E8243A111400F1A047 /* AppDelegate.swift */,
 				0CC825FC243A130200F1A047 /* Screens */,
+				0CC82609243A19FA00F1A047 /* Views */,
 				0CC82605243A181000F1A047 /* Extensions */,
 				0CC825F1243A111600F1A047 /* Assets.xcassets */,
 				0CC825F3243A111600F1A047 /* LaunchScreen.storyboard */,
@@ -100,6 +113,35 @@
 				0CC82606243A182100F1A047 /* UIColor+CustomColors.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		0CC82609243A19FA00F1A047 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				0CC8260A243A1A0000F1A047 /* MealListHeaderTableViewCell */,
+				0CC82611243A1CA000F1A047 /* MealListDishTableViewCell */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		0CC8260A243A1A0000F1A047 /* MealListHeaderTableViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				0CC8260C243A1A1F00F1A047 /* MealListHeaderTableViewCell.xib */,
+				0CC8260B243A1A1F00F1A047 /* MealListHeaderTableViewCell.swift */,
+				0CC8260F243A1B4C00F1A047 /* MealListHeaderTableViewCellModel.swift */,
+			);
+			path = MealListHeaderTableViewCell;
+			sourceTree = "<group>";
+		};
+		0CC82611243A1CA000F1A047 /* MealListDishTableViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				0CC82613243A1CC900F1A047 /* MealListDishTableViewCell.xib */,
+				0CC82612243A1CC900F1A047 /* MealListDishTableViewCell.swift */,
+				0CC82616243A1CD600F1A047 /* MealListDishTableViewCellModel.swift */,
+			);
+			path = MealListDishTableViewCell;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -161,8 +203,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				0CC825FF243A131700F1A047 /* Root.storyboard in Resources */,
+				0CC82615243A1CC900F1A047 /* MealListDishTableViewCell.xib in Resources */,
 				0CC825F5243A111600F1A047 /* LaunchScreen.storyboard in Resources */,
 				0CC825F2243A111600F1A047 /* Assets.xcassets in Resources */,
+				0CC8260E243A1A1F00F1A047 /* MealListHeaderTableViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -173,9 +217,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0CC82614243A1CC900F1A047 /* MealListDishTableViewCell.swift in Sources */,
 				0CC825E9243A111400F1A047 /* AppDelegate.swift in Sources */,
+				0CC8260D243A1A1F00F1A047 /* MealListHeaderTableViewCell.swift in Sources */,
 				0CC82602243A132F00F1A047 /* MealListViewController.swift in Sources */,
+				0CC82610243A1B4C00F1A047 /* MealListHeaderTableViewCellModel.swift in Sources */,
 				0CC82607243A182100F1A047 /* UIColor+CustomColors.swift in Sources */,
+				0CC82617243A1CD600F1A047 /* MealListDishTableViewCellModel.swift in Sources */,
 				0CC82604243A133B00F1A047 /* MealListViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

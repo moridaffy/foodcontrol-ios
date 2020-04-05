@@ -36,7 +36,13 @@ class MealListViewController: UIViewController {
   }
   
   private func setupTableView() {
+    tableView.contentInset = UIEdgeInsets(top: -32.0, left: 0.0, bottom: 0.0, right: 0.0)
     tableView.tableFooterView = UIView()
+    tableView.separatorStyle = .none
+    tableView.register(UINib(nibName: "MealListHeaderTableViewCell", bundle: nil), forCellReuseIdentifier: String(describing: MealListHeaderTableViewCell.self))
+    tableView.register(UINib(nibName: "MealListDishTableViewCell", bundle: nil), forCellReuseIdentifier: String(describing: MealListDishTableViewCell.self))
+    tableView.delegate = self
+    tableView.dataSource = self
   }
   
   private func setupButton() {
@@ -60,5 +66,54 @@ class MealListViewController: UIViewController {
   
   @objc private func addMealButtonTapped() {
     
+  }
+}
+
+extension MealListViewController: UITableViewDelegate {
+  func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    tableView.deselectRow(at: indexPath, animated: true)
+  }
+  
+  func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
+    let cellModel = viewModel.cellModels[indexPath.row]
+    if cellModel is MealListHeaderTableViewCellModel {
+      return 76.0
+    } else if cellModel is MealListDishTableViewCellModel {
+      return 58.0
+    } else {
+      return UITableView.automaticDimension
+    }
+  }
+  
+  func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+    let cellModel = viewModel.cellModels[indexPath.row]
+    if cellModel is MealListHeaderTableViewCellModel {
+      return 76.0
+    } else if cellModel is MealListDishTableViewCellModel {
+      return UITableView.automaticDimension
+    } else {
+      return UITableView.automaticDimension
+    }
+  }
+}
+
+extension MealListViewController: UITableViewDataSource {
+  func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    return viewModel.cellModels.count
+  }
+  
+  func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    let cellModel = viewModel.cellModels[indexPath.row]
+    if let cellModel = cellModel as? MealListHeaderTableViewCellModel {
+      guard let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: MealListHeaderTableViewCell.self)) as? MealListHeaderTableViewCell else { fatalError() }
+      cell.setup(viewModel: cellModel)
+      return cell
+    } else if let cellModel = cellModel as? MealListDishTableViewCellModel {
+      guard let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: MealListDishTableViewCell.self)) as? MealListDishTableViewCell else { fatalError() }
+      cell.setup(viewModel: cellModel)
+      return cell
+    } else {
+      fatalError()
+    }
   }
 }
