@@ -43,7 +43,7 @@ class MealListViewController: UIViewController {
     tableView.contentInset = UIEdgeInsets(top: -32.0, left: 0.0, bottom: 0.0, right: 0.0)
     tableView.tableFooterView = UIView()
     tableView.separatorStyle = .none
-    tableView.register(UINib(nibName: "MealListHeaderTableViewCell", bundle: nil), forCellReuseIdentifier: String(describing: MealListHeaderTableViewCell.self))
+    tableView.register(UINib(nibName: "MealHeaderTableViewCell", bundle: nil), forCellReuseIdentifier: String(describing: MealHeaderTableViewCell.self))
     tableView.register(UINib(nibName: "DishTableViewCell", bundle: nil), forCellReuseIdentifier: String(describing: DishTableViewCell.self))
     tableView.delegate = self
     tableView.dataSource = self
@@ -81,7 +81,7 @@ extension MealListViewController: UITableViewDelegate {
   
   func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
     let cellModel = viewModel.cellModels[indexPath.row]
-    if cellModel is MealListHeaderTableViewCellModel {
+    if cellModel is MealHeaderTableViewCellModel {
       return 76.0
     } else if cellModel is DishTableViewCellModel {
       return 58.0
@@ -92,7 +92,7 @@ extension MealListViewController: UITableViewDelegate {
   
   func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
     let cellModel = viewModel.cellModels[indexPath.row]
-    if cellModel is MealListHeaderTableViewCellModel {
+    if cellModel is MealHeaderTableViewCellModel {
       return 76.0
     } else if cellModel is DishTableViewCellModel {
       return UITableView.automaticDimension
@@ -109,8 +109,8 @@ extension MealListViewController: UITableViewDataSource {
   
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
     let cellModel = viewModel.cellModels[indexPath.row]
-    if let cellModel = cellModel as? MealListHeaderTableViewCellModel {
-      guard let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: MealListHeaderTableViewCell.self)) as? MealListHeaderTableViewCell else { fatalError() }
+    if let cellModel = cellModel as? MealHeaderTableViewCellModel {
+      guard let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: MealHeaderTableViewCell.self)) as? MealHeaderTableViewCell else { fatalError() }
       cell.setup(viewModel: cellModel)
       return cell
     } else if let cellModel = cellModel as? DishTableViewCellModel {

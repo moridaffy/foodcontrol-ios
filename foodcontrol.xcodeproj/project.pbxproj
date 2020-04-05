@@ -14,9 +14,9 @@
 		0CC82602243A132F00F1A047 /* MealListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CC82601243A132F00F1A047 /* MealListViewController.swift */; };
 		0CC82604243A133B00F1A047 /* MealListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CC82603243A133B00F1A047 /* MealListViewModel.swift */; };
 		0CC82607243A182100F1A047 /* UIColor+CustomColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CC82606243A182100F1A047 /* UIColor+CustomColors.swift */; };
-		0CC8260D243A1A1F00F1A047 /* MealListHeaderTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CC8260B243A1A1F00F1A047 /* MealListHeaderTableViewCell.swift */; };
-		0CC8260E243A1A1F00F1A047 /* MealListHeaderTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0CC8260C243A1A1F00F1A047 /* MealListHeaderTableViewCell.xib */; };
-		0CC82610243A1B4C00F1A047 /* MealListHeaderTableViewCellModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CC8260F243A1B4C00F1A047 /* MealListHeaderTableViewCellModel.swift */; };
+		0CC8260D243A1A1F00F1A047 /* MealHeaderTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CC8260B243A1A1F00F1A047 /* MealHeaderTableViewCell.swift */; };
+		0CC8260E243A1A1F00F1A047 /* MealHeaderTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0CC8260C243A1A1F00F1A047 /* MealHeaderTableViewCell.xib */; };
+		0CC82610243A1B4C00F1A047 /* MealHeaderTableViewCellModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CC8260F243A1B4C00F1A047 /* MealHeaderTableViewCellModel.swift */; };
 		0CC82614243A1CC900F1A047 /* DishTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CC82612243A1CC900F1A047 /* DishTableViewCell.swift */; };
 		0CC82615243A1CC900F1A047 /* DishTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0CC82613243A1CC900F1A047 /* DishTableViewCell.xib */; };
 		0CC82617243A1CD600F1A047 /* DishTableViewCellModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CC82616243A1CD600F1A047 /* DishTableViewCellModel.swift */; };
@@ -35,9 +35,9 @@
 		0CC82601243A132F00F1A047 /* MealListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealListViewController.swift; sourceTree = "<group>"; };
 		0CC82603243A133B00F1A047 /* MealListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealListViewModel.swift; sourceTree = "<group>"; };
 		0CC82606243A182100F1A047 /* UIColor+CustomColors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+CustomColors.swift"; sourceTree = "<group>"; };
-		0CC8260B243A1A1F00F1A047 /* MealListHeaderTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealListHeaderTableViewCell.swift; sourceTree = "<group>"; };
-		0CC8260C243A1A1F00F1A047 /* MealListHeaderTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MealListHeaderTableViewCell.xib; sourceTree = "<group>"; };
-		0CC8260F243A1B4C00F1A047 /* MealListHeaderTableViewCellModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealListHeaderTableViewCellModel.swift; sourceTree = "<group>"; };
+		0CC8260B243A1A1F00F1A047 /* MealHeaderTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealHeaderTableViewCell.swift; sourceTree = "<group>"; };
+		0CC8260C243A1A1F00F1A047 /* MealHeaderTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MealHeaderTableViewCell.xib; sourceTree = "<group>"; };
+		0CC8260F243A1B4C00F1A047 /* MealHeaderTableViewCellModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealHeaderTableViewCellModel.swift; sourceTree = "<group>"; };
 		0CC82612243A1CC900F1A047 /* DishTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DishTableViewCell.swift; sourceTree = "<group>"; };
 		0CC82613243A1CC900F1A047 /* DishTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DishTableViewCell.xib; sourceTree = "<group>"; };
 		0CC82616243A1CD600F1A047 /* DishTableViewCellModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DishTableViewCellModel.swift; sourceTree = "<group>"; };
@@ -126,20 +126,20 @@
 		0CC82609243A19FA00F1A047 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				0CC8260A243A1A0000F1A047 /* MealListHeaderTableViewCell */,
+				0CC8260A243A1A0000F1A047 /* MealHeaderTableViewCell */,
 				0CC82611243A1CA000F1A047 /* DishTableViewCell */,
 			);
 			path = Views;
 			sourceTree = "<group>";
 		};
-		0CC8260A243A1A0000F1A047 /* MealListHeaderTableViewCell */ = {
+		0CC8260A243A1A0000F1A047 /* MealHeaderTableViewCell */ = {
 			isa = PBXGroup;
 			children = (
-				0CC8260C243A1A1F00F1A047 /* MealListHeaderTableViewCell.xib */,
-				0CC8260B243A1A1F00F1A047 /* MealListHeaderTableViewCell.swift */,
-				0CC8260F243A1B4C00F1A047 /* MealListHeaderTableViewCellModel.swift */,
+				0CC8260C243A1A1F00F1A047 /* MealHeaderTableViewCell.xib */,
+				0CC8260B243A1A1F00F1A047 /* MealHeaderTableViewCell.swift */,
+				0CC8260F243A1B4C00F1A047 /* MealHeaderTableViewCellModel.swift */,
 			);
-			path = MealListHeaderTableViewCell;
+			path = MealHeaderTableViewCell;
 			sourceTree = "<group>";
 		};
 		0CC82611243A1CA000F1A047 /* DishTableViewCell */ = {
@@ -231,7 +231,7 @@
 				0CC82615243A1CC900F1A047 /* DishTableViewCell.xib in Resources */,
 				0CC825F5243A111600F1A047 /* LaunchScreen.storyboard in Resources */,
 				0CC825F2243A111600F1A047 /* Assets.xcassets in Resources */,
-				0CC8260E243A1A1F00F1A047 /* MealListHeaderTableViewCell.xib in Resources */,
+				0CC8260E243A1A1F00F1A047 /* MealHeaderTableViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -244,12 +244,12 @@
 			files = (
 				0CC82614243A1CC900F1A047 /* DishTableViewCell.swift in Sources */,
 				0CC825E9243A111400F1A047 /* AppDelegate.swift in Sources */,
-				0CC8260D243A1A1F00F1A047 /* MealListHeaderTableViewCell.swift in Sources */,
+				0CC8260D243A1A1F00F1A047 /* MealHeaderTableViewCell.swift in Sources */,
 				0CC8261A243A22EF00F1A047 /* FCTableViewCellModel.swift in Sources */,
 				0CC82602243A132F00F1A047 /* MealListViewController.swift in Sources */,
 				0CC8261F243A241800F1A047 /* CreateMealViewControllerModel.swift in Sources */,
 				0CC8261D243A23ED00F1A047 /* CreateMealViewController.swift in Sources */,
-				0CC82610243A1B4C00F1A047 /* MealListHeaderTableViewCellModel.swift in Sources */,
+				0CC82610243A1B4C00F1A047 /* MealHeaderTableViewCellModel.swift in Sources */,
 				0CC82607243A182100F1A047 /* UIColor+CustomColors.swift in Sources */,
 				0CC82617243A1CD600F1A047 /* DishTableViewCellModel.swift in Sources */,
 				0CC82604243A133B00F1A047 /* MealListViewModel.swift in Sources */,

@@ -1,5 +1,5 @@
 //
-//  MealListHeaderTableViewCell.swift
+//  MealHeaderTableViewCell.swift
 //  foodcontrol
 //
 //  Created by Maxim Skryabin on 05.04.2020.
@@ -8,15 +8,15 @@
 
 import UIKit
 
-class MealListHeaderTableViewCell: UITableViewCell {
+class MealHeaderTableViewCell: UITableViewCell {
   
   @IBOutlet private weak var headerContainerView: UIView!
   @IBOutlet private weak var dateLabel: UILabel!
   @IBOutlet private weak var calloriesLabel: UILabel!
   
-  private var viewModel: MealListHeaderTableViewCellModel?
+  private var viewModel: MealHeaderTableViewCellModel?
   
-  func setup(viewModel: MealListHeaderTableViewCellModel?) {
+  func setup(viewModel: MealHeaderTableViewCellModel?) {
     self.viewModel = viewModel
     
     selectionStyle = .none

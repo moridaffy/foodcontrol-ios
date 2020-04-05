@@ -11,11 +11,11 @@ import Foundation
 class MealListViewModel {
   
   let cellModels: [FCTableViewCellModel] = [
-    MealListHeaderTableViewCellModel(),
+    MealHeaderTableViewCellModel(),
     DishTableViewCellModel(),
     DishTableViewCellModel(),
     DishTableViewCellModel(),
-    MealListHeaderTableViewCellModel(),
+    MealHeaderTableViewCellModel(),
     DishTableViewCellModel(),
     DishTableViewCellModel(),
     DishTableViewCellModel()
