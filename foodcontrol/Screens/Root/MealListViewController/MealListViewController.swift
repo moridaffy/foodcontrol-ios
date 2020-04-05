@@ -40,7 +40,7 @@ class MealListViewController: UIViewController {
     tableView.tableFooterView = UIView()
     tableView.separatorStyle = .none
     tableView.register(UINib(nibName: "MealListHeaderTableViewCell", bundle: nil), forCellReuseIdentifier: String(describing: MealListHeaderTableViewCell.self))
-    tableView.register(UINib(nibName: "MealListDishTableViewCell", bundle: nil), forCellReuseIdentifier: String(describing: MealListDishTableViewCell.self))
+    tableView.register(UINib(nibName: "DishTableViewCell", bundle: nil), forCellReuseIdentifier: String(describing: DishTableViewCell.self))
     tableView.delegate = self
     tableView.dataSource = self
   }
@@ -78,7 +78,7 @@ extension MealListViewController: UITableViewDelegate {
     let cellModel = viewModel.cellModels[indexPath.row]
     if cellModel is MealListHeaderTableViewCellModel {
       return 76.0
-    } else if cellModel is MealListDishTableViewCellModel {
+    } else if cellModel is DishTableViewCellModel {
       return 58.0
     } else {
       return UITableView.automaticDimension
@@ -89,7 +89,7 @@ extension MealListViewController: UITableViewDelegate {
     let cellModel = viewModel.cellModels[indexPath.row]
     if cellModel is MealListHeaderTableViewCellModel {
       return 76.0
-    } else if cellModel is MealListDishTableViewCellModel {
+    } else if cellModel is DishTableViewCellModel {
       return UITableView.automaticDimension
     } else {
       return UITableView.automaticDimension
@@ -108,8 +108,8 @@ extension MealListViewController: UITableViewDataSource {
       guard let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: MealListHeaderTableViewCell.self)) as? MealListHeaderTableViewCell else { fatalError() }
       cell.setup(viewModel: cellModel)
       return cell
-    } else if let cellModel = cellModel as? MealListDishTableViewCellModel {
-      guard let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: MealListDishTableViewCell.self)) as? MealListDishTableViewCell else { fatalError() }
+    } else if let cellModel = cellModel as? DishTableViewCellModel {
+      guard let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: DishTableViewCell.self)) as? DishTableViewCell else { fatalError() }
       cell.setup(viewModel: cellModel)
       return cell
     } else {

@@ -1,5 +1,5 @@
 //
-//  MealListDishTableViewCell.swift
+//  DishTableViewCell.swift
 //  foodcontrol
 //
 //  Created by Maxim Skryabin on 05.04.2020.
@@ -8,16 +8,16 @@
 
 import UIKit
 
-class MealListDishTableViewCell: UITableViewCell {
+class DishTableViewCell: UITableViewCell {
   
   @IBOutlet private weak var dishImageView: UIImageView!
   @IBOutlet private weak var nameLabel: UILabel!
   @IBOutlet private weak var volumeLabel: UILabel!
   @IBOutlet private weak var calloriesLabel: UILabel!
   
-  private var viewModel: MealListDishTableViewCellModel?
+  private var viewModel: DishTableViewCellModel?
   
-  func setup(viewModel: MealListDishTableViewCellModel?) {
+  func setup(viewModel: DishTableViewCellModel?) {
     self.viewModel = viewModel
     
     setupImage()

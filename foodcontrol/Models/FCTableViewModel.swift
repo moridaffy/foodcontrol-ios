@@ -1,5 +1,5 @@
 //
-//  MealListDishTableViewCellModel.swift
+//  FCTableViewModel.swift
 //  foodcontrol
 //
 //  Created by Maxim Skryabin on 05.04.2020.
@@ -8,6 +8,4 @@
 
 import Foundation
 
-class MealListDishTableViewCellModel: MealListTableViewCellModel {
-  
-}
+protocol FCTableViewModel: class { }

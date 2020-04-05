@@ -8,19 +8,17 @@
 
 import Foundation
 
-protocol MealListTableViewCellModel: class { }
-
 class MealListViewModel {
   
-  let cellModels: [MealListTableViewCellModel] = [
+  let cellModels: [FCTableViewModel] = [
     MealListHeaderTableViewCellModel(),
-    MealListDishTableViewCellModel(),
-    MealListDishTableViewCellModel(),
-    MealListDishTableViewCellModel(),
+    DishTableViewCellModel(),
+    DishTableViewCellModel(),
+    DishTableViewCellModel(),
     MealListHeaderTableViewCellModel(),
-    MealListDishTableViewCellModel(),
-    MealListDishTableViewCellModel(),
-    MealListDishTableViewCellModel()
+    DishTableViewCellModel(),
+    DishTableViewCellModel(),
+    DishTableViewCellModel()
   ]
   
 }
