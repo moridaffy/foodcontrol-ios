@@ -61,7 +61,10 @@ class CreateMealViewController: UIViewController {
 
 extension CreateMealViewController: MapLocationTableViewCellDelegate {
   func didTapOnMap(for coordinates: CLLocationCoordinate2D) {
-    
+    showAlert(title: NSLocalizedString("Открыть место?", comment: ""),
+              body: NSLocalizedString("Выберите приложение, чтобы открыть это место", comment: ""),
+              button: nil,
+              actions: coordinates.getOpenInActions())
   }
 }
 

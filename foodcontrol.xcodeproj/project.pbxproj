@@ -29,6 +29,8 @@
 		0CC8262F243A31E900F1A047 /* MapLocationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CC8262D243A31E900F1A047 /* MapLocationTableViewCell.swift */; };
 		0CC82630243A31E900F1A047 /* MapLocationTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0CC8262E243A31E900F1A047 /* MapLocationTableViewCell.xib */; };
 		0CC82632243A31FF00F1A047 /* MapLocationTableViewCellModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CC82631243A31FF00F1A047 /* MapLocationTableViewCellModel.swift */; };
+		0CC82635243A372F00F1A047 /* CLLocationCoordinate2D+AlertActions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CC82634243A372F00F1A047 /* CLLocationCoordinate2D+AlertActions.swift */; };
+		0CC82637243A39E700F1A047 /* UIViewController+Alerts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CC82636243A39E700F1A047 /* UIViewController+Alerts.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -56,6 +58,8 @@
 		0CC8262D243A31E900F1A047 /* MapLocationTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapLocationTableViewCell.swift; sourceTree = "<group>"; };
 		0CC8262E243A31E900F1A047 /* MapLocationTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MapLocationTableViewCell.xib; sourceTree = "<group>"; };
 		0CC82631243A31FF00F1A047 /* MapLocationTableViewCellModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapLocationTableViewCellModel.swift; sourceTree = "<group>"; };
+		0CC82634243A372F00F1A047 /* CLLocationCoordinate2D+AlertActions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CLLocationCoordinate2D+AlertActions.swift"; sourceTree = "<group>"; };
+		0CC82636243A39E700F1A047 /* UIViewController+Alerts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Alerts.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -131,6 +135,8 @@
 			isa = PBXGroup;
 			children = (
 				0CC82606243A182100F1A047 /* UIColor+CustomColors.swift */,
+				0CC82636243A39E700F1A047 /* UIViewController+Alerts.swift */,
+				0CC82634243A372F00F1A047 /* CLLocationCoordinate2D+AlertActions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -291,7 +297,9 @@
 				0CC8262F243A31E900F1A047 /* MapLocationTableViewCell.swift in Sources */,
 				0CC82607243A182100F1A047 /* UIColor+CustomColors.swift in Sources */,
 				0CC8262B243A2A4200F1A047 /* BigButtonTableViewCellModel.swift in Sources */,
+				0CC82637243A39E700F1A047 /* UIViewController+Alerts.swift in Sources */,
 				0CC82617243A1CD600F1A047 /* DishTableViewCellModel.swift in Sources */,
+				0CC82635243A372F00F1A047 /* CLLocationCoordinate2D+AlertActions.swift in Sources */,
 				0CC82604243A133B00F1A047 /* MealListViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
