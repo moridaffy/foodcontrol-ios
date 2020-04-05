@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CoreLocation
 
 class CreateMealViewController: UIViewController {
   
@@ -36,6 +37,8 @@ class CreateMealViewController: UIViewController {
     tableView.separatorStyle = .none
     tableView.register(UINib(nibName: "MealHeaderTableViewCell", bundle: nil), forCellReuseIdentifier: String(describing: MealHeaderTableViewCell.self))
     tableView.register(UINib(nibName: "DishTableViewCell", bundle: nil), forCellReuseIdentifier: String(describing: DishTableViewCell.self))
+    tableView.register(UINib(nibName: "BigButtonTableViewCell", bundle: nil), forCellReuseIdentifier: String(describing: BigButtonTableViewCell.self))
+    tableView.register(UINib(nibName: "MapLocationTableViewCell", bundle: nil), forCellReuseIdentifier: String(describing: MapLocationTableViewCell.self))
     tableView.delegate = self
     tableView.dataSource = self
   }
@@ -56,6 +59,12 @@ class CreateMealViewController: UIViewController {
   }
 }
 
+extension CreateMealViewController: MapLocationTableViewCellDelegate {
+  func didTapOnMap(for coordinates: CLLocationCoordinate2D) {
+    
+  }
+}
+
 extension CreateMealViewController: UITableViewDelegate {
   func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
     tableView.deselectRow(at: indexPath, animated: true)
@@ -67,6 +76,10 @@ extension CreateMealViewController: UITableViewDelegate {
       return 76.0
     } else if cellModel is DishTableViewCellModel {
       return 58.0
+    } else if let cellModel = cellModel as? BigButtonTableViewCellModel {
+      return CGFloat(cellModel.type.height)
+    } else if cellModel is MapLocationTableViewCellModel {
+      return 199.0
     } else {
       return UITableView.automaticDimension
     }
@@ -78,6 +91,10 @@ extension CreateMealViewController: UITableViewDelegate {
       return 76.0
     } else if cellModel is DishTableViewCellModel {
       return UITableView.automaticDimension
+    } else if let cellModel = cellModel as? BigButtonTableViewCellModel {
+      return CGFloat(cellModel.type.height)
+    } else if cellModel is MapLocationTableViewCellModel {
+      return 199.0
     } else {
       return UITableView.automaticDimension
     }
@@ -98,6 +115,14 @@ extension CreateMealViewController: UITableViewDataSource {
     } else if let cellModel = cellModel as? DishTableViewCellModel {
       guard let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: DishTableViewCell.self)) as? DishTableViewCell else { fatalError() }
       cell.setup(viewModel: cellModel)
+      return cell
+    } else if let cellModel = cellModel as? BigButtonTableViewCellModel {
+      guard let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: BigButtonTableViewCell.self)) as? BigButtonTableViewCell else { fatalError() }
+      cell.setup(viewModel: cellModel)
+      return cell
+    } else if let cellModel = cellModel as? MapLocationTableViewCellModel {
+      guard let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: MapLocationTableViewCell.self)) as? MapLocationTableViewCell else { fatalError() }
+      cell.setup(viewModel: cellModel, delegate: self)
       return cell
     } else {
       fatalError()

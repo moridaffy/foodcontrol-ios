@@ -7,12 +7,15 @@
 //
 
 import Foundation
+import CoreLocation
 
 class CreateMealViewControllerModel {
   let cellModels: [FCTableViewCellModel] = [
     MealHeaderTableViewCellModel(),
     DishTableViewCellModel(),
     DishTableViewCellModel(),
-    DishTableViewCellModel()
+    DishTableViewCellModel(),
+    BigButtonTableViewCellModel(type: .addDish),  // 55.766041, 37.684551
+    MapLocationTableViewCellModel(coordinate: CLLocationCoordinate2D(latitude: 55.766041, longitude: 37.684551))
   ]
 }

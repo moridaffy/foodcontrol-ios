@@ -23,6 +23,12 @@
 		0CC8261A243A22EF00F1A047 /* FCTableViewCellModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CC82619243A22EF00F1A047 /* FCTableViewCellModel.swift */; };
 		0CC8261D243A23ED00F1A047 /* CreateMealViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CC8261C243A23ED00F1A047 /* CreateMealViewController.swift */; };
 		0CC8261F243A241800F1A047 /* CreateMealViewControllerModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CC8261E243A241800F1A047 /* CreateMealViewControllerModel.swift */; };
+		0CC82628243A291500F1A047 /* BigButtonTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CC82626243A291500F1A047 /* BigButtonTableViewCell.swift */; };
+		0CC82629243A291500F1A047 /* BigButtonTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0CC82627243A291500F1A047 /* BigButtonTableViewCell.xib */; };
+		0CC8262B243A2A4200F1A047 /* BigButtonTableViewCellModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CC8262A243A2A4200F1A047 /* BigButtonTableViewCellModel.swift */; };
+		0CC8262F243A31E900F1A047 /* MapLocationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CC8262D243A31E900F1A047 /* MapLocationTableViewCell.swift */; };
+		0CC82630243A31E900F1A047 /* MapLocationTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0CC8262E243A31E900F1A047 /* MapLocationTableViewCell.xib */; };
+		0CC82632243A31FF00F1A047 /* MapLocationTableViewCellModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CC82631243A31FF00F1A047 /* MapLocationTableViewCellModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -44,6 +50,12 @@
 		0CC82619243A22EF00F1A047 /* FCTableViewCellModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FCTableViewCellModel.swift; sourceTree = "<group>"; };
 		0CC8261C243A23ED00F1A047 /* CreateMealViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateMealViewController.swift; sourceTree = "<group>"; };
 		0CC8261E243A241800F1A047 /* CreateMealViewControllerModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateMealViewControllerModel.swift; sourceTree = "<group>"; };
+		0CC82626243A291500F1A047 /* BigButtonTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BigButtonTableViewCell.swift; sourceTree = "<group>"; };
+		0CC82627243A291500F1A047 /* BigButtonTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BigButtonTableViewCell.xib; sourceTree = "<group>"; };
+		0CC8262A243A2A4200F1A047 /* BigButtonTableViewCellModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BigButtonTableViewCellModel.swift; sourceTree = "<group>"; };
+		0CC8262D243A31E900F1A047 /* MapLocationTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapLocationTableViewCell.swift; sourceTree = "<group>"; };
+		0CC8262E243A31E900F1A047 /* MapLocationTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MapLocationTableViewCell.xib; sourceTree = "<group>"; };
+		0CC82631243A31FF00F1A047 /* MapLocationTableViewCellModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapLocationTableViewCellModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -126,6 +138,8 @@
 		0CC82609243A19FA00F1A047 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				0CC8262C243A31D300F1A047 /* MapLocationTableViewCell */,
+				0CC82621243A28C500F1A047 /* BigButtonTableViewCell */,
 				0CC8260A243A1A0000F1A047 /* MealHeaderTableViewCell */,
 				0CC82611243A1CA000F1A047 /* DishTableViewCell */,
 			);
@@ -167,6 +181,26 @@
 				0CC8261E243A241800F1A047 /* CreateMealViewControllerModel.swift */,
 			);
 			path = CreateMealViewController;
+			sourceTree = "<group>";
+		};
+		0CC82621243A28C500F1A047 /* BigButtonTableViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				0CC82627243A291500F1A047 /* BigButtonTableViewCell.xib */,
+				0CC82626243A291500F1A047 /* BigButtonTableViewCell.swift */,
+				0CC8262A243A2A4200F1A047 /* BigButtonTableViewCellModel.swift */,
+			);
+			path = BigButtonTableViewCell;
+			sourceTree = "<group>";
+		};
+		0CC8262C243A31D300F1A047 /* MapLocationTableViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				0CC8262E243A31E900F1A047 /* MapLocationTableViewCell.xib */,
+				0CC8262D243A31E900F1A047 /* MapLocationTableViewCell.swift */,
+				0CC82631243A31FF00F1A047 /* MapLocationTableViewCellModel.swift */,
+			);
+			path = MapLocationTableViewCell;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -227,10 +261,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0CC82629243A291500F1A047 /* BigButtonTableViewCell.xib in Resources */,
 				0CC825FF243A131700F1A047 /* Root.storyboard in Resources */,
 				0CC82615243A1CC900F1A047 /* DishTableViewCell.xib in Resources */,
 				0CC825F5243A111600F1A047 /* LaunchScreen.storyboard in Resources */,
 				0CC825F2243A111600F1A047 /* Assets.xcassets in Resources */,
+				0CC82630243A31E900F1A047 /* MapLocationTableViewCell.xib in Resources */,
 				0CC8260E243A1A1F00F1A047 /* MealHeaderTableViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -250,7 +286,11 @@
 				0CC8261F243A241800F1A047 /* CreateMealViewControllerModel.swift in Sources */,
 				0CC8261D243A23ED00F1A047 /* CreateMealViewController.swift in Sources */,
 				0CC82610243A1B4C00F1A047 /* MealHeaderTableViewCellModel.swift in Sources */,
+				0CC82632243A31FF00F1A047 /* MapLocationTableViewCellModel.swift in Sources */,
+				0CC82628243A291500F1A047 /* BigButtonTableViewCell.swift in Sources */,
+				0CC8262F243A31E900F1A047 /* MapLocationTableViewCell.swift in Sources */,
 				0CC82607243A182100F1A047 /* UIColor+CustomColors.swift in Sources */,
+				0CC8262B243A2A4200F1A047 /* BigButtonTableViewCellModel.swift in Sources */,
 				0CC82617243A1CD600F1A047 /* DishTableViewCellModel.swift in Sources */,
 				0CC82604243A133B00F1A047 /* MealListViewModel.swift in Sources */,
 			);
