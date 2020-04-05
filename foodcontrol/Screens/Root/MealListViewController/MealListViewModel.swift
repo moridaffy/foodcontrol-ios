@@ -10,7 +10,7 @@ import Foundation
 
 class MealListViewModel {
   
-  let cellModels: [FCTableViewModel] = [
+  let cellModels: [FCTableViewCellModel] = [
     MealListHeaderTableViewCellModel(),
     DishTableViewCellModel(),
     DishTableViewCellModel(),

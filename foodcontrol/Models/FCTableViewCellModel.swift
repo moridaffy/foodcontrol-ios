@@ -1,5 +1,5 @@
 //
-//  FCTableViewModel.swift
+//  FCTableViewCellModel.swift
 //  foodcontrol
 //
 //  Created by Maxim Skryabin on 05.04.2020.
@@ -8,4 +8,4 @@
 
 import Foundation
 
-protocol FCTableViewModel: class { }
+protocol FCTableViewCellModel: class { }

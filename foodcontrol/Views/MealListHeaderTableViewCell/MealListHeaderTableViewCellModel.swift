@@ -8,6 +8,6 @@
 
 import Foundation
 
-class MealListHeaderTableViewCellModel: FCTableViewModel {
+class MealListHeaderTableViewCellModel: FCTableViewCellModel {
   
 }
