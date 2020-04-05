@@ -1,5 +1,5 @@
 //
-//  MealListViewController.swift
+//  CreateMealViewController.swift
 //  foodcontrol
 //
 //  Created by Maxim Skryabin on 05.04.2020.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class MealListViewController: UIViewController {
+class CreateMealViewController: UIViewController {
   
   @IBOutlet private weak var tableView: UITableView!
   @IBOutlet private weak var fadeImageView: UIImageView!
@@ -16,8 +16,7 @@ class MealListViewController: UIViewController {
   @IBOutlet private weak var addMealButtonTitleLabel: UILabel!
   @IBOutlet private weak var addMealButtonIconImageView: UIImageView!
   
-  private let viewModel = MealListViewModel()
-  private weak var addMealButtonTapRecognizer: UITapGestureRecognizer?
+  private let viewModel = CreateMealViewControllerModel()
   
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -28,15 +27,7 @@ class MealListViewController: UIViewController {
   }
   
   private func setupNavigationBar() {
-    title = NSLocalizedString("Прием пищи", comment: "")
-    
-    let profileButton = UIBarButtonItem(image: UIImage(systemName: "person.circle.fill")?.withRenderingMode(.alwaysTemplate), style: .done, target: self, action: #selector(profileButtonTapped))
-    profileButton.tintColor = UIColor.additionalYellow
-    navigationItem.rightBarButtonItem = profileButton
-    
-    let backButton = UIBarButtonItem(image: nil, style: .done, target: nil, action: nil)
-    backButton.tintColor = UIColor.additionalYellow
-    navigationItem.backBarButtonItem = backButton
+    title = NSLocalizedString("Добавить прием", comment: "")
   }
   
   private func setupTableView() {
@@ -58,23 +49,14 @@ class MealListViewController: UIViewController {
     addMealButtonTitleLabel.font = UIFont.systemFont(ofSize: 17.0, weight: .semibold)
     addMealButtonIconImageView.image = UIImage(systemName: "plus")?.withRenderingMode(.alwaysTemplate)
     addMealButtonIconImageView.tintColor = UIColor.white
-    
-    let addMealButtonTapRecognizer = UITapGestureRecognizer(target: self, action: #selector(addMealButtonTapped))
-    addMealButtonContainerView.addGestureRecognizer(addMealButtonTapRecognizer)
-    self.addMealButtonTapRecognizer = addMealButtonTapRecognizer
-  }
-  
-  @objc private func profileButtonTapped() {
-    
   }
   
   @objc private func addMealButtonTapped() {
-    guard let createMealViewController = UIStoryboard(name: "Root", bundle: nil).instantiateViewController(withIdentifier: "CreateMealViewController") as? CreateMealViewController else { return }
-    navigationController?.pushViewController(createMealViewController, animated: true)
+    
   }
 }
 
-extension MealListViewController: UITableViewDelegate {
+extension CreateMealViewController: UITableViewDelegate {
   func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
     tableView.deselectRow(at: indexPath, animated: true)
   }
@@ -102,7 +84,7 @@ extension MealListViewController: UITableViewDelegate {
   }
 }
 
-extension MealListViewController: UITableViewDataSource {
+extension CreateMealViewController: UITableViewDataSource {
   func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
     return viewModel.cellModels.count
   }

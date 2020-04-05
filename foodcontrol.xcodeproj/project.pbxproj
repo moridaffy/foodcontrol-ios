@@ -21,6 +21,8 @@
 		0CC82615243A1CC900F1A047 /* DishTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0CC82613243A1CC900F1A047 /* DishTableViewCell.xib */; };
 		0CC82617243A1CD600F1A047 /* DishTableViewCellModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CC82616243A1CD600F1A047 /* DishTableViewCellModel.swift */; };
 		0CC8261A243A22EF00F1A047 /* FCTableViewCellModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CC82619243A22EF00F1A047 /* FCTableViewCellModel.swift */; };
+		0CC8261D243A23ED00F1A047 /* CreateMealViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CC8261C243A23ED00F1A047 /* CreateMealViewController.swift */; };
+		0CC8261F243A241800F1A047 /* CreateMealViewControllerModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CC8261E243A241800F1A047 /* CreateMealViewControllerModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -40,6 +42,8 @@
 		0CC82613243A1CC900F1A047 /* DishTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DishTableViewCell.xib; sourceTree = "<group>"; };
 		0CC82616243A1CD600F1A047 /* DishTableViewCellModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DishTableViewCellModel.swift; sourceTree = "<group>"; };
 		0CC82619243A22EF00F1A047 /* FCTableViewCellModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FCTableViewCellModel.swift; sourceTree = "<group>"; };
+		0CC8261C243A23ED00F1A047 /* CreateMealViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateMealViewController.swift; sourceTree = "<group>"; };
+		0CC8261E243A241800F1A047 /* CreateMealViewControllerModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateMealViewControllerModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -97,6 +101,7 @@
 			children = (
 				0CC825FE243A131700F1A047 /* Root.storyboard */,
 				0CC82600243A131C00F1A047 /* MealListViewController */,
+				0CC8261B243A23D500F1A047 /* CreateMealViewController */,
 			);
 			path = Root;
 			sourceTree = "<group>";
@@ -122,7 +127,7 @@
 			isa = PBXGroup;
 			children = (
 				0CC8260A243A1A0000F1A047 /* MealListHeaderTableViewCell */,
-				0CC82611243A1CA000F1A047 /* MealListDishTableViewCell */,
+				0CC82611243A1CA000F1A047 /* DishTableViewCell */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -137,14 +142,14 @@
 			path = MealListHeaderTableViewCell;
 			sourceTree = "<group>";
 		};
-		0CC82611243A1CA000F1A047 /* MealListDishTableViewCell */ = {
+		0CC82611243A1CA000F1A047 /* DishTableViewCell */ = {
 			isa = PBXGroup;
 			children = (
 				0CC82613243A1CC900F1A047 /* DishTableViewCell.xib */,
 				0CC82612243A1CC900F1A047 /* DishTableViewCell.swift */,
 				0CC82616243A1CD600F1A047 /* DishTableViewCellModel.swift */,
 			);
-			path = MealListDishTableViewCell;
+			path = DishTableViewCell;
 			sourceTree = "<group>";
 		};
 		0CC82618243A22DB00F1A047 /* Models */ = {
@@ -153,6 +158,15 @@
 				0CC82619243A22EF00F1A047 /* FCTableViewCellModel.swift */,
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		0CC8261B243A23D500F1A047 /* CreateMealViewController */ = {
+			isa = PBXGroup;
+			children = (
+				0CC8261C243A23ED00F1A047 /* CreateMealViewController.swift */,
+				0CC8261E243A241800F1A047 /* CreateMealViewControllerModel.swift */,
+			);
+			path = CreateMealViewController;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -233,6 +247,8 @@
 				0CC8260D243A1A1F00F1A047 /* MealListHeaderTableViewCell.swift in Sources */,
 				0CC8261A243A22EF00F1A047 /* FCTableViewCellModel.swift in Sources */,
 				0CC82602243A132F00F1A047 /* MealListViewController.swift in Sources */,
+				0CC8261F243A241800F1A047 /* CreateMealViewControllerModel.swift in Sources */,
+				0CC8261D243A23ED00F1A047 /* CreateMealViewController.swift in Sources */,
 				0CC82610243A1B4C00F1A047 /* MealListHeaderTableViewCellModel.swift in Sources */,
 				0CC82607243A182100F1A047 /* UIColor+CustomColors.swift in Sources */,
 				0CC82617243A1CD600F1A047 /* DishTableViewCellModel.swift in Sources */,
