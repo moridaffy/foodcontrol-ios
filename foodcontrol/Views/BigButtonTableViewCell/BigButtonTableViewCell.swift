@@ -25,7 +25,7 @@ class BigButtonTableViewCell: UITableViewCell {
   }
   
   private func setupContainers() {
-    buttonContainerView.backgroundColor = UIColor.clear
+    buttonContainerView.backgroundColor = UIColor.white
     buttonContainerView.layer.cornerRadius = 10.0
     buttonContainerView.layer.masksToBounds = true
     buttonContainerView.layer.borderColor = UIColor.additionalGray.cgColor

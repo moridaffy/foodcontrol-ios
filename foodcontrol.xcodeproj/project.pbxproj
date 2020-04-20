@@ -31,6 +31,8 @@
 		0CC82632243A31FF00F1A047 /* MapLocationTableViewCellModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CC82631243A31FF00F1A047 /* MapLocationTableViewCellModel.swift */; };
 		0CC82635243A372F00F1A047 /* CLLocationCoordinate2D+AlertActions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CC82634243A372F00F1A047 /* CLLocationCoordinate2D+AlertActions.swift */; };
 		0CC82637243A39E700F1A047 /* UIViewController+Alerts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CC82636243A39E700F1A047 /* UIViewController+Alerts.swift */; };
+		0CF94DBB244E13CC0047763C /* AddDishViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CF94DBA244E13CC0047763C /* AddDishViewController.swift */; };
+		0CF94DBD244E13D60047763C /* AddDishViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CF94DBC244E13D60047763C /* AddDishViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -60,6 +62,8 @@
 		0CC82631243A31FF00F1A047 /* MapLocationTableViewCellModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapLocationTableViewCellModel.swift; sourceTree = "<group>"; };
 		0CC82634243A372F00F1A047 /* CLLocationCoordinate2D+AlertActions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CLLocationCoordinate2D+AlertActions.swift"; sourceTree = "<group>"; };
 		0CC82636243A39E700F1A047 /* UIViewController+Alerts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Alerts.swift"; sourceTree = "<group>"; };
+		0CF94DBA244E13CC0047763C /* AddDishViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddDishViewController.swift; sourceTree = "<group>"; };
+		0CF94DBC244E13D60047763C /* AddDishViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddDishViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -118,6 +122,7 @@
 				0CC825FE243A131700F1A047 /* Root.storyboard */,
 				0CC82600243A131C00F1A047 /* MealListViewController */,
 				0CC8261B243A23D500F1A047 /* CreateMealViewController */,
+				0CF94DB9244E13B30047763C /* AddDishViewController */,
 			);
 			path = Root;
 			sourceTree = "<group>";
@@ -207,6 +212,15 @@
 				0CC82631243A31FF00F1A047 /* MapLocationTableViewCellModel.swift */,
 			);
 			path = MapLocationTableViewCell;
+			sourceTree = "<group>";
+		};
+		0CF94DB9244E13B30047763C /* AddDishViewController */ = {
+			isa = PBXGroup;
+			children = (
+				0CF94DBA244E13CC0047763C /* AddDishViewController.swift */,
+				0CF94DBC244E13D60047763C /* AddDishViewModel.swift */,
+			);
+			path = AddDishViewController;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -299,7 +313,9 @@
 				0CC8262B243A2A4200F1A047 /* BigButtonTableViewCellModel.swift in Sources */,
 				0CC82637243A39E700F1A047 /* UIViewController+Alerts.swift in Sources */,
 				0CC82617243A1CD600F1A047 /* DishTableViewCellModel.swift in Sources */,
+				0CF94DBD244E13D60047763C /* AddDishViewModel.swift in Sources */,
 				0CC82635243A372F00F1A047 /* CLLocationCoordinate2D+AlertActions.swift in Sources */,
+				0CF94DBB244E13CC0047763C /* AddDishViewController.swift in Sources */,
 				0CC82604243A133B00F1A047 /* MealListViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

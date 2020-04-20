@@ -24,7 +24,7 @@ class MealListViewController: UIViewController {
     
     setupNavigationBar()
     setupTableView()
-    setupButton()
+    setupBottomButton()
   }
   
   private func setupNavigationBar() {
@@ -49,7 +49,7 @@ class MealListViewController: UIViewController {
     tableView.dataSource = self
   }
   
-  private func setupButton() {
+  private func setupBottomButton() {
     addMealButtonContainerView.backgroundColor = UIColor.additionalYellow
     addMealButtonContainerView.layer.cornerRadius = 10.0
     addMealButtonContainerView.layer.masksToBounds = true

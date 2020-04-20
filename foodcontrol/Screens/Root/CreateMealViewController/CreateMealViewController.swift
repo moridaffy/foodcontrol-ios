@@ -24,11 +24,15 @@ class CreateMealViewController: UIViewController {
     
     setupNavigationBar()
     setupTableView()
-    setupButton()
+    setupBottomButton()
   }
   
   private func setupNavigationBar() {
     title = NSLocalizedString("Добавить прием", comment: "")
+    
+    let backButton = UIBarButtonItem(image: nil, style: .done, target: nil, action: nil)
+    backButton.tintColor = UIColor.additionalYellow
+    navigationItem.backBarButtonItem = backButton
   }
   
   private func setupTableView() {
@@ -43,7 +47,7 @@ class CreateMealViewController: UIViewController {
     tableView.dataSource = self
   }
   
-  private func setupButton() {
+  private func setupBottomButton() {
     addMealButtonContainerView.backgroundColor = UIColor.additionalYellow
     addMealButtonContainerView.layer.cornerRadius = 10.0
     addMealButtonContainerView.layer.masksToBounds = true
@@ -55,7 +59,12 @@ class CreateMealViewController: UIViewController {
   }
   
   @objc private func addMealButtonTapped() {
-    
+    navigationController?.popViewController(animated: true)
+  }
+  
+  private func openAddDishViewController() {
+    guard let addDishViewController = UIStoryboard(name: "Root", bundle: nil).instantiateViewController(withIdentifier: "AddDishViewController") as? AddDishViewController else { return }
+    navigationController?.pushViewController(addDishViewController, animated: true)
   }
 }
 
@@ -71,6 +80,11 @@ extension CreateMealViewController: MapLocationTableViewCellDelegate {
 extension CreateMealViewController: UITableViewDelegate {
   func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
     tableView.deselectRow(at: indexPath, animated: true)
+    let cellModel = viewModel.cellModels[indexPath.row]
+    if let cellModel = cellModel as? BigButtonTableViewCellModel {
+      guard cellModel.type == .addDish else { return }
+      openAddDishViewController()
+    }
   }
   
   func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
