@@ -47,6 +47,9 @@ class MealListViewController: UIViewController {
     tableView.register(UINib(nibName: "DishTableViewCell", bundle: nil), forCellReuseIdentifier: String(describing: DishTableViewCell.self))
     tableView.delegate = self
     tableView.dataSource = self
+    
+    fadeImageView.image = UIImage(named: "fade_bottomToTop")
+    fadeImageView.contentMode = .scaleToFill
   }
   
   private func setupBottomButton() {
@@ -72,11 +75,27 @@ class MealListViewController: UIViewController {
     guard let createMealViewController = UIStoryboard(name: "Root", bundle: nil).instantiateViewController(withIdentifier: "CreateMealViewController") as? CreateMealViewController else { return }
     navigationController?.pushViewController(createMealViewController, animated: true)
   }
+  
+  private func openMealViewController() {
+    
+  }
+  
+  private func openDishViewController() {
+    guard let dishInfoViewController = UIStoryboard(name: "Root", bundle: nil).instantiateViewController(withIdentifier: "DishInfoViewController") as? DishInfoViewController else { return }
+    dishInfoViewController.setup(viewModel: DishInfoViewModel(), delegate: nil)
+    navigationController?.pushViewController(dishInfoViewController, animated: true)
+  }
 }
 
 extension MealListViewController: UITableViewDelegate {
   func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
     tableView.deselectRow(at: indexPath, animated: true)
+    let cellModel = viewModel.cellModels[indexPath.row]
+    if let cellModel = cellModel as? MealHeaderTableViewCellModel {
+      openMealViewController()
+    } else if let cellModel = cellModel as? DishTableViewCellModel {
+      openDishViewController()
+    }
   }
   
   func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {

@@ -18,6 +18,10 @@ class MealListViewModel {
     MealHeaderTableViewCellModel(),
     DishTableViewCellModel(),
     DishTableViewCellModel(),
+    DishTableViewCellModel(),
+    MealHeaderTableViewCellModel(),
+    DishTableViewCellModel(),
+    DishTableViewCellModel(),
     DishTableViewCellModel()
   ]
   

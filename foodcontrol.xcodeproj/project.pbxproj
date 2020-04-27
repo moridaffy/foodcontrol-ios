@@ -33,6 +33,17 @@
 		0CC82637243A39E700F1A047 /* UIViewController+Alerts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CC82636243A39E700F1A047 /* UIViewController+Alerts.swift */; };
 		0CF94DBB244E13CC0047763C /* AddDishViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CF94DBA244E13CC0047763C /* AddDishViewController.swift */; };
 		0CF94DBD244E13D60047763C /* AddDishViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CF94DBC244E13D60047763C /* AddDishViewModel.swift */; };
+		0CFCAA3824573ECE004AB0B1 /* DishInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CFCAA3724573ECE004AB0B1 /* DishInfoViewController.swift */; };
+		0CFCAA3A24573F02004AB0B1 /* DishInfoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CFCAA3924573F02004AB0B1 /* DishInfoViewModel.swift */; };
+		0CFCAA3E245744E0004AB0B1 /* BigImageTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CFCAA3C245744E0004AB0B1 /* BigImageTableViewCell.swift */; };
+		0CFCAA3F245744E0004AB0B1 /* BigImageTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0CFCAA3D245744E0004AB0B1 /* BigImageTableViewCell.xib */; };
+		0CFCAA41245744F1004AB0B1 /* BigImageTableViewCellModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CFCAA40245744F1004AB0B1 /* BigImageTableViewCellModel.swift */; };
+		0CFCAA45245746F8004AB0B1 /* InfoTextTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CFCAA43245746F8004AB0B1 /* InfoTextTableViewCell.swift */; };
+		0CFCAA46245746F8004AB0B1 /* InfoTextTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0CFCAA44245746F8004AB0B1 /* InfoTextTableViewCell.xib */; };
+		0CFCAA482457470B004AB0B1 /* InfoTextTableViewCellModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CFCAA472457470B004AB0B1 /* InfoTextTableViewCellModel.swift */; };
+		0CFCAA4C24575005004AB0B1 /* InfoNutritionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CFCAA4A24575005004AB0B1 /* InfoNutritionTableViewCell.swift */; };
+		0CFCAA4D24575005004AB0B1 /* InfoNutritionTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0CFCAA4B24575005004AB0B1 /* InfoNutritionTableViewCell.xib */; };
+		0CFCAA4F24575018004AB0B1 /* InfoNutritionTableViewCellModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CFCAA4E24575018004AB0B1 /* InfoNutritionTableViewCellModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -64,6 +75,17 @@
 		0CC82636243A39E700F1A047 /* UIViewController+Alerts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Alerts.swift"; sourceTree = "<group>"; };
 		0CF94DBA244E13CC0047763C /* AddDishViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddDishViewController.swift; sourceTree = "<group>"; };
 		0CF94DBC244E13D60047763C /* AddDishViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddDishViewModel.swift; sourceTree = "<group>"; };
+		0CFCAA3724573ECE004AB0B1 /* DishInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DishInfoViewController.swift; sourceTree = "<group>"; };
+		0CFCAA3924573F02004AB0B1 /* DishInfoViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DishInfoViewModel.swift; sourceTree = "<group>"; };
+		0CFCAA3C245744E0004AB0B1 /* BigImageTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BigImageTableViewCell.swift; sourceTree = "<group>"; };
+		0CFCAA3D245744E0004AB0B1 /* BigImageTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BigImageTableViewCell.xib; sourceTree = "<group>"; };
+		0CFCAA40245744F1004AB0B1 /* BigImageTableViewCellModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BigImageTableViewCellModel.swift; sourceTree = "<group>"; };
+		0CFCAA43245746F8004AB0B1 /* InfoTextTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoTextTableViewCell.swift; sourceTree = "<group>"; };
+		0CFCAA44245746F8004AB0B1 /* InfoTextTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = InfoTextTableViewCell.xib; sourceTree = "<group>"; };
+		0CFCAA472457470B004AB0B1 /* InfoTextTableViewCellModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoTextTableViewCellModel.swift; sourceTree = "<group>"; };
+		0CFCAA4A24575005004AB0B1 /* InfoNutritionTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoNutritionTableViewCell.swift; sourceTree = "<group>"; };
+		0CFCAA4B24575005004AB0B1 /* InfoNutritionTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = InfoNutritionTableViewCell.xib; sourceTree = "<group>"; };
+		0CFCAA4E24575018004AB0B1 /* InfoNutritionTableViewCellModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoNutritionTableViewCellModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -122,6 +144,7 @@
 				0CC825FE243A131700F1A047 /* Root.storyboard */,
 				0CC82600243A131C00F1A047 /* MealListViewController */,
 				0CC8261B243A23D500F1A047 /* CreateMealViewController */,
+				0CFCAA3624573EB0004AB0B1 /* DishInfoViewController */,
 				0CF94DB9244E13B30047763C /* AddDishViewController */,
 			);
 			path = Root;
@@ -149,8 +172,11 @@
 		0CC82609243A19FA00F1A047 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				0CFCAA42245746E4004AB0B1 /* InfoTextTableViewCell */,
+				0CFCAA4924574FF0004AB0B1 /* InfoNutritionTableViewCell */,
 				0CC8262C243A31D300F1A047 /* MapLocationTableViewCell */,
 				0CC82621243A28C500F1A047 /* BigButtonTableViewCell */,
+				0CFCAA3B245744BF004AB0B1 /* BigImageTableViewCell */,
 				0CC8260A243A1A0000F1A047 /* MealHeaderTableViewCell */,
 				0CC82611243A1CA000F1A047 /* DishTableViewCell */,
 			);
@@ -223,6 +249,45 @@
 			path = AddDishViewController;
 			sourceTree = "<group>";
 		};
+		0CFCAA3624573EB0004AB0B1 /* DishInfoViewController */ = {
+			isa = PBXGroup;
+			children = (
+				0CFCAA3724573ECE004AB0B1 /* DishInfoViewController.swift */,
+				0CFCAA3924573F02004AB0B1 /* DishInfoViewModel.swift */,
+			);
+			path = DishInfoViewController;
+			sourceTree = "<group>";
+		};
+		0CFCAA3B245744BF004AB0B1 /* BigImageTableViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				0CFCAA3D245744E0004AB0B1 /* BigImageTableViewCell.xib */,
+				0CFCAA3C245744E0004AB0B1 /* BigImageTableViewCell.swift */,
+				0CFCAA40245744F1004AB0B1 /* BigImageTableViewCellModel.swift */,
+			);
+			path = BigImageTableViewCell;
+			sourceTree = "<group>";
+		};
+		0CFCAA42245746E4004AB0B1 /* InfoTextTableViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				0CFCAA44245746F8004AB0B1 /* InfoTextTableViewCell.xib */,
+				0CFCAA43245746F8004AB0B1 /* InfoTextTableViewCell.swift */,
+				0CFCAA472457470B004AB0B1 /* InfoTextTableViewCellModel.swift */,
+			);
+			path = InfoTextTableViewCell;
+			sourceTree = "<group>";
+		};
+		0CFCAA4924574FF0004AB0B1 /* InfoNutritionTableViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				0CFCAA4B24575005004AB0B1 /* InfoNutritionTableViewCell.xib */,
+				0CFCAA4A24575005004AB0B1 /* InfoNutritionTableViewCell.swift */,
+				0CFCAA4E24575018004AB0B1 /* InfoNutritionTableViewCellModel.swift */,
+			);
+			path = InfoNutritionTableViewCell;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -283,6 +348,9 @@
 			files = (
 				0CC82629243A291500F1A047 /* BigButtonTableViewCell.xib in Resources */,
 				0CC825FF243A131700F1A047 /* Root.storyboard in Resources */,
+				0CFCAA4D24575005004AB0B1 /* InfoNutritionTableViewCell.xib in Resources */,
+				0CFCAA46245746F8004AB0B1 /* InfoTextTableViewCell.xib in Resources */,
+				0CFCAA3F245744E0004AB0B1 /* BigImageTableViewCell.xib in Resources */,
 				0CC82615243A1CC900F1A047 /* DishTableViewCell.xib in Resources */,
 				0CC825F5243A111600F1A047 /* LaunchScreen.storyboard in Resources */,
 				0CC825F2243A111600F1A047 /* Assets.xcassets in Resources */,
@@ -298,20 +366,28 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0CFCAA41245744F1004AB0B1 /* BigImageTableViewCellModel.swift in Sources */,
 				0CC82614243A1CC900F1A047 /* DishTableViewCell.swift in Sources */,
 				0CC825E9243A111400F1A047 /* AppDelegate.swift in Sources */,
 				0CC8260D243A1A1F00F1A047 /* MealHeaderTableViewCell.swift in Sources */,
 				0CC8261A243A22EF00F1A047 /* FCTableViewCellModel.swift in Sources */,
 				0CC82602243A132F00F1A047 /* MealListViewController.swift in Sources */,
+				0CFCAA4F24575018004AB0B1 /* InfoNutritionTableViewCellModel.swift in Sources */,
 				0CC8261F243A241800F1A047 /* CreateMealViewControllerModel.swift in Sources */,
 				0CC8261D243A23ED00F1A047 /* CreateMealViewController.swift in Sources */,
+				0CFCAA4C24575005004AB0B1 /* InfoNutritionTableViewCell.swift in Sources */,
+				0CFCAA482457470B004AB0B1 /* InfoTextTableViewCellModel.swift in Sources */,
+				0CFCAA3A24573F02004AB0B1 /* DishInfoViewModel.swift in Sources */,
 				0CC82610243A1B4C00F1A047 /* MealHeaderTableViewCellModel.swift in Sources */,
 				0CC82632243A31FF00F1A047 /* MapLocationTableViewCellModel.swift in Sources */,
 				0CC82628243A291500F1A047 /* BigButtonTableViewCell.swift in Sources */,
+				0CFCAA3824573ECE004AB0B1 /* DishInfoViewController.swift in Sources */,
+				0CFCAA3E245744E0004AB0B1 /* BigImageTableViewCell.swift in Sources */,
 				0CC8262F243A31E900F1A047 /* MapLocationTableViewCell.swift in Sources */,
 				0CC82607243A182100F1A047 /* UIColor+CustomColors.swift in Sources */,
 				0CC8262B243A2A4200F1A047 /* BigButtonTableViewCellModel.swift in Sources */,
 				0CC82637243A39E700F1A047 /* UIViewController+Alerts.swift in Sources */,
+				0CFCAA45245746F8004AB0B1 /* InfoTextTableViewCell.swift in Sources */,
 				0CC82617243A1CD600F1A047 /* DishTableViewCellModel.swift in Sources */,
 				0CF94DBD244E13D60047763C /* AddDishViewModel.swift in Sources */,
 				0CC82635243A372F00F1A047 /* CLLocationCoordinate2D+AlertActions.swift in Sources */,
