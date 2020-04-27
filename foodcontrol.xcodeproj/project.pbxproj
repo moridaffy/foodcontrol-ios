@@ -44,6 +44,10 @@
 		0CFCAA4C24575005004AB0B1 /* InfoNutritionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CFCAA4A24575005004AB0B1 /* InfoNutritionTableViewCell.swift */; };
 		0CFCAA4D24575005004AB0B1 /* InfoNutritionTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0CFCAA4B24575005004AB0B1 /* InfoNutritionTableViewCell.xib */; };
 		0CFCAA4F24575018004AB0B1 /* InfoNutritionTableViewCellModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CFCAA4E24575018004AB0B1 /* InfoNutritionTableViewCellModel.swift */; };
+		0CFCAA5124575A01004AB0B1 /* Meal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CFCAA5024575A01004AB0B1 /* Meal.swift */; };
+		0CFCAA5324575A0A004AB0B1 /* Dish.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CFCAA5224575A0A004AB0B1 /* Dish.swift */; };
+		0CFCAA5624575D9F004AB0B1 /* TestInstances.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CFCAA5524575D9F004AB0B1 /* TestInstances.swift */; };
+		0CFCAA5824575E7D004AB0B1 /* DateHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CFCAA5724575E7D004AB0B1 /* DateHelper.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -86,6 +90,10 @@
 		0CFCAA4A24575005004AB0B1 /* InfoNutritionTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoNutritionTableViewCell.swift; sourceTree = "<group>"; };
 		0CFCAA4B24575005004AB0B1 /* InfoNutritionTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = InfoNutritionTableViewCell.xib; sourceTree = "<group>"; };
 		0CFCAA4E24575018004AB0B1 /* InfoNutritionTableViewCellModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoNutritionTableViewCellModel.swift; sourceTree = "<group>"; };
+		0CFCAA5024575A01004AB0B1 /* Meal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Meal.swift; sourceTree = "<group>"; };
+		0CFCAA5224575A0A004AB0B1 /* Dish.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dish.swift; sourceTree = "<group>"; };
+		0CFCAA5524575D9F004AB0B1 /* TestInstances.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestInstances.swift; sourceTree = "<group>"; };
+		0CFCAA5724575E7D004AB0B1 /* DateHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateHelper.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -122,6 +130,7 @@
 				0CC825FC243A130200F1A047 /* Screens */,
 				0CC82609243A19FA00F1A047 /* Views */,
 				0CC82618243A22DB00F1A047 /* Models */,
+				0CFCAA5424575D8E004AB0B1 /* Utilities */,
 				0CC82605243A181000F1A047 /* Extensions */,
 				0CC825F1243A111600F1A047 /* Assets.xcassets */,
 				0CC825F3243A111600F1A047 /* LaunchScreen.storyboard */,
@@ -207,6 +216,8 @@
 			isa = PBXGroup;
 			children = (
 				0CC82619243A22EF00F1A047 /* FCTableViewCellModel.swift */,
+				0CFCAA5024575A01004AB0B1 /* Meal.swift */,
+				0CFCAA5224575A0A004AB0B1 /* Dish.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -286,6 +297,15 @@
 				0CFCAA4E24575018004AB0B1 /* InfoNutritionTableViewCellModel.swift */,
 			);
 			path = InfoNutritionTableViewCell;
+			sourceTree = "<group>";
+		};
+		0CFCAA5424575D8E004AB0B1 /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				0CFCAA5524575D9F004AB0B1 /* TestInstances.swift */,
+				0CFCAA5724575E7D004AB0B1 /* DateHelper.swift */,
+			);
+			path = Utilities;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -370,8 +390,10 @@
 				0CC82614243A1CC900F1A047 /* DishTableViewCell.swift in Sources */,
 				0CC825E9243A111400F1A047 /* AppDelegate.swift in Sources */,
 				0CC8260D243A1A1F00F1A047 /* MealHeaderTableViewCell.swift in Sources */,
+				0CFCAA5624575D9F004AB0B1 /* TestInstances.swift in Sources */,
 				0CC8261A243A22EF00F1A047 /* FCTableViewCellModel.swift in Sources */,
 				0CC82602243A132F00F1A047 /* MealListViewController.swift in Sources */,
+				0CFCAA5324575A0A004AB0B1 /* Dish.swift in Sources */,
 				0CFCAA4F24575018004AB0B1 /* InfoNutritionTableViewCellModel.swift in Sources */,
 				0CC8261F243A241800F1A047 /* CreateMealViewControllerModel.swift in Sources */,
 				0CC8261D243A23ED00F1A047 /* CreateMealViewController.swift in Sources */,
@@ -379,9 +401,11 @@
 				0CFCAA482457470B004AB0B1 /* InfoTextTableViewCellModel.swift in Sources */,
 				0CFCAA3A24573F02004AB0B1 /* DishInfoViewModel.swift in Sources */,
 				0CC82610243A1B4C00F1A047 /* MealHeaderTableViewCellModel.swift in Sources */,
+				0CFCAA5824575E7D004AB0B1 /* DateHelper.swift in Sources */,
 				0CC82632243A31FF00F1A047 /* MapLocationTableViewCellModel.swift in Sources */,
 				0CC82628243A291500F1A047 /* BigButtonTableViewCell.swift in Sources */,
 				0CFCAA3824573ECE004AB0B1 /* DishInfoViewController.swift in Sources */,
+				0CFCAA5124575A01004AB0B1 /* Meal.swift in Sources */,
 				0CFCAA3E245744E0004AB0B1 /* BigImageTableViewCell.swift in Sources */,
 				0CC8262F243A31E900F1A047 /* MapLocationTableViewCell.swift in Sources */,
 				0CC82607243A182100F1A047 /* UIColor+CustomColors.swift in Sources */,
