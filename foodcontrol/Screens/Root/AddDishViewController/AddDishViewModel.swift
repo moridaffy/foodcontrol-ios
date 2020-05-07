@@ -20,9 +20,9 @@ class AddDishViewModel {
   
   let cellModels: [FCTableViewCellModel] = [
     BigButtonTableViewCellModel(type: .createDish),
-    DishTableViewCellModel(),
-    DishTableViewCellModel(),
-    DishTableViewCellModel()
+    DishTableViewCellModel(dish: TestInstances.dishes[0]),
+    DishTableViewCellModel(dish: TestInstances.dishes[1]),
+    DishTableViewCellModel(dish: TestInstances.dishes[2])
   ]
   
   private func sortingTypeChanged() {

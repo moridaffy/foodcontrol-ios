@@ -26,7 +26,7 @@ class InfoTextTableViewCell: UITableViewCell {
     titleLabel.textColor = UIColor.placeholderText
     titleLabel.font = UIFont.systemFont(ofSize: 15.0, weight: .regular)
     
-    contentLabel.text = "Content"
+    contentLabel.text = viewModel.text
     contentLabel.textColor = UIColor.label
     contentLabel.font = UIFont.systemFont(ofSize: 17.0, weight: .regular)
   }

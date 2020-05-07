@@ -76,13 +76,13 @@ class MealListViewController: UIViewController {
     navigationController?.pushViewController(createMealViewController, animated: true)
   }
   
-  private func openMealViewController() {
+  private func openMealViewController(for meal: Meal) {
     
   }
   
-  private func openDishViewController() {
+  private func openDishViewController(for dish: Dish) {
     guard let dishInfoViewController = UIStoryboard(name: "Root", bundle: nil).instantiateViewController(withIdentifier: "DishInfoViewController") as? DishInfoViewController else { return }
-    dishInfoViewController.setup(viewModel: DishInfoViewModel(), delegate: nil)
+    dishInfoViewController.setup(viewModel: DishInfoViewModel(dish: dish), delegate: nil)
     navigationController?.pushViewController(dishInfoViewController, animated: true)
   }
 }
@@ -92,9 +92,9 @@ extension MealListViewController: UITableViewDelegate {
     tableView.deselectRow(at: indexPath, animated: true)
     let cellModel = viewModel.cellModels[indexPath.row]
     if let cellModel = cellModel as? MealHeaderTableViewCellModel {
-      openMealViewController()
+      openMealViewController(for: cellModel.meal)
     } else if let cellModel = cellModel as? DishTableViewCellModel {
-      openDishViewController()
+      openDishViewController(for: cellModel.dish)
     }
   }
   

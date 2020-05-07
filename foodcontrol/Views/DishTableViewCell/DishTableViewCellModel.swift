@@ -10,4 +10,10 @@ import Foundation
 
 class DishTableViewCellModel: FCTableViewCellModel {
   
+  let dish: Dish
+  
+  init(dish: Dish) {
+    self.dish = dish
+  }
+  
 }

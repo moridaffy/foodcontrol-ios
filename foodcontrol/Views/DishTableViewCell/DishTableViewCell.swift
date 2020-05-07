@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Kingfisher
 
 class DishTableViewCell: UITableViewCell {
   
@@ -15,9 +16,9 @@ class DishTableViewCell: UITableViewCell {
   @IBOutlet private weak var volumeLabel: UILabel!
   @IBOutlet private weak var calloriesLabel: UILabel!
   
-  private var viewModel: DishTableViewCellModel?
+  private var viewModel: DishTableViewCellModel!
   
-  func setup(viewModel: DishTableViewCellModel?) {
+  func setup(viewModel: DishTableViewCellModel) {
     self.viewModel = viewModel
     
     setupImage()
@@ -27,11 +28,13 @@ class DishTableViewCell: UITableViewCell {
   private func setupImage() {
     dishImageView.layer.cornerRadius = 10.0
     dishImageView.layer.masksToBounds = true
+    dishImageView.contentMode = .scaleAspectFill
     dishImageView.backgroundColor = UIColor.additionalGrayLight
+    dishImageView.kf.setImage(with: viewModel.dish.imageUrl, placeholder: nil, options: [.transition(.fade(0.5))])
   }
   
   private func setupLabels() {
-    nameLabel.text = "Бигмак из макдоналдса"
+    nameLabel.text = viewModel.dish.name
     nameLabel.textColor = UIColor.label
     nameLabel.font = UIFont.systemFont(ofSize: 17.0, weight: .regular)
     volumeLabel.text = "~300г"

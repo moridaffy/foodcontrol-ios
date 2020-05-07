@@ -17,6 +17,11 @@ class Meal {
   var date: Date {
     return DateHelper().getDate(from: dateValue, ofFormat: .full) ?? Date()
   }
+  var totalCallories: Int {
+    var totalCallories: Int = 0
+    dishes.forEach({ totalCallories += $0.getCallories() })
+    return totalCallories
+  }
   
   init(id: String = UUID().uuidString,
        dateValue: String = DateHelper().getString(from: Date(), toFormat: .full),

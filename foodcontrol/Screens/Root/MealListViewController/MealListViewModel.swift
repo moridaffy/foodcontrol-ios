@@ -10,19 +10,21 @@ import Foundation
 
 class MealListViewModel {
   
-  let cellModels: [FCTableViewCellModel] = [
-    MealHeaderTableViewCellModel(),
-    DishTableViewCellModel(),
-    DishTableViewCellModel(),
-    DishTableViewCellModel(),
-    MealHeaderTableViewCellModel(),
-    DishTableViewCellModel(),
-    DishTableViewCellModel(),
-    DishTableViewCellModel(),
-    MealHeaderTableViewCellModel(),
-    DishTableViewCellModel(),
-    DishTableViewCellModel(),
-    DishTableViewCellModel()
-  ]
+  private(set) var cellModels: [FCTableViewCellModel] = []
+  
+  init() {
+    refreshCellModels(for: TestInstances.meals)
+  }
+  
+  private func refreshCellModels(for meals: [Meal]) {
+    var cellModels: [FCTableViewCellModel] = []
+    for meal in meals {
+      cellModels.append(MealHeaderTableViewCellModel(meal: meal))
+      for dish in meal.dishes {
+        cellModels.append(DishTableViewCellModel(dish: dish))
+      }
+    }
+    self.cellModels = cellModels
+  }
   
 }

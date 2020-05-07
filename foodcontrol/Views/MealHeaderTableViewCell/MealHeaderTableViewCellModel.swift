@@ -10,4 +10,17 @@ import Foundation
 
 class MealHeaderTableViewCellModel: FCTableViewCellModel {
   
+  let meal: Meal
+  
+  init(meal: Meal) {
+    self.meal = meal
+  }
+  
+  var dateDayMonthString: String {
+    return DateHelper().getString(from: meal.date, toFormat: .humanDayMonth)
+  }
+  var dateTimeString: String {
+    return DateHelper().getString(from: meal.date, toFormat: .humanTime)
+  }
+  
 }

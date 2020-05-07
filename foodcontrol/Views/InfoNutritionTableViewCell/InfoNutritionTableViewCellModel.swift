@@ -10,6 +10,12 @@ import Foundation
 
 class InfoNutritionTableViewCellModel: FCTableViewCellModel {
   
+  let dish: Dish
+  
+  init(dish: Dish) {
+    self.dish = dish
+  }
+  
   func getUnitValue(reference: Bool, unit: InfoUnit) -> Int {
     return reference ? 10 : 90
   }

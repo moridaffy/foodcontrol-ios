@@ -14,26 +14,32 @@ class Dish {
   let imageUrl: URL?
   let description: String
   
-  let proteinsValue: Int
-  let fatsValue: Int
-  let carbohydratesValue: Int
-  let calloriesValue: Int
+  let proteinsReference: Int
+  let fatsReference: Int
+  let carbohydratesReference: Int
+  let calloriesReference: Int
+  
+  var weight: Int?
   
   init(id: String = UUID().uuidString,
        name: String,
        imageUrl: URL?,
        description: String = TestInstances.longText,
-       proteinsValue: Int = Int.random(in: 0...100),
-       fatsValue: Int = Int.random(in: 0...100),
-       carbohydratesValue: Int = Int.random(in: 0...100),
-       calloriesValue: Int = Int.random(in: 0...100)) {
+       proteinsReference: Int = Int.random(in: 0...100),
+       fatsReference: Int = Int.random(in: 0...100),
+       carbohydratesReference: Int = Int.random(in: 0...100),
+       calloriesReference: Int = Int.random(in: 0...100)) {
     self.id = id
     self.name = name
     self.imageUrl = imageUrl
     self.description = description
-    self.proteinsValue = proteinsValue
-    self.fatsValue = fatsValue
-    self.carbohydratesValue = carbohydratesValue
-    self.calloriesValue = calloriesValue
+    self.proteinsReference = proteinsReference
+    self.fatsReference = fatsReference
+    self.carbohydratesReference = carbohydratesReference
+    self.calloriesReference = calloriesReference
+  }
+  
+  func getCallories(for weight: Int? = nil) -> Int {
+    return calloriesReference / 100 * (weight ?? self.weight ?? 100)
   }
 }

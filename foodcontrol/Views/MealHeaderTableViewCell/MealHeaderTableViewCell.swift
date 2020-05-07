@@ -14,9 +14,9 @@ class MealHeaderTableViewCell: UITableViewCell {
   @IBOutlet private weak var dateLabel: UILabel!
   @IBOutlet private weak var calloriesLabel: UILabel!
   
-  private var viewModel: MealHeaderTableViewCellModel?
+  private var viewModel: MealHeaderTableViewCellModel!
   
-  func setup(viewModel: MealHeaderTableViewCellModel?) {
+  func setup(viewModel: MealHeaderTableViewCellModel) {
     self.viewModel = viewModel
     
     selectionStyle = .none
@@ -35,10 +35,10 @@ class MealHeaderTableViewCell: UITableViewCell {
   
   private func setupLabels() {
     let dateText = NSMutableAttributedString()
-    dateText.append(NSAttributedString(string: "24 марта",
+    dateText.append(NSAttributedString(string: viewModel.dateDayMonthString + " ",
                                        attributes: [.font: UIFont.systemFont(ofSize: 30.0, weight: .semibold),
                                                     .foregroundColor: UIColor.label]))
-    dateText.append(NSAttributedString(string: " " + "в 14:51",
+    dateText.append(NSAttributedString(string: NSLocalizedString("в", comment: "") + " " + viewModel.dateTimeString,
                                        attributes: [.font: UIFont.systemFont(ofSize: 20.0, weight: .regular),
                                                     .foregroundColor: UIColor.additionalGrayDark]))
     dateLabel.attributedText = dateText

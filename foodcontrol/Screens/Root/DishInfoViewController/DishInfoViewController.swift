@@ -34,6 +34,8 @@ class DishInfoViewController: UIViewController {
   override func viewWillAppear(_ animated: Bool) {
     super.viewWillAppear(animated)
     
+    viewModel.view = self
+    
     setupBottomButton()
   }
   
@@ -43,7 +45,6 @@ class DishInfoViewController: UIViewController {
   }
   
   private func setupTableView() {
-    tableView.contentInset = UIEdgeInsets(top: -32.0, left: 0.0, bottom: 0.0, right: 0.0)
     tableView.tableFooterView = UIView()
     tableView.separatorStyle = .none
     tableView.register(UINib(nibName: "BigImageTableViewCell", bundle: nil), forCellReuseIdentifier: String(describing: BigImageTableViewCell.self))
@@ -81,13 +82,17 @@ class DishInfoViewController: UIViewController {
   @objc private func addToMealButtonTapped() {
     delegate?.didAddToMeal()
   }
+  
+  func reloadTableView() {
+    tableView.reloadData()
+  }
 }
 
 extension DishInfoViewController: UITableViewDelegate {
   func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
     let cellModel = viewModel.cellModels[indexPath.row]
     if cellModel is BigImageTableViewCellModel {
-      return 108.0
+      return 190.0
     } else if cellModel is InfoTextTableViewCellModel {
       return 47.0
     } else if cellModel is InfoNutritionTableViewCellModel {
@@ -100,7 +105,7 @@ extension DishInfoViewController: UITableViewDelegate {
   func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
     let cellModel = viewModel.cellModels[indexPath.row]
     if cellModel is BigImageTableViewCellModel {
-      return 108.0
+      return 190.0
     } else if cellModel is InfoTextTableViewCellModel {
       return UITableView.automaticDimension
     } else if cellModel is InfoNutritionTableViewCellModel {

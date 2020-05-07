@@ -10,6 +10,29 @@ import Foundation
 
 class DishInfoViewModel {
   
-  let cellModels: [FCTableViewCellModel] = []
+  let dish: Dish
+  private(set) var cellModels: [FCTableViewCellModel] = [] {
+    didSet {
+      view?.reloadTableView()
+    }
+  }
+  
+  weak var view: DishInfoViewController?
+  
+  init(dish: Dish) {
+    self.dish = dish
+    
+    generateCellModels()
+  }
+  
+  private func generateCellModels() {
+    cellModels = [
+      BigImageTableViewCellModel(url: dish.imageUrl),
+      InfoTextTableViewCellModel(type: .title, text: dish.name),
+      InfoTextTableViewCellModel(type: .description, text: dish.description),
+      InfoTextTableViewCellModel(type: .size, text: "\(dish.weight ?? 100)"),
+      InfoNutritionTableViewCellModel(dish: dish)
+    ]
+  }
   
 }

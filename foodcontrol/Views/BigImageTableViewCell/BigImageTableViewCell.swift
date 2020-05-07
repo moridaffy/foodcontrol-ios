@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Kingfisher
 
 class BigImageTableViewCell: UITableViewCell {
   
@@ -25,9 +26,10 @@ class BigImageTableViewCell: UITableViewCell {
     bigImageView.layer.masksToBounds = true
     bigImageView.layer.borderColor = UIColor.additionalGray.cgColor
     bigImageView.layer.borderWidth = 1.0
+    bigImageView.contentMode = .scaleAspectFill
     
     if let url = viewModel.url {
-      // TODO: loading image with Kingfisher
+      bigImageView.kf.setImage(with: url, placeholder: nil, options: [.transition(.fade(0.5))])
     } else if let image = viewModel.image {
       bigImageView.image = image
     } else {

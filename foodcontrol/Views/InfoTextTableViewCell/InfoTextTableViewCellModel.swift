@@ -10,9 +10,11 @@ import Foundation
 
 class InfoTextTableViewCellModel: FCTableViewCellModel {
   let type: InfoType
+  let text: String
   
-  init(type: InfoType) {
+  init(type: InfoType, text: String) {
     self.type = type
+    self.text = text
   }
 }
 
