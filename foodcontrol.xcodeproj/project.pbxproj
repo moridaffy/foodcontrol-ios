@@ -31,6 +31,10 @@
 		0CC82632243A31FF00F1A047 /* MapLocationTableViewCellModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CC82631243A31FF00F1A047 /* MapLocationTableViewCellModel.swift */; };
 		0CC82635243A372F00F1A047 /* CLLocationCoordinate2D+AlertActions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CC82634243A372F00F1A047 /* CLLocationCoordinate2D+AlertActions.swift */; };
 		0CC82637243A39E700F1A047 /* UIViewController+Alerts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CC82636243A39E700F1A047 /* UIViewController+Alerts.swift */; };
+		0CD6DA27246407D600369A67 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0CD6DA26246407D600369A67 /* GoogleService-Info.plist */; };
+		0CD6DA2A24640AA900369A67 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 0CD6DA2924640AA900369A67 /* Alamofire */; };
+		0CD6DA2E24640AE900369A67 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 0CD6DA2D24640AE900369A67 /* Kingfisher */; };
+		0CD6DA3024640C4800369A67 /* FirestoreManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CD6DA2F24640C4800369A67 /* FirestoreManager.swift */; };
 		0CF94DBB244E13CC0047763C /* AddDishViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CF94DBA244E13CC0047763C /* AddDishViewController.swift */; };
 		0CF94DBD244E13D60047763C /* AddDishViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CF94DBC244E13D60047763C /* AddDishViewModel.swift */; };
 		0CFCAA3824573ECE004AB0B1 /* DishInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CFCAA3724573ECE004AB0B1 /* DishInfoViewController.swift */; };
@@ -48,8 +52,7 @@
 		0CFCAA5324575A0A004AB0B1 /* Dish.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CFCAA5224575A0A004AB0B1 /* Dish.swift */; };
 		0CFCAA5624575D9F004AB0B1 /* TestInstances.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CFCAA5524575D9F004AB0B1 /* TestInstances.swift */; };
 		0CFCAA5824575E7D004AB0B1 /* DateHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CFCAA5724575E7D004AB0B1 /* DateHelper.swift */; };
-		0CFCAA5B245768D9004AB0B1 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 0CFCAA5A245768D9004AB0B1 /* Alamofire */; };
-		0CFCAA5E24576AF8004AB0B1 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 0CFCAA5D24576AF8004AB0B1 /* Kingfisher */; };
+		CD354201EF9BCA2CF222BDE6 /* Pods_foodcontrol.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 255871671DCF4C20566D2359 /* Pods_foodcontrol.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -79,6 +82,8 @@
 		0CC82631243A31FF00F1A047 /* MapLocationTableViewCellModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapLocationTableViewCellModel.swift; sourceTree = "<group>"; };
 		0CC82634243A372F00F1A047 /* CLLocationCoordinate2D+AlertActions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CLLocationCoordinate2D+AlertActions.swift"; sourceTree = "<group>"; };
 		0CC82636243A39E700F1A047 /* UIViewController+Alerts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Alerts.swift"; sourceTree = "<group>"; };
+		0CD6DA26246407D600369A67 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		0CD6DA2F24640C4800369A67 /* FirestoreManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirestoreManager.swift; sourceTree = "<group>"; };
 		0CF94DBA244E13CC0047763C /* AddDishViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddDishViewController.swift; sourceTree = "<group>"; };
 		0CF94DBC244E13D60047763C /* AddDishViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddDishViewModel.swift; sourceTree = "<group>"; };
 		0CFCAA3724573ECE004AB0B1 /* DishInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DishInfoViewController.swift; sourceTree = "<group>"; };
@@ -96,6 +101,9 @@
 		0CFCAA5224575A0A004AB0B1 /* Dish.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dish.swift; sourceTree = "<group>"; };
 		0CFCAA5524575D9F004AB0B1 /* TestInstances.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestInstances.swift; sourceTree = "<group>"; };
 		0CFCAA5724575E7D004AB0B1 /* DateHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateHelper.swift; sourceTree = "<group>"; };
+		192F04B2AD86E7CB19996143 /* Pods-foodcontrol.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-foodcontrol.debug.xcconfig"; path = "Target Support Files/Pods-foodcontrol/Pods-foodcontrol.debug.xcconfig"; sourceTree = "<group>"; };
+		1CCB90EE3DFCCA76523CFD65 /* Pods-foodcontrol.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-foodcontrol.release.xcconfig"; path = "Target Support Files/Pods-foodcontrol/Pods-foodcontrol.release.xcconfig"; sourceTree = "<group>"; };
+		255871671DCF4C20566D2359 /* Pods_foodcontrol.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_foodcontrol.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -103,8 +111,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0CFCAA5E24576AF8004AB0B1 /* Kingfisher in Frameworks */,
-				0CFCAA5B245768D9004AB0B1 /* Alamofire in Frameworks */,
+				0CD6DA2E24640AE900369A67 /* Kingfisher in Frameworks */,
+				CD354201EF9BCA2CF222BDE6 /* Pods_foodcontrol.framework in Frameworks */,
+				0CD6DA2A24640AA900369A67 /* Alamofire in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -116,6 +125,8 @@
 			children = (
 				0CC825E7243A111400F1A047 /* foodcontrol */,
 				0CC825E6243A111400F1A047 /* Products */,
+				E2B8B441F62CF706FC748179 /* Pods */,
+				F569F45122C587D92F90F144 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -139,6 +150,7 @@
 				0CC825F1243A111600F1A047 /* Assets.xcassets */,
 				0CC825F3243A111600F1A047 /* LaunchScreen.storyboard */,
 				0CC825F6243A111600F1A047 /* Info.plist */,
+				0CD6DA26246407D600369A67 /* GoogleService-Info.plist */,
 			);
 			path = foodcontrol;
 			sourceTree = "<group>";
@@ -308,8 +320,26 @@
 			children = (
 				0CFCAA5524575D9F004AB0B1 /* TestInstances.swift */,
 				0CFCAA5724575E7D004AB0B1 /* DateHelper.swift */,
+				0CD6DA2F24640C4800369A67 /* FirestoreManager.swift */,
 			);
 			path = Utilities;
+			sourceTree = "<group>";
+		};
+		E2B8B441F62CF706FC748179 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				192F04B2AD86E7CB19996143 /* Pods-foodcontrol.debug.xcconfig */,
+				1CCB90EE3DFCCA76523CFD65 /* Pods-foodcontrol.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		F569F45122C587D92F90F144 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				255871671DCF4C20566D2359 /* Pods_foodcontrol.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -319,9 +349,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 0CC825F9243A111600F1A047 /* Build configuration list for PBXNativeTarget "foodcontrol" */;
 			buildPhases = (
+				986888D2729326DB40193B05 /* [CP] Check Pods Manifest.lock */,
 				0CC825E1243A111400F1A047 /* Sources */,
 				0CC825E2243A111400F1A047 /* Frameworks */,
 				0CC825E3243A111400F1A047 /* Resources */,
+				82EAEF9AA80A755D02F1CA49 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -329,8 +361,8 @@
 			);
 			name = foodcontrol;
 			packageProductDependencies = (
-				0CFCAA5A245768D9004AB0B1 /* Alamofire */,
-				0CFCAA5D24576AF8004AB0B1 /* Kingfisher */,
+				0CD6DA2924640AA900369A67 /* Alamofire */,
+				0CD6DA2D24640AE900369A67 /* Kingfisher */,
 			);
 			productName = foodcontrol;
 			productReference = 0CC825E5243A111400F1A047 /* foodcontrol.app */;
@@ -361,8 +393,8 @@
 			);
 			mainGroup = 0CC825DC243A111400F1A047;
 			packageReferences = (
-				0CFCAA59245768D9004AB0B1 /* XCRemoteSwiftPackageReference "Alamofire" */,
-				0CFCAA5C24576AF8004AB0B1 /* XCRemoteSwiftPackageReference "Kingfisher" */,
+				0CD6DA2824640AA900369A67 /* XCRemoteSwiftPackageReference "Alamofire" */,
+				0CD6DA2C24640AE900369A67 /* XCRemoteSwiftPackageReference "Kingfisher" */,
 			);
 			productRefGroup = 0CC825E6243A111400F1A047 /* Products */;
 			projectDirPath = "";
@@ -386,12 +418,55 @@
 				0CC82615243A1CC900F1A047 /* DishTableViewCell.xib in Resources */,
 				0CC825F5243A111600F1A047 /* LaunchScreen.storyboard in Resources */,
 				0CC825F2243A111600F1A047 /* Assets.xcassets in Resources */,
+				0CD6DA27246407D600369A67 /* GoogleService-Info.plist in Resources */,
 				0CC82630243A31E900F1A047 /* MapLocationTableViewCell.xib in Resources */,
 				0CC8260E243A1A1F00F1A047 /* MealHeaderTableViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		82EAEF9AA80A755D02F1CA49 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-foodcontrol/Pods-foodcontrol-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-foodcontrol/Pods-foodcontrol-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-foodcontrol/Pods-foodcontrol-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		986888D2729326DB40193B05 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-foodcontrol-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		0CC825E1243A111400F1A047 /* Sources */ = {
@@ -429,6 +504,7 @@
 				0CC82635243A372F00F1A047 /* CLLocationCoordinate2D+AlertActions.swift in Sources */,
 				0CF94DBB244E13CC0047763C /* AddDishViewController.swift in Sources */,
 				0CC82604243A133B00F1A047 /* MealListViewModel.swift in Sources */,
+				0CD6DA3024640C4800369A67 /* FirestoreManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -562,6 +638,7 @@
 		};
 		0CC825FA243A111600F1A047 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 192F04B2AD86E7CB19996143 /* Pods-foodcontrol.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -580,6 +657,7 @@
 		};
 		0CC825FB243A111600F1A047 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 1CCB90EE3DFCCA76523CFD65 /* Pods-foodcontrol.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -620,7 +698,7 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		0CFCAA59245768D9004AB0B1 /* XCRemoteSwiftPackageReference "Alamofire" */ = {
+		0CD6DA2824640AA900369A67 /* XCRemoteSwiftPackageReference "Alamofire" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/Alamofire/Alamofire";
 			requirement = {
@@ -628,7 +706,7 @@
 				minimumVersion = 5.1.0;
 			};
 		};
-		0CFCAA5C24576AF8004AB0B1 /* XCRemoteSwiftPackageReference "Kingfisher" */ = {
+		0CD6DA2C24640AE900369A67 /* XCRemoteSwiftPackageReference "Kingfisher" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/onevcat/Kingfisher";
 			requirement = {
@@ -639,14 +717,14 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		0CFCAA5A245768D9004AB0B1 /* Alamofire */ = {
+		0CD6DA2924640AA900369A67 /* Alamofire */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 0CFCAA59245768D9004AB0B1 /* XCRemoteSwiftPackageReference "Alamofire" */;
+			package = 0CD6DA2824640AA900369A67 /* XCRemoteSwiftPackageReference "Alamofire" */;
 			productName = Alamofire;
 		};
-		0CFCAA5D24576AF8004AB0B1 /* Kingfisher */ = {
+		0CD6DA2D24640AE900369A67 /* Kingfisher */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 0CFCAA5C24576AF8004AB0B1 /* XCRemoteSwiftPackageReference "Kingfisher" */;
+			package = 0CD6DA2C24640AE900369A67 /* XCRemoteSwiftPackageReference "Kingfisher" */;
 			productName = Kingfisher;
 		};
 /* End XCSwiftPackageProductDependency section */
