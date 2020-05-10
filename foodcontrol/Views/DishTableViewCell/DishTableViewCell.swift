@@ -37,18 +37,23 @@ class DishTableViewCell: UITableViewCell {
     nameLabel.text = viewModel.dish.name
     nameLabel.textColor = UIColor.label
     nameLabel.font = UIFont.systemFont(ofSize: 17.0, weight: .regular)
-    volumeLabel.text = "~300г"
-    volumeLabel.textColor = UIColor.additionalGrayDark
-    volumeLabel.font = UIFont.systemFont(ofSize: 15.0, weight: .regular)
     
+    let calloriesValue = viewModel.dish.getValue(for: .callories, weight: viewModel.dish.weight)
     let calloriesText = NSMutableAttributedString()
-    calloriesText.append(NSAttributedString(string: "+150",
+    calloriesText.append(NSAttributedString(string: "+\(calloriesValue.roundedString(to: 0))",
                                             attributes: [.font: UIFont.systemFont(ofSize: 20.0, weight: .semibold),
                                                          .foregroundColor: UIColor.label]))
-    calloriesText.append(NSAttributedString(string: "\n" + NSLocalizedString("ккал", comment: ""),
+    calloriesText.append(NSAttributedString(string: "\n" + Dish.ValueType.callories.title,
                                             attributes: [.font: UIFont.systemFont(ofSize: 15.0, weight: .regular),
                                                          .foregroundColor: UIColor.additionalGrayDark]))
-    
     calloriesLabel.attributedText = calloriesText
+    
+    if let weightValue = viewModel.dish.weight {
+      volumeLabel.text = "~\(weightValue.roundedString(to: 0))"
+      volumeLabel.textColor = UIColor.additionalGrayDark
+      volumeLabel.font = UIFont.systemFont(ofSize: 15.0, weight: .regular)
+    } else {
+      volumeLabel.textColor = UIColor.clear
+    }
   }
 }

@@ -23,10 +23,20 @@ class AddDishViewModel {
     }
   }
   
-  private var displayedDishes: [Dish] = TestInstances.dishes
+  private var displayedDishes: [Dish] = [] {
+    didSet {
+      reloadCellModels()
+    }
+  }
   private(set) var cellModels: [FCTableViewCellModel] = [] {
     didSet {
       view?.reloadTableView()
+    }
+  }
+  
+  init() {
+    DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
+      self.displayedDishes = TestInstances.dishes
     }
   }
   
@@ -45,7 +55,7 @@ class AddDishViewModel {
     }()
     
     if !searchQuery.isEmpty {
-      sortedDishes = sortedDishes.filter({ $0.name.contains(searchQuery) })
+      sortedDishes = sortedDishes.filter({ $0.name.lowercased().contains(searchQuery.lowercased()) })
     }
     
     cellModels = [BigButtonTableViewCellModel(type: .createDish)] + sortedDishes.compactMap({ DishTableViewCellModel(dish: $0) })

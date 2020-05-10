@@ -33,6 +33,12 @@ class AddDishViewController: UIViewController {
     setupTableView()
   }
   
+  override func viewWillAppear(_ animated: Bool) {
+    super.viewWillAppear(animated)
+    
+    viewModel.view = self
+  }
+  
   private func setupNavigationBar() {
     title = NSLocalizedString("Список блюд", comment: "")
   }
