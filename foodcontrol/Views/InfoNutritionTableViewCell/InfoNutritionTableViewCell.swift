@@ -33,10 +33,10 @@ class InfoNutritionTableViewCell: UITableViewCell {
     titleLabel.textColor = UIColor.placeholderText
     titleLabel.font = UIFont.systemFont(ofSize: 15.0, weight: .regular)
     
-    for i in 0..<InfoNutritionTableViewCellModel.InfoUnit.allUnits.count {
+    for i in 0..<Dish.ValueType.allUnits.count {
       let titleLabel = [proteinsTitleLabel, fatsTitleLabel, carbohydrateTitleLabel, calloriesTitleLabel][i]
       let valueLabel = [proteinsValueLabel, fatsValueLabel, carbohydrateValueLabel, calloriesValueLabel][i]
-      let unit = InfoNutritionTableViewCellModel.InfoUnit.allUnits[i]
+      let unit = Dish.ValueType.allUnits[i]
       
       titleLabel?.text = unit.title
       titleLabel?.textColor = UIColor.label

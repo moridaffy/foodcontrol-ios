@@ -57,7 +57,7 @@ class AddDishViewController: UIViewController {
     sortingIconImageView.tintColor = UIColor.additionalGrayDark
     sortingButton.setTitleColor(UIColor.additionalGrayDark, for: .normal)
     sortingButton.titleLabel?.font = UIFont.systemFont(ofSize: 17.0, weight: .regular)
-    sortingTypeChanged()
+    sortingButton.setTitle(viewModel.sortingType.title, for: .normal)
   }
   
   private func setupTableView() {
@@ -67,6 +67,12 @@ class AddDishViewController: UIViewController {
     tableView.register(UINib(nibName: "BigButtonTableViewCell", bundle: nil), forCellReuseIdentifier: String(describing: BigButtonTableViewCell.self))
     tableView.delegate = self
     tableView.dataSource = self
+  }
+  
+  private func openDishViewController(for dish: Dish) {
+    guard let dishInfoViewController = UIStoryboard(name: "Root", bundle: nil).instantiateViewController(withIdentifier: "DishInfoViewController") as? DishInfoViewController else { return }
+    dishInfoViewController.setup(viewModel: DishInfoViewModel(dish: dish), delegate: self)
+    navigationController?.pushViewController(dishInfoViewController, animated: true)
   }
   
   @IBAction private func sortingButtonTapped() {
@@ -92,17 +98,28 @@ class AddDishViewController: UIViewController {
   }
   
   @objc private func textFieldEditingChanged() {
-    // TODO: фильтрация блюд
+    viewModel.searchQuery = searchTextField.text ?? ""
   }
   
-  func sortingTypeChanged() {
+  func reloadTableView() {
     sortingButton.setTitle(viewModel.sortingType.title, for: .normal)
+    tableView.reloadData()
+  }
+}
+
+extension AddDishViewController: DishInfoViewControllerDelegate {
+  func didAddToMeal(dish: Dish) {
+    // TODO: добавление этого блюда в прием пищи
   }
 }
 
 extension AddDishViewController: UITableViewDelegate {
   func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
     tableView.deselectRow(at: indexPath, animated: true)
+    let cellModel = viewModel.cellModels[indexPath.row]
+    if let cellModel = cellModel as? DishTableViewCellModel {
+      openDishViewController(for: cellModel.dish)
+    }
   }
   
   func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {

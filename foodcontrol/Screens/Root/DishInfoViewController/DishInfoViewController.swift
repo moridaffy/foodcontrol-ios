@@ -9,7 +9,7 @@
 import UIKit
 
 protocol DishInfoViewControllerDelegate: class {
-  func didAddToMeal()
+  func didAddToMeal(dish: Dish)
 }
 
 class DishInfoViewController: UIViewController {
@@ -36,12 +36,23 @@ class DishInfoViewController: UIViewController {
     
     viewModel.view = self
     
+    setupNavigationBar()
     setupBottomButton()
   }
   
   func setup(viewModel: DishInfoViewModel, delegate: DishInfoViewControllerDelegate?) {
     self.viewModel = viewModel
     self.delegate = delegate
+  }
+  
+  private func setupNavigationBar() {
+    title = viewModel.dish.name
+    
+    let favoriteButton = UIBarButtonItem(image: UIImage(systemName: "star")?.withRenderingMode(.alwaysTemplate),
+                                         style: .plain,
+                                         target: self,
+                                         action: #selector(favoriteButtonTapped))
+    navigationItem.rightBarButtonItem = favoriteButton
   }
   
   private func setupTableView() {
@@ -79,8 +90,12 @@ class DishInfoViewController: UIViewController {
     self.addToMealButtonTapRecognizer = addToMealButtonTapRecognizer
   }
   
+  @objc private func favoriteButtonTapped() {
+    
+  }
+  
   @objc private func addToMealButtonTapped() {
-    delegate?.didAddToMeal()
+    delegate?.didAddToMeal(dish: viewModel.dish)
   }
   
   func reloadTableView() {

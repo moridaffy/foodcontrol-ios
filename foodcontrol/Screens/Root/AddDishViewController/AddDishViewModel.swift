@@ -14,20 +14,41 @@ class AddDishViewModel {
   
   var sortingType: SortingType = .calloriesAsc {
     didSet {
-      sortingTypeChanged()
+      reloadCellModels()
+    }
+  }
+  var searchQuery: String = "" {
+    didSet {
+      reloadCellModels()
     }
   }
   
-  let cellModels: [FCTableViewCellModel] = [
-    BigButtonTableViewCellModel(type: .createDish),
-    DishTableViewCellModel(dish: TestInstances.dishes[0]),
-    DishTableViewCellModel(dish: TestInstances.dishes[1]),
-    DishTableViewCellModel(dish: TestInstances.dishes[2])
-  ]
+  private var displayedDishes: [Dish] = TestInstances.dishes
+  private(set) var cellModels: [FCTableViewCellModel] = [] {
+    didSet {
+      view?.reloadTableView()
+    }
+  }
   
-  private func sortingTypeChanged() {
-    // TODO: сортировка блюд
-    view?.sortingTypeChanged()
+  private func reloadCellModels() {
+    var sortedDishes: [Dish] = {
+      switch sortingType {
+      case .calloriesAsc:
+        return displayedDishes.sorted(by: { $0.calloriesReference < $1.calloriesReference })
+      case .calloriesDesc:
+        return displayedDishes.sorted(by: { $0.calloriesReference > $1.calloriesReference })
+      case .nameAsc:
+        return displayedDishes.sorted(by: { $0.name > $1.name })
+      case .nameDesc:
+        return displayedDishes.sorted(by: { $0.name < $1.name })
+      }
+    }()
+    
+    if !searchQuery.isEmpty {
+      sortedDishes = sortedDishes.filter({ $0.name.contains(searchQuery) })
+    }
+    
+    cellModels = [BigButtonTableViewCellModel(type: .createDish)] + sortedDishes.compactMap({ DishTableViewCellModel(dish: $0) })
   }
 }
 
