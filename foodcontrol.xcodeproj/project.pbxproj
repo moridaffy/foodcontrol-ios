@@ -36,6 +36,14 @@
 		0CD6DA2A24640AA900369A67 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 0CD6DA2924640AA900369A67 /* Alamofire */; };
 		0CD6DA2E24640AE900369A67 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 0CD6DA2D24640AE900369A67 /* Kingfisher */; };
 		0CD6DA3024640C4800369A67 /* FirestoreManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CD6DA2F24640C4800369A67 /* FirestoreManager.swift */; };
+		0CF856EF2469145600E74B62 /* RootViewControllerManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CF856EE2469145600E74B62 /* RootViewControllerManager.swift */; };
+		0CF856F22469147F00E74B62 /* Auth.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0CF856F12469147F00E74B62 /* Auth.storyboard */; };
+		0CF856F4246914B200E74B62 /* DBManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CF856F3246914B200E74B62 /* DBManager.swift */; };
+		0CF856F72469153A00E74B62 /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 0CF856F62469153A00E74B62 /* RealmSwift */; };
+		0CF856F9246915A500E74B62 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CF856F8246915A500E74B62 /* User.swift */; };
+		0CF856FB2469171F00E74B62 /* AuthManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CF856FA2469171F00E74B62 /* AuthManager.swift */; };
+		0CF856FE2469178900E74B62 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CF856FD2469178900E74B62 /* LoginViewController.swift */; };
+		0CF85700246917AC00E74B62 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CF856FF246917AC00E74B62 /* LoginViewModel.swift */; };
 		0CF94DBB244E13CC0047763C /* AddDishViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CF94DBA244E13CC0047763C /* AddDishViewController.swift */; };
 		0CF94DBD244E13D60047763C /* AddDishViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CF94DBC244E13D60047763C /* AddDishViewModel.swift */; };
 		0CFCAA3824573ECE004AB0B1 /* DishInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CFCAA3724573ECE004AB0B1 /* DishInfoViewController.swift */; };
@@ -86,6 +94,13 @@
 		0CC82636243A39E700F1A047 /* UIViewController+Alerts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Alerts.swift"; sourceTree = "<group>"; };
 		0CD6DA26246407D600369A67 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		0CD6DA2F24640C4800369A67 /* FirestoreManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirestoreManager.swift; sourceTree = "<group>"; };
+		0CF856EE2469145600E74B62 /* RootViewControllerManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootViewControllerManager.swift; sourceTree = "<group>"; };
+		0CF856F12469147F00E74B62 /* Auth.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Auth.storyboard; sourceTree = "<group>"; };
+		0CF856F3246914B200E74B62 /* DBManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DBManager.swift; sourceTree = "<group>"; };
+		0CF856F8246915A500E74B62 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		0CF856FA2469171F00E74B62 /* AuthManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthManager.swift; sourceTree = "<group>"; };
+		0CF856FD2469178900E74B62 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		0CF856FF246917AC00E74B62 /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
 		0CF94DBA244E13CC0047763C /* AddDishViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddDishViewController.swift; sourceTree = "<group>"; };
 		0CF94DBC244E13D60047763C /* AddDishViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddDishViewModel.swift; sourceTree = "<group>"; };
 		0CFCAA3724573ECE004AB0B1 /* DishInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DishInfoViewController.swift; sourceTree = "<group>"; };
@@ -113,6 +128,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0CF856F72469153A00E74B62 /* RealmSwift in Frameworks */,
 				0CD6DA2E24640AE900369A67 /* Kingfisher in Frameworks */,
 				CD354201EF9BCA2CF222BDE6 /* Pods_foodcontrol.framework in Frameworks */,
 				0CD6DA2A24640AA900369A67 /* Alamofire in Frameworks */,
@@ -162,6 +178,7 @@
 		0CC825FC243A130200F1A047 /* Screens */ = {
 			isa = PBXGroup;
 			children = (
+				0CF856F02469146F00E74B62 /* Register */,
 				0CC825FD243A130A00F1A047 /* Root */,
 			);
 			path = Screens;
@@ -239,6 +256,7 @@
 				0CC82619243A22EF00F1A047 /* FCTableViewCellModel.swift */,
 				0CFCAA5024575A01004AB0B1 /* Meal.swift */,
 				0CFCAA5224575A0A004AB0B1 /* Dish.swift */,
+				0CF856F8246915A500E74B62 /* User.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -270,6 +288,24 @@
 				0CC82631243A31FF00F1A047 /* MapLocationTableViewCellModel.swift */,
 			);
 			path = MapLocationTableViewCell;
+			sourceTree = "<group>";
+		};
+		0CF856F02469146F00E74B62 /* Register */ = {
+			isa = PBXGroup;
+			children = (
+				0CF856F12469147F00E74B62 /* Auth.storyboard */,
+				0CF856FC2469177C00E74B62 /* LoginViewController */,
+			);
+			path = Register;
+			sourceTree = "<group>";
+		};
+		0CF856FC2469177C00E74B62 /* LoginViewController */ = {
+			isa = PBXGroup;
+			children = (
+				0CF856FD2469178900E74B62 /* LoginViewController.swift */,
+				0CF856FF246917AC00E74B62 /* LoginViewModel.swift */,
+			);
+			path = LoginViewController;
 			sourceTree = "<group>";
 		};
 		0CF94DB9244E13B30047763C /* AddDishViewController */ = {
@@ -326,6 +362,9 @@
 				0CFCAA5524575D9F004AB0B1 /* TestInstances.swift */,
 				0CFCAA5724575E7D004AB0B1 /* DateHelper.swift */,
 				0CD6DA2F24640C4800369A67 /* FirestoreManager.swift */,
+				0CF856F3246914B200E74B62 /* DBManager.swift */,
+				0CF856FA2469171F00E74B62 /* AuthManager.swift */,
+				0CF856EE2469145600E74B62 /* RootViewControllerManager.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -368,6 +407,7 @@
 			packageProductDependencies = (
 				0CD6DA2924640AA900369A67 /* Alamofire */,
 				0CD6DA2D24640AE900369A67 /* Kingfisher */,
+				0CF856F62469153A00E74B62 /* RealmSwift */,
 			);
 			productName = foodcontrol;
 			productReference = 0CC825E5243A111400F1A047 /* foodcontrol.app */;
@@ -400,6 +440,7 @@
 			packageReferences = (
 				0CD6DA2824640AA900369A67 /* XCRemoteSwiftPackageReference "Alamofire" */,
 				0CD6DA2C24640AE900369A67 /* XCRemoteSwiftPackageReference "Kingfisher" */,
+				0CF856F52469153A00E74B62 /* XCRemoteSwiftPackageReference "realm-cocoa" */,
 			);
 			productRefGroup = 0CC825E6243A111400F1A047 /* Products */;
 			projectDirPath = "";
@@ -426,6 +467,7 @@
 				0CD6DA27246407D600369A67 /* GoogleService-Info.plist in Resources */,
 				0CC82630243A31E900F1A047 /* MapLocationTableViewCell.xib in Resources */,
 				0CC8260E243A1A1F00F1A047 /* MealHeaderTableViewCell.xib in Resources */,
+				0CF856F22469147F00E74B62 /* Auth.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -482,8 +524,11 @@
 				0CC82614243A1CC900F1A047 /* DishTableViewCell.swift in Sources */,
 				0CC825E9243A111400F1A047 /* AppDelegate.swift in Sources */,
 				0CC8260D243A1A1F00F1A047 /* MealHeaderTableViewCell.swift in Sources */,
+				0CF856FE2469178900E74B62 /* LoginViewController.swift in Sources */,
 				0CFCAA5624575D9F004AB0B1 /* TestInstances.swift in Sources */,
 				0CC8261A243A22EF00F1A047 /* FCTableViewCellModel.swift in Sources */,
+				0CF856EF2469145600E74B62 /* RootViewControllerManager.swift in Sources */,
+				0CF85700246917AC00E74B62 /* LoginViewModel.swift in Sources */,
 				0CC82602243A132F00F1A047 /* MealListViewController.swift in Sources */,
 				0CFCAA5324575A0A004AB0B1 /* Dish.swift in Sources */,
 				0CFCAA4F24575018004AB0B1 /* InfoNutritionTableViewCellModel.swift in Sources */,
@@ -497,6 +542,7 @@
 				0CC82632243A31FF00F1A047 /* MapLocationTableViewCellModel.swift in Sources */,
 				0CC82628243A291500F1A047 /* BigButtonTableViewCell.swift in Sources */,
 				0CFCAA3824573ECE004AB0B1 /* DishInfoViewController.swift in Sources */,
+				0CF856F4246914B200E74B62 /* DBManager.swift in Sources */,
 				0CFCAA5124575A01004AB0B1 /* Meal.swift in Sources */,
 				0CFCAA3E245744E0004AB0B1 /* BigImageTableViewCell.swift in Sources */,
 				0CC8262F243A31E900F1A047 /* MapLocationTableViewCell.swift in Sources */,
@@ -508,7 +554,9 @@
 				0C53B76C246899EC0084B9A6 /* Double+Rounding.swift in Sources */,
 				0CF94DBD244E13D60047763C /* AddDishViewModel.swift in Sources */,
 				0CC82635243A372F00F1A047 /* CLLocationCoordinate2D+AlertActions.swift in Sources */,
+				0CF856F9246915A500E74B62 /* User.swift in Sources */,
 				0CF94DBB244E13CC0047763C /* AddDishViewController.swift in Sources */,
+				0CF856FB2469171F00E74B62 /* AuthManager.swift in Sources */,
 				0CC82604243A133B00F1A047 /* MealListViewModel.swift in Sources */,
 				0CD6DA3024640C4800369A67 /* FirestoreManager.swift in Sources */,
 			);
@@ -720,6 +768,14 @@
 				minimumVersion = 5.13.4;
 			};
 		};
+		0CF856F52469153A00E74B62 /* XCRemoteSwiftPackageReference "realm-cocoa" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/realm/realm-cocoa";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 4.4.1;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -732,6 +788,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 0CD6DA2C24640AE900369A67 /* XCRemoteSwiftPackageReference "Kingfisher" */;
 			productName = Kingfisher;
+		};
+		0CF856F62469153A00E74B62 /* RealmSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 0CF856F52469153A00E74B62 /* XCRemoteSwiftPackageReference "realm-cocoa" */;
+			productName = RealmSwift;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

@@ -21,7 +21,23 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     window?.overrideUserInterfaceStyle = .light
     
+    if AuthManager.shared.isAuthorized {
+      startMainWorkflow()
+    } else {
+      startAuthWorkflow()
+    }
+    
     return true
+  }
+  
+  private func startAuthWorkflow() {
+    guard let loginViewController = UIStoryboard(name: "Auth", bundle: nil).instantiateInitialViewController() else { fatalError() }
+    window?.rootViewController = loginViewController
+  }
+  
+  private func startMainWorkflow() {
+    guard let mealListViewController = UIStoryboard(name: "Root", bundle: nil).instantiateInitialViewController() else { fatalError() }
+    window?.rootViewController = mealListViewController
   }
 }
 
