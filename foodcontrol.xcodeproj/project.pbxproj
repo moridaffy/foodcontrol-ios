@@ -48,6 +48,8 @@
 		0CF8570524691FB700E74B62 /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CF8570424691FB700E74B62 /* RegisterViewController.swift */; };
 		0CF8570724691FD800E74B62 /* RegisterViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CF8570624691FD800E74B62 /* RegisterViewModel.swift */; };
 		0CF857092469247600E74B62 /* String+Validation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CF857082469247600E74B62 /* String+Validation.swift */; };
+		0CF8570C2469286200E74B62 /* ProfileSetupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CF8570B2469286200E74B62 /* ProfileSetupViewController.swift */; };
+		0CF8570E2469289000E74B62 /* ProfileSetupViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CF8570D2469289000E74B62 /* ProfileSetupViewModel.swift */; };
 		0CF94DBB244E13CC0047763C /* AddDishViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CF94DBA244E13CC0047763C /* AddDishViewController.swift */; };
 		0CF94DBD244E13D60047763C /* AddDishViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CF94DBC244E13D60047763C /* AddDishViewModel.swift */; };
 		0CFCAA3824573ECE004AB0B1 /* DishInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CFCAA3724573ECE004AB0B1 /* DishInfoViewController.swift */; };
@@ -109,6 +111,8 @@
 		0CF8570424691FB700E74B62 /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
 		0CF8570624691FD800E74B62 /* RegisterViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewModel.swift; sourceTree = "<group>"; };
 		0CF857082469247600E74B62 /* String+Validation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Validation.swift"; sourceTree = "<group>"; };
+		0CF8570B2469286200E74B62 /* ProfileSetupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileSetupViewController.swift; sourceTree = "<group>"; };
+		0CF8570D2469289000E74B62 /* ProfileSetupViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileSetupViewModel.swift; sourceTree = "<group>"; };
 		0CF94DBA244E13CC0047763C /* AddDishViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddDishViewController.swift; sourceTree = "<group>"; };
 		0CF94DBC244E13D60047763C /* AddDishViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddDishViewModel.swift; sourceTree = "<group>"; };
 		0CFCAA3724573ECE004AB0B1 /* DishInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DishInfoViewController.swift; sourceTree = "<group>"; };
@@ -306,6 +310,7 @@
 				0CF856F12469147F00E74B62 /* Auth.storyboard */,
 				0CF856FC2469177C00E74B62 /* LoginViewController */,
 				0CF8570324691FA600E74B62 /* RegisterViewController */,
+				0CF8570A2469284700E74B62 /* ProfileSetupViewController */,
 			);
 			path = Register;
 			sourceTree = "<group>";
@@ -326,6 +331,15 @@
 				0CF8570624691FD800E74B62 /* RegisterViewModel.swift */,
 			);
 			path = RegisterViewController;
+			sourceTree = "<group>";
+		};
+		0CF8570A2469284700E74B62 /* ProfileSetupViewController */ = {
+			isa = PBXGroup;
+			children = (
+				0CF8570B2469286200E74B62 /* ProfileSetupViewController.swift */,
+				0CF8570D2469289000E74B62 /* ProfileSetupViewModel.swift */,
+			);
+			path = ProfileSetupViewController;
 			sourceTree = "<group>";
 		};
 		0CF94DB9244E13B30047763C /* AddDishViewController */ = {
@@ -548,8 +562,10 @@
 				0CFCAA5624575D9F004AB0B1 /* TestInstances.swift in Sources */,
 				0CC8261A243A22EF00F1A047 /* FCTableViewCellModel.swift in Sources */,
 				0CF856EF2469145600E74B62 /* RootViewControllerManager.swift in Sources */,
+				0CF8570C2469286200E74B62 /* ProfileSetupViewController.swift in Sources */,
 				0CF85700246917AC00E74B62 /* LoginViewModel.swift in Sources */,
 				0CC82602243A132F00F1A047 /* MealListViewController.swift in Sources */,
+				0CF8570E2469289000E74B62 /* ProfileSetupViewModel.swift in Sources */,
 				0CFCAA5324575A0A004AB0B1 /* Dish.swift in Sources */,
 				0CFCAA4F24575018004AB0B1 /* InfoNutritionTableViewCellModel.swift in Sources */,
 				0CC8261F243A241800F1A047 /* CreateMealViewControllerModel.swift in Sources */,

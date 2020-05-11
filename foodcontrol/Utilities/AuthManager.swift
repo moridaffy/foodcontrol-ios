@@ -13,7 +13,10 @@ class AuthManager {
   static let shared = AuthManager()
   
   var isAuthorized: Bool {
-    return !DBManager.shared.getObjects(type: User.self, predicate: nil).isEmpty
+    return currentUser != nil
+  }
+  var currentUser: User? {
+    return DBManager.shared.getObjects(type: User.self, predicate: nil).first
   }
   
   func switchToAuthWorkflow() {
@@ -21,10 +24,15 @@ class AuthManager {
     RootViewControllerManager.shared.change(to: loginViewController, withAnimation: .verticalDown)
   }
   
+  func switchToProfileSetupWorkflow() {
+    guard isAuthorized else { return }
+    guard let profileSetupViewController = UIStoryboard(name: "Auth", bundle: nil).instantiateViewController(withIdentifier: "ProfileSetupViewController") as? ProfileSetupViewController else { fatalError() }
+    RootViewControllerManager.shared.change(to: profileSetupViewController, withAnimation: .verticalDown)
+  }
+  
   func switchToMainWorkflow() {
     guard isAuthorized else { return }
     guard let mealListViewController = UIStoryboard(name: "Root", bundle: nil).instantiateInitialViewController() else { fatalError() }
     RootViewControllerManager.shared.change(to: mealListViewController, withAnimation: .verticalDown)
   }
-  
 }

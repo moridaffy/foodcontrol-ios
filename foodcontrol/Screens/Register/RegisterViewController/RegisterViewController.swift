@@ -72,7 +72,41 @@ class RegisterViewController: UIViewController {
   }
   
   @IBAction private func registerButtonTapped() {
+    tryToRegister()
+  }
+  
+  private func tryToRegister() {
+    guard let usernameValue = usernameTextField.text, usernameValue.isValidUsername() else {
+      showAlertError(error: nil,
+                     desc: NSLocalizedString("Введен невалидный никнейм", comment: ""),
+                     critical: false)
+      return
+    }
+    guard let emailValue = emailTextField.text, emailValue.isValidEmail() else {
+      showAlertError(error: nil,
+                     desc: NSLocalizedString("Введен невалидный email", comment: ""),
+                     critical: false)
+      return
+    }
+    guard let passwordValue = passwordTextField.text, passwordValue.isValidPassword() else {
+      showAlertError(error: nil,
+                     desc: NSLocalizedString("Введен невалидный пароль", comment: ""),
+                     critical: false)
+      return
+    }
+    guard passwordValue == repeatPasswordTextField.text else {
+      showAlertError(error: nil,
+                     desc: NSLocalizedString("Введенные пароли не совпадают", comment: ""),
+                     critical: false)
+      return
+    }
     
+    viewModel.register(username: usernameValue, email: emailValue, password: passwordValue) { [weak self] (success, error) in
+      guard !success else { return }
+      self?.showAlertError(error: error,
+                           desc: NSLocalizedString("Не удалось зарегистрироваться", comment: ""),
+                           critical: false)
+    }
   }
 }
 

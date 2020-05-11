@@ -21,18 +21,33 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     window?.overrideUserInterfaceStyle = .light
     
-    if AuthManager.shared.isAuthorized {
-      startMainWorkflow()
-    } else {
-      startAuthWorkflow()
-    }
+    setupRootViewController()
     
     return true
+  }
+  
+  private func setupRootViewController() {
+    guard let user = AuthManager.shared.currentUser else {
+//      startAuthWorkflow()
+      startProfileSetupWorkflow()
+      return
+    }
+    
+    if user.isSetup {
+      startMainWorkflow()
+    } else {
+      startProfileSetupWorkflow()
+    }
   }
   
   private func startAuthWorkflow() {
     guard let loginViewController = UIStoryboard(name: "Auth", bundle: nil).instantiateInitialViewController() else { fatalError() }
     window?.rootViewController = loginViewController
+  }
+  
+  private func startProfileSetupWorkflow() {
+    guard let profileSetupViewController = UIStoryboard(name: "Auth", bundle: nil).instantiateViewController(withIdentifier: "ProfileSetupViewController") as? ProfileSetupViewController else { fatalError() }
+    window?.rootViewController = profileSetupViewController
   }
   
   private func startMainWorkflow() {
