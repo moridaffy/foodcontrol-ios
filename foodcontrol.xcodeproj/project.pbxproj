@@ -44,6 +44,10 @@
 		0CF856FB2469171F00E74B62 /* AuthManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CF856FA2469171F00E74B62 /* AuthManager.swift */; };
 		0CF856FE2469178900E74B62 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CF856FD2469178900E74B62 /* LoginViewController.swift */; };
 		0CF85700246917AC00E74B62 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CF856FF246917AC00E74B62 /* LoginViewModel.swift */; };
+		0CF8570224691D8A00E74B62 /* UITextField+Padding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CF8570124691D8A00E74B62 /* UITextField+Padding.swift */; };
+		0CF8570524691FB700E74B62 /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CF8570424691FB700E74B62 /* RegisterViewController.swift */; };
+		0CF8570724691FD800E74B62 /* RegisterViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CF8570624691FD800E74B62 /* RegisterViewModel.swift */; };
+		0CF857092469247600E74B62 /* String+Validation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CF857082469247600E74B62 /* String+Validation.swift */; };
 		0CF94DBB244E13CC0047763C /* AddDishViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CF94DBA244E13CC0047763C /* AddDishViewController.swift */; };
 		0CF94DBD244E13D60047763C /* AddDishViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CF94DBC244E13D60047763C /* AddDishViewModel.swift */; };
 		0CFCAA3824573ECE004AB0B1 /* DishInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CFCAA3724573ECE004AB0B1 /* DishInfoViewController.swift */; };
@@ -101,6 +105,10 @@
 		0CF856FA2469171F00E74B62 /* AuthManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthManager.swift; sourceTree = "<group>"; };
 		0CF856FD2469178900E74B62 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		0CF856FF246917AC00E74B62 /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
+		0CF8570124691D8A00E74B62 /* UITextField+Padding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField+Padding.swift"; sourceTree = "<group>"; };
+		0CF8570424691FB700E74B62 /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
+		0CF8570624691FD800E74B62 /* RegisterViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewModel.swift; sourceTree = "<group>"; };
+		0CF857082469247600E74B62 /* String+Validation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Validation.swift"; sourceTree = "<group>"; };
 		0CF94DBA244E13CC0047763C /* AddDishViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddDishViewController.swift; sourceTree = "<group>"; };
 		0CF94DBC244E13D60047763C /* AddDishViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddDishViewModel.swift; sourceTree = "<group>"; };
 		0CFCAA3724573ECE004AB0B1 /* DishInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DishInfoViewController.swift; sourceTree = "<group>"; };
@@ -209,9 +217,11 @@
 			isa = PBXGroup;
 			children = (
 				0CC82606243A182100F1A047 /* UIColor+CustomColors.swift */,
+				0CF8570124691D8A00E74B62 /* UITextField+Padding.swift */,
 				0CC82636243A39E700F1A047 /* UIViewController+Alerts.swift */,
 				0CC82634243A372F00F1A047 /* CLLocationCoordinate2D+AlertActions.swift */,
 				0C53B76B246899EC0084B9A6 /* Double+Rounding.swift */,
+				0CF857082469247600E74B62 /* String+Validation.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -295,6 +305,7 @@
 			children = (
 				0CF856F12469147F00E74B62 /* Auth.storyboard */,
 				0CF856FC2469177C00E74B62 /* LoginViewController */,
+				0CF8570324691FA600E74B62 /* RegisterViewController */,
 			);
 			path = Register;
 			sourceTree = "<group>";
@@ -306,6 +317,15 @@
 				0CF856FF246917AC00E74B62 /* LoginViewModel.swift */,
 			);
 			path = LoginViewController;
+			sourceTree = "<group>";
+		};
+		0CF8570324691FA600E74B62 /* RegisterViewController */ = {
+			isa = PBXGroup;
+			children = (
+				0CF8570424691FB700E74B62 /* RegisterViewController.swift */,
+				0CF8570624691FD800E74B62 /* RegisterViewModel.swift */,
+			);
+			path = RegisterViewController;
 			sourceTree = "<group>";
 		};
 		0CF94DB9244E13B30047763C /* AddDishViewController */ = {
@@ -533,7 +553,9 @@
 				0CFCAA5324575A0A004AB0B1 /* Dish.swift in Sources */,
 				0CFCAA4F24575018004AB0B1 /* InfoNutritionTableViewCellModel.swift in Sources */,
 				0CC8261F243A241800F1A047 /* CreateMealViewControllerModel.swift in Sources */,
+				0CF8570224691D8A00E74B62 /* UITextField+Padding.swift in Sources */,
 				0CC8261D243A23ED00F1A047 /* CreateMealViewController.swift in Sources */,
+				0CF8570524691FB700E74B62 /* RegisterViewController.swift in Sources */,
 				0CFCAA4C24575005004AB0B1 /* InfoNutritionTableViewCell.swift in Sources */,
 				0CFCAA482457470B004AB0B1 /* InfoTextTableViewCellModel.swift in Sources */,
 				0CFCAA3A24573F02004AB0B1 /* DishInfoViewModel.swift in Sources */,
@@ -541,6 +563,7 @@
 				0CFCAA5824575E7D004AB0B1 /* DateHelper.swift in Sources */,
 				0CC82632243A31FF00F1A047 /* MapLocationTableViewCellModel.swift in Sources */,
 				0CC82628243A291500F1A047 /* BigButtonTableViewCell.swift in Sources */,
+				0CF857092469247600E74B62 /* String+Validation.swift in Sources */,
 				0CFCAA3824573ECE004AB0B1 /* DishInfoViewController.swift in Sources */,
 				0CF856F4246914B200E74B62 /* DBManager.swift in Sources */,
 				0CFCAA5124575A01004AB0B1 /* Meal.swift in Sources */,
@@ -555,6 +578,7 @@
 				0CF94DBD244E13D60047763C /* AddDishViewModel.swift in Sources */,
 				0CC82635243A372F00F1A047 /* CLLocationCoordinate2D+AlertActions.swift in Sources */,
 				0CF856F9246915A500E74B62 /* User.swift in Sources */,
+				0CF8570724691FD800E74B62 /* RegisterViewModel.swift in Sources */,
 				0CF94DBB244E13CC0047763C /* AddDishViewController.swift in Sources */,
 				0CF856FB2469171F00E74B62 /* AuthManager.swift in Sources */,
 				0CC82604243A133B00F1A047 /* MealListViewModel.swift in Sources */,

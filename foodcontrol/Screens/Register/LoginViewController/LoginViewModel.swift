@@ -10,4 +10,9 @@ import Foundation
 
 class LoginViewModel {
   
+  func login(email: String, password: String, completionHandler: (Bool, Error?) -> Void) {
+    // TODO: сетевой запрос
+    // TODO: проверка заполненности профиля
+  }
+  
 }

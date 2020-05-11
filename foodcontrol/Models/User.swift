@@ -11,9 +11,10 @@ import RealmSwift
 
 class User: Object {
   @objc dynamic var id: String = ""
-  @objc dynamic var name: String = ""
-  @objc dynamic var surname: String = ""
+  @objc dynamic var username: String = ""
+  @objc dynamic var email: String = ""
   @objc dynamic var weightPlanValue: Int = 0
+  @objc dynamic var weight: Double = 0.0
   
   @objc dynamic var vkId: String = ""
   
@@ -24,11 +25,12 @@ class User: Object {
     return !vkId.isEmpty
   }
   
-  convenience init(id: String, name: String, surname: String, vkId: String? = nil) {
+  convenience init(id: String, username: String, email: String, weight: Double? = nil, vkId: String? = nil) {
     self.init()
     self.id = id
-    self.name = name
-    self.surname = surname
+    self.username = username
+    self.email = email
+    self.weight = weight ?? 0.0
     self.vkId = vkId ?? ""
   }
 }

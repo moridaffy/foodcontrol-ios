@@ -77,7 +77,7 @@ class MealListViewController: UIViewController {
   }
   
   private func openMealViewController(for meal: Meal) {
-    
+    // TODO: открывать DishInfoViewController
   }
   
   private func openDishViewController(for dish: Dish) {

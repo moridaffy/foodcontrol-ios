@@ -32,4 +32,8 @@ extension UIColor {
   static var additionalGrayLight: UIColor {
     return UIColor(red: 0.875, green: 0.875, blue: 0.875, alpha: 1.00)    // #DFDFDF
   }
+  
+  static var additionalVkBlue: UIColor {
+    return UIColor(red: 0.36, green: 0.51, blue: 0.71, alpha: 1.00)       // #5B81B4
+  }
 }
