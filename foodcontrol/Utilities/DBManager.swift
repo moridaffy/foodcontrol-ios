@@ -96,4 +96,27 @@ class DBManager {
       }
     }
   }
+  
+  func updateUser(user: User, weightPlanValue: Int? = nil, activityValue: Int? = nil, weight: Double? = nil, complationHandler: ((Bool) -> Void)? = nil) {
+    dbQueue.sync {
+      do {
+        let realm = try Realm()
+        try realm.write {
+          if let weightPlanValue = weightPlanValue {
+            user.weightPlanValue = weightPlanValue
+          }
+          if let activityValue = activityValue {
+            user.activityValue = activityValue
+          }
+          if let weight = weight {
+            user.weight = weight
+          }
+          try realm.commitWrite()
+          complationHandler?(true)
+        }
+      } catch let error {
+        fatalError("🔥 Error at DBManager (updateUser): \(error.localizedDescription)")
+      }
+    }
+  }
 }

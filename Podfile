@@ -8,5 +8,6 @@ target 'foodcontrol' do
   # Pods for foodcontrol
   pod 'Firebase/Analytics'
   pod 'Firebase/Firestore'
+  pod 'Firebase/Auth'
   pod 'FirebaseFirestoreSwift'
 end

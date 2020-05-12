@@ -112,9 +112,9 @@ class ProfileSetupViewController: UIViewController {
       return
     }
     
-    viewModel.setupProfile(weightPlan: weightPlan, activity: activity, weight: weight) { [weak self] (success, error) in
-      guard !success else { return }
-      self?.showAlertError(error: nil,
+    viewModel.setupProfile(weightPlan: weightPlan, activity: activity, weight: weight) { [weak self] (error) in
+      guard let error = error else { return }
+      self?.showAlertError(error: error,
                            desc: NSLocalizedString("Не удалось настроить профиль", comment: ""),
                            critical: false)
     }

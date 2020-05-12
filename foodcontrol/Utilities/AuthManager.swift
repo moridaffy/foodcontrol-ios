@@ -25,13 +25,13 @@ class AuthManager {
   }
   
   func switchToProfileSetupWorkflow() {
-//    guard isAuthorized else { return }
+    guard isAuthorized else { return }
     guard let profileSetupViewController = UIStoryboard(name: "Auth", bundle: nil).instantiateViewController(withIdentifier: "ProfileSetupViewController") as? ProfileSetupViewController else { fatalError() }
     RootViewControllerManager.shared.change(to: profileSetupViewController, withAnimation: .verticalDown)
   }
   
   func switchToMainWorkflow() {
-//    guard isAuthorized else { return }
+    guard isAuthorized else { return }
     guard let mealListViewController = UIStoryboard(name: "Root", bundle: nil).instantiateInitialViewController() else { fatalError() }
     RootViewControllerManager.shared.change(to: mealListViewController, withAnimation: .verticalDown)
   }

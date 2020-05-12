@@ -26,6 +26,12 @@ class RegisterViewController: UIViewController {
     setupLabels()
     setupTextFields()
     setupButtons()
+    
+    #if DEBUG
+    usernameTextField.text = "moridaffy"
+    emailTextField.text = "moridaffy@icloud.com"
+    passwordTextField.text = "123456"
+    #endif
   }
   
   private func setupLabels() {

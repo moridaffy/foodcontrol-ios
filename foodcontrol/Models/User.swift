@@ -8,8 +8,9 @@
 
 import Foundation
 import RealmSwift
+import FirebaseAuth
 
-class User: Object {
+class User: Object, FirestoreObject {
   @objc dynamic var id: String = ""
   @objc dynamic var username: String = ""
   @objc dynamic var email: String = ""
@@ -47,6 +48,37 @@ class User: Object {
     self.activityValue = activity?.rawValue ?? 0
     self.weight = weight ?? 0.0
     self.vkId = vkId ?? ""
+  }
+  
+  convenience init(firebaseUser: FirebaseAuth.User, username: String) {
+    self.init(id: firebaseUser.uid,
+              username: username,
+              email: firebaseUser.email ?? "")
+  }
+  
+  override class func primaryKey() -> String? {
+    return "id"
+  }
+  
+  func toDictionary() -> [String : Any] {
+    var dictionary: [String: Any] = [
+      "uid": id,
+      "username": username,
+      "weightPlanValue": weightPlanValue,
+      "activityValue": activityValue
+    ]
+    if weight != 0.0 {
+      dictionary["weight"] = weight
+    }
+    return dictionary
+  }
+  
+  func getId() -> String {
+    return id
+  }
+  
+  func getPath() -> FirebaseManager.FirestorePath {
+    return FirebaseManager.FirestorePath.userData
   }
 }
 

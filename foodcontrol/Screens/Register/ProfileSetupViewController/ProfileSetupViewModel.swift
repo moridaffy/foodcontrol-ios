@@ -26,10 +26,20 @@ class ProfileSetupViewModel {
     }
   }
   
-  func setupProfile(weightPlan: User.WeightPlanType, activity: User.ActivityType, weight: Double, completionHandler: (Bool, Error?) -> Void) {
-    // TODO: отправлять сетевой запрос
-    completionHandler(true, nil)
-    AuthManager.shared.switchToMainWorkflow()
+  func setupProfile(weightPlan: User.WeightPlanType, activity: User.ActivityType, weight: Double, completionHandler: @escaping (Error?) -> Void) {
+    guard let user = AuthManager.shared.currentUser else {
+      completionHandler(nil)
+      return
+    }
+    
+    DBManager.shared.updateUser(user: user, weightPlanValue: weightPlan.rawValue, activityValue: activity.rawValue, weight: weight) { success in
+      guard success else { return }
+      FirebaseManager.shared.uploadObject(user) { (error) in
+        completionHandler(error)
+        if error == nil {
+          AuthManager.shared.switchToMainWorkflow()
+        }
+      }
+    }
   }
-  
 }
