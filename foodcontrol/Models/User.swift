@@ -11,6 +11,9 @@ import RealmSwift
 import FirebaseAuth
 
 class User: Object, FirestoreObject {
+  
+  // MARK: - Properties
+  
   @objc dynamic var id: String = ""
   @objc dynamic var username: String = ""
   @objc dynamic var email: String = ""
@@ -33,6 +36,8 @@ class User: Object, FirestoreObject {
     return weightPlan != .unknown && activity != .unknown
   }
   
+  // MARK: - Initializers
+  
   convenience init(id: String,
                    username: String,
                    email: String,
@@ -50,15 +55,17 @@ class User: Object, FirestoreObject {
     self.vkId = vkId ?? ""
   }
   
-  convenience init(firebaseUser: FirebaseAuth.User, username: String) {
+  convenience init(firebaseUser: FirebaseAuth.User, username: String? = nil) {
     self.init(id: firebaseUser.uid,
-              username: username,
+              username: username ?? "",
               email: firebaseUser.email ?? "")
   }
   
   override class func primaryKey() -> String? {
     return "id"
   }
+  
+  // MARK: - FirestoreObject protocol
   
   func toDictionary() -> [String : Any] {
     var dictionary: [String: Any] = [
@@ -79,6 +86,21 @@ class User: Object, FirestoreObject {
   
   func getPath() -> FirebaseManager.FirestorePath {
     return FirebaseManager.FirestorePath.userData
+  }
+  
+  // MARK: - Methods
+  
+  func update(with dictionary: [String: Any]) {
+    guard let id = dictionary["uid"] as? String, id == self.id else { return }
+    if let username = dictionary["username"] as? String {
+      self.username = username
+    }
+    if let weightPlanValue = dictionary["weightPlanValue"] as? Int {
+      self.weightPlanValue = weightPlanValue
+    }
+    if let activityValue = dictionary["activityValue"] as? Int {
+      self.activityValue = activityValue
+    }
   }
 }
 

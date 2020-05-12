@@ -10,14 +10,19 @@ import Foundation
 
 class LoginViewModel {
   
-  func login(email: String, password: String, completionHandler: (Bool, Error?) -> Void) {
-    // TODO: сетевой запрос
-    // TODO: проверка заполненности профиля
-    completionHandler(true, nil)
-    if true {
-      AuthManager.shared.switchToProfileSetupWorkflow()
-    } else {
-      AuthManager.shared.switchToMainWorkflow()
+  func login(email: String, password: String, completionHandler: @escaping (Bool, Error?) -> Void) {
+    FirebaseManager.shared.login(email: email, password: password) { (user, error) in
+      if let user = user {
+        DBManager.shared.saveObject(user)
+        completionHandler(true, nil)
+        if user.isSetup {
+          AuthManager.shared.switchToMainWorkflow()
+        } else {
+          AuthManager.shared.switchToProfileSetupWorkflow()
+        }
+      } else {
+        completionHandler(false, error)
+      }
     }
   }
   
