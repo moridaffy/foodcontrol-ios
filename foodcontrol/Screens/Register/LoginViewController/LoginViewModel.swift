@@ -13,6 +13,12 @@ class LoginViewModel {
   func login(email: String, password: String, completionHandler: (Bool, Error?) -> Void) {
     // TODO: сетевой запрос
     // TODO: проверка заполненности профиля
+    completionHandler(true, nil)
+    if true {
+      AuthManager.shared.switchToProfileSetupWorkflow()
+    } else {
+      AuthManager.shared.switchToMainWorkflow()
+    }
   }
   
 }

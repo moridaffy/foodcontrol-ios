@@ -41,6 +41,7 @@ class ProfileSetupViewController: UIViewController {
       button.setImage(UIImage(systemName: "questionmark.circle.fill")?.withRenderingMode(.alwaysTemplate), for: .normal)
       button.tintColor = UIColor.additionalYellow
       button.imageView?.contentMode = .scaleAspectFit
+      button.backgroundColor = .clear
     }
     
     setupProfileButton.setTitle(NSLocalizedString("Настроить профиль", comment: ""), for: .normal)
@@ -92,7 +93,7 @@ class ProfileSetupViewController: UIViewController {
   }
   
   private func tryToSetupProfile() {
-    guard let weight = Double(weightTextField.text ?? "") else {
+    guard let weight = Double((weightTextField.text ?? "").replacingOccurrences(of: ",", with: ".")) else {
       showAlertError(error: nil,
                      desc: NSLocalizedString("Укажите Ваш вес", comment: ""),
                      critical: false)

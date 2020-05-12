@@ -12,6 +12,8 @@ class RegisterViewModel {
   
   func register(username: String, email: String, password: String, completionHandler: (Bool, Error?) -> Void) {
     // TODO: сетевой запрос
+    completionHandler(true, nil)
+    AuthManager.shared.switchToProfileSetupWorkflow()
   }
   
 }

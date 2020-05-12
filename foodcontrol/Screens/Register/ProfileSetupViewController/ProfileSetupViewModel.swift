@@ -28,6 +28,8 @@ class ProfileSetupViewModel {
   
   func setupProfile(weightPlan: User.WeightPlanType, activity: User.ActivityType, weight: Double, completionHandler: (Bool, Error?) -> Void) {
     // TODO: отправлять сетевой запрос
+    completionHandler(true, nil)
+    AuthManager.shared.switchToMainWorkflow()
   }
   
 }
