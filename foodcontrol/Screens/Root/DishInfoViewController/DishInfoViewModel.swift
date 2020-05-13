@@ -11,6 +11,7 @@ import Foundation
 class DishInfoViewModel {
   
   let dish: Dish
+  let creatingNewDish: Bool
   private(set) var cellModels: [FCTableViewCellModel] = [] {
     didSet {
       view?.reloadTableView()
@@ -19,20 +20,30 @@ class DishInfoViewModel {
   
   weak var view: DishInfoViewController?
   
-  init(dish: Dish) {
-    self.dish = dish
+  init(dish: Dish?) {
+    self.dish = dish ?? Dish()
+    self.creatingNewDish = dish == nil
     
     generateCellModels()
   }
   
   private func generateCellModels() {
-    cellModels = [
-      BigImageTableViewCellModel(url: dish.imageUrl),
-      InfoTextTableViewCellModel(type: .title, text: dish.name),
-      InfoTextTableViewCellModel(type: .description, text: dish.description),
-      InfoTextTableViewCellModel(type: .size, text: "\(dish.weight ?? 100)"),
-      InfoNutritionTableViewCellModel(dish: dish)
-    ]
+    if creatingNewDish {
+      cellModels = [
+        BigButtonTableViewCellModel(type: .addImage),
+        InfoTextTableViewCellModel(type: .title, editable: true),
+        InfoTextTableViewCellModel(type: .description, editable: true),
+        InfoTextTableViewCellModel(type: .size, editable: true)
+      ]
+    } else {
+      cellModels = [
+        BigImageTableViewCellModel(url: dish.imageUrl),
+        InfoTextTableViewCellModel(type: .title, text: dish.name),
+        InfoTextTableViewCellModel(type: .description, text: dish.description),
+        InfoTextTableViewCellModel(type: .size, text: "\(dish.weight ?? 100)"),
+        InfoNutritionTableViewCellModel(dish: dish)
+      ]
+    }
   }
   
 }

@@ -41,6 +41,10 @@ class AddDishViewController: UIViewController {
   
   private func setupNavigationBar() {
     title = NSLocalizedString("Список блюд", comment: "")
+    
+    let backButton = UIBarButtonItem(image: nil, style: .done, target: nil, action: nil)
+    backButton.tintColor = UIColor.additionalYellow
+    navigationItem.backBarButtonItem = backButton
   }
   
   private func setupSearchSortBar() {
@@ -75,7 +79,7 @@ class AddDishViewController: UIViewController {
     tableView.dataSource = self
   }
   
-  private func openDishViewController(for dish: Dish) {
+  private func openDishViewController(for dish: Dish?) {
     guard let dishInfoViewController = UIStoryboard(name: "Root", bundle: nil).instantiateViewController(withIdentifier: "DishInfoViewController") as? DishInfoViewController else { return }
     dishInfoViewController.setup(viewModel: DishInfoViewModel(dish: dish), delegate: self)
     navigationController?.pushViewController(dishInfoViewController, animated: true)
@@ -125,6 +129,10 @@ extension AddDishViewController: UITableViewDelegate {
     let cellModel = viewModel.cellModels[indexPath.row]
     if let cellModel = cellModel as? DishTableViewCellModel {
       openDishViewController(for: cellModel.dish)
+    } else if let cellModel = cellModel as? BigButtonTableViewCellModel {
+      if cellModel.type == .createDish {
+        openDishViewController(for: nil)
+      }
     }
   }
   

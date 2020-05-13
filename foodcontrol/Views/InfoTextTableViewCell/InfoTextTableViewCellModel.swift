@@ -10,11 +10,13 @@ import Foundation
 
 class InfoTextTableViewCellModel: FCTableViewCellModel {
   let type: InfoType
-  let text: String
+  let text: String?
+  let editable: Bool
   
-  init(type: InfoType, text: String) {
+  init(type: InfoType, text: String? = nil, editable: Bool = false) {
     self.type = type
     self.text = text
+    self.editable = editable
   }
 }
 
@@ -32,6 +34,17 @@ extension InfoTextTableViewCellModel {
         return NSLocalizedString("Описание", comment: "")
       case .size:
         return NSLocalizedString("Размер порции", comment: "")
+      }
+    }
+    
+    var placeholder: String {
+      switch self {
+      case .title:
+        return NSLocalizedString("Котлеты", comment: "")
+      case .description:
+        return NSLocalizedString("Очень вкусные котлеты", comment: "")
+      case .size:
+        return NSLocalizedString("250г", comment: "")
       }
     }
   }

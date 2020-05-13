@@ -46,19 +46,26 @@ class DishInfoViewController: UIViewController {
   }
   
   private func setupNavigationBar() {
-    title = viewModel.dish.name
+    guard !viewModel.creatingNewDish else {
+      title = NSLocalizedString("Новое блюдо", comment: "")
+      return
+    }
     
+    title = viewModel.dish.name
     let favoriteButton = UIBarButtonItem(image: UIImage(systemName: "star")?.withRenderingMode(.alwaysTemplate),
                                          style: .plain,
                                          target: self,
                                          action: #selector(favoriteButtonTapped))
+    favoriteButton.tintColor = UIColor.additionalYellow
     navigationItem.rightBarButtonItem = favoriteButton
   }
   
   private func setupTableView() {
     tableView.tableFooterView = UIView()
     tableView.separatorStyle = .none
+    tableView.contentInset = UIEdgeInsets(top: 12.0, left: 0.0, bottom: 0.0, right: 0.0)
     tableView.register(UINib(nibName: "BigImageTableViewCell", bundle: nil), forCellReuseIdentifier: String(describing: BigImageTableViewCell.self))
+    tableView.register(UINib(nibName: "BigButtonTableViewCell", bundle: nil), forCellReuseIdentifier: String(describing: BigButtonTableViewCell.self))
     tableView.register(UINib(nibName: "InfoTextTableViewCell", bundle: nil), forCellReuseIdentifier: String(describing: InfoTextTableViewCell.self))
     tableView.register(UINib(nibName: "InfoNutritionTableViewCell", bundle: nil), forCellReuseIdentifier: String(describing: InfoNutritionTableViewCell.self))
     tableView.delegate = self
@@ -96,6 +103,7 @@ class DishInfoViewController: UIViewController {
   
   @objc private func addToMealButtonTapped() {
     delegate?.didAddToMeal(dish: viewModel.dish)
+    navigationController?.popViewController(animated: true)
   }
   
   func reloadTableView() {
@@ -103,10 +111,18 @@ class DishInfoViewController: UIViewController {
   }
 }
 
+extension DishInfoViewController: InfoTextTableViewCellDelegate {
+  func textValueChanged(_ value: String, type: InfoTextTableViewCellModel.InfoType) {
+    
+  }
+}
+
 extension DishInfoViewController: UITableViewDelegate {
   func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
     let cellModel = viewModel.cellModels[indexPath.row]
     if cellModel is BigImageTableViewCellModel {
+      return 190.0
+    } else if cellModel is BigButtonTableViewCellModel {
       return 190.0
     } else if cellModel is InfoTextTableViewCellModel {
       return 47.0
@@ -120,6 +136,8 @@ extension DishInfoViewController: UITableViewDelegate {
   func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
     let cellModel = viewModel.cellModels[indexPath.row]
     if cellModel is BigImageTableViewCellModel {
+      return 190.0
+    } else if cellModel is BigButtonTableViewCellModel {
       return 190.0
     } else if cellModel is InfoTextTableViewCellModel {
       return UITableView.automaticDimension
@@ -142,9 +160,13 @@ extension DishInfoViewController: UITableViewDataSource {
       guard let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: BigImageTableViewCell.self)) as? BigImageTableViewCell else { fatalError() }
       cell.setup(viewModel: cellModel)
       return cell
+    } else if let cellModel = cellModel as? BigButtonTableViewCellModel {
+      guard let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: BigButtonTableViewCell.self)) as? BigButtonTableViewCell else { fatalError() }
+      cell.setup(viewModel: cellModel)
+      return cell
     } else if let cellModel = cellModel as? InfoTextTableViewCellModel {
       guard let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: InfoTextTableViewCell.self)) as? InfoTextTableViewCell else { fatalError() }
-      cell.setup(viewModel: cellModel)
+      cell.setup(viewModel: cellModel, delegate: self)
       return cell
     } else if let cellModel = cellModel as? InfoNutritionTableViewCellModel {
       guard let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: InfoNutritionTableViewCell.self)) as? InfoNutritionTableViewCell else { fatalError() }

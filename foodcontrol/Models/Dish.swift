@@ -21,9 +21,9 @@ class Dish {
   
   var weight: Double?
   
-  init(id: String = UUID().uuidString,
-       name: String,
-       imageUrl: URL?,
+  init(id: String = "temp_" + UUID().uuidString,
+       name: String = "",
+       imageUrl: URL? = nil,
        description: String = TestInstances.longText,
        proteinsReference: Double = Double.random(in: 0...100),
        fatsReference: Double = Double.random(in: 0...100),

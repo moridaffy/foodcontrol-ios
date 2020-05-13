@@ -45,6 +45,9 @@ class CreateMealViewController: UIViewController {
     tableView.register(UINib(nibName: "MapLocationTableViewCell", bundle: nil), forCellReuseIdentifier: String(describing: MapLocationTableViewCell.self))
     tableView.delegate = self
     tableView.dataSource = self
+    
+    fadeImageView.image = UIImage(named: "fade_bottomToTop")
+    fadeImageView.contentMode = .scaleToFill
   }
   
   private func setupBottomButton() {
@@ -66,6 +69,12 @@ class CreateMealViewController: UIViewController {
     guard let addDishViewController = UIStoryboard(name: "Root", bundle: nil).instantiateViewController(withIdentifier: "AddDishViewController") as? AddDishViewController else { return }
     navigationController?.pushViewController(addDishViewController, animated: true)
   }
+  
+  private func openDishViewController(for dish: Dish) {
+    guard let dishInfoViewController = UIStoryboard(name: "Root", bundle: nil).instantiateViewController(withIdentifier: "DishInfoViewController") as? DishInfoViewController else { return }
+    dishInfoViewController.setup(viewModel: DishInfoViewModel(dish: dish), delegate: nil)
+    navigationController?.pushViewController(dishInfoViewController, animated: true)
+  }
 }
 
 extension CreateMealViewController: MapLocationTableViewCellDelegate {
@@ -84,6 +93,8 @@ extension CreateMealViewController: UITableViewDelegate {
     if let cellModel = cellModel as? BigButtonTableViewCellModel {
       guard cellModel.type == .addDish else { return }
       openAddDishViewController()
+    } else if let cellModel = cellModel as? DishTableViewCellModel {
+      openDishViewController(for: cellModel.dish)
     }
   }
   
