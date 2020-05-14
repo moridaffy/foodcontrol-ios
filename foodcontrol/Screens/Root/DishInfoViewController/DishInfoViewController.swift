@@ -113,7 +113,16 @@ class DishInfoViewController: UIViewController {
 
 extension DishInfoViewController: InfoTextTableViewCellDelegate {
   func textValueChanged(_ value: String, type: InfoTextTableViewCellModel.InfoType) {
-    
+    tableView.beginUpdates()
+    switch type {
+    case .title:
+      viewModel.dish.name = value
+    case .description:
+      viewModel.dish.description = value
+    case .size:
+      break
+    }
+    tableView.endUpdates()
   }
 }
 
@@ -125,7 +134,7 @@ extension DishInfoViewController: UITableViewDelegate {
     } else if cellModel is BigButtonTableViewCellModel {
       return 190.0
     } else if cellModel is InfoTextTableViewCellModel {
-      return 47.0
+      return 57.0
     } else if cellModel is InfoNutritionTableViewCellModel {
       return 126.0
     } else {

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0C49279D246DEC680036FD2E /* String+Size.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C49279C246DEC680036FD2E /* String+Size.swift */; };
 		0C53B76C246899EC0084B9A6 /* Double+Rounding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C53B76B246899EC0084B9A6 /* Double+Rounding.swift */; };
 		0CC825E9243A111400F1A047 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CC825E8243A111400F1A047 /* AppDelegate.swift */; };
 		0CC825F2243A111600F1A047 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0CC825F1243A111600F1A047 /* Assets.xcassets */; };
@@ -71,6 +72,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0C49279C246DEC680036FD2E /* String+Size.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Size.swift"; sourceTree = "<group>"; };
 		0C53B76B246899EC0084B9A6 /* Double+Rounding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Double+Rounding.swift"; sourceTree = "<group>"; };
 		0CC825E5243A111400F1A047 /* foodcontrol.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = foodcontrol.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0CC825E8243A111400F1A047 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -226,6 +228,7 @@
 				0CC82634243A372F00F1A047 /* CLLocationCoordinate2D+AlertActions.swift */,
 				0C53B76B246899EC0084B9A6 /* Double+Rounding.swift */,
 				0CF857082469247600E74B62 /* String+Validation.swift */,
+				0C49279C246DEC680036FD2E /* String+Size.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -585,6 +588,7 @@
 				0CFCAA5124575A01004AB0B1 /* Meal.swift in Sources */,
 				0CFCAA3E245744E0004AB0B1 /* BigImageTableViewCell.swift in Sources */,
 				0CC8262F243A31E900F1A047 /* MapLocationTableViewCell.swift in Sources */,
+				0C49279D246DEC680036FD2E /* String+Size.swift in Sources */,
 				0CC82607243A182100F1A047 /* UIColor+CustomColors.swift in Sources */,
 				0CC8262B243A2A4200F1A047 /* BigButtonTableViewCellModel.swift in Sources */,
 				0CC82637243A39E700F1A047 /* UIViewController+Alerts.swift in Sources */,

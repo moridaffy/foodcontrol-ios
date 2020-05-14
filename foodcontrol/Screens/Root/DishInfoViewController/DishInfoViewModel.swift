@@ -31,19 +31,23 @@ class DishInfoViewModel {
     if creatingNewDish {
       cellModels = [
         BigButtonTableViewCellModel(type: .addImage),
-        InfoTextTableViewCellModel(type: .title, editable: true),
-        InfoTextTableViewCellModel(type: .description, editable: true),
+        InfoTextTableViewCellModel(type: .title, text: dish.name, editable: true),
+        InfoTextTableViewCellModel(type: .description, text: dish.description, editable: true),
         InfoTextTableViewCellModel(type: .size, editable: true)
       ]
     } else {
-      cellModels = [
+      var cellModels: [FCTableViewCellModel] = [
         BigImageTableViewCellModel(url: dish.imageUrl),
-        InfoTextTableViewCellModel(type: .title, text: dish.name),
-        InfoTextTableViewCellModel(type: .description, text: dish.description),
+        InfoTextTableViewCellModel(type: .title, text: dish.name)
+      ]
+      if !dish.description.isEmpty {
+        cellModels.append(InfoTextTableViewCellModel(type: .description, text: dish.description))
+      }
+      cellModels.append(contentsOf: [
         InfoTextTableViewCellModel(type: .size, text: "\(dish.weight ?? 100)"),
         InfoNutritionTableViewCellModel(dish: dish)
-      ]
+      ] as [FCTableViewCellModel])
+      self.cellModels = cellModels
     }
   }
-  
 }

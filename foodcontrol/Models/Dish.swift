@@ -10,9 +10,9 @@ import Foundation
 
 class Dish {
   let id: String
-  let name: String
+  var name: String
   let imageUrl: URL?
-  let description: String
+  var description: String
   
   let proteinsReference: Double
   let fatsReference: Double
@@ -24,7 +24,7 @@ class Dish {
   init(id: String = "temp_" + UUID().uuidString,
        name: String = "",
        imageUrl: URL? = nil,
-       description: String = TestInstances.longText,
+       description: String? = nil,
        proteinsReference: Double = Double.random(in: 0...100),
        fatsReference: Double = Double.random(in: 0...100),
        carbohydratesReference: Double = Double.random(in: 0...100),
@@ -32,7 +32,7 @@ class Dish {
     self.id = id
     self.name = name
     self.imageUrl = imageUrl
-    self.description = description
+    self.description = description ?? ""
     self.proteinsReference = proteinsReference
     self.fatsReference = fatsReference
     self.carbohydratesReference = carbohydratesReference

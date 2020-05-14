@@ -15,7 +15,9 @@ protocol InfoTextTableViewCellDelegate: class {
 class InfoTextTableViewCell: UITableViewCell {
   
   @IBOutlet private weak var titleLabel: UILabel!
-  @IBOutlet private weak var textField: UITextField!
+  @IBOutlet private weak var textView: UITextView!
+  @IBOutlet private weak var textViewPlaceholderLabel: UILabel!
+  @IBOutlet private weak var textViewHeightConstraint: NSLayoutConstraint!
   
   private var viewModel: InfoTextTableViewCellModel!
   private weak var delegate: InfoTextTableViewCellDelegate?
@@ -34,24 +36,38 @@ class InfoTextTableViewCell: UITableViewCell {
     titleLabel.textColor = UIColor.placeholderText
     titleLabel.font = UIFont.systemFont(ofSize: 15.0, weight: .regular)
     
-    textField.text = viewModel.text
-    textField.textColor = UIColor.label
-    textField.font = UIFont.systemFont(ofSize: 17.0, weight: .regular)
-    textField.backgroundColor = .clear
-    textField.placeholder = viewModel.type.placeholder
-    textField.delegate = self
-    textField.addTarget(self, action: #selector(textFieldEditingChanged), for: .editingChanged)
-    textField.isUserInteractionEnabled = viewModel.editable
-  }
-  
-  @objc private func textFieldEditingChanged() {
-    delegate?.textValueChanged(textField.text ?? "", type: viewModel.type)
+    let textViewFont = UIFont.systemFont(ofSize: 17.0, weight: .regular)
+    let textViewText = viewModel.text ?? ""
+    let textViewHeight = textViewText.height(width: UIScreen.main.bounds.width - 32.0,
+                                             attributes: [.font: textViewFont])
+    textViewHeightConstraint.constant = max(31.0, textViewHeight + 8.0)
+    textView.text = textViewText
+    textView.textColor = UIColor.label
+    textView.font = textViewFont
+    textView.delegate = self
+    textView.isScrollEnabled = false
+    textView.isUserInteractionEnabled = viewModel.editable
+    textView.textContainer.lineFragmentPadding = 0.0
+    textView.backgroundColor = UIColor.clear
+    
+    textViewPlaceholderLabel.font = textViewFont
+    textViewPlaceholderLabel.text = viewModel.type.placeholder
+    textViewPlaceholderLabel.textColor = UIColor.placeholderText
+    textViewPlaceholderLabel.isUserInteractionEnabled = false
+    textViewPlaceholderLabel.isHidden = !textViewText.isEmpty
   }
 }
 
-extension InfoTextTableViewCell: UITextFieldDelegate {
-  func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-    textField.endEditing(true)
+extension InfoTextTableViewCell: UITextViewDelegate {
+  func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
+    guard text == "\n" else { return true }
+    textView.endEditing(true)
     return false
+  }
+  
+  func textViewDidChange(_ textView: UITextView) {
+    let textViewText = textView.text ?? ""
+    textViewPlaceholderLabel.isHidden = !textViewText.isEmpty
+    delegate?.textValueChanged(textViewText, type: viewModel.type)
   }
 }
