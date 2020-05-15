@@ -8,22 +8,34 @@
 
 import UIKit
 
+protocol InfoNutritionTableViewCellDelegate: class {
+  func didChangeNutritionValue(_ value: String, type: InfoNutritionTableViewCell.TextFieldType)
+}
+
 class InfoNutritionTableViewCell: UITableViewCell {
   
   @IBOutlet private weak var titleLabel: UILabel!
   @IBOutlet private weak var proteinsTitleLabel: UILabel!
-  @IBOutlet private weak var proteinsValueLabel: UILabel!
+  @IBOutlet private weak var proteinsTextField: UITextField!
+  @IBOutlet private weak var proteinsUnitLabel: UILabel!
   @IBOutlet private weak var fatsTitleLabel: UILabel!
-  @IBOutlet private weak var fatsValueLabel: UILabel!
+  @IBOutlet private weak var fatsTextField: UITextField!
+  @IBOutlet private weak var fatsUnitLabel: UILabel!
   @IBOutlet private weak var carbohydrateTitleLabel: UILabel!
-  @IBOutlet private weak var carbohydrateValueLabel: UILabel!
+  @IBOutlet private weak var carbohydrateTextField: UITextField!
+  @IBOutlet private weak var carbohydrateUnitLabel: UILabel!
   @IBOutlet private weak var calloriesTitleLabel: UILabel!
-  @IBOutlet private weak var calloriesValueLabel: UILabel!
+  @IBOutlet private weak var calloriesTextField: UITextField!
+  @IBOutlet private weak var calloriesUnitLabel: UILabel!
   
   private var viewModel: InfoNutritionTableViewCellModel!
+  private weak var delegate: InfoNutritionTableViewCellDelegate?
   
-  func setup(viewModel: InfoNutritionTableViewCellModel) {
+  func setup(viewModel: InfoNutritionTableViewCellModel, delegate: InfoNutritionTableViewCellDelegate?) {
     self.viewModel = viewModel
+    self.delegate = delegate
+    
+    selectionStyle = .none
     
     setupLabels()
   }
@@ -35,21 +47,48 @@ class InfoNutritionTableViewCell: UITableViewCell {
     
     for i in 0..<Dish.ValueType.allUnits.count {
       let titleLabel = [proteinsTitleLabel, fatsTitleLabel, carbohydrateTitleLabel, calloriesTitleLabel][i]
-      let valueLabel = [proteinsValueLabel, fatsValueLabel, carbohydrateValueLabel, calloriesValueLabel][i]
+      let valueTextField = [proteinsTextField, fatsTextField, carbohydrateTextField, calloriesTextField][i]
+      let unitLabel = [proteinsUnitLabel, fatsUnitLabel, carbohydrateUnitLabel, calloriesUnitLabel][i]
       let unit = Dish.ValueType.allUnits[i]
-      
+
       titleLabel?.text = unit.title
       titleLabel?.textColor = UIColor.label
       titleLabel?.font = UIFont.systemFont(ofSize: 17.0, weight: .regular)
       
-      let valueLabelText = NSMutableAttributedString()
-      valueLabelText.append(NSAttributedString(string: "\(viewModel.getUnitValue(reference: false, unit: unit))\(unit.unit) ",
-        attributes: [.font: UIFont.systemFont(ofSize: 17.0, weight: .regular),
-                     .foregroundColor: UIColor.label]))
-      valueLabelText.append(NSAttributedString(string: "(\(viewModel.getUnitValue(reference: true, unit: unit))\(unit.unit) / 100г)",
-        attributes: [.font: UIFont.systemFont(ofSize: 15.0, weight: .regular),
-                     .foregroundColor: UIColor.placeholderText]))
-      valueLabel?.attributedText = valueLabelText
+      valueTextField?.text = "\(viewModel.getUnitValue(reference: false, unit: unit))\(unit.unit) "
+      valueTextField?.textColor = UIColor.label
+      valueTextField?.font = UIFont.systemFont(ofSize: 17.0, weight: .regular)
+      valueTextField?.backgroundColor = UIColor.clear
+      valueTextField?.isUserInteractionEnabled = viewModel.editable
+      valueTextField?.delegate = self
+      valueTextField?.tag = i + 1
+      valueTextField?.addTarget(self, action: #selector(textFieldEditingChanged(_:)), for: .editingChanged)
+      valueTextField?.textAlignment = .right
+      
+      unitLabel?.text = "(\(viewModel.getUnitValue(reference: true, unit: unit))\(unit.unit) / 100г)"
+      unitLabel?.textColor = UIColor.placeholderText
+      unitLabel?.font = UIFont.systemFont(ofSize: 15.0, weight: .regular)
     }
+  }
+  
+  @objc private func textFieldEditingChanged(_ textField: UITextField) {
+    guard let textFieldType = TextFieldType(rawValue: textField.tag) else { return }
+    delegate?.didChangeNutritionValue(textField.text ?? "", type: textFieldType)
+  }
+}
+
+extension InfoNutritionTableViewCell: UITextFieldDelegate {
+  func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+    textField.endEditing(true)
+    return false
+  }
+}
+
+extension InfoNutritionTableViewCell {
+  enum TextFieldType: Int {
+    case proteins = 1
+    case fats = 2
+    case carbohydrates = 3
+    case callories = 4
   }
 }

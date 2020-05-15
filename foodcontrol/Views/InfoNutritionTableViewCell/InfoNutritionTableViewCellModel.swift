@@ -11,9 +11,11 @@ import Foundation
 class InfoNutritionTableViewCellModel: FCTableViewCellModel {
   
   let dish: Dish
+  let editable: Bool
   
-  init(dish: Dish) {
+  init(dish: Dish, editable: Bool = false) {
     self.dish = dish
+    self.editable = editable
   }
   
   func getUnitValue(reference: Bool, unit: Dish.ValueType) -> Int {

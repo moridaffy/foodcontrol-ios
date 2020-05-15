@@ -126,6 +126,12 @@ extension DishInfoViewController: InfoTextTableViewCellDelegate {
   }
 }
 
+extension DishInfoViewController: InfoNutritionTableViewCellDelegate {
+  func didChangeNutritionValue(_ value: String, type: InfoNutritionTableViewCell.TextFieldType) {
+    // TODO: обновление модели блюда
+  }
+}
+
 extension DishInfoViewController: UITableViewDelegate {
   func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
     let cellModel = viewModel.cellModels[indexPath.row]
@@ -179,7 +185,7 @@ extension DishInfoViewController: UITableViewDataSource {
       return cell
     } else if let cellModel = cellModel as? InfoNutritionTableViewCellModel {
       guard let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: InfoNutritionTableViewCell.self)) as? InfoNutritionTableViewCell else { fatalError() }
-      cell.setup(viewModel: cellModel)
+      cell.setup(viewModel: cellModel, delegate: self)
       return cell
     } else {
       return UITableViewCell()

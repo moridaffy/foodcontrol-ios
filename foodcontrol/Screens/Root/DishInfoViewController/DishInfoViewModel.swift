@@ -33,7 +33,8 @@ class DishInfoViewModel {
         BigButtonTableViewCellModel(type: .addImage),
         InfoTextTableViewCellModel(type: .title, text: dish.name, editable: true),
         InfoTextTableViewCellModel(type: .description, text: dish.description, editable: true),
-        InfoTextTableViewCellModel(type: .size, editable: true)
+        InfoTextTableViewCellModel(type: .size, editable: true),
+        InfoNutritionTableViewCellModel(dish: dish, editable: true)
       ]
     } else {
       var cellModels: [FCTableViewCellModel] = [
