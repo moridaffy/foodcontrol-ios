@@ -12,10 +12,6 @@ class MealListViewModel {
   
   private(set) var cellModels: [FCTableViewCellModel] = []
   
-  init() {
-    refreshCellModels(for: TestInstances.meals)
-  }
-  
   private func refreshCellModels(for meals: [Meal]) {
     var cellModels: [FCTableViewCellModel] = []
     for meal in meals {

@@ -64,6 +64,7 @@ class DishInfoViewController: UIViewController {
     tableView.tableFooterView = UIView()
     tableView.separatorStyle = .none
     tableView.contentInset = UIEdgeInsets(top: 12.0, left: 0.0, bottom: 0.0, right: 0.0)
+    tableView.keyboardDismissMode = .interactive
     tableView.register(UINib(nibName: "BigImageTableViewCell", bundle: nil), forCellReuseIdentifier: String(describing: BigImageTableViewCell.self))
     tableView.register(UINib(nibName: "BigButtonTableViewCell", bundle: nil), forCellReuseIdentifier: String(describing: BigButtonTableViewCell.self))
     tableView.register(UINib(nibName: "InfoTextTableViewCell", bundle: nil), forCellReuseIdentifier: String(describing: InfoTextTableViewCell.self))
@@ -86,11 +87,13 @@ class DishInfoViewController: UIViewController {
     addToMealButtonContainerView.backgroundColor = UIColor.additionalYellow
     addToMealButtonContainerView.layer.cornerRadius = 10.0
     addToMealButtonContainerView.layer.masksToBounds = true
-    addToMealButtonTitleLabel.text = NSLocalizedString("Добавить прием пищи", comment: "")
     addToMealButtonTitleLabel.textColor = UIColor.white
     addToMealButtonTitleLabel.font = UIFont.systemFont(ofSize: 17.0, weight: .semibold)
     addToMealButtonIconImageView.image = UIImage(systemName: "plus")?.withRenderingMode(.alwaysTemplate)
     addToMealButtonIconImageView.tintColor = UIColor.white
+    addToMealButtonTitleLabel.text = viewModel.creatingNewDish
+      ? NSLocalizedString("Создать блюдо", comment: "")
+      : NSLocalizedString("Добавить блюдо", comment: "")
     
     let addToMealButtonTapRecognizer = UITapGestureRecognizer(target: self, action: #selector(addToMealButtonTapped))
     addToMealButtonContainerView.addGestureRecognizer(addToMealButtonTapRecognizer)
@@ -102,8 +105,72 @@ class DishInfoViewController: UIViewController {
   }
   
   @objc private func addToMealButtonTapped() {
-    delegate?.didAddToMeal(dish: viewModel.dish)
+    guard checkIfCanSaveDish() else { return }
+    if viewModel.creatingNewDish {
+      viewModel.createDish { [weak self] (dish, error) in
+        if let dish = dish {
+          self?.dismissViewController(addedDish: dish)
+        } else {
+          self?.showAlertError(error: error,
+                               desc: NSLocalizedString("Не удалось создать блюдо", comment: ""),
+                               critical: false)
+        }
+      }
+    } else {
+      dismissViewController(addedDish: viewModel.dish)
+    }
+  }
+  
+  private func checkIfCanSaveDish() -> Bool {
+    guard viewModel.creatingNewDish else { return true }
+    let dish = viewModel.dish
+    
+    if dish.name.isEmpty {
+      showAlertError(error: nil,
+                     desc: NSLocalizedString("Заполните имя блюда", comment: ""),
+                     critical: false)
+      return false
+    } else if !dish.isNutritionInfoFilled {
+      showAlertError(error: nil,
+                     desc: NSLocalizedString("Заполните информацию о питательной ценности блюда", comment: ""),
+                     critical: false)
+      return false
+    }
+    guard !dish.name.isEmpty else {
+      showAlertError(error: nil,
+                     desc: NSLocalizedString("Заполните имя блюда", comment: ""),
+                     critical: false)
+      return false
+    }
+    return true
+  }
+  
+  private func dismissViewController(addedDish dish: Dish) {
+    delegate?.didAddToMeal(dish: dish)
     navigationController?.popViewController(animated: true)
+  }
+  
+  private func presentImagePickerSheet() {
+    let actionSheet = UIAlertController(title: NSLocalizedString("Добавить фото блюда", comment: ""),
+                                        message: nil,
+                                        preferredStyle: .actionSheet)
+    actionSheet.addAction(UIAlertAction(title: NSLocalizedString("Фотопленка", comment: ""), style: .default, handler: { (_) in
+      self.presentImagePicker(source: .photoLibrary)
+    }))
+    actionSheet.addAction(UIAlertAction(title: NSLocalizedString("Камера", comment: ""), style: .default, handler: { (_) in
+      self.presentImagePicker(source: .camera)
+    }))
+    actionSheet.addAction(UIAlertAction(title: NSLocalizedString("Отмена", comment: ""), style: .cancel, handler: { (_) in
+      actionSheet.dismiss(animated: true, completion: nil)
+    }))
+    present(actionSheet, animated: true, completion: nil)
+  }
+  
+  private func presentImagePicker(source: UIImagePickerController.SourceType) {
+    let imagePicker = UIImagePickerController()
+    imagePicker.sourceType = source
+    imagePicker.delegate = self
+    present(imagePicker, animated: true, completion: nil)
   }
   
   func reloadTableView() {
@@ -128,7 +195,38 @@ extension DishInfoViewController: InfoTextTableViewCellDelegate {
 
 extension DishInfoViewController: InfoNutritionTableViewCellDelegate {
   func didChangeNutritionValue(_ value: String, type: InfoNutritionTableViewCell.TextFieldType) {
-    // TODO: обновление модели блюда
+    guard let intValue = Int(value) else { return }
+    let referenceValue = Double(intValue) / 100.0
+    switch type {
+    case .proteins:
+      viewModel.dish.proteinsReference = referenceValue
+    case .fats:
+      viewModel.dish.fatsReference = referenceValue
+    case .carbohydrates:
+      viewModel.dish.carbohydratesReference = referenceValue
+    case .callories:
+      viewModel.dish.calloriesReference = referenceValue
+    }
+  }
+}
+
+extension DishInfoViewController: UIImagePickerControllerDelegate & UINavigationControllerDelegate {
+  func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+    picker.dismiss(animated: true, completion: nil)
+  }
+  
+  func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+    picker.dismiss(animated: true, completion: nil)
+    guard let image = info[.originalImage] as? UIImage,
+      let resizedImage = image.correctImageOrientation().resizeWithScaleAspectFitMode(to: 1024.0) else {
+        showAlertError(error: nil,
+                       desc: NSLocalizedString("Не удалось обработать выбранное изображение. Пожалуйста, попробуйте выбрать другое", comment: ""),
+                       critical: false)
+        return
+    }
+    
+    viewModel.dish.image = resizedImage
+    viewModel.reloadCellModels()
   }
 }
 
@@ -160,6 +258,16 @@ extension DishInfoViewController: UITableViewDelegate {
       return 126.0
     } else {
       return UITableView.automaticDimension
+    }
+  }
+  
+  func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    tableView.deselectRow(at: indexPath, animated: true)
+    let cellModel = viewModel.cellModels[indexPath.row]
+    if let cellModel = cellModel as? BigButtonTableViewCellModel {
+      if cellModel.type == .addImage {
+        presentImagePickerSheet()
+      }
     }
   }
 }

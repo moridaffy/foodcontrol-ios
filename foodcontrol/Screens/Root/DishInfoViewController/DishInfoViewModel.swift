@@ -24,18 +24,23 @@ class DishInfoViewModel {
     self.dish = dish ?? Dish()
     self.creatingNewDish = dish == nil
     
-    generateCellModels()
+    reloadCellModels()
   }
   
-  private func generateCellModels() {
+  func reloadCellModels() {
     if creatingNewDish {
-      cellModels = [
-        BigButtonTableViewCellModel(type: .addImage),
+      var cellModels: [FCTableViewCellModel] = []
+      if let dishImage = dish.image {
+        cellModels.append(BigImageTableViewCellModel(image: dishImage))
+      } else {
+        cellModels.append(BigButtonTableViewCellModel(type: .addImage))
+      }
+      cellModels.append(contentsOf: [
         InfoTextTableViewCellModel(type: .title, text: dish.name, editable: true),
         InfoTextTableViewCellModel(type: .description, text: dish.description, editable: true),
-        InfoTextTableViewCellModel(type: .size, editable: true),
         InfoNutritionTableViewCellModel(dish: dish, editable: true)
-      ]
+      ] as [FCTableViewCellModel])
+      self.cellModels = cellModels
     } else {
       var cellModels: [FCTableViewCellModel] = [
         BigImageTableViewCellModel(url: dish.imageUrl),
@@ -49,6 +54,30 @@ class DishInfoViewModel {
         InfoNutritionTableViewCellModel(dish: dish)
       ] as [FCTableViewCellModel])
       self.cellModels = cellModels
+    }
+  }
+  
+  func createDish(completionHandler: @escaping (Dish?, Error?) -> Void) {
+    guard let imageData = dish.image?.jpegData(compressionQuality: 1.0) else {
+      completionHandler(nil, nil)
+      return
+    }
+    
+    FirebaseManager.shared.uploadFile(imageData, path: .dishImage(nil)) { [weak self] (imageUrl, error) in
+      guard let dish = self?.dish else { return }
+      if let imageUrl = imageUrl {
+        dish.imageUrl = imageUrl
+        
+        FirebaseManager.shared.uploadObject(dish) { (error) in
+          if let error = error {
+            completionHandler(nil, error)
+          } else {
+            completionHandler(dish, nil)
+          }
+        }
+      } else {
+        completionHandler(nil, error)
+      }
     }
   }
 }

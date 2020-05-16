@@ -8,6 +8,7 @@
 
 import FirebaseAuth
 import FirebaseFirestore
+import FirebaseStorage
 
 protocol FirestoreObject: class {
   func toDictionary() -> [String: Any]
@@ -20,9 +21,11 @@ class FirebaseManager {
   static let shared = FirebaseManager()
   
   private let firestore: Firestore
+  private let storage: Storage
   
   init() {
     firestore = Firestore.firestore()
+    storage = Storage.storage()
   }
   
   func register(username: String, email: String, password: String, completionHandler: @escaping (User?, Error?) -> Void) {
@@ -69,10 +72,35 @@ class FirebaseManager {
       }
     }
   }
+
+  func uploadFile(_ data: Data, path: StoragePath, completionHandler: @escaping (URL?, Error?) -> Void) {
+    let rootReference = storage.reference()
+    let fileReference = rootReference.child(path.path)
+    
+    fileReference.putData(data, metadata: nil) { (metadata, error) in
+      guard metadata != nil && error == nil else {
+        completionHandler(nil, error)
+        return
+      }
+      fileReference.downloadURL(completion: completionHandler)
+    }.resume()
+  }
 }
 
 extension FirebaseManager {
   enum FirestorePath: String {
     case userData = "user"
+    case dish = "dish"
+  }
+  
+  enum StoragePath {
+    case dishImage(String?)
+    
+    var path: String {
+      switch self {
+      case .dishImage(let imageName):
+        return "images/dishes/\(imageName ?? UUID().uuidString).jpeg"
+      }
+    }
   }
 }

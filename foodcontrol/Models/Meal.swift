@@ -19,7 +19,7 @@ class Meal {
   }
   var totalCallories: Double {
     var totalCallories: Double = 0
-    dishes.forEach({ totalCallories += $0.getValue(for: .callories) })
+    dishes.forEach({ totalCallories += $0.getValue(for: .callories, reference: false) })
     return totalCallories
   }
   

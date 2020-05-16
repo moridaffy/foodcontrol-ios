@@ -17,8 +17,4 @@ class InfoNutritionTableViewCellModel: FCTableViewCellModel {
     self.dish = dish
     self.editable = editable
   }
-  
-  func getUnitValue(reference: Bool, unit: Dish.ValueType) -> Int {
-    return reference ? 10 : 90
-  }
 }

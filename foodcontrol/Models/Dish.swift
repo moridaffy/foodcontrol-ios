@@ -6,29 +6,44 @@
 //  Copyright © 2020 MSKR. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
-class Dish {
+class Dish: FirestoreObject {
+  
+  // MARK: - Properties
+  
   let id: String
   var name: String
-  let imageUrl: URL?
   var description: String
   
-  let proteinsReference: Double
-  let fatsReference: Double
-  let carbohydratesReference: Double
-  let calloriesReference: Double
+  var proteinsReference: Double?
+  var fatsReference: Double?
+  var carbohydratesReference: Double?
+  var calloriesReference: Double?
   
   var weight: Double?
   
-  init(id: String = "temp_" + UUID().uuidString,
+  /// Имеет значение только при создании блюда. Во всех других случаях стоит обращаться к imageUrl
+  var image: UIImage?
+  var imageUrl: URL?
+  
+  var isNutritionInfoFilled: Bool {
+    return proteinsReference != nil
+      && fatsReference != nil
+      && carbohydratesReference != nil
+      && calloriesReference != nil
+  }
+  
+  // MARK: - Initializers
+  
+  init(id: String = UUID().uuidString,
        name: String = "",
        imageUrl: URL? = nil,
        description: String? = nil,
-       proteinsReference: Double = Double.random(in: 0...100),
-       fatsReference: Double = Double.random(in: 0...100),
-       carbohydratesReference: Double = Double.random(in: 0...100),
-       calloriesReference: Double = Double.random(in: 0...100)) {
+       proteinsReference: Double? = nil,
+       fatsReference: Double? = nil,
+       carbohydratesReference: Double? = nil,
+       calloriesReference: Double? = nil) {
     self.id = id
     self.name = name
     self.imageUrl = imageUrl
@@ -39,17 +54,44 @@ class Dish {
     self.calloriesReference = calloriesReference
   }
   
-  func getValue(for type: ValueType, weight: Double? = nil) -> Double {
-    let weight = weight ?? 100
+  // MARK: - FirestoreObject protocol
+  
+  func toDictionary() -> [String : Any] {
+    var dictionary: [String: Any] = [
+      "uid": id,
+      "name": name,
+      "description": description,
+      "proteins_reference": proteinsReference ?? 0.0,
+      "fats_reference": fatsReference ?? 0.0,
+      "carbohydrates_reference": carbohydratesReference ?? 0.0,
+      "callories_reference": calloriesReference ?? 0.0,
+      "image_url": imageUrl?.absoluteString ?? ""
+    ]
+    if let weight = weight {
+      dictionary["weight"] = weight
+    }
+    return dictionary
+  }
+  
+  func getId() -> String {
+    return id
+  }
+  
+  func getPath() -> FirebaseManager.FirestorePath {
+    return FirebaseManager.FirestorePath.dish
+  }
+  
+  func getValue(for type: ValueType, reference: Bool) -> Double {
+    let weight = reference ? 100.0 : (self.weight ?? 0.0)
     switch type {
     case .proteins:
-      return proteinsReference * weight
+      return proteinsReference ?? 0.0 * weight
     case .fats:
-      return fatsReference * weight
+      return fatsReference ?? 0.0 * weight
     case .carbohydrates:
-      return carbohydratesReference * weight
+      return carbohydratesReference ?? 0.0 * weight
     case .callories:
-      return calloriesReference * weight
+      return calloriesReference ?? 0.0 * weight
     }
   }
 }

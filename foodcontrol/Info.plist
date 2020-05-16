@@ -48,5 +48,9 @@
 		<string>comgooglemaps</string>
 		<string>yandexmaps</string>
 	</array>
+	<key>NSCameraUsageDescription</key>
+	<string>$(PRODUCT_NAME) needs access to your Camera to let you use photos from your Camera</string>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>$(PRODUCT_NAME) needs access to the Photo Library to let you use photos from your Photo Library.</string>
 </dict>
 </plist>

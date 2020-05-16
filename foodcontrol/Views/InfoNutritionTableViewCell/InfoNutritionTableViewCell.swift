@@ -55,9 +55,10 @@ class InfoNutritionTableViewCell: UITableViewCell {
       titleLabel?.textColor = UIColor.label
       titleLabel?.font = UIFont.systemFont(ofSize: 17.0, weight: .regular)
       
-      valueTextField?.text = "\(viewModel.getUnitValue(reference: false, unit: unit))\(unit.unit) "
+      valueTextField?.keyboardType = .numberPad
+      valueTextField?.placeholder = "\(Int.random(in: 1...99))"
       valueTextField?.textColor = UIColor.label
-      valueTextField?.font = UIFont.systemFont(ofSize: 17.0, weight: .regular)
+      valueTextField?.font = UIFont.systemFont(ofSize: 17.0, weight: .semibold)
       valueTextField?.backgroundColor = UIColor.clear
       valueTextField?.isUserInteractionEnabled = viewModel.editable
       valueTextField?.delegate = self
@@ -65,9 +66,37 @@ class InfoNutritionTableViewCell: UITableViewCell {
       valueTextField?.addTarget(self, action: #selector(textFieldEditingChanged(_:)), for: .editingChanged)
       valueTextField?.textAlignment = .right
       
-      unitLabel?.text = "(\(viewModel.getUnitValue(reference: true, unit: unit))\(unit.unit) / 100г)"
-      unitLabel?.textColor = UIColor.placeholderText
-      unitLabel?.font = UIFont.systemFont(ofSize: 15.0, weight: .regular)
+      var valueText: String = ""
+      let unitText = NSMutableAttributedString()
+      let value = viewModel.dish.getValue(for: unit, reference: false)
+      let referenceValue = viewModel.dish.getValue(for: unit, reference: true)
+      
+      if viewModel.editable {
+        valueText = (value == 0.0) ? "" : value.roundedString(to: 1, separator: ",")
+        
+        unitText.append(NSAttributedString(string: unit.unit, attributes: [
+          .font: UIFont.systemFont(ofSize: 17.0, weight: .regular),
+          .foregroundColor: UIColor.label
+        ]))
+        unitText.append(NSAttributedString(string: " в 100г", attributes: [
+          .font: UIFont.systemFont(ofSize: 15.0, weight: .regular),
+          .foregroundColor: UIColor.placeholderText
+        ]))
+      } else {
+        valueText = value.roundedString(to: 1, separator: ",")
+        
+        unitText.append(NSAttributedString(string: unit.unit, attributes: [
+          .font: UIFont.systemFont(ofSize: 17.0, weight: .regular),
+          .foregroundColor: UIColor.label
+        ]))
+        unitText.append(NSAttributedString(string: " (\(referenceValue)\(unit.unit) в 100г)", attributes: [
+          .font: UIFont.systemFont(ofSize: 15.0, weight: .regular),
+          .foregroundColor: UIColor.placeholderText
+        ]))
+      }
+      
+      valueTextField?.text = valueText
+      unitLabel?.attributedText = unitText
     }
   }
   

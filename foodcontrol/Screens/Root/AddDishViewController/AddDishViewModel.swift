@@ -28,15 +28,9 @@ class AddDishViewModel {
       reloadCellModels()
     }
   }
-  private(set) var cellModels: [FCTableViewCellModel] = [] {
+  private(set) var cellModels: [FCTableViewCellModel] = [BigButtonTableViewCellModel(type: .createDish)] {
     didSet {
       view?.reloadTableView()
-    }
-  }
-  
-  init() {
-    DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
-      self.displayedDishes = TestInstances.dishes
     }
   }
   
@@ -44,9 +38,9 @@ class AddDishViewModel {
     var sortedDishes: [Dish] = {
       switch sortingType {
       case .calloriesAsc:
-        return displayedDishes.sorted(by: { $0.calloriesReference < $1.calloriesReference })
+        return displayedDishes.sorted(by: { ($0.calloriesReference ?? 0.0) < ($1.calloriesReference ?? 0.0) })
       case .calloriesDesc:
-        return displayedDishes.sorted(by: { $0.calloriesReference > $1.calloriesReference })
+        return displayedDishes.sorted(by: { ($0.calloriesReference ?? 0.0) > ($1.calloriesReference ?? 0.0) })
       case .nameAsc:
         return displayedDishes.sorted(by: { $0.name > $1.name })
       case .nameDesc:

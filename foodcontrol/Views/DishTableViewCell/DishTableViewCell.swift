@@ -38,7 +38,7 @@ class DishTableViewCell: UITableViewCell {
     nameLabel.textColor = UIColor.label
     nameLabel.font = UIFont.systemFont(ofSize: 17.0, weight: .regular)
     
-    let calloriesValue = viewModel.dish.getValue(for: .callories, weight: viewModel.dish.weight)
+    let calloriesValue = viewModel.dish.getValue(for: .callories, reference: false)
     let calloriesText = NSMutableAttributedString()
     calloriesText.append(NSAttributedString(string: "+\(calloriesValue.roundedString(to: 0))",
                                             attributes: [.font: UIFont.systemFont(ofSize: 20.0, weight: .semibold),
