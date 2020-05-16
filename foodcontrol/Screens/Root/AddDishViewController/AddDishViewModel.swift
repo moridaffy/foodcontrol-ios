@@ -19,11 +19,11 @@ class AddDishViewModel {
   }
   var searchQuery: String = "" {
     didSet {
-      reloadCellModels()
+      searchForDishes()
     }
   }
   
-  private var displayedDishes: [Dish] = [] {
+  private var dishes: [Dish] = [] {
     didSet {
       reloadCellModels()
     }
@@ -34,17 +34,34 @@ class AddDishViewModel {
     }
   }
   
+  private func searchForDishes() {
+    guard !searchQuery.isEmpty else {
+      dishes = []
+      return
+    }
+    
+    APIManager.shared.searchForDishes(byName: searchQuery) { [weak self] (offDishes, error) in
+      if let offDishes = offDishes {
+        self?.dishes = offDishes.compactMap({ Dish(offDish: $0) })
+      } else {
+        self?.view?.showAlertError(error: error,
+                                   desc: NSLocalizedString("Не удалось загрузить список блюд", comment: ""),
+                                   critical: false)
+      }
+    }
+  }
+  
   private func reloadCellModels() {
     var sortedDishes: [Dish] = {
       switch sortingType {
       case .calloriesAsc:
-        return displayedDishes.sorted(by: { ($0.calloriesReference ?? 0.0) < ($1.calloriesReference ?? 0.0) })
+        return dishes.sorted(by: { ($0.calloriesReference ?? 0.0) < ($1.calloriesReference ?? 0.0) })
       case .calloriesDesc:
-        return displayedDishes.sorted(by: { ($0.calloriesReference ?? 0.0) > ($1.calloriesReference ?? 0.0) })
+        return dishes.sorted(by: { ($0.calloriesReference ?? 0.0) > ($1.calloriesReference ?? 0.0) })
       case .nameAsc:
-        return displayedDishes.sorted(by: { $0.name > $1.name })
+        return dishes.sorted(by: { $0.name > $1.name })
       case .nameDesc:
-        return displayedDishes.sorted(by: { $0.name < $1.name })
+        return dishes.sorted(by: { $0.name < $1.name })
       }
     }()
     

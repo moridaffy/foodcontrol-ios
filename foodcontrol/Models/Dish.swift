@@ -13,6 +13,7 @@ class Dish: FirestoreObject {
   // MARK: - Properties
   
   let id: String
+  let offId: String
   var name: String
   var description: String
   
@@ -37,6 +38,7 @@ class Dish: FirestoreObject {
   // MARK: - Initializers
   
   init(id: String = UUID().uuidString,
+       offId: String = "",
        name: String = "",
        imageUrl: URL? = nil,
        description: String? = nil,
@@ -45,6 +47,7 @@ class Dish: FirestoreObject {
        carbohydratesReference: Double? = nil,
        calloriesReference: Double? = nil) {
     self.id = id
+    self.offId = offId
     self.name = name
     self.imageUrl = imageUrl
     self.description = description ?? ""
@@ -52,6 +55,25 @@ class Dish: FirestoreObject {
     self.fatsReference = fatsReference
     self.carbohydratesReference = carbohydratesReference
     self.calloriesReference = calloriesReference
+  }
+  
+  convenience init(offDish: OFFDishCodable) {
+    self.init(offId: offDish.id,
+              name: offDish.name,
+              imageUrl: URL(string: offDish.imageUrl))
+    
+    if let proteins100gValue = Double(offDish.proteinsReference) {
+      self.proteinsReference = proteins100gValue / 100.0
+    }
+    if let fats100gValue = Double(offDish.fatsReference) {
+      self.fatsReference = fats100gValue / 100.0
+    }
+    if let carbohydrates100gValue = Double(offDish.carbohydraresReference) {
+      self.carbohydratesReference = carbohydrates100gValue / 100.0
+    }
+    if let calories100gValue = Double(offDish.caloriesReference) {
+      self.calloriesReference = calories100gValue * 0.23900573614 / 100.0
+    }
   }
   
   // MARK: - FirestoreObject protocol
@@ -69,6 +91,9 @@ class Dish: FirestoreObject {
     ]
     if let weight = weight {
       dictionary["weight"] = weight
+    }
+    if !offId.isEmpty {
+      dictionary["off_id"] = offId
     }
     return dictionary
   }

@@ -10,6 +10,9 @@
 		0C49279D246DEC680036FD2E /* String+Size.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C49279C246DEC680036FD2E /* String+Size.swift */; };
 		0C53B76C246899EC0084B9A6 /* Double+Rounding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C53B76B246899EC0084B9A6 /* Double+Rounding.swift */; };
 		0CAE98782470459D0086D9EB /* UIImage+Resizing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CAE98772470459D0086D9EB /* UIImage+Resizing.swift */; };
+		0CAE987A2470994E0086D9EB /* APIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CAE98792470994E0086D9EB /* APIManager.swift */; };
+		0CAE987C24709B860086D9EB /* OFFDishCodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CAE987B24709B860086D9EB /* OFFDishCodable.swift */; };
+		0CAE988024709D0A0086D9EB /* Bundle+Version.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CAE987F24709D0A0086D9EB /* Bundle+Version.swift */; };
 		0CC825E9243A111400F1A047 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CC825E8243A111400F1A047 /* AppDelegate.swift */; };
 		0CC825F2243A111600F1A047 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0CC825F1243A111600F1A047 /* Assets.xcassets */; };
 		0CC825F5243A111600F1A047 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0CC825F3243A111600F1A047 /* LaunchScreen.storyboard */; };
@@ -76,6 +79,9 @@
 		0C49279C246DEC680036FD2E /* String+Size.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Size.swift"; sourceTree = "<group>"; };
 		0C53B76B246899EC0084B9A6 /* Double+Rounding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Double+Rounding.swift"; sourceTree = "<group>"; };
 		0CAE98772470459D0086D9EB /* UIImage+Resizing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Resizing.swift"; sourceTree = "<group>"; };
+		0CAE98792470994E0086D9EB /* APIManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIManager.swift; sourceTree = "<group>"; };
+		0CAE987B24709B860086D9EB /* OFFDishCodable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OFFDishCodable.swift; sourceTree = "<group>"; };
+		0CAE987F24709D0A0086D9EB /* Bundle+Version.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Bundle+Version.swift"; sourceTree = "<group>"; };
 		0CC825E5243A111400F1A047 /* foodcontrol.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = foodcontrol.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0CC825E8243A111400F1A047 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0CC825F1243A111600F1A047 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -232,6 +238,7 @@
 				0C53B76B246899EC0084B9A6 /* Double+Rounding.swift */,
 				0CF857082469247600E74B62 /* String+Validation.swift */,
 				0C49279C246DEC680036FD2E /* String+Size.swift */,
+				0CAE987F24709D0A0086D9EB /* Bundle+Version.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -277,6 +284,7 @@
 				0CFCAA5024575A01004AB0B1 /* Meal.swift */,
 				0CFCAA5224575A0A004AB0B1 /* Dish.swift */,
 				0CF856F8246915A500E74B62 /* User.swift */,
+				0CAE987B24709B860086D9EB /* OFFDishCodable.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -402,6 +410,7 @@
 				0CFCAA5524575D9F004AB0B1 /* TestInstances.swift */,
 				0CFCAA5724575E7D004AB0B1 /* DateHelper.swift */,
 				0CD6DA2F24640C4800369A67 /* FirebaseManager.swift */,
+				0CAE98792470994E0086D9EB /* APIManager.swift */,
 				0CF856F3246914B200E74B62 /* DBManager.swift */,
 				0CF856FA2469171F00E74B62 /* AuthManager.swift */,
 				0CF856EE2469145600E74B62 /* RootViewControllerManager.swift */,
@@ -560,6 +569,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0CAE987A2470994E0086D9EB /* APIManager.swift in Sources */,
 				0CFCAA41245744F1004AB0B1 /* BigImageTableViewCellModel.swift in Sources */,
 				0CC82614243A1CC900F1A047 /* DishTableViewCell.swift in Sources */,
 				0CC825E9243A111400F1A047 /* AppDelegate.swift in Sources */,
@@ -571,6 +581,7 @@
 				0CF8570C2469286200E74B62 /* ProfileSetupViewController.swift in Sources */,
 				0CAE98782470459D0086D9EB /* UIImage+Resizing.swift in Sources */,
 				0CF85700246917AC00E74B62 /* LoginViewModel.swift in Sources */,
+				0CAE988024709D0A0086D9EB /* Bundle+Version.swift in Sources */,
 				0CC82602243A132F00F1A047 /* MealListViewController.swift in Sources */,
 				0CF8570E2469289000E74B62 /* ProfileSetupViewModel.swift in Sources */,
 				0CFCAA5324575A0A004AB0B1 /* Dish.swift in Sources */,
@@ -590,6 +601,7 @@
 				0CFCAA3824573ECE004AB0B1 /* DishInfoViewController.swift in Sources */,
 				0CF856F4246914B200E74B62 /* DBManager.swift in Sources */,
 				0CFCAA5124575A01004AB0B1 /* Meal.swift in Sources */,
+				0CAE987C24709B860086D9EB /* OFFDishCodable.swift in Sources */,
 				0CFCAA3E245744E0004AB0B1 /* BigImageTableViewCell.swift in Sources */,
 				0CC8262F243A31E900F1A047 /* MapLocationTableViewCell.swift in Sources */,
 				0C49279D246DEC680036FD2E /* String+Size.swift in Sources */,

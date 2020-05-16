@@ -6,6 +6,8 @@ target 'foodcontrol' do
   use_frameworks!
 
   # Pods for foodcontrol
+  pod 'Bagel', '~>  1.3.2'
+
   pod 'Firebase/Analytics'
   pod 'Firebase/Firestore'
   pod 'Firebase/Auth'
