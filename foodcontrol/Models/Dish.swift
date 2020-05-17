@@ -57,23 +57,16 @@ class Dish: FirestoreObject {
     self.calloriesReference = calloriesReference
   }
   
-  convenience init(offDish: OFFDishCodable) {
+  convenience init?(offDish: OFFDishCodable) {
+    guard let name = offDish.name, !name.isEmpty, offDish.nutritions.caloriesReference != nil else { return nil }
+        
     self.init(offId: offDish.id,
-              name: offDish.name,
-              imageUrl: URL(string: offDish.imageUrl))
-    
-    if let proteins100gValue = Double(offDish.proteinsReference) {
-      self.proteinsReference = proteins100gValue / 100.0
-    }
-    if let fats100gValue = Double(offDish.fatsReference) {
-      self.fatsReference = fats100gValue / 100.0
-    }
-    if let carbohydrates100gValue = Double(offDish.carbohydraresReference) {
-      self.carbohydratesReference = carbohydrates100gValue / 100.0
-    }
-    if let calories100gValue = Double(offDish.caloriesReference) {
-      self.calloriesReference = calories100gValue * 0.23900573614 / 100.0
-    }
+              name: name,
+              imageUrl: URL(string: offDish.imageUrl ?? ""),
+              proteinsReference: offDish.nutritions.proteinsReference,
+              fatsReference: offDish.nutritions.fatsReference,
+              carbohydratesReference: offDish.nutritions.carbohydratesReference,
+              calloriesReference: offDish.nutritions.caloriesReference)
   }
   
   // MARK: - FirestoreObject protocol

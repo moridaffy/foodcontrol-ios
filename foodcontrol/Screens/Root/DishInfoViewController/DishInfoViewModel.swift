@@ -6,7 +6,7 @@
 //  Copyright © 2020 MSKR. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
 class DishInfoViewModel {
   
@@ -42,10 +42,13 @@ class DishInfoViewModel {
       ] as [FCTableViewCellModel])
       self.cellModels = cellModels
     } else {
-      var cellModels: [FCTableViewCellModel] = [
-        BigImageTableViewCellModel(url: dish.imageUrl),
-        InfoTextTableViewCellModel(type: .title, text: dish.name)
-      ]
+      var cellModels: [FCTableViewCellModel] = []
+      if let imageUrl = dish.imageUrl {
+        cellModels.append(BigImageTableViewCellModel(url: imageUrl))
+      } else {
+        cellModels.append(BigImageTableViewCellModel(image: UIImage(named: "dish_placeholder")))
+      }
+      cellModels.append(InfoTextTableViewCellModel(type: .title, text: dish.name))
       if !dish.description.isEmpty {
         cellModels.append(InfoTextTableViewCellModel(type: .description, text: dish.description))
       }

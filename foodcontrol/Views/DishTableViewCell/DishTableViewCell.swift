@@ -30,7 +30,12 @@ class DishTableViewCell: UITableViewCell {
     dishImageView.layer.masksToBounds = true
     dishImageView.contentMode = .scaleAspectFill
     dishImageView.backgroundColor = UIColor.additionalGrayLight
-    dishImageView.kf.setImage(with: viewModel.dish.imageUrl, placeholder: nil, options: [.transition(.fade(0.5))])
+    
+    if let imageUrl = viewModel.dish.imageUrl {
+      dishImageView.kf.setImage(with: imageUrl, placeholder: nil, options: [.transition(.fade(0.5))])
+    } else {
+      dishImageView.image = UIImage(named: "dish_placeholder")?.withRenderingMode(.alwaysOriginal)
+    }
   }
   
   private func setupLabels() {

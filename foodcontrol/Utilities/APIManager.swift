@@ -45,18 +45,17 @@ extension APIManager {
     
     case search
     case searchByName(String)
-    
     var string: String {
       switch self {
       case .domain:
-        return "https://world.openfoodfacts.org"
+        return "https://ru.openfoodfacts.org"
       case .json:
         return "&json=true"
         
       case .search:
-        return "/cgi/search.pl?action=process"
+        return "/cgi/search.pl?action=process&search_simple=1"
       case .searchByName(let name):
-        return "&tagtype_0=categories&tag_contains_0=contains&tag_0=\(name.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed) ?? "")"
+        return "&search_terms=\(name.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed) ?? "")"
       }
     }
   }

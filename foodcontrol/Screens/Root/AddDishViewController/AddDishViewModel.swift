@@ -52,7 +52,7 @@ class AddDishViewModel {
   }
   
   private func reloadCellModels() {
-    var sortedDishes: [Dish] = {
+    let sortedDishes: [Dish] = {
       switch sortingType {
       case .calloriesAsc:
         return dishes.sorted(by: { ($0.calloriesReference ?? 0.0) < ($1.calloriesReference ?? 0.0) })
@@ -64,10 +64,6 @@ class AddDishViewModel {
         return dishes.sorted(by: { $0.name < $1.name })
       }
     }()
-    
-    if !searchQuery.isEmpty {
-      sortedDishes = sortedDishes.filter({ $0.name.lowercased().contains(searchQuery.lowercased()) })
-    }
     
     cellModels = [BigButtonTableViewCellModel(type: .createDish)] + sortedDishes.compactMap({ DishTableViewCellModel(dish: $0) })
   }

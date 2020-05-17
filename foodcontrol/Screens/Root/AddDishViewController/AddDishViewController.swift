@@ -58,7 +58,6 @@ class AddDishViewController: UIViewController {
     searchTextField.font = UIFont.systemFont(ofSize: 17.0, weight: .regular)
     searchTextField.backgroundColor = UIColor.clear
     searchTextField.delegate = self
-    searchTextField.addTarget(self, action: #selector(textFieldEditingChanged), for: .editingChanged)
     
     sortingContainerView.backgroundColor = UIColor.additionalGrayLight
     sortingContainerView.layer.cornerRadius = 8.0
@@ -105,10 +104,6 @@ class AddDishViewController: UIViewController {
       actionSheet.dismiss(animated: true, completion: nil)
     }))
     present(actionSheet, animated: true, completion: nil)
-  }
-  
-  @objc private func textFieldEditingChanged() {
-    viewModel.searchQuery = searchTextField.text ?? ""
   }
   
   func reloadTableView() {
@@ -182,6 +177,9 @@ extension AddDishViewController: UITableViewDataSource {
 
 extension AddDishViewController: UITextFieldDelegate {
   func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+    if textField == searchTextField {
+      viewModel.searchQuery = textField.text ?? ""
+    }
     textField.endEditing(true)
     return false
   }
