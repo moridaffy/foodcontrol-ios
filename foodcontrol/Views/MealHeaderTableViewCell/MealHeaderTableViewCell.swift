@@ -43,7 +43,7 @@ class MealHeaderTableViewCell: UITableViewCell {
                                                     .foregroundColor: UIColor.additionalGrayDark]))
     dateLabel.attributedText = dateText
     
-    calloriesLabel.text = "+300"
+    calloriesLabel.text = "+\(viewModel.meal.totalCallories)"
     calloriesLabel.textColor = UIColor.label
     calloriesLabel.font = UIFont.systemFont(ofSize: 26.0, weight: .semibold)
   }

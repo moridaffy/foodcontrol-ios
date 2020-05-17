@@ -25,6 +25,8 @@ class CreateMealViewController: UIViewController {
     setupNavigationBar()
     setupTableView()
     setupBottomButton()
+    
+    viewModel.view = self
   }
   
   private func setupNavigationBar() {
@@ -74,6 +76,10 @@ class CreateMealViewController: UIViewController {
     guard let dishInfoViewController = UIStoryboard(name: "Root", bundle: nil).instantiateViewController(withIdentifier: "DishInfoViewController") as? DishInfoViewController else { return }
     dishInfoViewController.setup(viewModel: DishInfoViewModel(dish: dish), delegate: nil)
     navigationController?.pushViewController(dishInfoViewController, animated: true)
+  }
+  
+  func reloadTableView() {
+    tableView.reloadData()
   }
 }
 

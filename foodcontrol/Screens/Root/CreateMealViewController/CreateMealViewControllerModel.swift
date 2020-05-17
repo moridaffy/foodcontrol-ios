@@ -10,8 +10,21 @@ import Foundation
 import CoreLocation
 
 class CreateMealViewControllerModel {
-  let cellModels: [FCTableViewCellModel] = [
-    BigButtonTableViewCellModel(type: .addDish),
-    MapLocationTableViewCellModel(coordinate: CLLocationCoordinate2D(latitude: 55.766041, longitude: 37.684551))
-  ]
+  
+  let meal: Meal = Meal(dishes: [])
+  private(set) var cellModels: [FCTableViewCellModel] {
+    didSet {
+      view?.reloadTableView()
+    }
+  }
+  
+  weak var view: CreateMealViewController?
+  
+  init() {
+    cellModels = [
+      MealHeaderTableViewCellModel(meal: meal),
+      BigButtonTableViewCellModel(type: .addDish),
+      MapLocationTableViewCellModel(coordinate: CLLocationCoordinate2D(latitude: 55.766041, longitude: 37.684551))
+    ]
+  }
 }
