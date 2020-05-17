@@ -72,6 +72,26 @@ class FirebaseManager {
       }
     }
   }
+  
+  func loadObjects(where field: String, equals filterValue: Any, path: FirestorePath, completionHandler: @escaping ([[String: Any]]?, Error?) -> Void) {
+    firestore.collection(path.rawValue).whereField(field, isEqualTo: filterValue).getDocuments { (query, error) in
+      if let documentDictionaries = query?.documents.compactMap({ $0.data() }) {
+        completionHandler(documentDictionaries, nil)
+      } else {
+        completionHandler(nil, error)
+      }
+    }
+  }
+  
+  func loadObjects(path: FirestorePath, completionHandler: @escaping ([[String: Any]]?, Error?) -> Void) {
+    firestore.collection(path.rawValue).getDocuments { (query, error) in
+      if let documentDictionaries = query?.documents.compactMap({ $0.data() }) {
+        completionHandler(documentDictionaries, nil)
+      } else {
+        completionHandler(nil, error)
+      }
+    }
+  }
 
   func uploadFile(_ data: Data, path: StoragePath, completionHandler: @escaping (URL?, Error?) -> Void) {
     let rootReference = storage.reference()

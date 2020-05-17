@@ -40,9 +40,21 @@ class AddDishViewModel {
       return
     }
     
-    APIManager.shared.searchForDishes(byName: searchQuery) { [weak self] (offDishes, error) in
-      if let offDishes = offDishes {
-        self?.dishes = offDishes.compactMap({ Dish(offDish: $0) })
+//    APIManager.shared.searchForDishes(byName: searchQuery) { [weak self] (offDishes, error) in
+//      if let offDishes = offDishes {
+//        self?.dishes = offDishes.compactMap({ Dish(offDish: $0) })
+//      } else {
+//        self?.view?.showAlertError(error: error,
+//                                   desc: NSLocalizedString("Не удалось загрузить список блюд", comment: ""),
+//                                   critical: false)
+//      }
+//    }
+    
+    FirebaseManager.shared.loadObjects(path: .dish) { [weak self] (dishDictionaries, error) in
+      if let dishDictionaries = dishDictionaries {
+        let dishes = dishDictionaries.compactMap({ Dish(dictionary: $0) })
+        // TODO: переводить все в lowercased
+        self?.dishes = dishes.filter({ $0.name.contains(self?.searchQuery ?? "") })
       } else {
         self?.view?.showAlertError(error: error,
                                    desc: NSLocalizedString("Не удалось загрузить список блюд", comment: ""),

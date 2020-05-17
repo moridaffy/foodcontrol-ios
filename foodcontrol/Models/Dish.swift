@@ -13,7 +13,7 @@ class Dish: FirestoreObject {
   // MARK: - Properties
   
   let id: String
-  let offId: String
+  let offId: String?
   var name: String
   var description: String
   
@@ -38,7 +38,7 @@ class Dish: FirestoreObject {
   // MARK: - Initializers
   
   init(id: String = UUID().uuidString,
-       offId: String = "",
+       offId: String? = nil,
        name: String = "",
        imageUrl: URL? = nil,
        description: String? = nil,
@@ -69,6 +69,25 @@ class Dish: FirestoreObject {
               calloriesReference: offDish.nutritions.caloriesReference)
   }
   
+  convenience init?(dictionary: [String: Any]) {
+    guard let id = dictionary["uid"] as? String,
+      let name = dictionary["name"] as? String,
+      let proteinsReference = dictionary["proteins_reference"] as? Double,
+      let fatsReference = dictionary["fats_reference"] as? Double,
+      let carbohydratesReference = dictionary["carbohydrates_reference"] as? Double,
+      let calloriesReference = dictionary["callories_reference"] as? Double else { return nil }
+    
+    self.init(id: id,
+              offId: dictionary["off_id"] as? String,
+              name: name,
+              imageUrl: URL(string: dictionary["image_url"] as? String ?? ""),
+              description: dictionary["description"] as? String,
+              proteinsReference: proteinsReference,
+              fatsReference: fatsReference,
+              carbohydratesReference: carbohydratesReference,
+              calloriesReference: calloriesReference)
+  }
+  
   // MARK: - FirestoreObject protocol
   
   func toDictionary() -> [String : Any] {
@@ -85,7 +104,7 @@ class Dish: FirestoreObject {
     if let weight = weight {
       dictionary["weight"] = weight
     }
-    if !offId.isEmpty {
+    if let offId = self.offId, !offId.isEmpty {
       dictionary["off_id"] = offId
     }
     return dictionary
