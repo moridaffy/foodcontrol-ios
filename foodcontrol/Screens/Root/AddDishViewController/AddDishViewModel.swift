@@ -40,27 +40,60 @@ class AddDishViewModel {
       return
     }
     
-//    APIManager.shared.searchForDishes(byName: searchQuery) { [weak self] (offDishes, error) in
-//      if let offDishes = offDishes {
-//        self?.dishes = offDishes.compactMap({ Dish(offDish: $0) })
-//      } else {
-//        self?.view?.showAlertError(error: error,
-//                                   desc: NSLocalizedString("Не удалось загрузить список блюд", comment: ""),
-//                                   critical: false)
-//      }
-//    }
-    
-    FirebaseManager.shared.loadObjects(path: .dish) { [weak self] (dishDictionaries, error) in
-      if let dishDictionaries = dishDictionaries {
-        let dishes = dishDictionaries.compactMap({ Dish(dictionary: $0) })
-        // TODO: переводить все в lowercased
-        self?.dishes = dishes.filter({ $0.name.contains(self?.searchQuery ?? "") })
-      } else {
+    getOffDishes { [weak self] (offDishes, error) in
+      guard let offDishes = offDishes else {
         self?.view?.showAlertError(error: error,
-                                   desc: NSLocalizedString("Не удалось загрузить список блюд", comment: ""),
+                                   desc: NSLocalizedString("Не удалось загрузить список блюд", comment: "") + ": OFF",
                                    critical: false)
+        return
+      }
+      
+      self?.getFbDishes(completionHandler: { (fbDishes, error) in
+        guard let fbDishes = fbDishes else {
+          self?.view?.showAlertError(error: error,
+                                     desc: NSLocalizedString("Не удалось загрузить список блюд", comment: "") + ": FB",
+                                     critical: false)
+          return
+        }
+        
+        self?.combineDishes(fbDishes: fbDishes, offDishes: offDishes)
+      })
+    }
+  }
+  
+  private func getOffDishes(completionHandler: @escaping ([Dish]?, Error?) -> Void) {
+    APIManager.shared.searchForDishes(byName: searchQuery) { (offDishes, error) in
+      if let offDishes = offDishes {
+        let dishes = offDishes.compactMap({ Dish(offDish: $0) })
+        completionHandler(dishes, nil)
+      } else {
+        completionHandler(nil, error)
       }
     }
+  }
+  
+  private func getFbDishes(completionHandler: @escaping ([Dish]?, Error?) -> Void) {
+    FirebaseManager.shared.loadObjects(path: .dish) { (dishDictionaries, error) in
+      if let dishDictionaries = dishDictionaries {
+        let dishes = dishDictionaries
+          .compactMap({ Dish(dictionary: $0) })
+          .filter({ $0.name.lowercased().contains(self.searchQuery.lowercased()) })
+        completionHandler(dishes, nil)
+      } else {
+        completionHandler(nil, error)
+      }
+    }
+  }
+  
+  private func combineDishes(fbDishes: [Dish], offDishes: [Dish]) {
+    var dishes: [Dish] = []
+    for offDish in offDishes {
+      if !fbDishes.contains(where: { $0.offId == offDish.id }) {
+        dishes.append(offDish)
+      }
+    }
+    dishes.append(contentsOf: fbDishes)
+    self.dishes = dishes
   }
   
   private func reloadCellModels() {

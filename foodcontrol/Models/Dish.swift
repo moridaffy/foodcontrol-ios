@@ -101,9 +101,6 @@ class Dish: FirestoreObject {
       "callories_reference": calloriesReference ?? 0.0,
       "image_url": imageUrl?.absoluteString ?? ""
     ]
-    if let weight = weight {
-      dictionary["weight"] = weight
-    }
     if let offId = self.offId, !offId.isEmpty {
       dictionary["off_id"] = offId
     }

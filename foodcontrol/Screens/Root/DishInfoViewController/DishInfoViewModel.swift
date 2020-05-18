@@ -52,10 +52,10 @@ class DishInfoViewModel {
       if !dish.description.isEmpty {
         cellModels.append(InfoTextTableViewCellModel(type: .description, text: dish.description))
       }
-      cellModels.append(contentsOf: [
-        InfoTextTableViewCellModel(type: .size, text: "\(dish.weight ?? 100)"),
-        InfoNutritionTableViewCellModel(dish: dish)
-      ] as [FCTableViewCellModel])
+      if let weight = dish.weight {
+        cellModels.append(InfoTextTableViewCellModel(type: .size, text: "\(weight.roundedString(to: 0))"))
+      }
+      cellModels.append(InfoNutritionTableViewCellModel(dish: dish))
       self.cellModels = cellModels
     }
   }
