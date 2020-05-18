@@ -108,6 +108,58 @@ class FirebaseManager {
 }
 
 extension FirebaseManager {
+  func getUsersMeals(userId: String? = nil, completionHandler: @escaping ([Meal]?, Error?) -> Void) {
+    guard let userId = userId ?? AuthManager.shared.currentUser?.id else {
+      completionHandler(nil, nil)
+      return
+    }
+    
+    loadObjects(where: "user_id", equals: userId, path: .meal) { (mealDictionaries, error) in
+      if let mealDictionaries = mealDictionaries {
+        var meals: [Meal] = []
+        var pendingMeals = mealDictionaries.count {
+          didSet {
+            if pendingMeals == 0 {
+              completionHandler(meals, nil)
+            }
+          }
+        }
+        
+        for mealDictionary in mealDictionaries {
+          if let dishIdsArray = mealDictionary["dish_ids"] as? [String] {
+            var dishes: [Dish] = []
+            var pendingDishes = dishIdsArray.count {
+              didSet {
+                if pendingDishes == 0 {
+                  if let meal = Meal(dictionary: mealDictionary) {
+                    meal.dishes = dishes
+                    meals.append(meal)
+                  }
+                  pendingMeals -= 1
+                }
+              }
+            }
+            
+            for dishId in dishIdsArray {
+              self.loadObject(id: dishId, path: .dish) { (dishDictionary, error) in
+                if let dish = Dish(dictionary: dishDictionary ?? [:]) {
+                  dishes.append(dish)
+                }
+                pendingDishes -= 1
+              }
+            }
+          } else {
+            pendingMeals -= 1
+          }
+        }
+      } else {
+        completionHandler(nil, error)
+      }
+    }
+  }
+}
+
+extension FirebaseManager {
   enum FirestorePath: String {
     case userData = "user"
     case dish = "dish"

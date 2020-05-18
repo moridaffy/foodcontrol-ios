@@ -11,8 +11,9 @@ import CoreLocation
 class Meal: FirestoreObject {
   let id: String
   let dateValue: String
-  let coordinates: CLLocationCoordinate2D?
+  var coordinates: CLLocationCoordinate2D?
   var dishes: [Dish]
+  var userId: String
   
   var date: Date {
     return DateHelper().getDate(from: dateValue, ofFormat: .full) ?? Date()
@@ -26,13 +27,35 @@ class Meal: FirestoreObject {
   // MARK: - Initializers
   
   init(id: String = UUID().uuidString,
+       userId: String? = nil,
        dateValue: String = DateHelper().getString(from: Date(), toFormat: .full),
        coordinates: CLLocationCoordinate2D? = nil,
-       dishes: [Dish]) {
+       dishes: [Dish] = []) {
     self.id = id
+    self.userId = userId ?? AuthManager.shared.currentUser?.id ?? "NO_USER_ID"
     self.dateValue = dateValue
     self.coordinates = coordinates
     self.dishes = dishes
+  }
+  
+  convenience init?(dictionary: [String: Any]) {
+    guard let id = dictionary["uid"] as? String,
+      let dateValue = dictionary["dateValue"] as? String,
+      let userId = dictionary["user_id"] as? String else { return nil }
+    
+    let coordinates: CLLocationCoordinate2D? = {
+      if let latitude = dictionary["coordinates_lat"] as? Double,
+        let longitude = dictionary["coordinates_lon"] as? Double {
+        return CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
+      } else {
+        return nil
+      }
+    }()
+    
+    self.init(id: id,
+              userId: userId,
+              dateValue: dateValue,
+              coordinates: coordinates)
   }
   
   // MARK: - FirestoreObject protocol

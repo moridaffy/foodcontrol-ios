@@ -17,14 +17,19 @@ class MealListViewController: UIViewController {
   @IBOutlet private weak var addMealButtonIconImageView: UIImageView!
   
   private let viewModel = MealListViewModel()
+  private weak var refresher: UIRefreshControl?
   private weak var addMealButtonTapRecognizer: UITapGestureRecognizer?
   
   override func viewDidLoad() {
     super.viewDidLoad()
     
+    viewModel.view = self
+    
     setupNavigationBar()
     setupTableView()
     setupBottomButton()
+    
+    pulledToRefresh()
   }
   
   private func setupNavigationBar() {
@@ -47,6 +52,11 @@ class MealListViewController: UIViewController {
     tableView.register(UINib(nibName: "DishTableViewCell", bundle: nil), forCellReuseIdentifier: String(describing: DishTableViewCell.self))
     tableView.delegate = self
     tableView.dataSource = self
+    
+    let refresher = UIRefreshControl()
+    refresher.addTarget(self, action: #selector(pulledToRefresh), for: .valueChanged)
+    tableView.refreshControl = refresher
+    self.refresher = refresher
     
     fadeImageView.image = UIImage(named: "fade_bottomToTop")
     fadeImageView.contentMode = .scaleToFill
@@ -76,6 +86,17 @@ class MealListViewController: UIViewController {
     navigationController?.pushViewController(createMealViewController, animated: true)
   }
   
+  @objc private func pulledToRefresh() {
+    viewModel.reloadMeals { [weak self] (error) in
+      self?.refresher?.endRefreshing()
+      if let error = error {
+        self?.showAlertError(error: error,
+                             desc: NSLocalizedString("Не удалось загрузить список приемов пищи", comment: ""),
+                             critical: false)
+      }
+    }
+  }
+  
   private func openMealViewController(for meal: Meal) {
     // TODO: открывать DishInfoViewController
   }
@@ -84,6 +105,10 @@ class MealListViewController: UIViewController {
     guard let dishInfoViewController = UIStoryboard(name: "Root", bundle: nil).instantiateViewController(withIdentifier: "DishInfoViewController") as? DishInfoViewController else { return }
     dishInfoViewController.setup(viewModel: DishInfoViewModel(dish: dish), delegate: nil)
     navigationController?.pushViewController(dishInfoViewController, animated: true)
+  }
+  
+  func reloadTableView() {
+    tableView.reloadData()
   }
 }
 

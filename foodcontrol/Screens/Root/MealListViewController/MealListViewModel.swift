@@ -10,17 +10,39 @@ import Foundation
 
 class MealListViewModel {
   
-  private(set) var cellModels: [FCTableViewCellModel] = []
+  private(set) var meals: [Meal] = [] {
+    didSet {
+      reloadCellModels()
+    }
+  }
+  private(set) var cellModels: [FCTableViewCellModel] = [] {
+    didSet {
+      view?.reloadTableView()
+    }
+  }
   
-  private func refreshCellModels(for meals: [Meal]) {
+  weak var view: MealListViewController?
+  
+  private func reloadCellModels() {
     var cellModels: [FCTableViewCellModel] = []
-    for meal in meals {
+    for meal in meals.sorted(by: { $0.date > $1.date }) {
       cellModels.append(MealHeaderTableViewCellModel(meal: meal))
       for dish in meal.dishes {
         cellModels.append(DishTableViewCellModel(dish: dish))
       }
     }
     self.cellModels = cellModels
+  }
+  
+  func reloadMeals(completionHandler: @escaping (Error?) -> Void) {
+    FirebaseManager.shared.getUsersMeals { [weak self] (meals, error) in
+      if let meals = meals {
+        self?.meals = meals
+        completionHandler(nil)
+      } else {
+        completionHandler(error)
+      }
+    }
   }
   
 }
