@@ -111,6 +111,7 @@ extension FirebaseManager {
   enum FirestorePath: String {
     case userData = "user"
     case dish = "dish"
+    case meal = "meal"
   }
   
   enum StoragePath {

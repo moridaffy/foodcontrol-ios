@@ -146,8 +146,12 @@ class DishInfoViewController: UIViewController {
   }
   
   private func dismissViewController(addedDish dish: Dish) {
-    delegate?.didAddToMeal(dish: dish)
-    navigationController?.popViewController(animated: true)
+    if let delegate = delegate, let mealViewController = navigationController?.viewControllers.first(where: { $0 is CreateMealViewController }) {
+      delegate.didAddToMeal(dish: dish)
+      navigationController?.popToViewController(mealViewController, animated: true)
+    } else {
+      navigationController?.popViewController(animated: true)
+    }
   }
   
   private func presentImagePickerSheet() {

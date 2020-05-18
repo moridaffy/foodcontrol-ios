@@ -8,11 +8,11 @@
 
 import CoreLocation
 
-class Meal {
+class Meal: FirestoreObject {
   let id: String
   let dateValue: String
   let coordinates: CLLocationCoordinate2D?
-  let dishes: [Dish]
+  var dishes: [Dish]
   
   var date: Date {
     return DateHelper().getDate(from: dateValue, ofFormat: .full) ?? Date()
@@ -23,6 +23,8 @@ class Meal {
     return totalCallories
   }
   
+  // MARK: - Initializers
+  
   init(id: String = UUID().uuidString,
        dateValue: String = DateHelper().getString(from: Date(), toFormat: .full),
        coordinates: CLLocationCoordinate2D? = nil,
@@ -31,5 +33,31 @@ class Meal {
     self.dateValue = dateValue
     self.coordinates = coordinates
     self.dishes = dishes
+  }
+  
+  // MARK: - FirestoreObject protocol
+  
+  func toDictionary() -> [String : Any] {
+    var dictionary: [String: Any] = [
+      "uid": id,
+      "dateValue": dateValue,
+      "dish_ids": dishes.compactMap({ $0.id })
+    ]
+    if let coordinates = coordinates {
+      dictionary["coordinates_lat"] = coordinates.latitude
+      dictionary["coordinates_lon"] = coordinates.longitude
+    }
+    if let userId = AuthManager.shared.currentUser?.id {
+      dictionary["user_id"] = userId
+    }
+    return dictionary
+  }
+  
+  func getId() -> String {
+    return id
+  }
+  
+  func getPath() -> FirebaseManager.FirestorePath {
+    return FirebaseManager.FirestorePath.meal
   }
 }

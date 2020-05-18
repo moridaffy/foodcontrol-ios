@@ -18,6 +18,7 @@ class CreateMealViewController: UIViewController {
   @IBOutlet private weak var addMealButtonIconImageView: UIImageView!
   
   private let viewModel = CreateMealViewControllerModel()
+  private weak var addMealButtonTapRecognizer: UITapGestureRecognizer?
   
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -61,14 +62,27 @@ class CreateMealViewController: UIViewController {
     addMealButtonTitleLabel.font = UIFont.systemFont(ofSize: 17.0, weight: .semibold)
     addMealButtonIconImageView.image = UIImage(systemName: "plus")?.withRenderingMode(.alwaysTemplate)
     addMealButtonIconImageView.tintColor = UIColor.white
+    
+    let addMealButtonTapRecognizer = UITapGestureRecognizer(target: self, action: #selector(addMealButtonTapped))
+    addMealButtonContainerView.addGestureRecognizer(addMealButtonTapRecognizer)
+    self.addMealButtonTapRecognizer = addMealButtonTapRecognizer
   }
   
   @objc private func addMealButtonTapped() {
-    navigationController?.popViewController(animated: true)
+    viewModel.createMeal { [weak self] (error) in
+      if let error = error {
+        self?.showAlertError(error: error,
+                             desc: NSLocalizedString("Не удалось создать прием пищи", comment: ""),
+                             critical: false)
+      } else {
+        self?.navigationController?.popViewController(animated: true)
+      }
+    }
   }
   
   private func openAddDishViewController() {
     guard let addDishViewController = UIStoryboard(name: "Root", bundle: nil).instantiateViewController(withIdentifier: "AddDishViewController") as? AddDishViewController else { return }
+    addDishViewController.setup(delegate: self)
     navigationController?.pushViewController(addDishViewController, animated: true)
   }
   
@@ -80,6 +94,12 @@ class CreateMealViewController: UIViewController {
   
   func reloadTableView() {
     tableView.reloadData()
+  }
+}
+
+extension CreateMealViewController: AddDishViewControllerDelegate {
+  func didAddDish(_ dish: Dish) {
+    viewModel.didAddDish(dish)
   }
 }
 

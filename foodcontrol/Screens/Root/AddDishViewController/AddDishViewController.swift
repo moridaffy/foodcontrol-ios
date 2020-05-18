@@ -9,7 +9,7 @@
 import UIKit
 
 protocol AddDishViewControllerDelegate: class {
-  func didAddDish(_ dish: String)
+  func didAddDish(_ dish: Dish)
 }
 
 class AddDishViewController: UIViewController {
@@ -23,7 +23,7 @@ class AddDishViewController: UIViewController {
   @IBOutlet private weak var tableView: UITableView!
   
   private let viewModel = AddDishViewModel()
-  weak var delegate: AddDishViewControllerDelegate?
+  private weak var delegate: AddDishViewControllerDelegate?
   
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -37,6 +37,10 @@ class AddDishViewController: UIViewController {
     super.viewWillAppear(animated)
     
     viewModel.view = self
+  }
+  
+  func setup(delegate: AddDishViewControllerDelegate) {
+    self.delegate = delegate
   }
   
   private func setupNavigationBar() {
@@ -114,7 +118,7 @@ class AddDishViewController: UIViewController {
 
 extension AddDishViewController: DishInfoViewControllerDelegate {
   func didAddToMeal(dish: Dish) {
-    // TODO: добавление этого блюда в прием пищи
+    delegate?.didAddDish(dish)
   }
 }
 

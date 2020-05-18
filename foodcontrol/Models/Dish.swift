@@ -88,6 +88,22 @@ class Dish: FirestoreObject {
               calloriesReference: calloriesReference)
   }
   
+  // MARK: - Methods
+  
+  func getValue(for type: ValueType, reference: Bool) -> Double {
+    let weight = reference ? 100.0 : (self.weight ?? 0.0)
+    switch type {
+    case .proteins:
+      return proteinsReference ?? 0.0 * weight
+    case .fats:
+      return fatsReference ?? 0.0 * weight
+    case .carbohydrates:
+      return carbohydratesReference ?? 0.0 * weight
+    case .callories:
+      return calloriesReference ?? 0.0 * weight
+    }
+  }
+  
   // MARK: - FirestoreObject protocol
   
   func toDictionary() -> [String : Any] {
@@ -104,6 +120,9 @@ class Dish: FirestoreObject {
     if let offId = self.offId, !offId.isEmpty {
       dictionary["off_id"] = offId
     }
+    if let userId = AuthManager.shared.currentUser?.id {
+      dictionary["user_id"] = userId
+    }
     return dictionary
   }
   
@@ -113,20 +132,6 @@ class Dish: FirestoreObject {
   
   func getPath() -> FirebaseManager.FirestorePath {
     return FirebaseManager.FirestorePath.dish
-  }
-  
-  func getValue(for type: ValueType, reference: Bool) -> Double {
-    let weight = reference ? 100.0 : (self.weight ?? 0.0)
-    switch type {
-    case .proteins:
-      return proteinsReference ?? 0.0 * weight
-    case .fats:
-      return fatsReference ?? 0.0 * weight
-    case .carbohydrates:
-      return carbohydratesReference ?? 0.0 * weight
-    case .callories:
-      return calloriesReference ?? 0.0 * weight
-    }
   }
 }
 
