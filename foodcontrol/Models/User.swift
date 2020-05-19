@@ -21,6 +21,7 @@ class User: Object, FirestoreObject {
   @objc dynamic var activityValue: Int = 0
   @objc dynamic var sexValue: Int = 0
   @objc dynamic var weight: Double = 0.0
+  @objc dynamic var dailyCaloryAmount: Double = 0.0
   
   @objc dynamic var vkId: String = ""
   
@@ -37,7 +38,10 @@ class User: Object, FirestoreObject {
     return !vkId.isEmpty
   }
   var isSetup: Bool {
-    return weightPlan != .unknown && activity != .unknown && sex != .unknown
+    return weightPlan != .unknown
+      && activity != .unknown
+      && sex != .unknown
+      && dailyCaloryAmount != 0.0
   }
   
   // MARK: - Initializers
@@ -49,6 +53,7 @@ class User: Object, FirestoreObject {
                    activity: ActivityType? = nil,
                    sex: SexType? = nil,
                    weight: Double? = nil,
+                   dailyCaloryAmount: Double? = nil,
                    vkId: String? = nil) {
     self.init()
     self.id = id
@@ -58,6 +63,7 @@ class User: Object, FirestoreObject {
     self.activityValue = activity?.rawValue ?? 0
     self.sexValue = sex?.rawValue ?? 0
     self.weight = weight ?? 0.0
+    self.dailyCaloryAmount = dailyCaloryAmount ?? 0.0
     self.vkId = vkId ?? ""
   }
   
@@ -77,9 +83,10 @@ class User: Object, FirestoreObject {
     var dictionary: [String: Any] = [
       "uid": id,
       "username": username,
-      "weightPlanValue": weightPlanValue,
-      "activityValue": activityValue,
-      "sexValue": sexValue
+      "weight_plan_value": weightPlanValue,
+      "activity_value": activityValue,
+      "sex_value": sexValue,
+      "daily_calory_amount": dailyCaloryAmount
     ]
     if weight != 0.0 {
       dictionary["weight"] = weight
@@ -102,14 +109,17 @@ class User: Object, FirestoreObject {
     if let username = dictionary["username"] as? String {
       self.username = username
     }
-    if let weightPlanValue = dictionary["weightPlanValue"] as? Int {
+    if let weightPlanValue = dictionary["weight_plan_value"] as? Int {
       self.weightPlanValue = weightPlanValue
     }
-    if let activityValue = dictionary["activityValue"] as? Int {
+    if let activityValue = dictionary["activity_value"] as? Int {
       self.activityValue = activityValue
     }
-    if let sexValue = dictionary["sexValue"] as? Int {
+    if let sexValue = dictionary["sex_value"] as? Int {
       self.sexValue = sexValue
+    }
+    if let dailyCaloryAmount = dictionary["daily_calory_amount"] as? Double {
+      self.dailyCaloryAmount = dailyCaloryAmount
     }
   }
 }

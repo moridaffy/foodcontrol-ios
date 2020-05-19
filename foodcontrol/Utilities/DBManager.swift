@@ -97,7 +97,13 @@ class DBManager {
     }
   }
   
-  func updateUser(user: User, weightPlanValue: Int? = nil, activityValue: Int? = nil, sexValue: Int? = nil, weight: Double? = nil, complationHandler: ((Bool) -> Void)? = nil) {
+  func updateUser(user: User,
+                  weightPlanValue: Int? = nil,
+                  activityValue: Int? = nil,
+                  sexValue: Int? = nil,
+                  weight: Double? = nil,
+                  dailyCaloryAmount: Double? = nil,
+                  complationHandler: ((Bool) -> Void)? = nil) {
     dbQueue.sync {
       do {
         let realm = try Realm()
@@ -113,6 +119,9 @@ class DBManager {
           }
           if let weight = weight {
             user.weight = weight
+          }
+          if let dailyCaloryAmount = dailyCaloryAmount {
+            user.dailyCaloryAmount = dailyCaloryAmount
           }
           try realm.commitWrite()
           complationHandler?(true)
