@@ -40,7 +40,7 @@ class Meal: FirestoreObject {
   
   convenience init?(dictionary: [String: Any]) {
     guard let id = dictionary["uid"] as? String,
-      let dateValue = dictionary["dateValue"] as? String,
+      let dateValue = dictionary["date_value"] as? String,
       let userId = dictionary["user_id"] as? String else { return nil }
     
     let coordinates: CLLocationCoordinate2D? = {
@@ -63,8 +63,8 @@ class Meal: FirestoreObject {
   func toDictionary() -> [String : Any] {
     var dictionary: [String: Any] = [
       "uid": id,
-      "dateValue": dateValue,
-      "dish_ids": dishes.compactMap({ $0.id })
+      "date_value": dateValue,
+      "dishes_json": MealDishArrayCodable.getJsonString(dishes: dishes)
     ]
     if let coordinates = coordinates {
       dictionary["coordinates_lat"] = coordinates.latitude
@@ -82,5 +82,37 @@ class Meal: FirestoreObject {
   
   func getPath() -> FirebaseManager.FirestorePath {
     return FirebaseManager.FirestorePath.meal
+  }
+}
+
+struct MealDishArrayCodable: Codable {
+  let dishes: [MealDishCodable]
+  
+  static func getJsonString(dishes: [Dish]) -> String {
+    let dishesCodable = dishes.compactMap({ MealDishCodable(dish: $0) })
+    let codable = MealDishArrayCodable(dishes: dishesCodable)
+    guard let jsonData = try? JSONEncoder().encode(codable) else { fatalError("can't serialize json") }
+    guard let jsonString = String(data: jsonData, encoding: .utf8) else { fatalError("can't get json string from jsonData") }
+    return jsonString
+  }
+  
+  init(dishes: [MealDishCodable]) {
+    self.dishes = dishes
+  }
+  
+  init?(jsonString: String) {
+    guard let jsonData = jsonString.data(using: .utf8),
+      let codable = try? JSONDecoder().decode(MealDishArrayCodable.self, from: jsonData) else { return nil }
+    self.dishes = codable.dishes
+  }
+}
+
+struct MealDishCodable: Codable {
+  let dishId: String
+  let weight: Double
+  
+  init(dish: Dish) {
+    self.dishId = dish.id
+    self.weight = dish.weight ?? 0.0
   }
 }

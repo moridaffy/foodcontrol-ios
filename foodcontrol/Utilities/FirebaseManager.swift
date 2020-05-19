@@ -125,30 +125,40 @@ extension FirebaseManager {
           }
         }
         
+        print("🔥 received \(mealDictionaries.count) meal dictionaries")
         for mealDictionary in mealDictionaries {
-          if let dishIdsArray = mealDictionary["dish_ids"] as? [String] {
+          if let dishesJsonString = mealDictionary["dishes_json"] as? String,
+            let dishesArrayCodable = MealDishArrayCodable(jsonString: dishesJsonString) {
+            
+            print("🔥 received \(dishesArrayCodable.dishes.count) dishes for \((mealDictionary["uid"] as? String ?? "unknown id"))")
             var dishes: [Dish] = []
-            var pendingDishes = dishIdsArray.count {
+            var pendingDishes = dishesArrayCodable.dishes.count {
               didSet {
                 if pendingDishes == 0 {
                   if let meal = Meal(dictionary: mealDictionary) {
                     meal.dishes = dishes
                     meals.append(meal)
+                  } else {
+                    print("🔥 unable to parse meal \(mealDictionary["uid"] as? String ?? "unknown id")")
                   }
                   pendingMeals -= 1
                 }
               }
             }
             
-            for dishId in dishIdsArray {
-              self.loadObject(id: dishId, path: .dish) { (dishDictionary, error) in
+            for dishCodable in dishesArrayCodable.dishes {
+              self.loadObject(id: dishCodable.dishId, path: .dish) { (dishDictionary, error) in
                 if let dish = Dish(dictionary: dishDictionary ?? [:]) {
+                  dish.weight = dishCodable.weight
                   dishes.append(dish)
+                } else {
+                  print("🔥 unable to parse dish \(dishCodable.dishId) for \(mealDictionary["uid"] as? String ?? "unknown id")")
                 }
                 pendingDishes -= 1
               }
             }
           } else {
+            print("🔥 unable to parse dishesJsonString for \(mealDictionary["uid"] as? String ?? "unknown id")")
             pendingMeals -= 1
           }
         }

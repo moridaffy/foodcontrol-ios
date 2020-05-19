@@ -54,7 +54,7 @@ class DishTableViewCell: UITableViewCell {
     calloriesLabel.attributedText = calloriesText
     
     if let weightValue = viewModel.dish.weight {
-      volumeLabel.text = "~\(weightValue.roundedString(to: 0))"
+      volumeLabel.text = "~\(weightValue.roundedString(to: 0))г"
       volumeLabel.textColor = UIColor.additionalGrayDark
       volumeLabel.font = UIFont.systemFont(ofSize: 15.0, weight: .regular)
     } else {
