@@ -17,6 +17,7 @@ class MealListViewController: UIViewController {
   @IBOutlet private weak var addMealButtonIconImageView: UIImageView!
   
   private let viewModel = MealListViewModel()
+  private weak var activityIndicator: UIActivityIndicatorView?
   private weak var refresher: UIRefreshControl?
   private weak var addMealButtonTapRecognizer: UITapGestureRecognizer?
   
@@ -38,6 +39,12 @@ class MealListViewController: UIViewController {
   
   private func setupNavigationBar() {
     title = NSLocalizedString("Прием пищи", comment: "")
+    
+    let activityIndicator = UIActivityIndicatorView(style: .medium)
+    activityIndicator.startAnimating()
+    let activityIndicatorItem = UIBarButtonItem(customView: activityIndicator)
+    navigationItem.leftBarButtonItem = activityIndicatorItem
+    self.activityIndicator = activityIndicator
     
     let profileButton = UIBarButtonItem(image: UIImage(systemName: "person.circle.fill")?.withRenderingMode(.alwaysTemplate), style: .done, target: self, action: #selector(profileButtonTapped))
     profileButton.tintColor = UIColor.additionalYellow
@@ -113,6 +120,10 @@ class MealListViewController: UIViewController {
   
   func reloadTableView() {
     tableView.reloadData()
+  }
+  
+  func updateActivityIndicator(animating: Bool) {
+    activityIndicator?.isHidden = !animating
   }
 }
 

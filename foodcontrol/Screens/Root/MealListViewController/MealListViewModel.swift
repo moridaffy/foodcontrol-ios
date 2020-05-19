@@ -10,6 +10,11 @@ import Foundation
 
 class MealListViewModel {
   
+  private(set) var isLoading: Bool = false {
+    didSet {
+      view?.updateActivityIndicator(animating: isLoading)
+    }
+  }
   private(set) var meals: [Meal] = [] {
     didSet {
       reloadCellModels()
@@ -35,7 +40,9 @@ class MealListViewModel {
   }
   
   func reloadMeals(completionHandler: @escaping (Error?) -> Void) {
+    isLoading = true
     FirebaseManager.shared.getUsersMeals { [weak self] (meals, error) in
+      self?.isLoading = false
       if let meals = meals {
         self?.meals = meals
         completionHandler(nil)

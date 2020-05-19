@@ -125,6 +125,11 @@ extension FirebaseManager {
           }
         }
         
+        guard !mealDictionaries.isEmpty else {
+          completionHandler([], nil)
+          return
+        }
+        
         print("🔥 received \(mealDictionaries.count) meal dictionaries")
         for mealDictionary in mealDictionaries {
           if let dishesJsonString = mealDictionary["dishes_json"] as? String,
