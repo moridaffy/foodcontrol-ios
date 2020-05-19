@@ -101,7 +101,7 @@ class DishInfoViewController: UIViewController {
   }
   
   @objc private func favoriteButtonTapped() {
-    
+    // TODO:
   }
   
   @objc private func addToMealButtonTapped() {
@@ -109,7 +109,7 @@ class DishInfoViewController: UIViewController {
     if viewModel.creatingNewDish {
       viewModel.createDish { [weak self] (dish, error) in
         if let dish = dish {
-          self?.dismissViewController(addedDish: dish)
+          self?.requestWeightEntry(for: dish)
         } else {
           self?.showAlertError(error: error,
                                desc: NSLocalizedString("Не удалось создать блюдо", comment: ""),
@@ -117,7 +117,7 @@ class DishInfoViewController: UIViewController {
         }
       }
     } else {
-      dismissViewController(addedDish: viewModel.dish)
+      requestWeightEntry(for: viewModel.dish)
     }
   }
   
@@ -145,9 +145,38 @@ class DishInfoViewController: UIViewController {
     return true
   }
   
+  private func requestWeightEntry(for dish: Dish) {
+    let alert = UIAlertController(title: NSLocalizedString("Размер", comment: ""),
+                                  message: NSLocalizedString("Пожалуйста, укажите примерный размер порции (г)", comment: ""),
+                                  preferredStyle: .alert)
+    alert.addTextField { (textField) in
+      textField.placeholder = "100"
+      textField.keyboardType = .numberPad
+    }
+    alert.addAction(UIAlertAction(title: "Готово", style: .default, handler: { (_) in
+      guard let weightTextValue = alert.textFields?.first?.text else { return }
+      if let weightDouble = Double(weightTextValue) {
+        dish.weight = weightDouble
+        self.dismissViewController(addedDish: dish)
+      } else if let weightInt = Int(weightTextValue) {
+        dish.weight = Double(weightInt)
+        self.dismissViewController(addedDish: dish)
+      } else {
+        self.showAlertError(error: nil,
+                            desc: NSLocalizedString("Введено некорректное значение", comment: ""),
+                            critical: false)
+      }
+    }))
+    alert.addAction(UIAlertAction(title: NSLocalizedString("Отмена", comment: ""), style: .cancel, handler: { (_) in
+      alert.dismiss(animated: true, completion: nil)
+    }))
+    present(alert, animated: true, completion: nil)
+  }
+  
   private func dismissViewController(addedDish dish: Dish) {
-    if let delegate = delegate, let mealViewController = navigationController?.viewControllers.first(where: { $0 is CreateMealViewController }) {
-      delegate.didAddToMeal(dish: dish)
+    guard let delegate = delegate else { fatalError() }
+    delegate.didAddToMeal(dish: dish)
+    if let mealViewController = navigationController?.viewControllers.first(where: { $0 is CreateMealViewController }) {
       navigationController?.popToViewController(mealViewController, animated: true)
     } else {
       navigationController?.popViewController(animated: true)

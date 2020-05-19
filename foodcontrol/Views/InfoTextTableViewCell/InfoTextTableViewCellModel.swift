@@ -33,7 +33,7 @@ extension InfoTextTableViewCellModel {
       case .description:
         return NSLocalizedString("Описание", comment: "")
       case .size:
-        return NSLocalizedString("Размер порции", comment: "")
+        return NSLocalizedString("Размер порции (г)", comment: "")
       }
     }
     
@@ -44,7 +44,7 @@ extension InfoTextTableViewCellModel {
       case .description:
         return NSLocalizedString("Очень вкусные котлеты", comment: "")
       case .size:
-        return NSLocalizedString("250г", comment: "")
+        return NSLocalizedString("250", comment: "")
       }
     }
   }

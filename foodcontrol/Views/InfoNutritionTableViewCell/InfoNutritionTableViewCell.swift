@@ -89,7 +89,7 @@ class InfoNutritionTableViewCell: UITableViewCell {
           .font: UIFont.systemFont(ofSize: 17.0, weight: .regular),
           .foregroundColor: UIColor.label
         ]))
-        unitText.append(NSAttributedString(string: " (\(referenceValue)\(unit.unit) в 100г)", attributes: [
+        unitText.append(NSAttributedString(string: " (\(referenceValue.roundedString(to: 1, separator: ","))\(unit.unit) в 100г)", attributes: [
           .font: UIFont.systemFont(ofSize: 15.0, weight: .regular),
           .foregroundColor: UIColor.placeholderText
         ]))
