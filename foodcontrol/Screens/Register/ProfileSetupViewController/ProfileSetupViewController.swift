@@ -16,6 +16,7 @@ class ProfileSetupViewController: UIViewController {
   @IBOutlet private weak var weightTextField: UITextField!
   @IBOutlet private weak var weightPlanSelector: UISegmentedControl!
   @IBOutlet private weak var activitySelector: UISegmentedControl!
+  @IBOutlet private weak var sexSelector: UISegmentedControl!
   @IBOutlet private weak var setupProfileButton: UIButton!
   @IBOutlet private weak var hideKeyboardButton: UIButton!
   
@@ -66,6 +67,11 @@ class ProfileSetupViewController: UIViewController {
     activitySelector.insertSegment(withTitle: User.ActivityType.mediumActivity.title, at: 0, animated: false)
     activitySelector.insertSegment(withTitle: User.ActivityType.lowActivity.title, at: 0, animated: false)
     activitySelector.addTarget(self, action: #selector(selectorValueChanged(_:)), for: .valueChanged)
+    
+    sexSelector.removeAllSegments()
+    sexSelector.insertSegment(withTitle: User.SexType.female.title, at: 0, animated: false)
+    sexSelector.insertSegment(withTitle: User.SexType.male.title, at: 0, animated: false)
+    sexSelector.addTarget(self, action: #selector(selectorValueChanged(_:)), for: .valueChanged)
   }
   
   @IBAction private func questionButtonTapped(_ button: UIButton) {
@@ -89,6 +95,8 @@ class ProfileSetupViewController: UIViewController {
       viewModel.selectedWeightPlan = User.WeightPlanType(rawValue: selector.selectedSegmentIndex + 1)
     } else if selector == activitySelector {
       viewModel.selectedActivity = User.ActivityType(rawValue: selector.selectedSegmentIndex + 1)
+    } else if selector == sexSelector {
+      viewModel.selectedSex = User.SexType(rawValue: selector.selectedSegmentIndex + 1)
     }
   }
   
@@ -101,7 +109,7 @@ class ProfileSetupViewController: UIViewController {
     }
     guard let weightPlan = viewModel.selectedWeightPlan else {
       showAlertError(error: nil,
-                     desc: NSLocalizedString("Выберите ваш план питания", comment: ""),
+                     desc: NSLocalizedString("Выберите Ваш план питания", comment: ""),
                      critical: false)
       return
     }
@@ -111,8 +119,14 @@ class ProfileSetupViewController: UIViewController {
                      critical: false)
       return
     }
+    guard let sex = viewModel.selectedSex else {
+      showAlertError(error: nil,
+                     desc: NSLocalizedString("Выберите Ваш пол", comment: ""),
+                     critical: false)
+      return
+    }
     
-    viewModel.setupProfile(weightPlan: weightPlan, activity: activity, weight: weight) { [weak self] (error) in
+    viewModel.setupProfile(weightPlan: weightPlan, activity: activity, sex: sex, weight: weight) { [weak self] (error) in
       guard let error = error else { return }
       self?.showAlertError(error: error,
                            desc: NSLocalizedString("Не удалось настроить профиль", comment: ""),

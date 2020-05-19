@@ -97,7 +97,7 @@ class DBManager {
     }
   }
   
-  func updateUser(user: User, weightPlanValue: Int? = nil, activityValue: Int? = nil, weight: Double? = nil, complationHandler: ((Bool) -> Void)? = nil) {
+  func updateUser(user: User, weightPlanValue: Int? = nil, activityValue: Int? = nil, sexValue: Int? = nil, weight: Double? = nil, complationHandler: ((Bool) -> Void)? = nil) {
     dbQueue.sync {
       do {
         let realm = try Realm()
@@ -107,6 +107,9 @@ class DBManager {
           }
           if let activityValue = activityValue {
             user.activityValue = activityValue
+          }
+          if let sexValue = sexValue {
+            user.sexValue = sexValue
           }
           if let weight = weight {
             user.weight = weight

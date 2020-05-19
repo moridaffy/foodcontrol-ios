@@ -325,16 +325,43 @@
                                     <action selector="setupProfileButtonTapped" destination="gB5-3Q-pRw" eventType="touchUpInside" id="pQE-yg-8Y7"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" tag="4" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Какой ваш пол?" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zfZ-GR-yrq">
+                                <rect key="frame" x="32" y="378" width="350" height="20.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" tag="4" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zOX-Xo-wsS">
+                                <rect key="frame" x="366" y="402" width="32" height="32"/>
+                                <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="32" id="xKW-7e-IPg"/>
+                                </constraints>
+                                <state key="normal" title="?"/>
+                                <connections>
+                                    <action selector="questionButtonTapped:" destination="gB5-3Q-pRw" eventType="touchUpInside" id="Abp-rL-nj3"/>
+                                </connections>
+                            </button>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="fnw-aZ-0jt">
+                                <rect key="frame" x="32" y="402.5" width="326" height="32"/>
+                                <segments>
+                                    <segment title="First"/>
+                                    <segment title="Second"/>
+                                </segments>
+                            </segmentedControl>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
+                            <constraint firstItem="fnw-aZ-0jt" firstAttribute="top" secondItem="zfZ-GR-yrq" secondAttribute="bottom" constant="4" id="0MN-TE-4F2"/>
                             <constraint firstItem="zEW-KY-pgL" firstAttribute="trailing" secondItem="xsj-uY-WTG" secondAttribute="trailing" constant="32" id="0pQ-wN-eGp"/>
                             <constraint firstItem="G2Y-dO-XtC" firstAttribute="leading" secondItem="rRT-r8-rdh" secondAttribute="trailing" constant="8" id="0xg-c6-pRt"/>
                             <constraint firstItem="HGe-f5-gTr" firstAttribute="leading" secondItem="zEW-KY-pgL" secondAttribute="leading" id="1Y2-gp-Iff"/>
                             <constraint firstItem="Wbe-og-JEg" firstAttribute="leading" secondItem="qWG-eR-qGz" secondAttribute="leading" id="1s7-hd-opl"/>
                             <constraint firstItem="WUO-4d-ReM" firstAttribute="leading" secondItem="Wbe-og-JEg" secondAttribute="trailing" constant="8" id="2m5-Of-ga5"/>
                             <constraint firstItem="FtY-cT-AYR" firstAttribute="top" secondItem="uBy-nX-n0c" secondAttribute="bottom" constant="4" id="2rB-vs-kwm"/>
+                            <constraint firstItem="zOX-Xo-wsS" firstAttribute="leading" secondItem="fnw-aZ-0jt" secondAttribute="trailing" constant="8" id="3CJ-Dp-HqL"/>
                             <constraint firstItem="nLP-oa-HBv" firstAttribute="top" secondItem="zEW-KY-pgL" secondAttribute="top" constant="16" id="3PD-ln-fmB"/>
+                            <constraint firstItem="zOX-Xo-wsS" firstAttribute="centerY" secondItem="fnw-aZ-0jt" secondAttribute="centerY" id="3w6-4o-dOj"/>
                             <constraint firstItem="nLP-oa-HBv" firstAttribute="leading" secondItem="zEW-KY-pgL" secondAttribute="leading" constant="32" id="7Oj-kP-Jwk"/>
                             <constraint firstItem="Wbe-og-JEg" firstAttribute="width" secondItem="qWG-eR-qGz" secondAttribute="width" multiplier="0.3" id="7uK-KG-Xqq"/>
                             <constraint firstItem="zEW-KY-pgL" firstAttribute="trailing" secondItem="ruv-g9-6gd" secondAttribute="trailing" constant="16" id="8BC-nq-9oP"/>
@@ -342,21 +369,27 @@
                             <constraint firstItem="WUO-4d-ReM" firstAttribute="centerY" secondItem="Wbe-og-JEg" secondAttribute="centerY" id="ADj-t8-oJA"/>
                             <constraint firstItem="FtY-cT-AYR" firstAttribute="leading" secondItem="uBy-nX-n0c" secondAttribute="leading" id="AU4-5T-XqR"/>
                             <constraint firstItem="rRT-r8-rdh" firstAttribute="leading" secondItem="fa6-py-p2x" secondAttribute="leading" id="EkB-TB-bKh"/>
+                            <constraint firstItem="fnw-aZ-0jt" firstAttribute="leading" secondItem="zfZ-GR-yrq" secondAttribute="leading" id="FW9-bq-vi3"/>
                             <constraint firstItem="G2Y-dO-XtC" firstAttribute="centerY" secondItem="rRT-r8-rdh" secondAttribute="centerY" id="K73-76-osa"/>
                             <constraint firstItem="zEW-KY-pgL" firstAttribute="trailing" secondItem="nLP-oa-HBv" secondAttribute="trailing" constant="32" id="LS1-y9-Dkf"/>
                             <constraint firstItem="uBy-nX-n0c" firstAttribute="top" secondItem="Wbe-og-JEg" secondAttribute="bottom" constant="16" id="LjG-xw-3eO"/>
                             <constraint firstItem="qWG-eR-qGz" firstAttribute="leading" secondItem="nLP-oa-HBv" secondAttribute="leading" id="MbQ-gJ-Kwz"/>
                             <constraint firstItem="xsj-uY-WTG" firstAttribute="leading" secondItem="zEW-KY-pgL" secondAttribute="leading" constant="32" id="Mqu-QU-pAK"/>
+                            <constraint firstItem="zfZ-GR-yrq" firstAttribute="top" secondItem="rRT-r8-rdh" secondAttribute="bottom" constant="16" id="P9T-Ev-jdJ"/>
                             <constraint firstItem="AMV-H8-mE0" firstAttribute="centerY" secondItem="FtY-cT-AYR" secondAttribute="centerY" id="QHz-VL-tnl"/>
                             <constraint firstItem="uBy-nX-n0c" firstAttribute="leading" secondItem="nLP-oa-HBv" secondAttribute="leading" id="Tal-L7-yNp"/>
                             <constraint firstItem="G2Y-dO-XtC" firstAttribute="width" secondItem="G2Y-dO-XtC" secondAttribute="height" multiplier="1:1" id="Txc-BO-TUF"/>
                             <constraint firstItem="fa6-py-p2x" firstAttribute="trailing" secondItem="nLP-oa-HBv" secondAttribute="trailing" id="UIK-pk-2oA"/>
+                            <constraint firstItem="zfZ-GR-yrq" firstAttribute="leading" secondItem="qWG-eR-qGz" secondAttribute="leading" id="UQi-sz-0vb"/>
                             <constraint firstItem="ruv-g9-6gd" firstAttribute="leading" secondItem="WUO-4d-ReM" secondAttribute="trailing" constant="8" id="XM9-4e-ZJT"/>
                             <constraint firstAttribute="bottom" secondItem="HGe-f5-gTr" secondAttribute="bottom" id="aD1-rZ-iHs"/>
                             <constraint firstItem="HGe-f5-gTr" firstAttribute="top" secondItem="zEW-KY-pgL" secondAttribute="top" id="eAO-me-hD6"/>
                             <constraint firstItem="ruv-g9-6gd" firstAttribute="centerY" secondItem="Wbe-og-JEg" secondAttribute="centerY" id="edM-ns-pGn"/>
+                            <constraint firstItem="zOX-Xo-wsS" firstAttribute="trailing" secondItem="AMV-H8-mE0" secondAttribute="trailing" id="efz-jY-ORn"/>
                             <constraint firstItem="AMV-H8-mE0" firstAttribute="leading" secondItem="FtY-cT-AYR" secondAttribute="trailing" constant="8" id="fWx-dH-ELV"/>
                             <constraint firstItem="uBy-nX-n0c" firstAttribute="trailing" secondItem="nLP-oa-HBv" secondAttribute="trailing" id="hBX-9D-4NP"/>
+                            <constraint firstItem="zfZ-GR-yrq" firstAttribute="trailing" secondItem="qWG-eR-qGz" secondAttribute="trailing" id="iK5-U2-gt7"/>
+                            <constraint firstItem="zOX-Xo-wsS" firstAttribute="width" secondItem="zOX-Xo-wsS" secondAttribute="height" multiplier="1:1" id="j61-5S-kUI"/>
                             <constraint firstItem="fa6-py-p2x" firstAttribute="leading" secondItem="nLP-oa-HBv" secondAttribute="leading" id="lNx-6a-MXY"/>
                             <constraint firstItem="qWG-eR-qGz" firstAttribute="trailing" secondItem="nLP-oa-HBv" secondAttribute="trailing" id="oVM-m7-SgJ"/>
                             <constraint firstItem="G2Y-dO-XtC" firstAttribute="trailing" secondItem="AMV-H8-mE0" secondAttribute="trailing" id="ogI-Nx-uUX"/>
@@ -375,6 +408,7 @@
                         <outlet property="activitySelector" destination="rRT-r8-rdh" id="y6k-xG-MCL"/>
                         <outlet property="hideKeyboardButton" destination="HGe-f5-gTr" id="VT5-9k-UmF"/>
                         <outlet property="setupProfileButton" destination="xsj-uY-WTG" id="D09-Ss-f5j"/>
+                        <outlet property="sexSelector" destination="fnw-aZ-0jt" id="aWa-7a-hte"/>
                         <outlet property="titleLabel" destination="nLP-oa-HBv" id="wT9-T7-OVF"/>
                         <outlet property="weightPlanSelector" destination="FtY-cT-AYR" id="jPc-Vw-RIt"/>
                         <outlet property="weightTextField" destination="Wbe-og-JEg" id="M4q-Fr-VR9"/>
@@ -384,6 +418,8 @@
                         <outletCollection property="questionTitleLabels" destination="qWG-eR-qGz" collectionClass="NSMutableArray" id="WBH-pE-XOU"/>
                         <outletCollection property="questionTitleLabels" destination="uBy-nX-n0c" collectionClass="NSMutableArray" id="Hri-6p-9HQ"/>
                         <outletCollection property="questionTitleLabels" destination="fa6-py-p2x" collectionClass="NSMutableArray" id="Txq-5n-aGZ"/>
+                        <outletCollection property="questionTitleLabels" destination="zfZ-GR-yrq" collectionClass="NSMutableArray" id="UTd-SH-drD"/>
+                        <outletCollection property="questionButtons" destination="zOX-Xo-wsS" collectionClass="NSMutableArray" id="4h2-oh-L3b"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="JPJ-JR-Q32" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

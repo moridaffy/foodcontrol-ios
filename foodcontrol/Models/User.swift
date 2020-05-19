@@ -19,6 +19,7 @@ class User: Object, FirestoreObject {
   @objc dynamic var email: String = ""
   @objc dynamic var weightPlanValue: Int = 0
   @objc dynamic var activityValue: Int = 0
+  @objc dynamic var sexValue: Int = 0
   @objc dynamic var weight: Double = 0.0
   
   @objc dynamic var vkId: String = ""
@@ -29,11 +30,14 @@ class User: Object, FirestoreObject {
   var activity: ActivityType {
     return ActivityType(rawValue: activityValue) ?? .unknown
   }
+  var sex: SexType {
+    return SexType(rawValue: sexValue) ?? .unknown
+  }
   var vkLinked: Bool {
     return !vkId.isEmpty
   }
   var isSetup: Bool {
-    return weightPlan != .unknown && activity != .unknown
+    return weightPlan != .unknown && activity != .unknown && sex != .unknown
   }
   
   // MARK: - Initializers
@@ -43,6 +47,7 @@ class User: Object, FirestoreObject {
                    email: String,
                    weightPlan: WeightPlanType? = nil,
                    activity: ActivityType? = nil,
+                   sex: SexType? = nil,
                    weight: Double? = nil,
                    vkId: String? = nil) {
     self.init()
@@ -51,6 +56,7 @@ class User: Object, FirestoreObject {
     self.email = email
     self.weightPlanValue = weightPlan?.rawValue ?? 0
     self.activityValue = activity?.rawValue ?? 0
+    self.sexValue = sex?.rawValue ?? 0
     self.weight = weight ?? 0.0
     self.vkId = vkId ?? ""
   }
@@ -72,7 +78,8 @@ class User: Object, FirestoreObject {
       "uid": id,
       "username": username,
       "weightPlanValue": weightPlanValue,
-      "activityValue": activityValue
+      "activityValue": activityValue,
+      "sexValue": sexValue
     ]
     if weight != 0.0 {
       dictionary["weight"] = weight
@@ -100,6 +107,9 @@ class User: Object, FirestoreObject {
     }
     if let activityValue = dictionary["activityValue"] as? Int {
       self.activityValue = activityValue
+    }
+    if let sexValue = dictionary["sexValue"] as? Int {
+      self.sexValue = sexValue
     }
   }
 }
@@ -139,6 +149,23 @@ extension User {
         return NSLocalizedString("Средняя", comment: "")
       case .highActivity:
         return NSLocalizedString("Высокая", comment: "")
+      default:
+        return NSLocalizedString("Неизвестно", comment: "") + ": \(self.rawValue)"
+      }
+    }
+  }
+  
+  enum SexType: Int {
+    case unknown
+    case male = 1
+    case female = 2
+    
+    var title: String {
+      switch self {
+      case .male:
+        return NSLocalizedString("Мужчина", comment: "")
+      case .female:
+        return NSLocalizedString("Женщина", comment: "")
       default:
         return NSLocalizedString("Неизвестно", comment: "") + ": \(self.rawValue)"
       }

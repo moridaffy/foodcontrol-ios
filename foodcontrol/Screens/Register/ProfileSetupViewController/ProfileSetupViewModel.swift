@@ -12,6 +12,7 @@ class ProfileSetupViewModel {
   
   var selectedWeightPlan: User.WeightPlanType?
   var selectedActivity: User.ActivityType?
+  var selectedSex: User.SexType?
   
   func getHelpText(for index: Int) -> String? {
     switch index {
@@ -21,12 +22,14 @@ class ProfileSetupViewModel {
       return NSLocalizedString("Выберите, что вы хотите сделать со своим текущим весом: немного сбросить лишнего, поддерживать себя в идеальной текущей форме или немного поднабрать?", comment: "")
     case 3:
       return NSLocalizedString("Укажите, какой у Вас примерный уровень активности: высокий (тренировки каждый день), средний (тренировки 2-3 раза в неделю) или низкий (не тренируетесь)?", comment: "")
+    case 4:
+      return NSLocalizedString("Укажите, какой Ваш пол: мужской или женский?", comment: "")
     default:
       return nil
     }
   }
   
-  func setupProfile(weightPlan: User.WeightPlanType, activity: User.ActivityType, weight: Double, completionHandler: @escaping (Error?) -> Void) {
+  func setupProfile(weightPlan: User.WeightPlanType, activity: User.ActivityType, sex: User.SexType, weight: Double, completionHandler: @escaping (Error?) -> Void) {
     guard let user = AuthManager.shared.currentUser else {
       completionHandler(nil)
       return
