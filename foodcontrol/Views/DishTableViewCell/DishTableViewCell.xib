@@ -64,7 +64,7 @@
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
-                <outlet property="calloriesLabel" destination="VIh-10-Qxl" id="bLu-nh-5B3"/>
+                <outlet property="caloriesLabel" destination="VIh-10-Qxl" id="bLu-nh-5B3"/>
                 <outlet property="dishImageView" destination="ZrW-4U-fhk" id="GAH-Jm-Fvx"/>
                 <outlet property="nameLabel" destination="KPP-ju-eZc" id="ue7-qR-kx8"/>
                 <outlet property="volumeLabel" destination="JHt-pL-udR" id="ie0-kc-jxj"/>

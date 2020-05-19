@@ -28,6 +28,10 @@ class MealListViewController: UIViewController {
     setupNavigationBar()
     setupTableView()
     setupBottomButton()
+  }
+  
+  override func viewDidAppear(_ animated: Bool) {
+    super.viewDidAppear(animated)
     
     pulledToRefresh()
   }

@@ -149,9 +149,9 @@
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
-                <outlet property="calloriesTextField" destination="RWQ-Um-9PJ" id="hLc-B0-aT0"/>
-                <outlet property="calloriesTitleLabel" destination="hzh-eY-muZ" id="paQ-3N-KzR"/>
-                <outlet property="calloriesUnitLabel" destination="EKX-SD-o6q" id="QMQ-3X-KKR"/>
+                <outlet property="caloriesTextField" destination="RWQ-Um-9PJ" id="hLc-B0-aT0"/>
+                <outlet property="caloriesTitleLabel" destination="hzh-eY-muZ" id="paQ-3N-KzR"/>
+                <outlet property="caloriesUnitLabel" destination="EKX-SD-o6q" id="QMQ-3X-KKR"/>
                 <outlet property="carbohydrateTextField" destination="uSR-c3-xgb" id="RLj-XS-OXw"/>
                 <outlet property="carbohydrateTitleLabel" destination="lol-2P-oYB" id="5DT-83-QX0"/>
                 <outlet property="carbohydrateUnitLabel" destination="dLW-GF-9oo" id="zOc-EF-obE"/>

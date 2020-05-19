@@ -18,10 +18,10 @@ class Meal: FirestoreObject {
   var date: Date {
     return DateHelper().getDate(from: dateValue, ofFormat: .full) ?? Date()
   }
-  var totalCallories: Double {
-    var totalCallories: Double = 0
-    dishes.forEach({ totalCallories += $0.getValue(for: .callories, reference: false) })
-    return totalCallories
+  var totalCalories: Double {
+    var totalCalories: Double = 0
+    dishes.forEach({ totalCalories += $0.getValue(for: .calories, reference: false) })
+    return totalCalories
   }
   
   // MARK: - Initializers

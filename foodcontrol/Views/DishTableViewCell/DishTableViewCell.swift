@@ -14,7 +14,7 @@ class DishTableViewCell: UITableViewCell {
   @IBOutlet private weak var dishImageView: UIImageView!
   @IBOutlet private weak var nameLabel: UILabel!
   @IBOutlet private weak var volumeLabel: UILabel!
-  @IBOutlet private weak var calloriesLabel: UILabel!
+  @IBOutlet private weak var caloriesLabel: UILabel!
   
   private var viewModel: DishTableViewCellModel!
   
@@ -43,15 +43,15 @@ class DishTableViewCell: UITableViewCell {
     nameLabel.textColor = UIColor.label
     nameLabel.font = UIFont.systemFont(ofSize: 17.0, weight: .regular)
     
-    let calloriesValue = viewModel.dish.getValue(for: .callories, reference: false)
-    let calloriesText = NSMutableAttributedString()
-    calloriesText.append(NSAttributedString(string: "+\(calloriesValue.roundedString(to: 0))",
+    let caloriesValue = viewModel.dish.getValue(for: .calories, reference: false)
+    let caloriesText = NSMutableAttributedString()
+    caloriesText.append(NSAttributedString(string: "+\(caloriesValue.roundedString(to: 0))",
                                             attributes: [.font: UIFont.systemFont(ofSize: 20.0, weight: .semibold),
                                                          .foregroundColor: UIColor.label]))
-    calloriesText.append(NSAttributedString(string: "\n" + Dish.ValueType.callories.title,
+    caloriesText.append(NSAttributedString(string: "\n" + Dish.ValueType.calories.title,
                                             attributes: [.font: UIFont.systemFont(ofSize: 15.0, weight: .regular),
                                                          .foregroundColor: UIColor.additionalGrayDark]))
-    calloriesLabel.attributedText = calloriesText
+    caloriesLabel.attributedText = caloriesText
     
     if let weightValue = viewModel.dish.weight {
       volumeLabel.text = "~\(weightValue.roundedString(to: 0))г"

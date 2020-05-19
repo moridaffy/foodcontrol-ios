@@ -20,7 +20,7 @@ class Dish: FirestoreObject {
   var proteinsReference: Double?
   var fatsReference: Double?
   var carbohydratesReference: Double?
-  var calloriesReference: Double?
+  var calories: Double?
   
   var weight: Double?
   
@@ -32,7 +32,7 @@ class Dish: FirestoreObject {
     return proteinsReference != nil
       && fatsReference != nil
       && carbohydratesReference != nil
-      && calloriesReference != nil
+      && calories != nil
   }
   
   // MARK: - Initializers
@@ -45,7 +45,7 @@ class Dish: FirestoreObject {
        proteinsReference: Double? = nil,
        fatsReference: Double? = nil,
        carbohydratesReference: Double? = nil,
-       calloriesReference: Double? = nil) {
+       caloriesReference: Double? = nil) {
     self.id = id
     self.offId = offId
     self.name = name
@@ -54,7 +54,7 @@ class Dish: FirestoreObject {
     self.proteinsReference = proteinsReference
     self.fatsReference = fatsReference
     self.carbohydratesReference = carbohydratesReference
-    self.calloriesReference = calloriesReference
+    self.calories = caloriesReference
   }
   
   convenience init?(offDish: OFFDishCodable) {
@@ -72,8 +72,8 @@ class Dish: FirestoreObject {
       return carbohydratesReference / 100.0
     }()
     let caloriesReference: Double? = {
-      guard let calloriesReference = offDish.nutritions.caloriesReference else { return nil }
-      return calloriesReference / 100.0
+      guard let caloriesReference = offDish.nutritions.caloriesReference else { return nil }
+      return caloriesReference / 100.0
     }()
     
     self.init(offId: offDish.id,
@@ -82,7 +82,7 @@ class Dish: FirestoreObject {
               proteinsReference: proteinsReference,
               fatsReference: fatsReference,
               carbohydratesReference: carbohydratesReference,
-              calloriesReference: caloriesReference)
+              caloriesReference: caloriesReference)
   }
   
   convenience init?(dictionary: [String: Any]) {
@@ -91,7 +91,7 @@ class Dish: FirestoreObject {
       let proteinsReference = dictionary["proteins_reference"] as? Double,
       let fatsReference = dictionary["fats_reference"] as? Double,
       let carbohydratesReference = dictionary["carbohydrates_reference"] as? Double,
-      let calloriesReference = dictionary["callories_reference"] as? Double else { return nil }
+      let caloriesReference = dictionary["calories_reference"] as? Double else { return nil }
     
     self.init(id: id,
               offId: dictionary["off_id"] as? String,
@@ -101,7 +101,7 @@ class Dish: FirestoreObject {
               proteinsReference: proteinsReference,
               fatsReference: fatsReference,
               carbohydratesReference: carbohydratesReference,
-              calloriesReference: calloriesReference)
+              caloriesReference: caloriesReference)
   }
   
   // MARK: - Methods
@@ -115,8 +115,8 @@ class Dish: FirestoreObject {
       return (fatsReference ?? 0.0) * weight
     case .carbohydrates:
       return (carbohydratesReference ?? 0.0) * weight
-    case .callories:
-      return (calloriesReference ?? 0.0) * weight
+    case .calories:
+      return (calories ?? 0.0) * weight
     }
   }
   
@@ -130,7 +130,7 @@ class Dish: FirestoreObject {
       "proteins_reference": proteinsReference ?? 0.0,
       "fats_reference": fatsReference ?? 0.0,
       "carbohydrates_reference": carbohydratesReference ?? 0.0,
-      "callories_reference": calloriesReference ?? 0.0,
+      "calories_reference": calories ?? 0.0,
       "image_url": imageUrl?.absoluteString ?? ""
     ]
     if let offId = self.offId, !offId.isEmpty {
@@ -154,12 +154,12 @@ class Dish: FirestoreObject {
 extension Dish {
   enum ValueType {
     
-    static let allUnits: [ValueType] = [.proteins, .fats, .carbohydrates, .callories]
+    static let allUnits: [ValueType] = [.proteins, .fats, .carbohydrates, .calories]
     
     case proteins
     case fats
     case carbohydrates
-    case callories
+    case calories
     
     var title: String {
       switch self {
@@ -169,8 +169,8 @@ extension Dish {
         return NSLocalizedString("Жиры", comment: "")
       case .carbohydrates:
         return NSLocalizedString("Углеводы", comment: "")
-      case .callories:
-        return NSLocalizedString("Каллории", comment: "")
+      case .calories:
+        return NSLocalizedString("Калории", comment: "")
       }
     }
     
@@ -178,7 +178,7 @@ extension Dish {
       switch self {
       case .proteins, .fats, .carbohydrates:
         return NSLocalizedString("г", comment: "")
-      case .callories:
+      case .calories:
         return NSLocalizedString("ккал", comment: "")
       }
     }

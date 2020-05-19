@@ -12,7 +12,7 @@ class MealHeaderTableViewCell: UITableViewCell {
   
   @IBOutlet private weak var headerContainerView: UIView!
   @IBOutlet private weak var dateLabel: UILabel!
-  @IBOutlet private weak var calloriesLabel: UILabel!
+  @IBOutlet private weak var caloriesLabel: UILabel!
   
   private var viewModel: MealHeaderTableViewCellModel!
   
@@ -43,9 +43,9 @@ class MealHeaderTableViewCell: UITableViewCell {
                                                     .foregroundColor: UIColor.additionalGrayDark]))
     dateLabel.attributedText = dateText
     
-    calloriesLabel.text = "+\(viewModel.meal.totalCallories.roundedString(to: 1, separator: ","))"
-    calloriesLabel.textColor = UIColor.label
-    calloriesLabel.font = UIFont.systemFont(ofSize: 26.0, weight: .semibold)
+    caloriesLabel.text = "+\(viewModel.meal.totalCalories.roundedString(to: 1, separator: ","))"
+    caloriesLabel.textColor = UIColor.label
+    caloriesLabel.font = UIFont.systemFont(ofSize: 26.0, weight: .semibold)
   }
   
 }

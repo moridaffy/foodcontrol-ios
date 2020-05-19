@@ -237,8 +237,8 @@ extension DishInfoViewController: InfoNutritionTableViewCellDelegate {
       viewModel.dish.fatsReference = referenceValue
     case .carbohydrates:
       viewModel.dish.carbohydratesReference = referenceValue
-    case .callories:
-      viewModel.dish.calloriesReference = referenceValue
+    case .calories:
+      viewModel.dish.calories = referenceValue
     }
   }
 }

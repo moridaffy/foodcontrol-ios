@@ -92,11 +92,11 @@ class AddDishViewController: UIViewController {
     let actionSheet = UIAlertController(title: NSLocalizedString("Сортировка", comment: ""),
                                         message: NSLocalizedString("Выберите способ сортировки блюд", comment: ""),
                                         preferredStyle: .actionSheet)
-    actionSheet.addAction(UIAlertAction(title: AddDishViewModel.SortingType.calloriesAsc.title, style: .default, handler: { [weak self] (_) in
-      self?.viewModel.sortingType = .calloriesAsc
+    actionSheet.addAction(UIAlertAction(title: AddDishViewModel.SortingType.caloriesAsc.title, style: .default, handler: { [weak self] (_) in
+      self?.viewModel.sortingType = .caloriesAsc
     }))
-    actionSheet.addAction(UIAlertAction(title: AddDishViewModel.SortingType.calloriesDesc.title, style: .default, handler: { [weak self] (_) in
-      self?.viewModel.sortingType = .calloriesDesc
+    actionSheet.addAction(UIAlertAction(title: AddDishViewModel.SortingType.caloriesDesc.title, style: .default, handler: { [weak self] (_) in
+      self?.viewModel.sortingType = .caloriesDesc
     }))
     actionSheet.addAction(UIAlertAction(title: AddDishViewModel.SortingType.nameAsc.title, style: .default, handler: { [weak self] (_) in
       self?.viewModel.sortingType = .nameAsc

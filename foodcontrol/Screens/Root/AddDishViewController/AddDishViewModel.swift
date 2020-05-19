@@ -12,7 +12,7 @@ class AddDishViewModel {
   
   weak var view: AddDishViewController?
   
-  var sortingType: SortingType = .calloriesAsc {
+  var sortingType: SortingType = .caloriesAsc {
     didSet {
       reloadCellModels()
     }
@@ -99,10 +99,10 @@ class AddDishViewModel {
   private func reloadCellModels() {
     let sortedDishes: [Dish] = {
       switch sortingType {
-      case .calloriesAsc:
-        return dishes.sorted(by: { ($0.calloriesReference ?? 0.0) < ($1.calloriesReference ?? 0.0) })
-      case .calloriesDesc:
-        return dishes.sorted(by: { ($0.calloriesReference ?? 0.0) > ($1.calloriesReference ?? 0.0) })
+      case .caloriesAsc:
+        return dishes.sorted(by: { ($0.calories ?? 0.0) < ($1.calories ?? 0.0) })
+      case .caloriesDesc:
+        return dishes.sorted(by: { ($0.calories ?? 0.0) > ($1.calories ?? 0.0) })
       case .nameAsc:
         return dishes.sorted(by: { $0.name > $1.name })
       case .nameDesc:
@@ -116,17 +116,17 @@ class AddDishViewModel {
 
 extension AddDishViewModel {
   enum SortingType {
-    case calloriesAsc
-    case calloriesDesc
+    case caloriesAsc
+    case caloriesDesc
     case nameAsc
     case nameDesc
     
     var title: String {
       switch self {
-      case .calloriesAsc:
-        return NSLocalizedString("По каллорийности (возр.)", comment: "")
-      case .calloriesDesc:
-        return NSLocalizedString("По каллорийности (убыв.)", comment: "")
+      case .caloriesAsc:
+        return NSLocalizedString("По калорийности (возр.)", comment: "")
+      case .caloriesDesc:
+        return NSLocalizedString("По калорийности (убыв.)", comment: "")
       case .nameAsc:
         return NSLocalizedString("По названию (возр.)", comment: "")
       case .nameDesc:

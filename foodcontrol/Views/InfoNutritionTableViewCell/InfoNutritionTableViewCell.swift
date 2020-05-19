@@ -24,9 +24,9 @@ class InfoNutritionTableViewCell: UITableViewCell {
   @IBOutlet private weak var carbohydrateTitleLabel: UILabel!
   @IBOutlet private weak var carbohydrateTextField: UITextField!
   @IBOutlet private weak var carbohydrateUnitLabel: UILabel!
-  @IBOutlet private weak var calloriesTitleLabel: UILabel!
-  @IBOutlet private weak var calloriesTextField: UITextField!
-  @IBOutlet private weak var calloriesUnitLabel: UILabel!
+  @IBOutlet private weak var caloriesTitleLabel: UILabel!
+  @IBOutlet private weak var caloriesTextField: UITextField!
+  @IBOutlet private weak var caloriesUnitLabel: UILabel!
   
   private var viewModel: InfoNutritionTableViewCellModel!
   private weak var delegate: InfoNutritionTableViewCellDelegate?
@@ -46,9 +46,9 @@ class InfoNutritionTableViewCell: UITableViewCell {
     titleLabel.font = UIFont.systemFont(ofSize: 15.0, weight: .regular)
     
     for i in 0..<Dish.ValueType.allUnits.count {
-      let titleLabel = [proteinsTitleLabel, fatsTitleLabel, carbohydrateTitleLabel, calloriesTitleLabel][i]
-      let valueTextField = [proteinsTextField, fatsTextField, carbohydrateTextField, calloriesTextField][i]
-      let unitLabel = [proteinsUnitLabel, fatsUnitLabel, carbohydrateUnitLabel, calloriesUnitLabel][i]
+      let titleLabel = [proteinsTitleLabel, fatsTitleLabel, carbohydrateTitleLabel, caloriesTitleLabel][i]
+      let valueTextField = [proteinsTextField, fatsTextField, carbohydrateTextField, caloriesTextField][i]
+      let unitLabel = [proteinsUnitLabel, fatsUnitLabel, carbohydrateUnitLabel, caloriesUnitLabel][i]
       let unit = Dish.ValueType.allUnits[i]
 
       titleLabel?.text = unit.title
@@ -118,6 +118,6 @@ extension InfoNutritionTableViewCell {
     case proteins = 1
     case fats = 2
     case carbohydrates = 3
-    case callories = 4
+    case calories = 4
   }
 }
