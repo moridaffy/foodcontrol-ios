@@ -59,14 +59,30 @@ class Dish: FirestoreObject {
   
   convenience init?(offDish: OFFDishCodable) {
     guard let name = offDish.name, !name.isEmpty, offDish.nutritions.caloriesReference != nil else { return nil }
-        
+    let proteinsReference: Double? = {
+      guard let proteinsReference = offDish.nutritions.proteinsReference else { return nil }
+      return proteinsReference / 100.0
+    }()
+    let fatsReference: Double? = {
+      guard let fatsReference = offDish.nutritions.fatsReference else { return nil }
+      return fatsReference / 100.0
+    }()
+    let carbohydratesReference: Double? = {
+      guard let carbohydratesReference = offDish.nutritions.carbohydratesReference else { return nil }
+      return carbohydratesReference / 100.0
+    }()
+    let caloriesReference: Double? = {
+      guard let calloriesReference = offDish.nutritions.caloriesReference else { return nil }
+      return calloriesReference / 100.0
+    }()
+    
     self.init(offId: offDish.id,
               name: name,
               imageUrl: URL(string: offDish.imageUrl ?? ""),
-              proteinsReference: offDish.nutritions.proteinsReference,
-              fatsReference: offDish.nutritions.fatsReference,
-              carbohydratesReference: offDish.nutritions.carbohydratesReference,
-              calloriesReference: offDish.nutritions.caloriesReference)
+              proteinsReference: proteinsReference,
+              fatsReference: fatsReference,
+              carbohydratesReference: carbohydratesReference,
+              calloriesReference: caloriesReference)
   }
   
   convenience init?(dictionary: [String: Any]) {
@@ -91,16 +107,16 @@ class Dish: FirestoreObject {
   // MARK: - Methods
   
   func getValue(for type: ValueType, reference: Bool) -> Double {
-    let weight = reference ? 100.0 : (self.weight ?? 0.0)
+    let weight = reference ? 100.0 : (self.weight ?? 100.0)
     switch type {
     case .proteins:
-      return proteinsReference ?? 0.0 * weight
+      return (proteinsReference ?? 0.0) * weight
     case .fats:
-      return fatsReference ?? 0.0 * weight
+      return (fatsReference ?? 0.0) * weight
     case .carbohydrates:
-      return carbohydratesReference ?? 0.0 * weight
+      return (carbohydratesReference ?? 0.0) * weight
     case .callories:
-      return calloriesReference ?? 0.0 * weight
+      return (calloriesReference ?? 0.0) * weight
     }
   }
   
