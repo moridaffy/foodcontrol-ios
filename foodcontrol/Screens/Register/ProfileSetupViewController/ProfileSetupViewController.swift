@@ -25,9 +25,14 @@ class ProfileSetupViewController: UIViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
     
+    setupNavigationBar()
     setupLabels()
     setupButtons()
     setupSelectors()
+  }
+  
+  private func setupNavigationBar() {
+    navigationController?.navigationBar.isTranslucent = false
   }
   
   private func setupLabels() {

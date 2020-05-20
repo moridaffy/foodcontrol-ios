@@ -22,9 +22,18 @@ class LoginViewController: UIViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
     
+    setupNavigationBar()
     setupLabels()
     setupTextFields()
     setupButtons()
+  }
+  
+  private func setupNavigationBar() {
+    navigationController?.navigationBar.isTranslucent = false
+    
+    let backButton = UIBarButtonItem(image: nil, style: .done, target: nil, action: nil)
+    backButton.tintColor = UIColor.additionalYellow
+    navigationItem.backBarButtonItem = backButton
   }
   
   private func setupLabels() {
