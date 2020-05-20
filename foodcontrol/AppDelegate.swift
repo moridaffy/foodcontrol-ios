@@ -23,6 +23,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     window?.overrideUserInterfaceStyle = .light
     
+    UserLocationManager.shared.configure()
     setupRootViewController()
     
     return true

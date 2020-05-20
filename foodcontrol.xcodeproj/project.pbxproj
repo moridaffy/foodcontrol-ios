@@ -15,6 +15,7 @@
 		0C7C6CAE24750087006032BB /* UserQrViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C7C6CAD24750087006032BB /* UserQrViewController.swift */; };
 		0C7C6CB1247504F9006032BB /* UserListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C7C6CB0247504F9006032BB /* UserListViewController.swift */; };
 		0C7C6CB5247505E4006032BB /* UserListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C7C6CB4247505E4006032BB /* UserListViewModel.swift */; };
+		0C7C6CB72475C641006032BB /* UserLocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C7C6CB62475C641006032BB /* UserLocationManager.swift */; };
 		0CAE98782470459D0086D9EB /* UIImage+Resizing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CAE98772470459D0086D9EB /* UIImage+Resizing.swift */; };
 		0CAE987A2470994E0086D9EB /* APIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CAE98792470994E0086D9EB /* APIManager.swift */; };
 		0CAE987C24709B860086D9EB /* OFFDishCodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CAE987B24709B860086D9EB /* OFFDishCodable.swift */; };
@@ -90,6 +91,7 @@
 		0C7C6CAD24750087006032BB /* UserQrViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserQrViewController.swift; sourceTree = "<group>"; };
 		0C7C6CB0247504F9006032BB /* UserListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserListViewController.swift; sourceTree = "<group>"; };
 		0C7C6CB4247505E4006032BB /* UserListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserListViewModel.swift; sourceTree = "<group>"; };
+		0C7C6CB62475C641006032BB /* UserLocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserLocationManager.swift; sourceTree = "<group>"; };
 		0CAE98772470459D0086D9EB /* UIImage+Resizing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Resizing.swift"; sourceTree = "<group>"; };
 		0CAE98792470994E0086D9EB /* APIManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIManager.swift; sourceTree = "<group>"; };
 		0CAE987B24709B860086D9EB /* OFFDishCodable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OFFDishCodable.swift; sourceTree = "<group>"; };
@@ -447,6 +449,7 @@
 				0CAE98792470994E0086D9EB /* APIManager.swift */,
 				0CF856F3246914B200E74B62 /* DBManager.swift */,
 				0CF856FA2469171F00E74B62 /* AuthManager.swift */,
+				0C7C6CB62475C641006032BB /* UserLocationManager.swift */,
 				0CF856EE2469145600E74B62 /* RootViewControllerManager.swift */,
 			);
 			path = Utilities;
@@ -605,6 +608,7 @@
 			files = (
 				0CAE987A2470994E0086D9EB /* APIManager.swift in Sources */,
 				0CFCAA41245744F1004AB0B1 /* BigImageTableViewCellModel.swift in Sources */,
+				0C7C6CB72475C641006032BB /* UserLocationManager.swift in Sources */,
 				0CC82614243A1CC900F1A047 /* DishTableViewCell.swift in Sources */,
 				0CC825E9243A111400F1A047 /* AppDelegate.swift in Sources */,
 				0CC8260D243A1A1F00F1A047 /* MealHeaderTableViewCell.swift in Sources */,

@@ -90,6 +90,17 @@ class UserListViewController: UIViewController {
   
   private func presentQrCodeScanner() {
     let scannerViewController = BarcodeScannerViewController()
+    
+    scannerViewController.headerViewController.titleLabel.text = "Сканировать"
+    scannerViewController.headerViewController.titleLabel.textColor = UIColor.white
+    scannerViewController.headerViewController.view.backgroundColor = UIColor.additionalYellow
+    scannerViewController.headerViewController.closeButton.setTitle("Закрыть", for: .normal)
+    scannerViewController.headerViewController.closeButton.setTitleColor(UIColor.white, for: .normal)
+    scannerViewController.headerViewController.navigationBar.barTintColor = UIColor.additionalYellow
+    scannerViewController.headerViewController.navigationBar.titleTextAttributes = [.foregroundColor: UIColor.white]
+    scannerViewController.headerViewController.navigationBar.tintColor = UIColor.white
+    scannerViewController.messageViewController.messages.scanningText = "Сканируйте QR код пользователя, чтобы добавить его в друзья"
+    
     scannerViewController.codeDelegate = self
     scannerViewController.errorDelegate = self
     scannerViewController.dismissalDelegate = self

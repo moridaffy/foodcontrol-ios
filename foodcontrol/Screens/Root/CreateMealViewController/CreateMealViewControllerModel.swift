@@ -12,7 +12,7 @@ import CoreLocation
 class CreateMealViewControllerModel {
   
   let meal: Meal = Meal(dishes: [])
-  private(set) var cellModels: [FCTableViewCellModel] {
+  private(set) var cellModels: [FCTableViewCellModel] = [] {
     didSet {
       view?.reloadTableView()
     }
@@ -21,11 +21,7 @@ class CreateMealViewControllerModel {
   weak var view: CreateMealViewController?
   
   init() {
-    cellModels = [
-      MealHeaderTableViewCellModel(meal: meal),
-      BigButtonTableViewCellModel(type: .addDish),
-      MapLocationTableViewCellModel(coordinate: CLLocationCoordinate2D(latitude: 55.766041, longitude: 37.684551))
-    ]
+    reloadCellModels()
   }
   
   private func reloadCellModels() {
@@ -35,7 +31,9 @@ class CreateMealViewControllerModel {
       cellModels.append(DishTableViewCellModel(dish: dish))
     }
     cellModels.append(BigButtonTableViewCellModel(type: .addDish))
-    cellModels.append(MapLocationTableViewCellModel(coordinate: CLLocationCoordinate2D(latitude: 55.766041, longitude: 37.684551)))
+    if let currentLocation = UserLocationManager.shared.currentLocation {
+      cellModels.append(MapLocationTableViewCellModel(coordinate: currentLocation))
+    }
     self.cellModels = cellModels
   }
   
@@ -46,6 +44,7 @@ class CreateMealViewControllerModel {
   }
   
   func createMeal(completionHandler: @escaping (Error?) -> Void) {
+    meal.coordinates = UserLocationManager.shared.currentLocation
     fixAllDishesIfNeeded { (error) in
       guard error == nil else {
         completionHandler(error)
