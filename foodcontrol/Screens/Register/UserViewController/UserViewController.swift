@@ -72,7 +72,7 @@ class UserViewController: UIViewController {
   }
   
   @objc private func logoutButtonTapped() {
-    // TODO
+    viewModel.logout()
   }
 }
 

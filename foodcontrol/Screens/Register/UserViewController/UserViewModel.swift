@@ -18,4 +18,9 @@ class UserViewModel {
     self.user = user
   }
   
+  func logout() {
+    DBManager.shared.deleteAll()
+    AuthManager.shared.switchToAuthWorkflow()
+  }
+  
 }
