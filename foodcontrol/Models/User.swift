@@ -145,6 +145,10 @@ extension User {
         return NSLocalizedString("Неизвестно", comment: "") + ": \(self.rawValue)"
       }
     }
+    
+    var fullTitle: String {
+      return title + " " + NSLocalizedString("Вес", comment: "").lowercased()
+    }
   }
   
   enum ActivityType: Int {

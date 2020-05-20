@@ -22,7 +22,7 @@ class InfoTextTableViewCell: UITableViewCell {
   private var viewModel: InfoTextTableViewCellModel!
   private weak var delegate: InfoTextTableViewCellDelegate?
   
-  func setup(viewModel: InfoTextTableViewCellModel, delegate: InfoTextTableViewCellDelegate?) {
+  func setup(viewModel: InfoTextTableViewCellModel, delegate: InfoTextTableViewCellDelegate? = nil) {
     self.viewModel = viewModel
     self.delegate = delegate
   

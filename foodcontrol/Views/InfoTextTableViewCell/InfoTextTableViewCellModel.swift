@@ -25,6 +25,7 @@ extension InfoTextTableViewCellModel {
     case title
     case description
     case size
+    case custom(String)
     
     var title: String {
       switch self {
@@ -34,6 +35,8 @@ extension InfoTextTableViewCellModel {
         return NSLocalizedString("Описание", comment: "")
       case .size:
         return NSLocalizedString("Размер порции (г)", comment: "")
+      case .custom(let title):
+        return title
       }
     }
     
@@ -45,6 +48,8 @@ extension InfoTextTableViewCellModel {
         return NSLocalizedString("Очень вкусные котлеты", comment: "")
       case .size:
         return NSLocalizedString("250", comment: "")
+      case .custom(_):
+        return ""
       }
     }
   }

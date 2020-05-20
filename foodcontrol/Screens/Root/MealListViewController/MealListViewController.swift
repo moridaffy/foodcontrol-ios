@@ -46,9 +46,9 @@ class MealListViewController: UIViewController {
     navigationItem.leftBarButtonItem = activityIndicatorItem
     self.activityIndicator = activityIndicator
     
-    let profileButton = UIBarButtonItem(image: UIImage(systemName: "person.circle.fill")?.withRenderingMode(.alwaysTemplate), style: .done, target: self, action: #selector(profileButtonTapped))
-    profileButton.tintColor = UIColor.additionalYellow
-    navigationItem.rightBarButtonItem = profileButton
+    let userButton = UIBarButtonItem(image: UIImage(systemName: "person.circle.fill")?.withRenderingMode(.alwaysTemplate), style: .done, target: self, action: #selector(userButtonTapped))
+    userButton.tintColor = UIColor.additionalYellow
+    navigationItem.rightBarButtonItem = userButton
     
     let backButton = UIBarButtonItem(image: nil, style: .done, target: nil, action: nil)
     backButton.tintColor = UIColor.additionalYellow
@@ -88,8 +88,11 @@ class MealListViewController: UIViewController {
     self.addMealButtonTapRecognizer = addMealButtonTapRecognizer
   }
   
-  @objc private func profileButtonTapped() {
-    
+  @objc private func userButtonTapped() {
+    guard let userViewController = UIStoryboard(name: "Auth", bundle: nil).instantiateViewController(withIdentifier: "UserViewController") as? UserViewController else { fatalError() }
+    guard let user = AuthManager.shared.currentUser else { return }
+    userViewController.setup(viewModel: UserViewModel(user: user))
+    navigationController?.pushViewController(userViewController, animated: true)
   }
   
   @objc private func addMealButtonTapped() {

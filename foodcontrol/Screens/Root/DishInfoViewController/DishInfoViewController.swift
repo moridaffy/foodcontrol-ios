@@ -219,7 +219,7 @@ extension DishInfoViewController: InfoTextTableViewCellDelegate {
       viewModel.dish.name = value
     case .description:
       viewModel.dish.description = value
-    case .size:
+    default:
       break
     }
     tableView.endUpdates()

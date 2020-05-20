@@ -9,6 +9,9 @@
 /* Begin PBXBuildFile section */
 		0C49279D246DEC680036FD2E /* String+Size.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C49279C246DEC680036FD2E /* String+Size.swift */; };
 		0C53B76C246899EC0084B9A6 /* Double+Rounding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C53B76B246899EC0084B9A6 /* Double+Rounding.swift */; };
+		0C7C6CA72474F613006032BB /* Date+IDs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C7C6CA62474F613006032BB /* Date+IDs.swift */; };
+		0C7C6CAA2474F6A9006032BB /* UserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C7C6CA92474F6A9006032BB /* UserViewController.swift */; };
+		0C7C6CAC2474F6CC006032BB /* UserViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C7C6CAB2474F6CC006032BB /* UserViewModel.swift */; };
 		0CAE98782470459D0086D9EB /* UIImage+Resizing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CAE98772470459D0086D9EB /* UIImage+Resizing.swift */; };
 		0CAE987A2470994E0086D9EB /* APIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CAE98792470994E0086D9EB /* APIManager.swift */; };
 		0CAE987C24709B860086D9EB /* OFFDishCodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CAE987B24709B860086D9EB /* OFFDishCodable.swift */; };
@@ -38,13 +41,13 @@
 		0CC82635243A372F00F1A047 /* CLLocationCoordinate2D+AlertActions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CC82634243A372F00F1A047 /* CLLocationCoordinate2D+AlertActions.swift */; };
 		0CC82637243A39E700F1A047 /* UIViewController+Alerts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CC82636243A39E700F1A047 /* UIViewController+Alerts.swift */; };
 		0CD6DA27246407D600369A67 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0CD6DA26246407D600369A67 /* GoogleService-Info.plist */; };
-		0CD6DA2A24640AA900369A67 /* BuildFile in Frameworks */ = {isa = PBXBuildFile; productRef = 0CD6DA2924640AA900369A67 /* SwiftPackageProductDependency */; };
-		0CD6DA2E24640AE900369A67 /* BuildFile in Frameworks */ = {isa = PBXBuildFile; productRef = 0CD6DA2D24640AE900369A67 /* SwiftPackageProductDependency */; };
+		0CD6DA2A24640AA900369A67 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 0CD6DA2924640AA900369A67 /* Alamofire */; };
+		0CD6DA2E24640AE900369A67 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 0CD6DA2D24640AE900369A67 /* Kingfisher */; };
 		0CD6DA3024640C4800369A67 /* FirebaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CD6DA2F24640C4800369A67 /* FirebaseManager.swift */; };
 		0CF856EF2469145600E74B62 /* RootViewControllerManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CF856EE2469145600E74B62 /* RootViewControllerManager.swift */; };
 		0CF856F22469147F00E74B62 /* Auth.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0CF856F12469147F00E74B62 /* Auth.storyboard */; };
 		0CF856F4246914B200E74B62 /* DBManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CF856F3246914B200E74B62 /* DBManager.swift */; };
-		0CF856F72469153A00E74B62 /* BuildFile in Frameworks */ = {isa = PBXBuildFile; productRef = 0CF856F62469153A00E74B62 /* SwiftPackageProductDependency */; };
+		0CF856F72469153A00E74B62 /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 0CF856F62469153A00E74B62 /* RealmSwift */; };
 		0CF856F9246915A500E74B62 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CF856F8246915A500E74B62 /* User.swift */; };
 		0CF856FB2469171F00E74B62 /* AuthManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CF856FA2469171F00E74B62 /* AuthManager.swift */; };
 		0CF856FE2469178900E74B62 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CF856FD2469178900E74B62 /* LoginViewController.swift */; };
@@ -78,6 +81,9 @@
 /* Begin PBXFileReference section */
 		0C49279C246DEC680036FD2E /* String+Size.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Size.swift"; sourceTree = "<group>"; };
 		0C53B76B246899EC0084B9A6 /* Double+Rounding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Double+Rounding.swift"; sourceTree = "<group>"; };
+		0C7C6CA62474F613006032BB /* Date+IDs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+IDs.swift"; sourceTree = "<group>"; };
+		0C7C6CA92474F6A9006032BB /* UserViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserViewController.swift; sourceTree = "<group>"; };
+		0C7C6CAB2474F6CC006032BB /* UserViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserViewModel.swift; sourceTree = "<group>"; };
 		0CAE98772470459D0086D9EB /* UIImage+Resizing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Resizing.swift"; sourceTree = "<group>"; };
 		0CAE98792470994E0086D9EB /* APIManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIManager.swift; sourceTree = "<group>"; };
 		0CAE987B24709B860086D9EB /* OFFDishCodable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OFFDishCodable.swift; sourceTree = "<group>"; };
@@ -150,16 +156,25 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0CF856F72469153A00E74B62 /* BuildFile in Frameworks */,
-				0CD6DA2E24640AE900369A67 /* BuildFile in Frameworks */,
+				0CF856F72469153A00E74B62 /* RealmSwift in Frameworks */,
+				0CD6DA2E24640AE900369A67 /* Kingfisher in Frameworks */,
 				CD354201EF9BCA2CF222BDE6 /* Pods_foodcontrol.framework in Frameworks */,
-				0CD6DA2A24640AA900369A67 /* BuildFile in Frameworks */,
+				0CD6DA2A24640AA900369A67 /* Alamofire in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0C7C6CA82474F693006032BB /* UserViewController */ = {
+			isa = PBXGroup;
+			children = (
+				0C7C6CA92474F6A9006032BB /* UserViewController.swift */,
+				0C7C6CAB2474F6CC006032BB /* UserViewModel.swift */,
+			);
+			path = UserViewController;
+			sourceTree = "<group>";
+		};
 		0CC825DC243A111400F1A047 = {
 			isa = PBXGroup;
 			children = (
@@ -239,6 +254,7 @@
 				0CF857082469247600E74B62 /* String+Validation.swift */,
 				0C49279C246DEC680036FD2E /* String+Size.swift */,
 				0CAE987F24709D0A0086D9EB /* Bundle+Version.swift */,
+				0C7C6CA62474F613006032BB /* Date+IDs.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -325,6 +341,7 @@
 				0CF856FC2469177C00E74B62 /* LoginViewController */,
 				0CF8570324691FA600E74B62 /* RegisterViewController */,
 				0CF8570A2469284700E74B62 /* ProfileSetupViewController */,
+				0C7C6CA82474F693006032BB /* UserViewController */,
 			);
 			path = Register;
 			sourceTree = "<group>";
@@ -454,9 +471,9 @@
 			);
 			name = foodcontrol;
 			packageProductDependencies = (
-				0CD6DA2924640AA900369A67 /* SwiftPackageProductDependency */,
-				0CD6DA2D24640AE900369A67 /* SwiftPackageProductDependency */,
-				0CF856F62469153A00E74B62 /* SwiftPackageProductDependency */,
+				0CD6DA2924640AA900369A67 /* Alamofire */,
+				0CD6DA2D24640AE900369A67 /* Kingfisher */,
+				0CF856F62469153A00E74B62 /* RealmSwift */,
 			);
 			productName = foodcontrol;
 			productReference = 0CC825E5243A111400F1A047 /* foodcontrol.app */;
@@ -487,9 +504,9 @@
 			);
 			mainGroup = 0CC825DC243A111400F1A047;
 			packageReferences = (
-				0CD6DA2824640AA900369A67 /* RemoteSwiftPackageReference */,
-				0CD6DA2C24640AE900369A67 /* RemoteSwiftPackageReference */,
-				0CF856F52469153A00E74B62 /* RemoteSwiftPackageReference */,
+				0CD6DA2824640AA900369A67 /* XCRemoteSwiftPackageReference "Alamofire" */,
+				0CD6DA2C24640AE900369A67 /* XCRemoteSwiftPackageReference "Kingfisher" */,
+				0CF856F52469153A00E74B62 /* XCRemoteSwiftPackageReference "realm-cocoa" */,
 			);
 			productRefGroup = 0CC825E6243A111400F1A047 /* Products */;
 			projectDirPath = "";
@@ -579,14 +596,17 @@
 				0CC8261A243A22EF00F1A047 /* FCTableViewCellModel.swift in Sources */,
 				0CF856EF2469145600E74B62 /* RootViewControllerManager.swift in Sources */,
 				0CF8570C2469286200E74B62 /* ProfileSetupViewController.swift in Sources */,
+				0C7C6CAA2474F6A9006032BB /* UserViewController.swift in Sources */,
 				0CAE98782470459D0086D9EB /* UIImage+Resizing.swift in Sources */,
 				0CF85700246917AC00E74B62 /* LoginViewModel.swift in Sources */,
+				0C7C6CAC2474F6CC006032BB /* UserViewModel.swift in Sources */,
 				0CAE988024709D0A0086D9EB /* Bundle+Version.swift in Sources */,
 				0CC82602243A132F00F1A047 /* MealListViewController.swift in Sources */,
 				0CF8570E2469289000E74B62 /* ProfileSetupViewModel.swift in Sources */,
 				0CFCAA5324575A0A004AB0B1 /* Dish.swift in Sources */,
 				0CFCAA4F24575018004AB0B1 /* InfoNutritionTableViewCellModel.swift in Sources */,
 				0CC8261F243A241800F1A047 /* CreateMealViewControllerModel.swift in Sources */,
+				0C7C6CA72474F613006032BB /* Date+IDs.swift in Sources */,
 				0CF8570224691D8A00E74B62 /* UITextField+Padding.swift in Sources */,
 				0CC8261D243A23ED00F1A047 /* CreateMealViewController.swift in Sources */,
 				0CF8570524691FB700E74B62 /* RegisterViewController.swift in Sources */,
@@ -812,7 +832,7 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		0CD6DA2824640AA900369A67 /* RemoteSwiftPackageReference */ = {
+		0CD6DA2824640AA900369A67 /* XCRemoteSwiftPackageReference "Alamofire" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/Alamofire/Alamofire";
 			requirement = {
@@ -820,7 +840,7 @@
 				minimumVersion = 5.1.0;
 			};
 		};
-		0CD6DA2C24640AE900369A67 /* RemoteSwiftPackageReference */ = {
+		0CD6DA2C24640AE900369A67 /* XCRemoteSwiftPackageReference "Kingfisher" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/onevcat/Kingfisher";
 			requirement = {
@@ -828,7 +848,7 @@
 				minimumVersion = 5.13.4;
 			};
 		};
-		0CF856F52469153A00E74B62 /* RemoteSwiftPackageReference */ = {
+		0CF856F52469153A00E74B62 /* XCRemoteSwiftPackageReference "realm-cocoa" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/realm/realm-cocoa";
 			requirement = {
@@ -839,19 +859,19 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		0CD6DA2924640AA900369A67 /* SwiftPackageProductDependency */ = {
+		0CD6DA2924640AA900369A67 /* Alamofire */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 0CD6DA2824640AA900369A67 /* RemoteSwiftPackageReference */;
+			package = 0CD6DA2824640AA900369A67 /* XCRemoteSwiftPackageReference "Alamofire" */;
 			productName = Alamofire;
 		};
-		0CD6DA2D24640AE900369A67 /* SwiftPackageProductDependency */ = {
+		0CD6DA2D24640AE900369A67 /* Kingfisher */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 0CD6DA2C24640AE900369A67 /* RemoteSwiftPackageReference */;
+			package = 0CD6DA2C24640AE900369A67 /* XCRemoteSwiftPackageReference "Kingfisher" */;
 			productName = Kingfisher;
 		};
-		0CF856F62469153A00E74B62 /* SwiftPackageProductDependency */ = {
+		0CF856F62469153A00E74B62 /* RealmSwift */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 0CF856F52469153A00E74B62 /* RemoteSwiftPackageReference */;
+			package = 0CF856F52469153A00E74B62 /* XCRemoteSwiftPackageReference "realm-cocoa" */;
 			productName = RealmSwift;
 		};
 /* End XCSwiftPackageProductDependency section */
