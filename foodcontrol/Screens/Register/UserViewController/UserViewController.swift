@@ -34,7 +34,7 @@ class UserViewController: UIViewController {
   }
   
   private func setupNavigationBar() {
-    title = NSLocalizedString("Прием пищи", comment: "")
+    title = NSLocalizedString("Профиль", comment: "")
     
     let qrButton = UIBarButtonItem(image: UIImage(systemName: "qrcode")?.withRenderingMode(.alwaysTemplate), style: .done, target: self, action: #selector(qrButtonTapped))
     qrButton.tintColor = UIColor.additionalYellow
@@ -68,7 +68,8 @@ class UserViewController: UIViewController {
   }
   
   @objc private func qrButtonTapped() {
-    // TODO
+    let userQrViewController = UserQrViewController(qrValue: viewModel.user.id)
+    present(userQrViewController, animated: true, completion: nil)
   }
   
   @objc private func logoutButtonTapped() {
@@ -107,7 +108,7 @@ extension UserViewController: UITableViewDataSource {
     // 8. dailyNorm
     // 9. statistics
     // 10. friends
-    return 9
+    return 10
   }
   
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {

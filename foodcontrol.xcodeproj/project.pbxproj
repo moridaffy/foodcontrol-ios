@@ -12,6 +12,7 @@
 		0C7C6CA72474F613006032BB /* Date+IDs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C7C6CA62474F613006032BB /* Date+IDs.swift */; };
 		0C7C6CAA2474F6A9006032BB /* UserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C7C6CA92474F6A9006032BB /* UserViewController.swift */; };
 		0C7C6CAC2474F6CC006032BB /* UserViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C7C6CAB2474F6CC006032BB /* UserViewModel.swift */; };
+		0C7C6CAE24750087006032BB /* UserQrViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C7C6CAD24750087006032BB /* UserQrViewController.swift */; };
 		0CAE98782470459D0086D9EB /* UIImage+Resizing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CAE98772470459D0086D9EB /* UIImage+Resizing.swift */; };
 		0CAE987A2470994E0086D9EB /* APIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CAE98792470994E0086D9EB /* APIManager.swift */; };
 		0CAE987C24709B860086D9EB /* OFFDishCodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CAE987B24709B860086D9EB /* OFFDishCodable.swift */; };
@@ -84,6 +85,7 @@
 		0C7C6CA62474F613006032BB /* Date+IDs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+IDs.swift"; sourceTree = "<group>"; };
 		0C7C6CA92474F6A9006032BB /* UserViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserViewController.swift; sourceTree = "<group>"; };
 		0C7C6CAB2474F6CC006032BB /* UserViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserViewModel.swift; sourceTree = "<group>"; };
+		0C7C6CAD24750087006032BB /* UserQrViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserQrViewController.swift; sourceTree = "<group>"; };
 		0CAE98772470459D0086D9EB /* UIImage+Resizing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Resizing.swift"; sourceTree = "<group>"; };
 		0CAE98792470994E0086D9EB /* APIManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIManager.swift; sourceTree = "<group>"; };
 		0CAE987B24709B860086D9EB /* OFFDishCodable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OFFDishCodable.swift; sourceTree = "<group>"; };
@@ -171,6 +173,7 @@
 			children = (
 				0C7C6CA92474F6A9006032BB /* UserViewController.swift */,
 				0C7C6CAB2474F6CC006032BB /* UserViewModel.swift */,
+				0C7C6CAD24750087006032BB /* UserQrViewController.swift */,
 			);
 			path = UserViewController;
 			sourceTree = "<group>";
@@ -614,6 +617,7 @@
 				0CFCAA482457470B004AB0B1 /* InfoTextTableViewCellModel.swift in Sources */,
 				0CFCAA3A24573F02004AB0B1 /* DishInfoViewModel.swift in Sources */,
 				0CC82610243A1B4C00F1A047 /* MealHeaderTableViewCellModel.swift in Sources */,
+				0C7C6CAE24750087006032BB /* UserQrViewController.swift in Sources */,
 				0CFCAA5824575E7D004AB0B1 /* DateHelper.swift in Sources */,
 				0CC82632243A31FF00F1A047 /* MapLocationTableViewCellModel.swift in Sources */,
 				0CC82628243A291500F1A047 /* BigButtonTableViewCell.swift in Sources */,
