@@ -13,4 +13,6 @@ target 'foodcontrol' do
   pod 'Firebase/Auth'
   pod 'Firebase/Storage'
   pod 'FirebaseFirestoreSwift'
+
+  pod 'BarcodeScanner'
 end

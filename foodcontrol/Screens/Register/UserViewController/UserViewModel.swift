@@ -11,6 +11,13 @@ import Foundation
 class UserViewModel {
   
   let user: User
+  var isCurrentUser: Bool {
+    return user.id == AuthManager.shared.currentUser?.id
+  }
+  var isFollowingUser: Bool {
+    guard let currentUser = AuthManager.shared.currentUser else { return false }
+    return currentUser.friendIds.contains(user.id)
+  }
   private(set) var meals: [Meal] = [] {
     didSet {
       view?.reloadTableView()
@@ -37,6 +44,37 @@ class UserViewModel {
                                    desc: NSLocalizedString("Не удалось загрузить информацию о пользователе", comment: ""),
                                    critical: false)
       }
+    }
+  }
+  
+  func addFriend(completionHandler: @escaping (Error?) -> Void) {
+    guard !isFollowingUser else {
+      completionHandler(nil)
+      return
+    }
+    guard let currentUser = AuthManager.shared.currentUser else { return }
+    var newFriendIds = Array(currentUser.friendIds)
+    newFriendIds.append(user.id)
+    
+    DBManager.shared.updateUser(user: currentUser, friendIds: newFriendIds) { (success) in
+      guard success else { return }
+      FirebaseManager.shared.uploadObject(currentUser, merge: true, completionHandler: completionHandler)
+    }
+  }
+  
+  func removeFriend(completionHandler: @escaping (Error?) -> Void) {
+    guard isFollowingUser else {
+      completionHandler(nil)
+      return
+    }
+    guard let currentUser = AuthManager.shared.currentUser,
+      let friendIdIndex = currentUser.friendIds.firstIndex(where: { $0 == user.id }) else { return }
+    var newFriendIds = Array(currentUser.friendIds)
+    newFriendIds.remove(at: friendIdIndex)
+    
+    DBManager.shared.updateUser(user: currentUser, friendIds: newFriendIds) { (success) in
+      guard success else { return }
+      FirebaseManager.shared.uploadObject(currentUser, merge: true, completionHandler: completionHandler)
     }
   }
   

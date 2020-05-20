@@ -103,6 +103,7 @@ class DBManager {
                   sexValue: Int? = nil,
                   weight: Double? = nil,
                   dailyCaloryAmount: Double? = nil,
+                  friendIds: [String]? = nil,
                   complationHandler: ((Bool) -> Void)? = nil) {
     dbQueue.sync {
       do {
@@ -122,6 +123,10 @@ class DBManager {
           }
           if let dailyCaloryAmount = dailyCaloryAmount {
             user.dailyCaloryAmount = dailyCaloryAmount
+          }
+          if let friendIds = friendIds {
+            user.friendIds.removeAll()
+            user.friendIds.append(objectsIn: friendIds)
           }
           try realm.commitWrite()
           complationHandler?(true)

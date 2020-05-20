@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import BarcodeScanner
 
 class UserListViewController: UIViewController {
   
@@ -43,7 +44,6 @@ class UserListViewController: UIViewController {
   }
   
   private func setupTableView() {
-    tableView.contentInset = UIEdgeInsets(top: -32.0, left: 0.0, bottom: 0.0, right: 0.0)
     tableView.tableFooterView = UIView()
     tableView.separatorStyle = .none
     tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
@@ -75,11 +75,38 @@ class UserListViewController: UIViewController {
   }
   
   @objc private func pulledToRefresh() {
-    // TODO
+    viewModel.reloadUsers { [weak self] (error) in
+      self?.refresher?.endRefreshing()
+      guard let error = error else { return }
+      self?.showAlertError(error: error,
+                           desc: NSLocalizedString("Не удалось загрузить список друзей", comment: ""),
+                           critical: false)
+    }
   }
   
   @objc private func addFriendButtonTapped() {
-    // TODO: открытие сканнера qr кодов
+    presentQrCodeScanner()
+  }
+  
+  private func presentQrCodeScanner() {
+    let scannerViewController = BarcodeScannerViewController()
+    scannerViewController.codeDelegate = self
+    scannerViewController.errorDelegate = self
+    scannerViewController.dismissalDelegate = self
+
+    present(scannerViewController, animated: true, completion: nil)
+  }
+  
+  private func scannedUserId(_ userId: String) {
+    viewModel.findUser(withId: userId) { [weak self] (user, error) in
+      if let user = user {
+        self?.openUserViewController(for: user)
+      } else {
+        self?.showAlertError(error: error,
+                             desc: NSLocalizedString("Не удалось найти пользователя", comment: ""),
+                             critical: false)
+      }
+    }
   }
   
   private func openUserViewController(for user: User) {
@@ -90,6 +117,26 @@ class UserListViewController: UIViewController {
   
   func reloadTableView() {
     tableView.reloadData()
+  }
+}
+
+extension UserListViewController: BarcodeScannerCodeDelegate, BarcodeScannerErrorDelegate, BarcodeScannerDismissalDelegate {
+  func scanner(_ controller: BarcodeScannerViewController, didCaptureCode code: String, type: String) {
+    controller.dismiss(animated: true) { [weak self] in
+      self?.scannedUserId(code)
+    }
+  }
+  
+  func scanner(_ controller: BarcodeScannerViewController, didReceiveError error: Error) {
+    controller.dismiss(animated: true) { [weak self] in
+      self?.showAlertError(error: error,
+                           desc: NSLocalizedString("Не удалось сканировать код", comment: ""),
+                           critical: false)
+    }
+  }
+  
+  func scannerDidDismiss(_ controller: BarcodeScannerViewController) {
+    controller.dismiss(animated: true, completion: nil)
   }
 }
 

@@ -24,9 +24,14 @@ class UserViewController: UIViewController {
     
     viewModel.view = self
     
-    setupNavigationBar()
     setupTableView()
     setupBottomButton()
+  }
+  
+  override func viewWillAppear(_ animated: Bool) {
+    super.viewWillAppear(animated)
+    
+    setupNavigationBar()
   }
   
   func setup(viewModel: UserViewModel) {
@@ -36,9 +41,16 @@ class UserViewController: UIViewController {
   private func setupNavigationBar() {
     title = NSLocalizedString("Профиль", comment: "")
     
-    let qrButton = UIBarButtonItem(image: UIImage(systemName: "qrcode")?.withRenderingMode(.alwaysTemplate), style: .done, target: self, action: #selector(qrButtonTapped))
-    qrButton.tintColor = UIColor.additionalYellow
-    navigationItem.rightBarButtonItem = qrButton
+    if viewModel.isCurrentUser {
+       let qrButton = UIBarButtonItem(image: UIImage(systemName: "qrcode")?.withRenderingMode(.alwaysTemplate), style: .done, target: self, action: #selector(qrButtonTapped))
+       qrButton.tintColor = UIColor.additionalYellow
+       navigationItem.rightBarButtonItem = qrButton
+    } else {
+      let buttonImage = UIImage(systemName: viewModel.isFollowingUser ? "xmark" : "plus")
+      let addFriendButton = UIBarButtonItem(image: buttonImage?.withRenderingMode(.alwaysTemplate), style: .done, target: self, action: #selector(addFriendButtonTapped))
+      addFriendButton.tintColor = UIColor.additionalYellow
+      navigationItem.rightBarButtonItem = addFriendButton
+    }
     
     let backButton = UIBarButtonItem(image: nil, style: .done, target: nil, action: nil)
     backButton.tintColor = UIColor.additionalYellow
@@ -80,6 +92,36 @@ class UserViewController: UIViewController {
   @objc private func qrButtonTapped() {
     let userQrViewController = UserQrViewController(qrValue: viewModel.user.id)
     present(userQrViewController, animated: true, completion: nil)
+  }
+  
+  @objc private func addFriendButtonTapped() {
+    if viewModel.isFollowingUser {
+      viewModel.removeFriend { [weak self] (error) in
+        if let error = error {
+          self?.showAlertError(error: error,
+                               desc: NSLocalizedString("Не удалось удалить пользователя из друзей", comment: ""),
+                               critical: false)
+        } else {
+          self?.showAlert(title: NSLocalizedString("Готово", comment: "") + "!",
+                          body: NSLocalizedString("Пользователь удален из друзей", comment: ""),
+                          button: "OK",
+                          actions: nil)
+        }
+      }
+    } else {
+      viewModel.addFriend { [weak self] (error) in
+        if let error = error {
+          self?.showAlertError(error: error,
+                               desc: NSLocalizedString("Не удалось добавить пользователя в друзья", comment: ""),
+                               critical: false)
+        } else {
+          self?.showAlert(title: NSLocalizedString("Готово", comment: "") + "!",
+                          body: NSLocalizedString("Пользователь добавлен в друзья", comment: ""),
+                          button: "OK",
+                          actions: nil)
+        }
+      }
+    }
   }
   
   @objc private func logoutButtonTapped() {

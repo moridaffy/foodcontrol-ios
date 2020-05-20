@@ -71,6 +71,27 @@ class User: Object, FirestoreObject {
               email: firebaseUser.email ?? "")
   }
   
+  convenience init?(dictionary: [String: Any]) {
+    guard let id = dictionary["uid"] as? String,
+      let username = dictionary["username"] as? String,
+      let email = dictionary["email"] as? String,
+      let weightPlanValue = dictionary["weight_plan_value"] as? Int,
+      let activityValue = dictionary["activity_value"] as? Int,
+      let sexValue = dictionary["sex_value"] as? Int,
+      let dailyCaloryAmount = dictionary["daily_calory_amount"] as? Double,
+      let friendIds = dictionary["friend_ids"] as? [String] else { return nil }
+    
+    self.init(id: id,
+              username: username,
+              email: email,
+              weightPlan: WeightPlanType(rawValue: weightPlanValue),
+              activity: ActivityType(rawValue: activityValue),
+              sex: SexType(rawValue: sexValue),
+              weight: (dictionary["weight"] as? Double) ?? Double(dictionary["weight"] as? Int ?? 0),
+              dailyCaloryAmount: dailyCaloryAmount,
+              friendIds: friendIds)
+  }
+  
   override class func primaryKey() -> String? {
     return "id"
   }
@@ -81,6 +102,7 @@ class User: Object, FirestoreObject {
     var dictionary: [String: Any] = [
       "uid": id,
       "username": username,
+      "email": email,
       "weight_plan_value": weightPlanValue,
       "activity_value": activityValue,
       "sex_value": sexValue,
@@ -123,6 +145,7 @@ class User: Object, FirestoreObject {
     if let friendIds = dictionary["friend_ids"] as? [String] {
       self.friendIds.append(objectsIn: friendIds)
     }
+    self.weight = (dictionary["weight"] as? Double) ?? Double(dictionary["weight"] as? Int ?? 0)
   }
   
   func calculateWeekQuality(weekId: String, meals: [Meal]) -> String {
