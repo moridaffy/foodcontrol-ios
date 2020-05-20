@@ -71,10 +71,11 @@ class RegisterViewController: UIViewController {
     vkAuthButton.layer.cornerRadius = 10.0
     vkAuthButton.layer.masksToBounds = true
     vkAuthButton.backgroundColor = UIColor.additionalVkBlue
+    vkAuthButton.isHidden = true
   }
   
   @IBAction private func vkAuthButtonTapped() {
-    
+    // TODO: настроить интеграцию с VK
   }
   
   @IBAction private func registerButtonTapped() {

@@ -16,10 +16,32 @@
 	<string>$(PRODUCT_BUNDLE_PACKAGE_TYPE)</string>
 	<key>CFBundleShortVersionString</key>
 	<string>1.0</string>
+	<key>CFBundleURLTypes</key>
+	<array>
+		<dict>
+			<key>CFBundleTypeRole</key>
+			<string>Editor</string>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>com.googleusercontent.apps.169598910850-h94s973cng3u9t31082ubg6ng29ni25a</string>
+			</array>
+		</dict>
+	</array>
 	<key>CFBundleVersion</key>
 	<string>1</string>
+	<key>LSApplicationQueriesSchemes</key>
+	<array>
+		<string>yandexnavi</string>
+		<string>mapswithme</string>
+		<string>comgooglemaps</string>
+		<string>yandexmaps</string>
+	</array>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
+	<key>NSCameraUsageDescription</key>
+	<string>$(PRODUCT_NAME) needs access to your Camera to let you use photos from your Camera</string>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>$(PRODUCT_NAME) needs access to the Photo Library to let you use photos from your Photo Library.</string>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>
 	<key>UIMainStoryboardFile</key>
@@ -41,16 +63,5 @@
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
-	<key>LSApplicationQueriesSchemes</key>
-	<array>
-		<string>yandexnavi</string>
-		<string>mapswithme</string>
-		<string>comgooglemaps</string>
-		<string>yandexmaps</string>
-	</array>
-	<key>NSCameraUsageDescription</key>
-	<string>$(PRODUCT_NAME) needs access to your Camera to let you use photos from your Camera</string>
-	<key>NSPhotoLibraryUsageDescription</key>
-	<string>$(PRODUCT_NAME) needs access to the Photo Library to let you use photos from your Photo Library.</string>
 </dict>
 </plist>

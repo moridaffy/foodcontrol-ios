@@ -23,7 +23,7 @@ class User: Object, FirestoreObject {
   @objc dynamic var weight: Double = 0.0
   @objc dynamic var dailyCaloryAmount: Double = 0.0
   
-  @objc dynamic var vkId: String = ""
+  var friendIds = List<String>()
   
   var weightPlan: WeightPlanType {
     return WeightPlanType(rawValue: weightPlanValue) ?? .unknown
@@ -33,9 +33,6 @@ class User: Object, FirestoreObject {
   }
   var sex: SexType {
     return SexType(rawValue: sexValue) ?? .unknown
-  }
-  var vkLinked: Bool {
-    return !vkId.isEmpty
   }
   var isSetup: Bool {
     return weightPlan != .unknown
@@ -54,7 +51,7 @@ class User: Object, FirestoreObject {
                    sex: SexType? = nil,
                    weight: Double? = nil,
                    dailyCaloryAmount: Double? = nil,
-                   vkId: String? = nil) {
+                   friendIds: [String] = []) {
     self.init()
     self.id = id
     self.username = username
@@ -64,7 +61,8 @@ class User: Object, FirestoreObject {
     self.sexValue = sex?.rawValue ?? 0
     self.weight = weight ?? 0.0
     self.dailyCaloryAmount = dailyCaloryAmount ?? 0.0
-    self.vkId = vkId ?? ""
+    
+    self.friendIds.append(objectsIn: friendIds)
   }
   
   convenience init(firebaseUser: FirebaseAuth.User, username: String? = nil) {
@@ -86,7 +84,8 @@ class User: Object, FirestoreObject {
       "weight_plan_value": weightPlanValue,
       "activity_value": activityValue,
       "sex_value": sexValue,
-      "daily_calory_amount": dailyCaloryAmount
+      "daily_calory_amount": dailyCaloryAmount,
+      "friend_ids": Array(friendIds)
     ]
     if weight != 0.0 {
       dictionary["weight"] = weight
@@ -120,6 +119,9 @@ class User: Object, FirestoreObject {
     }
     if let dailyCaloryAmount = dictionary["daily_calory_amount"] as? Double {
       self.dailyCaloryAmount = dailyCaloryAmount
+    }
+    if let friendIds = dictionary["friend_ids"] as? [String] {
+      self.friendIds.append(objectsIn: friendIds)
     }
   }
 }
