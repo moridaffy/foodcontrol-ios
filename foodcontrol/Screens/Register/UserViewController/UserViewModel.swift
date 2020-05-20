@@ -44,5 +44,4 @@ class UserViewModel {
     DBManager.shared.deleteAll()
     AuthManager.shared.switchToAuthWorkflow()
   }
-  
 }

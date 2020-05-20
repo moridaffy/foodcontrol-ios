@@ -39,6 +39,10 @@ class UserViewController: UIViewController {
     let qrButton = UIBarButtonItem(image: UIImage(systemName: "qrcode")?.withRenderingMode(.alwaysTemplate), style: .done, target: self, action: #selector(qrButtonTapped))
     qrButton.tintColor = UIColor.additionalYellow
     navigationItem.rightBarButtonItem = qrButton
+    
+    let backButton = UIBarButtonItem(image: nil, style: .done, target: nil, action: nil)
+    backButton.tintColor = UIColor.additionalYellow
+    navigationItem.backBarButtonItem = backButton
   }
   
   private func setupTableView() {
@@ -67,6 +71,12 @@ class UserViewController: UIViewController {
     self.logoutButtonTapRecognizer = logoutButtonTapRecognizer
   }
   
+  private func openUserListViewController() {
+    guard let userListViewController = UIStoryboard(name: "Auth", bundle: nil).instantiateViewController(withIdentifier: "UserListViewController") as? UserListViewController else { fatalError() }
+    userListViewController.setup(viewModel: UserListViewModel(rootUser: viewModel.user))
+    navigationController?.pushViewController(userListViewController, animated: true)
+  }
+  
   @objc private func qrButtonTapped() {
     let userQrViewController = UserQrViewController(qrValue: viewModel.user.id)
     present(userQrViewController, animated: true, completion: nil)
@@ -84,7 +94,13 @@ class UserViewController: UIViewController {
 extension UserViewController: UITableViewDelegate {
   func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
     tableView.deselectRow(at: indexPath, animated: true)
-    // TODO
+    
+    switch indexPath.row {
+    case 9:
+      openUserListViewController()
+    default:
+      break
+    }
   }
   
   func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -98,16 +114,16 @@ extension UserViewController: UITableViewDelegate {
 
 extension UserViewController: UITableViewDataSource {
   func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-    // 1. username
-    // 2. email
-    // 3. weightPlan
-    // 4. activity
-    // 5. sex
-    // 6. currentWeight
-    // 7. total meals count
-    // 8. dailyNorm
-    // 9. statistics
-    // 10. friends
+    // 0. username
+    // 1. email
+    // 2. weightPlan
+    // 3. activity
+    // 4. sex
+    // 5. currentWeight
+    // 6. total meals count
+    // 7. dailyNorm
+    // 8. statistics
+    // 9. friends
     return 10
   }
   
@@ -136,6 +152,7 @@ extension UserViewController: UITableViewDataSource {
       cell.setup(viewModel: InfoTextTableViewCellModel(type: .custom(NSLocalizedString("Качество питания", comment: "")), text: user.calculateWeekQuality(weekId: Date().weekId, meals: viewModel.meals)))
     case 9:
       cell.setup(viewModel: InfoTextTableViewCellModel(type: .custom(NSLocalizedString("Друзья", comment: "")), text: "\(user.friendIds.count)"))
+      cell.selectionStyle = .default
     default:
       break
     }

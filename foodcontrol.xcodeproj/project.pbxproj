@@ -13,6 +13,8 @@
 		0C7C6CAA2474F6A9006032BB /* UserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C7C6CA92474F6A9006032BB /* UserViewController.swift */; };
 		0C7C6CAC2474F6CC006032BB /* UserViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C7C6CAB2474F6CC006032BB /* UserViewModel.swift */; };
 		0C7C6CAE24750087006032BB /* UserQrViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C7C6CAD24750087006032BB /* UserQrViewController.swift */; };
+		0C7C6CB1247504F9006032BB /* UserListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C7C6CB0247504F9006032BB /* UserListViewController.swift */; };
+		0C7C6CB5247505E4006032BB /* UserListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C7C6CB4247505E4006032BB /* UserListViewModel.swift */; };
 		0CAE98782470459D0086D9EB /* UIImage+Resizing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CAE98772470459D0086D9EB /* UIImage+Resizing.swift */; };
 		0CAE987A2470994E0086D9EB /* APIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CAE98792470994E0086D9EB /* APIManager.swift */; };
 		0CAE987C24709B860086D9EB /* OFFDishCodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CAE987B24709B860086D9EB /* OFFDishCodable.swift */; };
@@ -86,6 +88,8 @@
 		0C7C6CA92474F6A9006032BB /* UserViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserViewController.swift; sourceTree = "<group>"; };
 		0C7C6CAB2474F6CC006032BB /* UserViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserViewModel.swift; sourceTree = "<group>"; };
 		0C7C6CAD24750087006032BB /* UserQrViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserQrViewController.swift; sourceTree = "<group>"; };
+		0C7C6CB0247504F9006032BB /* UserListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserListViewController.swift; sourceTree = "<group>"; };
+		0C7C6CB4247505E4006032BB /* UserListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserListViewModel.swift; sourceTree = "<group>"; };
 		0CAE98772470459D0086D9EB /* UIImage+Resizing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Resizing.swift"; sourceTree = "<group>"; };
 		0CAE98792470994E0086D9EB /* APIManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIManager.swift; sourceTree = "<group>"; };
 		0CAE987B24709B860086D9EB /* OFFDishCodable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OFFDishCodable.swift; sourceTree = "<group>"; };
@@ -176,6 +180,15 @@
 				0C7C6CAD24750087006032BB /* UserQrViewController.swift */,
 			);
 			path = UserViewController;
+			sourceTree = "<group>";
+		};
+		0C7C6CAF247504E3006032BB /* UserListViewController */ = {
+			isa = PBXGroup;
+			children = (
+				0C7C6CB0247504F9006032BB /* UserListViewController.swift */,
+				0C7C6CB4247505E4006032BB /* UserListViewModel.swift */,
+			);
+			path = UserListViewController;
 			sourceTree = "<group>";
 		};
 		0CC825DC243A111400F1A047 = {
@@ -345,6 +358,7 @@
 				0CF8570324691FA600E74B62 /* RegisterViewController */,
 				0CF8570A2469284700E74B62 /* ProfileSetupViewController */,
 				0C7C6CA82474F693006032BB /* UserViewController */,
+				0C7C6CAF247504E3006032BB /* UserListViewController */,
 			);
 			path = Register;
 			sourceTree = "<group>";
@@ -598,6 +612,7 @@
 				0CFCAA5624575D9F004AB0B1 /* TestInstances.swift in Sources */,
 				0CC8261A243A22EF00F1A047 /* FCTableViewCellModel.swift in Sources */,
 				0CF856EF2469145600E74B62 /* RootViewControllerManager.swift in Sources */,
+				0C7C6CB5247505E4006032BB /* UserListViewModel.swift in Sources */,
 				0CF8570C2469286200E74B62 /* ProfileSetupViewController.swift in Sources */,
 				0C7C6CAA2474F6A9006032BB /* UserViewController.swift in Sources */,
 				0CAE98782470459D0086D9EB /* UIImage+Resizing.swift in Sources */,
@@ -634,6 +649,7 @@
 				0CC82637243A39E700F1A047 /* UIViewController+Alerts.swift in Sources */,
 				0CFCAA45245746F8004AB0B1 /* InfoTextTableViewCell.swift in Sources */,
 				0CC82617243A1CD600F1A047 /* DishTableViewCellModel.swift in Sources */,
+				0C7C6CB1247504F9006032BB /* UserListViewController.swift in Sources */,
 				0C53B76C246899EC0084B9A6 /* Double+Rounding.swift in Sources */,
 				0CF94DBD244E13D60047763C /* AddDishViewModel.swift in Sources */,
 				0CC82635243A372F00F1A047 /* CLLocationCoordinate2D+AlertActions.swift in Sources */,
