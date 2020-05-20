@@ -91,7 +91,7 @@ class MealListViewController: UIViewController {
   @objc private func userButtonTapped() {
     guard let userViewController = UIStoryboard(name: "Auth", bundle: nil).instantiateViewController(withIdentifier: "UserViewController") as? UserViewController else { fatalError() }
     guard let user = AuthManager.shared.currentUser else { return }
-    userViewController.setup(viewModel: UserViewModel(user: user))
+    userViewController.setup(viewModel: UserViewModel(user: user, meals: viewModel.meals))
     navigationController?.pushViewController(userViewController, animated: true)
   }
   

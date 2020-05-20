@@ -74,6 +74,10 @@ class UserViewController: UIViewController {
   @objc private func logoutButtonTapped() {
     viewModel.logout()
   }
+  
+  func reloadTableView() {
+    tableView.reloadData()
+  }
 }
 
 extension UserViewController: UITableViewDelegate {
@@ -99,9 +103,10 @@ extension UserViewController: UITableViewDataSource {
     // 4. activity
     // 5. sex
     // 6. currentWeight
-    // 7. dailyNorm
-    // 8. statistics
-    // 9. friends
+    // 7. total meals count
+    // 8. dailyNorm
+    // 9. statistics
+    // 10. friends
     return 9
   }
   
@@ -123,11 +128,12 @@ extension UserViewController: UITableViewDataSource {
     case 5:
       cell.setup(viewModel: InfoTextTableViewCellModel(type: .custom(NSLocalizedString("Текущий вес", comment: "")), text: user.weight.roundedString(to: 1, separator: ",") + " кг"))
     case 6:
-      cell.setup(viewModel: InfoTextTableViewCellModel(type: .custom(NSLocalizedString("Дневная норма калорий", comment: "")), text: user.dailyCaloryAmount.roundedString(to: 1, separator: ",") + " ккал"))
+      cell.setup(viewModel: InfoTextTableViewCellModel(type: .custom(NSLocalizedString("Приемов пищи", comment: "")), text: "\(viewModel.meals.count)"))
     case 7:
-      // TODO
-      cell.setup(viewModel: InfoTextTableViewCellModel(type: .custom(NSLocalizedString("Качество питания", comment: "")), text: "0/7"))
+      cell.setup(viewModel: InfoTextTableViewCellModel(type: .custom(NSLocalizedString("Дневная норма калорий", comment: "")), text: user.dailyCaloryAmount.roundedString(to: 1, separator: ",") + " ккал"))
     case 8:
+      cell.setup(viewModel: InfoTextTableViewCellModel(type: .custom(NSLocalizedString("Качество питания", comment: "")), text: user.calculateWeekQuality(weekId: Date().weekId, meals: viewModel.meals)))
+    case 9:
       cell.setup(viewModel: InfoTextTableViewCellModel(type: .custom(NSLocalizedString("Друзья", comment: "")), text: "\(user.friendIds.count)"))
     default:
       break

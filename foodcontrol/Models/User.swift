@@ -124,6 +124,25 @@ class User: Object, FirestoreObject {
       self.friendIds.append(objectsIn: friendIds)
     }
   }
+  
+  func calculateWeekQuality(weekId: String, meals: [Meal]) -> String {
+    let filteredMeals = meals.filter({ $0.date.weekId == weekId })
+    var dayCalories: [String: Double] = [:]
+    for meal in filteredMeals {
+      if dayCalories.contains(where: { $0.key == meal.date.dayId }) {
+        dayCalories[meal.date.dayId]! += meal.totalCalories
+      } else {
+        dayCalories[meal.date.dayId] = meal.totalCalories
+      }
+    }
+    
+    var successCount: Int = 7
+    for day in dayCalories where day.value > dailyCaloryAmount {
+      successCount -= 1
+    }
+    
+    return "\(successCount)/7"
+  }
 }
 
 extension User {
