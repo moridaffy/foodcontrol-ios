@@ -69,6 +69,12 @@ class CreateMealViewController: UIViewController {
   }
   
   @objc private func addMealButtonTapped() {
+    guard !viewModel.meal.dishes.isEmpty else {
+      showAlertError(error: nil,
+                     desc: NSLocalizedString("Невозможно создать прием пищи с пустым списком блюд", comment: ""),
+                     critical: false)
+      return
+    }
     viewModel.createMeal { [weak self] (error) in
       if let error = error {
         self?.showAlertError(error: error,
