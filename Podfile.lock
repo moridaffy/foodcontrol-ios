@@ -280,6 +280,15 @@ PODS:
     - nanopb (~> 0.3)
   - gRPC-Core/Interface (1.21.0)
   - GTMSessionFetcher/Core (1.3.1)
+  - ImageSlideshow (1.8.3):
+    - ImageSlideshow/Core (= 1.8.3)
+  - ImageSlideshow/Core (1.8.3)
+  - ImageSlideshow/Kingfisher (1.8.3):
+    - ImageSlideshow/Core
+    - Kingfisher (> 3.0)
+  - Kingfisher (5.13.4):
+    - Kingfisher/Core (= 5.13.4)
+  - Kingfisher/Core (5.13.4)
   - leveldb-library (1.22)
   - nanopb (0.3.9011):
     - nanopb/decode (= 0.3.9011)
@@ -296,6 +305,9 @@ DEPENDENCIES:
   - Firebase/Firestore
   - Firebase/Storage
   - FirebaseFirestoreSwift
+  - ImageSlideshow
+  - ImageSlideshow/Kingfisher
+  - Kingfisher
 
 SPEC REPOS:
   trunk:
@@ -322,6 +334,8 @@ SPEC REPOS:
     - "gRPC-C++"
     - gRPC-Core
     - GTMSessionFetcher
+    - ImageSlideshow
+    - Kingfisher
     - leveldb-library
     - nanopb
     - PromisesObjC
@@ -350,10 +364,12 @@ SPEC CHECKSUMS:
   "gRPC-C++": 9dfe7b44821e7b3e44aacad2af29d2c21f7cde83
   gRPC-Core: c9aef9a261a1247e881b18059b84d597293c9947
   GTMSessionFetcher: cea130bbfe5a7edc8d06d3f0d17288c32ffe9925
+  ImageSlideshow: 4694d7d699a1549582e7cc631fb392d8f91630f3
+  Kingfisher: d2279a7abece3c7f25a80cd2b7f363ca5cf3f44c
   leveldb-library: 55d93ee664b4007aac644a782d11da33fba316f7
   nanopb: 18003b5e52dab79db540fe93fe9579f399bd1ccd
   PromisesObjC: c119f3cd559f50b7ae681fa59dc1acd19173b7e6
 
-PODFILE CHECKSUM: 8e4f80831d688cfae4b51b295e86351767d31860
+PODFILE CHECKSUM: dc0d8d9dcf2bbcf0de568be0d4ce55550f0d474a
 
 COCOAPODS: 1.9.1

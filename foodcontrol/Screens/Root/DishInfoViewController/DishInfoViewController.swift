@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import ImageSlideshow
 
 protocol DishInfoViewControllerDelegate: class {
   func didAddToMeal(dish: Dish)
@@ -229,6 +230,18 @@ class DishInfoViewController: UIViewController {
     present(imagePicker, animated: true, completion: nil)
   }
   
+  private func presentImageFullscreen() {
+    let fullscreenViewController = FullScreenSlideshowViewController()
+    if let image = viewModel.dish.image {
+      fullscreenViewController.inputs = [ImageSource(image: image)]
+    } else if let imageUrl = viewModel.dish.imageUrl {
+      fullscreenViewController.inputs = [KingfisherSource(url: imageUrl)]
+    } else {
+      return
+    }
+    present(fullscreenViewController, animated: true, completion: nil)
+  }
+  
   func reloadTableView() {
     tableView.reloadData()
   }
@@ -324,6 +337,8 @@ extension DishInfoViewController: UITableViewDelegate {
       if cellModel.type == .addImage {
         presentImagePickerSheet()
       }
+    } else if let cellModel = cellModel as? BigImageTableViewCellModel {
+      presentImageFullscreen()
     }
   }
 }

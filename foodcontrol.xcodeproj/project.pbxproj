@@ -47,7 +47,6 @@
 		0CC82637243A39E700F1A047 /* UIViewController+Alerts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CC82636243A39E700F1A047 /* UIViewController+Alerts.swift */; };
 		0CD6DA27246407D600369A67 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0CD6DA26246407D600369A67 /* GoogleService-Info.plist */; };
 		0CD6DA2A24640AA900369A67 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 0CD6DA2924640AA900369A67 /* Alamofire */; };
-		0CD6DA2E24640AE900369A67 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 0CD6DA2D24640AE900369A67 /* Kingfisher */; };
 		0CD6DA3024640C4800369A67 /* FirebaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CD6DA2F24640C4800369A67 /* FirebaseManager.swift */; };
 		0CF856EF2469145600E74B62 /* RootViewControllerManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CF856EE2469145600E74B62 /* RootViewControllerManager.swift */; };
 		0CF856F22469147F00E74B62 /* Auth.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0CF856F12469147F00E74B62 /* Auth.storyboard */; };
@@ -167,7 +166,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				0CF856F72469153A00E74B62 /* RealmSwift in Frameworks */,
-				0CD6DA2E24640AE900369A67 /* Kingfisher in Frameworks */,
 				CD354201EF9BCA2CF222BDE6 /* Pods_foodcontrol.framework in Frameworks */,
 				0CD6DA2A24640AA900369A67 /* Alamofire in Frameworks */,
 			);
@@ -495,7 +493,6 @@
 			name = foodcontrol;
 			packageProductDependencies = (
 				0CD6DA2924640AA900369A67 /* Alamofire */,
-				0CD6DA2D24640AE900369A67 /* Kingfisher */,
 				0CF856F62469153A00E74B62 /* RealmSwift */,
 			);
 			productName = foodcontrol;
@@ -528,7 +525,6 @@
 			mainGroup = 0CC825DC243A111400F1A047;
 			packageReferences = (
 				0CD6DA2824640AA900369A67 /* XCRemoteSwiftPackageReference "Alamofire" */,
-				0CD6DA2C24640AE900369A67 /* XCRemoteSwiftPackageReference "Kingfisher" */,
 				0CF856F52469153A00E74B62 /* XCRemoteSwiftPackageReference "realm-cocoa" */,
 			);
 			productRefGroup = 0CC825E6243A111400F1A047 /* Products */;
@@ -868,14 +864,6 @@
 				minimumVersion = 5.1.0;
 			};
 		};
-		0CD6DA2C24640AE900369A67 /* XCRemoteSwiftPackageReference "Kingfisher" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/onevcat/Kingfisher";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 5.13.4;
-			};
-		};
 		0CF856F52469153A00E74B62 /* XCRemoteSwiftPackageReference "realm-cocoa" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/realm/realm-cocoa";
@@ -891,11 +879,6 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 0CD6DA2824640AA900369A67 /* XCRemoteSwiftPackageReference "Alamofire" */;
 			productName = Alamofire;
-		};
-		0CD6DA2D24640AE900369A67 /* Kingfisher */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 0CD6DA2C24640AE900369A67 /* XCRemoteSwiftPackageReference "Kingfisher" */;
-			productName = Kingfisher;
 		};
 		0CF856F62469153A00E74B62 /* RealmSwift */ = {
 			isa = XCSwiftPackageProductDependency;
