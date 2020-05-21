@@ -12,6 +12,7 @@ class MealListViewController: UIViewController {
   
   @IBOutlet private weak var tableView: UITableView!
   @IBOutlet private weak var fadeImageView: UIImageView!
+  @IBOutlet private weak var placeholderLabel: UILabel!
   @IBOutlet private weak var addMealButtonContainerView: UIView!
   @IBOutlet private weak var addMealButtonTitleLabel: UILabel!
   @IBOutlet private weak var addMealButtonIconImageView: UIImageView!
@@ -25,6 +26,7 @@ class MealListViewController: UIViewController {
     super.viewDidLoad()
     
     viewModel.view = self
+    placeholderLabel.isHidden = true
     
     setupNavigationBar()
     setupTableView()
@@ -142,6 +144,16 @@ class MealListViewController: UIViewController {
   
   func reloadTableView() {
     tableView.reloadData()
+    
+    guard viewModel.cellModels.isEmpty else {
+      placeholderLabel.isHidden = true
+      return
+    }
+    
+    placeholderLabel.isHidden = false
+    placeholderLabel.text = AuthManager.shared.isAnonymous
+      ? NSLocalizedString("Авторизуйтесь, чтобы добавлять начать добавлять свои приемы пищи и отслеживать их.", comment: "")
+      : NSLocalizedString("У вас пока нет ни одного приема пищи. Самое время, чтобы его добавить?", comment: "")
   }
   
   func updateActivityIndicator(animating: Bool) {

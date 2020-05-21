@@ -40,6 +40,11 @@ class MealListViewModel {
   }
   
   func reloadMeals(completionHandler: @escaping (Error?) -> Void) {
+    guard !AuthManager.shared.isAnonymous else {
+      meals = []
+      completionHandler(nil)
+      return
+    }
     isLoading = true
     FirebaseManager.shared.getUsersMeals { [weak self] (meals, error) in
       self?.isLoading = false

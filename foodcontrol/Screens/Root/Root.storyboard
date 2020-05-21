@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Pcy-aa-2ix">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Pcy-aa-2ix">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -54,10 +54,17 @@
                                     <constraint firstItem="iG9-Zl-Gea" firstAttribute="centerY" secondItem="9f1-Yb-Sy0" secondAttribute="centerY" id="tXX-ZY-zLl"/>
                                 </constraints>
                             </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ryd-wA-asY">
+                                <rect key="frame" x="16" y="88" width="382" height="692"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
                             <constraint firstItem="9f1-Yb-Sy0" firstAttribute="top" secondItem="VaB-59-wv2" secondAttribute="bottom" constant="16" id="23a-I7-jBR"/>
+                            <constraint firstItem="ryd-wA-asY" firstAttribute="leading" secondItem="c1Z-9l-ef1" secondAttribute="leading" constant="16" id="BmV-d0-S2z"/>
                             <constraint firstItem="c1Z-9l-ef1" firstAttribute="trailing" secondItem="9f1-Yb-Sy0" secondAttribute="trailing" constant="16" id="CfI-U1-RH1"/>
                             <constraint firstItem="VaB-59-wv2" firstAttribute="leading" secondItem="c1Z-9l-ef1" secondAttribute="leading" id="Ckr-OZ-Ltp"/>
                             <constraint firstItem="VaB-59-wv2" firstAttribute="top" secondItem="c1Z-9l-ef1" secondAttribute="top" id="QFZ-wx-wBS"/>
@@ -65,7 +72,10 @@
                             <constraint firstItem="Eic-SB-egU" firstAttribute="leading" secondItem="c1Z-9l-ef1" secondAttribute="leading" id="TqI-Xr-Qie"/>
                             <constraint firstItem="c1Z-9l-ef1" firstAttribute="trailing" secondItem="VaB-59-wv2" secondAttribute="trailing" id="Wmk-iS-sm7"/>
                             <constraint firstItem="c1Z-9l-ef1" firstAttribute="bottom" secondItem="9f1-Yb-Sy0" secondAttribute="bottom" constant="16" id="b5X-ZI-rTC"/>
+                            <constraint firstItem="ryd-wA-asY" firstAttribute="bottom" secondItem="VaB-59-wv2" secondAttribute="bottom" id="gDg-hp-9KR"/>
                             <constraint firstItem="c1Z-9l-ef1" firstAttribute="trailing" secondItem="Eic-SB-egU" secondAttribute="trailing" id="l7Y-Yb-Gjz"/>
+                            <constraint firstItem="c1Z-9l-ef1" firstAttribute="trailing" secondItem="ryd-wA-asY" secondAttribute="trailing" constant="16" id="t3o-HJ-WAs"/>
+                            <constraint firstItem="ryd-wA-asY" firstAttribute="top" secondItem="VaB-59-wv2" secondAttribute="top" id="uTW-gY-P40"/>
                             <constraint firstItem="VaB-59-wv2" firstAttribute="bottom" secondItem="Eic-SB-egU" secondAttribute="bottom" id="xsA-7A-qM1"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="c1Z-9l-ef1"/>
@@ -76,6 +86,7 @@
                         <outlet property="addMealButtonIconImageView" destination="7Oi-O2-NAF" id="vNB-Mq-jK9"/>
                         <outlet property="addMealButtonTitleLabel" destination="iG9-Zl-Gea" id="YTF-xM-XyQ"/>
                         <outlet property="fadeImageView" destination="Eic-SB-egU" id="7jE-Te-pTM"/>
+                        <outlet property="placeholderLabel" destination="ryd-wA-asY" id="cNB-tt-kov"/>
                         <outlet property="tableView" destination="VaB-59-wv2" id="gmN-El-ICa"/>
                     </connections>
                 </viewController>
