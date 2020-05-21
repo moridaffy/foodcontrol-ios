@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="jum-wo-fw1">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="jum-wo-fw1">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
@@ -68,6 +68,13 @@
                                     <action selector="registerButtonTapped" destination="V9F-bG-NUW" eventType="touchUpInside" id="woP-76-KSV"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3Qv-UV-IbL">
+                                <rect key="frame" x="32" y="395" width="350" height="30"/>
+                                <state key="normal" title="Пропуск"/>
+                                <connections>
+                                    <action selector="skipAuthButtonTapped" destination="V9F-bG-NUW" eventType="touchUpInside" id="FSr-1P-Qkm"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
@@ -76,10 +83,13 @@
                             <constraint firstItem="mz5-Ke-Qg1" firstAttribute="top" secondItem="ZOj-7x-890" secondAttribute="bottom" constant="16" id="BCb-z2-w2S"/>
                             <constraint firstItem="mz5-Ke-Qg1" firstAttribute="leading" secondItem="ZOj-7x-890" secondAttribute="leading" id="BEz-JP-uci"/>
                             <constraint firstItem="yuv-ka-t9V" firstAttribute="leading" secondItem="ZOj-7x-890" secondAttribute="leading" id="EXS-pk-nhY"/>
+                            <constraint firstItem="3Qv-UV-IbL" firstAttribute="top" secondItem="yuv-ka-t9V" secondAttribute="bottom" constant="8" id="Eqs-Bd-Tuc"/>
                             <constraint firstItem="yuv-ka-t9V" firstAttribute="top" secondItem="GON-tq-3sG" secondAttribute="bottom" constant="16" id="GzG-7L-v8G"/>
                             <constraint firstItem="ZOj-7x-890" firstAttribute="leading" secondItem="NqT-CC-apW" secondAttribute="leading" constant="32" id="J70-xA-PJQ"/>
                             <constraint firstItem="GON-tq-3sG" firstAttribute="centerX" secondItem="FqF-RU-7B6" secondAttribute="centerX" id="MBf-kI-afz"/>
                             <constraint firstItem="ZOj-7x-890" firstAttribute="top" secondItem="NqT-CC-apW" secondAttribute="top" constant="16" id="O0x-X6-snx"/>
+                            <constraint firstItem="3Qv-UV-IbL" firstAttribute="trailing" secondItem="yuv-ka-t9V" secondAttribute="trailing" id="PCH-B2-Cze"/>
+                            <constraint firstItem="3Qv-UV-IbL" firstAttribute="leading" secondItem="yuv-ka-t9V" secondAttribute="leading" id="eEh-ho-rNo"/>
                             <constraint firstItem="JUC-3C-jx8" firstAttribute="trailing" secondItem="mz5-Ke-Qg1" secondAttribute="trailing" id="eV4-9R-JXV"/>
                             <constraint firstItem="mz5-Ke-Qg1" firstAttribute="trailing" secondItem="ZOj-7x-890" secondAttribute="trailing" id="ehv-uo-mtD"/>
                             <constraint firstItem="NqT-CC-apW" firstAttribute="trailing" secondItem="ZOj-7x-890" secondAttribute="trailing" constant="32" id="iNx-Gf-ebO"/>
@@ -97,6 +107,7 @@
                         <outlet property="loginButton" destination="yuv-ka-t9V" id="jxe-dN-ZgP"/>
                         <outlet property="passwordTextField" destination="JUC-3C-jx8" id="AZq-YW-Xzm"/>
                         <outlet property="registerButton" destination="LrC-pB-Uuo" id="zZC-r3-Q2y"/>
+                        <outlet property="skipAuthButton" destination="3Qv-UV-IbL" id="23K-X0-VAq"/>
                         <outlet property="titleLabel" destination="ZOj-7x-890" id="sCK-CY-8xf"/>
                         <outlet property="vkAuthButton" destination="GON-tq-3sG" id="rhx-31-Ja4"/>
                     </connections>

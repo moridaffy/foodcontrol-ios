@@ -39,7 +39,7 @@ class AddDishViewController: UIViewController {
     viewModel.view = self
   }
   
-  func setup(delegate: AddDishViewControllerDelegate) {
+  func setup(delegate: AddDishViewControllerDelegate?) {
     self.delegate = delegate
   }
   
@@ -84,7 +84,8 @@ class AddDishViewController: UIViewController {
   
   private func openDishViewController(for dish: Dish?) {
     guard let dishInfoViewController = UIStoryboard(name: "Root", bundle: nil).instantiateViewController(withIdentifier: "DishInfoViewController") as? DishInfoViewController else { return }
-    dishInfoViewController.setup(viewModel: DishInfoViewModel(dish: dish), delegate: self)
+    let dishInfoDelegate: DishInfoViewControllerDelegate? = AuthManager.shared.isAnonymous ? nil : self
+    dishInfoViewController.setup(viewModel: DishInfoViewModel(dish: dish), delegate: dishInfoDelegate)
     navigationController?.pushViewController(dishInfoViewController, animated: true)
   }
   

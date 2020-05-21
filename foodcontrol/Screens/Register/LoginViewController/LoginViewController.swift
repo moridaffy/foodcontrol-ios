@@ -15,6 +15,7 @@ class LoginViewController: UIViewController {
   @IBOutlet private weak var passwordTextField: UITextField!
   @IBOutlet private weak var vkAuthButton: UIButton!
   @IBOutlet private weak var loginButton: UIButton!
+  @IBOutlet private weak var skipAuthButton: UIButton!
   @IBOutlet private weak var registerButton: UIButton!
   
   private let viewModel = LoginViewModel()
@@ -59,6 +60,7 @@ class LoginViewController: UIViewController {
   
   private func setupButtons() {
     loginButton.setTitle(NSLocalizedString("Войти в аккаунт", comment: ""), for: .normal)
+    skipAuthButton.setTitle(NSLocalizedString("Пропустить авторизацию", comment: ""), for: .normal)
     registerButton.setTitle(NSLocalizedString("Зарегистрироваться", comment: ""), for: .normal)
     
     [loginButton, registerButton].forEach { (button) in
@@ -68,6 +70,9 @@ class LoginViewController: UIViewController {
       button?.setTitleColor(UIColor.white, for: .normal)
       button?.titleLabel?.font = UIFont.systemFont(ofSize: 17.0, weight: .semibold)
     }
+    
+    skipAuthButton.setTitleColor(UIColor.black.withAlphaComponent(0.5), for: .normal)
+    skipAuthButton.titleLabel?.font = UIFont.systemFont(ofSize: 15.0, weight: .regular)
     
     // TODO: заменить на иконку VK
     vkAuthButton.setTitle("VK", for: .normal)
@@ -84,6 +89,15 @@ class LoginViewController: UIViewController {
   
   @IBAction private func loginButtonTapped() {
     tryToLogin()
+  }
+  
+  @IBAction private func skipAuthButtonTapped() {
+    viewModel.skipAuthorization { [weak self] (success, error) in
+      guard !success else { return }
+      self?.showAlertError(error: error,
+                           desc: NSLocalizedString("Не удалось пропустить авторизацию", comment: ""),
+                           critical: false)
+    }
   }
   
   @IBAction private func registerButtonTapped() {

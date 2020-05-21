@@ -23,6 +23,8 @@ class User: Object, FirestoreObject {
   @objc dynamic var weight: Double = 0.0
   @objc dynamic var dailyCaloryAmount: Double = 0.0
   
+  @objc dynamic var isAnonymous: Bool = false
+  
   var friendIds = List<String>()
   
   var weightPlan: WeightPlanType {
@@ -51,6 +53,7 @@ class User: Object, FirestoreObject {
                    sex: SexType? = nil,
                    weight: Double? = nil,
                    dailyCaloryAmount: Double? = nil,
+                   isAnonymous: Bool = false,
                    friendIds: [String] = []) {
     self.init()
     self.id = id
@@ -61,6 +64,7 @@ class User: Object, FirestoreObject {
     self.sexValue = sex?.rawValue ?? 0
     self.weight = weight ?? 0.0
     self.dailyCaloryAmount = dailyCaloryAmount ?? 0.0
+    self.isAnonymous = isAnonymous
     
     self.friendIds.append(objectsIn: friendIds)
   }
@@ -68,7 +72,8 @@ class User: Object, FirestoreObject {
   convenience init(firebaseUser: FirebaseAuth.User, username: String? = nil) {
     self.init(id: firebaseUser.uid,
               username: username ?? "",
-              email: firebaseUser.email ?? "")
+              email: firebaseUser.email ?? "",
+              isAnonymous: firebaseUser.isAnonymous)
   }
   
   convenience init?(dictionary: [String: Any]) {

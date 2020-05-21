@@ -77,7 +77,9 @@ class MealListViewController: UIViewController {
     addMealButtonContainerView.backgroundColor = UIColor.additionalYellow
     addMealButtonContainerView.layer.cornerRadius = 10.0
     addMealButtonContainerView.layer.masksToBounds = true
-    addMealButtonTitleLabel.text = NSLocalizedString("Добавить прием пищи", comment: "")
+    addMealButtonTitleLabel.text = AuthManager.shared.isAnonymous
+      ? NSLocalizedString("Доступные блюда", comment: "")
+      : NSLocalizedString("Добавить прием пищи", comment: "")
     addMealButtonTitleLabel.textColor = UIColor.white
     addMealButtonTitleLabel.font = UIFont.systemFont(ofSize: 17.0, weight: .semibold)
     addMealButtonIconImageView.image = UIImage(systemName: "plus")?.withRenderingMode(.alwaysTemplate)
@@ -89,15 +91,32 @@ class MealListViewController: UIViewController {
   }
   
   @objc private func userButtonTapped() {
-    guard let userViewController = UIStoryboard(name: "Auth", bundle: nil).instantiateViewController(withIdentifier: "UserViewController") as? UserViewController else { fatalError() }
-    guard let user = AuthManager.shared.currentUser else { return }
-    userViewController.setup(viewModel: UserViewModel(user: user, meals: viewModel.meals))
-    navigationController?.pushViewController(userViewController, animated: true)
+    if AuthManager.shared.isAnonymous {
+      let loginAction = UIAlertAction(title: NSLocalizedString("Войти в аккаунт", comment: ""), style: .default) { (_) in
+        DBManager.shared.deleteAll()
+        AuthManager.shared.switchToAuthWorkflow()
+      }
+      showAlert(title: NSLocalizedString("Необходим вход", comment: ""),
+                body: NSLocalizedString("Необходимо войти в аккаунт, чтобы просмотреть информацию о своем профиле и профиле своих друзей", comment: ""),
+                button: NSLocalizedString("Отмена", comment: ""),
+                actions: [loginAction])
+    } else {
+      guard let userViewController = UIStoryboard(name: "Auth", bundle: nil).instantiateViewController(withIdentifier: "UserViewController") as? UserViewController else { fatalError() }
+      guard let user = AuthManager.shared.currentUser else { return }
+      userViewController.setup(viewModel: UserViewModel(user: user, meals: viewModel.meals))
+      navigationController?.pushViewController(userViewController, animated: true)
+    }
   }
   
   @objc private func addMealButtonTapped() {
-    guard let createMealViewController = UIStoryboard(name: "Root", bundle: nil).instantiateViewController(withIdentifier: "CreateMealViewController") as? CreateMealViewController else { return }
-    navigationController?.pushViewController(createMealViewController, animated: true)
+    if AuthManager.shared.isAnonymous {
+      guard let addDishViewController = UIStoryboard(name: "Root", bundle: nil).instantiateViewController(withIdentifier: "AddDishViewController") as? AddDishViewController else { return }
+      addDishViewController.setup(delegate: nil)
+      navigationController?.pushViewController(addDishViewController, animated: true)
+    } else {
+      guard let createMealViewController = UIStoryboard(name: "Root", bundle: nil).instantiateViewController(withIdentifier: "CreateMealViewController") as? CreateMealViewController else { return }
+      navigationController?.pushViewController(createMealViewController, animated: true)
+    }
   }
   
   @objc private func pulledToRefresh() {

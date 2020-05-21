@@ -26,6 +26,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     UserLocationManager.shared.configure()
     setupRootViewController()
     
+    print("🔥 \(NSHomeDirectory())")
+    
     return true
   }
   
@@ -35,7 +37,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
       return
     }
     
-    if user.isSetup {
+    if user.isSetup || user.isAnonymous {
       startMainWorkflow()
     } else {
       startProfileSetupWorkflow()

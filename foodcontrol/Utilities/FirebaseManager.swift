@@ -57,6 +57,16 @@ class FirebaseManager {
     }
   }
   
+  func anonymousLogin(completionHandler: @escaping (User?, Error?) -> Void) {
+    Auth.auth().signInAnonymously { (authResult, error) in
+      if let firebaseUser = authResult?.user {
+        completionHandler(User(firebaseUser: firebaseUser, username: "anonymous"), nil)
+      } else {
+        completionHandler(nil, error)
+      }
+    }
+  }
+  
   func uploadObject(_ object: FirestoreObject, merge: Bool = false, completionHandler: @escaping (Error?) -> Void) {
     firestore.collection(object.getPath().rawValue).document(object.getId()).setData(object.toDictionary(), merge: merge) { error in
       completionHandler(error)

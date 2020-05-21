@@ -26,4 +26,16 @@ class LoginViewModel {
     }
   }
   
+  func skipAuthorization(completionHandler: @escaping (Bool, Error?) -> Void) {
+    FirebaseManager.shared.anonymousLogin { (user, error) in
+      if let user = user {
+        DBManager.shared.saveObject(user)
+        completionHandler(true, nil)
+        AuthManager.shared.switchToMainWorkflow()
+      } else {
+        completionHandler(false, error)
+      }
+    }
+  }
+  
 }

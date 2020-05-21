@@ -28,7 +28,9 @@ class AddDishViewModel {
       reloadCellModels()
     }
   }
-  private(set) var cellModels: [FCTableViewCellModel] = [BigButtonTableViewCellModel(type: .createDish)] {
+  private(set) var cellModels: [FCTableViewCellModel] = AuthManager.shared.isAnonymous
+    ? []
+    : [BigButtonTableViewCellModel(type: .createDish)] {
     didSet {
       view?.reloadTableView()
     }
@@ -110,7 +112,9 @@ class AddDishViewModel {
       }
     }()
     
-    cellModels = [BigButtonTableViewCellModel(type: .createDish)] + sortedDishes.compactMap({ DishTableViewCellModel(dish: $0) })
+    cellModels =
+      (AuthManager.shared.isAnonymous ? [] : [BigButtonTableViewCellModel(type: .createDish)])
+      + sortedDishes.compactMap({ DishTableViewCellModel(dish: $0) })
   }
 }
 

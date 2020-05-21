@@ -15,6 +15,9 @@ class AuthManager {
   var isAuthorized: Bool {
     return currentUser != nil
   }
+  var isAnonymous: Bool {
+    return currentUser?.isAnonymous ?? false
+  }
   var currentUser: User? {
     return DBManager.shared.getObjects(type: User.self, predicate: nil).first
   }
