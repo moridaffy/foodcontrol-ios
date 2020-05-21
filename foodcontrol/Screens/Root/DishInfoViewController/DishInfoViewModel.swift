@@ -83,4 +83,9 @@ class DishInfoViewModel {
       }
     }
   }
+  
+  func reportDish(comment: String?, completionHandler: @escaping (Error?) -> Void) {
+    let report = Report(dishId: dish.id, comment: comment)
+    FirebaseManager.shared.uploadObject(report, completionHandler: completionHandler)
+  }
 }

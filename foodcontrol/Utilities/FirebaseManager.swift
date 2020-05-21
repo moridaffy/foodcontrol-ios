@@ -189,6 +189,7 @@ extension FirebaseManager {
     case userData = "user"
     case dish = "dish"
     case meal = "meal"
+    case report = "report"
   }
   
   enum StoragePath {

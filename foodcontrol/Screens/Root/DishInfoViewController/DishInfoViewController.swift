@@ -52,12 +52,12 @@ class DishInfoViewController: UIViewController {
     }
     
     title = viewModel.dish.name
-    let favoriteButton = UIBarButtonItem(image: UIImage(systemName: "star")?.withRenderingMode(.alwaysTemplate),
+    let reportButton = UIBarButtonItem(image: UIImage(systemName: "exclamationmark.bubble")?.withRenderingMode(.alwaysTemplate),
                                          style: .plain,
                                          target: self,
-                                         action: #selector(favoriteButtonTapped))
-    favoriteButton.tintColor = UIColor.additionalYellow
-    navigationItem.rightBarButtonItem = favoriteButton
+                                         action: #selector(reportButtonTapped))
+    reportButton.tintColor = UIColor.additionalYellow
+    navigationItem.rightBarButtonItem = reportButton
   }
   
   private func setupTableView() {
@@ -100,8 +100,31 @@ class DishInfoViewController: UIViewController {
     self.addToMealButtonTapRecognizer = addToMealButtonTapRecognizer
   }
   
-  @objc private func favoriteButtonTapped() {
-    // TODO:
+  @objc private func reportButtonTapped() {
+    let alert = UIAlertController(title: NSLocalizedString("Жалоба", comment: ""),
+                                  message: NSLocalizedString("Пожалуйста, укажите то, что вам показалось некорректным в данном блюде", comment: ""),
+                                  preferredStyle: .alert)
+    alert.addTextField { (textField) in
+      textField.placeholder = "Неправильное название"
+    }
+    alert.addAction(UIAlertAction(title: NSLocalizedString("Отмена", comment: ""), style: .cancel, handler: { (_) in
+      alert.dismiss(animated: true, completion: nil)
+    }))
+    alert.addAction(UIAlertAction(title: NSLocalizedString("Отправить жалобу", comment: ""), style: .default, handler: { (_) in
+      self.viewModel.reportDish(comment: alert.textFields?.first?.text) { [weak self] (error) in
+        if let error = error {
+          self?.showAlertError(error: error,
+                               desc: NSLocalizedString("Не удалось отправить жалобу", comment: ""),
+                               critical: false)
+        } else {
+          self?.showAlert(title: NSLocalizedString("Готово", comment: "") + "!",
+                          body: NSLocalizedString("Жалоба успешно отправлена. Модераторы рассмотрят ее в ближайшее время", comment: ""),
+                          button: "ОК",
+                          actions: nil)
+        }
+      }
+    }))
+    present(alert, animated: true, completion: nil)
   }
   
   @objc private func addToMealButtonTapped() {

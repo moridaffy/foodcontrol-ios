@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0C3144EB2477087900B5BFAA /* Report.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C3144EA2477087900B5BFAA /* Report.swift */; };
 		0C49279D246DEC680036FD2E /* String+Size.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C49279C246DEC680036FD2E /* String+Size.swift */; };
 		0C53B76C246899EC0084B9A6 /* Double+Rounding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C53B76B246899EC0084B9A6 /* Double+Rounding.swift */; };
 		0C7C6CA72474F613006032BB /* Date+IDs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C7C6CA62474F613006032BB /* Date+IDs.swift */; };
@@ -83,6 +84,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0C3144EA2477087900B5BFAA /* Report.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Report.swift; sourceTree = "<group>"; };
 		0C49279C246DEC680036FD2E /* String+Size.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Size.swift"; sourceTree = "<group>"; };
 		0C53B76B246899EC0084B9A6 /* Double+Rounding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Double+Rounding.swift"; sourceTree = "<group>"; };
 		0C7C6CA62474F613006032BB /* Date+IDs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+IDs.swift"; sourceTree = "<group>"; };
@@ -318,6 +320,7 @@
 				0CFCAA5024575A01004AB0B1 /* Meal.swift */,
 				0CFCAA5224575A0A004AB0B1 /* Dish.swift */,
 				0CF856F8246915A500E74B62 /* User.swift */,
+				0C3144EA2477087900B5BFAA /* Report.swift */,
 				0CAE987B24709B860086D9EB /* OFFDishCodable.swift */,
 			);
 			path = Models;
@@ -663,6 +666,7 @@
 				0CF856FB2469171F00E74B62 /* AuthManager.swift in Sources */,
 				0CC82604243A133B00F1A047 /* MealListViewModel.swift in Sources */,
 				0CD6DA3024640C4800369A67 /* FirebaseManager.swift in Sources */,
+				0C3144EB2477087900B5BFAA /* Report.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
