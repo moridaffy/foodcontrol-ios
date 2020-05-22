@@ -21,7 +21,9 @@ extension UIViewController {
             alert.addAction(lastButton)
         }
         
-        present(alert, animated: true, completion: nil)
+      DispatchQueue.main.async {
+        self.present(alert, animated: true, completion: nil)
+      }
     }
     
     func showAlertError(error: Error?, desc: String?, critical: Bool) {

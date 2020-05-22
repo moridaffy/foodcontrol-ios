@@ -24,6 +24,7 @@ class User: Object, FirestoreObject {
   @objc dynamic var dailyCaloryAmount: Double = 0.0
   
   @objc dynamic var isAnonymous: Bool = false
+  @objc dynamic var vkId: String = ""
   
   var friendIds = List<String>()
   
@@ -42,6 +43,9 @@ class User: Object, FirestoreObject {
       && sex != .unknown
       && dailyCaloryAmount != 0.0
   }
+  var isVkConnected: Bool {
+    return !vkId.isEmpty
+  }
   
   // MARK: - Initializers
   
@@ -54,6 +58,7 @@ class User: Object, FirestoreObject {
                    weight: Double? = nil,
                    dailyCaloryAmount: Double? = nil,
                    isAnonymous: Bool = false,
+                   vkId: String? = nil,
                    friendIds: [String] = []) {
     self.init()
     self.id = id
@@ -65,15 +70,22 @@ class User: Object, FirestoreObject {
     self.weight = weight ?? 0.0
     self.dailyCaloryAmount = dailyCaloryAmount ?? 0.0
     self.isAnonymous = isAnonymous
+    self.vkId = vkId ?? ""
     
     self.friendIds.append(objectsIn: friendIds)
   }
   
   convenience init(firebaseUser: FirebaseAuth.User, username: String? = nil) {
+    let vkId: String? = {
+      guard let vkEmail = firebaseUser.email, vkEmail.hasSuffix("@vkauth.ru") else { return nil }
+      guard let userIdSubstring = vkEmail.split(separator: "@").first else { return nil }
+      return String(userIdSubstring)
+    }()
     self.init(id: firebaseUser.uid,
               username: username ?? "",
               email: firebaseUser.email ?? "",
-              isAnonymous: firebaseUser.isAnonymous)
+              isAnonymous: firebaseUser.isAnonymous,
+              vkId: vkId)
   }
   
   convenience init?(dictionary: [String: Any]) {
@@ -94,6 +106,7 @@ class User: Object, FirestoreObject {
               sex: SexType(rawValue: sexValue),
               weight: (dictionary["weight"] as? Double) ?? Double(dictionary["weight"] as? Int ?? 0),
               dailyCaloryAmount: dailyCaloryAmount,
+              vkId: dictionary["vk_id"] as? String,
               friendIds: friendIds)
   }
   
@@ -116,6 +129,9 @@ class User: Object, FirestoreObject {
     ]
     if weight != 0.0 {
       dictionary["weight"] = weight
+    }
+    if !vkId.isEmpty {
+      dictionary["vk_id"] = vkId
     }
     return dictionary
   }
@@ -146,6 +162,9 @@ class User: Object, FirestoreObject {
     }
     if let dailyCaloryAmount = dictionary["daily_calory_amount"] as? Double {
       self.dailyCaloryAmount = dailyCaloryAmount
+    }
+    if let vkId = dictionary["vk_id"] as? String {
+      self.vkId = vkId
     }
     if let friendIds = dictionary["friend_ids"] as? [String] {
       self.friendIds.append(objectsIn: friendIds)

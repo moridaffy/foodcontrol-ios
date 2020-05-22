@@ -10,7 +10,10 @@ import Foundation
 
 class UserListViewModel {
   
-  private let rootUser: User
+  let rootUser: User
+  var isMyList: Bool {
+    return rootUser.id == AuthManager.shared.currentUser?.id
+  }
   private(set) var users: [User] = [] {
     didSet {
       view?.reloadTableView()
@@ -19,15 +22,20 @@ class UserListViewModel {
   
   weak var view: UserListViewController?
   
-  init(rootUser: User) {
+  init(rootUser: User, users: [User]? = nil) {
     self.rootUser = rootUser
     
-    reloadUsers { (_) in }
+    reloadUsers(users: users, completionHandler: { _ in })
   }
   
-  func reloadUsers(completionHandler: @escaping (Error?) -> Void) {
+  func reloadUsers(users: [User]? = nil, completionHandler: @escaping (Error?) -> Void) {
+    guard users == nil else {
+      self.users = users!
+      completionHandler(nil)
+      return
+    }
     guard !rootUser.friendIds.isEmpty else {
-      users = []
+      self.users = []
       completionHandler(nil)
       return
     }
@@ -52,6 +60,28 @@ class UserListViewModel {
           users.append(user)
         }
         pendingUsers -= 1
+      }
+    }
+  }
+  
+  func findVkFriends(completionHandler: @escaping ([String]?, Error?) -> Void) {
+    VKManager.shared.getFriendIds(completionHandler: completionHandler)
+  }
+  
+  func findUsers(withVkIds vkIds: [String], completionHandler: @escaping ([User]?, Error?) -> Void) {
+    FirebaseManager.shared.loadObjects(path: .userData) { (userDictionaries, error) in
+      if let userDictionaries = userDictionaries {
+        var users: [User] = []
+        for userDictionary in userDictionaries {
+          if let userVkId = userDictionary["vk_id"] as? String,
+            vkIds.contains(userVkId),
+            let user = User(dictionary: userDictionary) {
+            users.append(user)
+          }
+        }
+        completionHandler(users, nil)
+      } else {
+        completionHandler(nil, error)
       }
     }
   }

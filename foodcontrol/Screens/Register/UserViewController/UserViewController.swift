@@ -185,7 +185,11 @@ extension UserViewController: UITableViewDataSource {
     case 0:
       cell.setup(viewModel: InfoTextTableViewCellModel(type: .custom(NSLocalizedString("Никнейм", comment: "")), text: user.username))
     case 1:
-      cell.setup(viewModel: InfoTextTableViewCellModel(type: .custom("Email"), text: user.email))
+      if user.isVkConnected {
+        cell.setup(viewModel: InfoTextTableViewCellModel(type: .custom("ID VK"), text: user.vkId))
+      } else {
+        cell.setup(viewModel: InfoTextTableViewCellModel(type: .custom("Email"), text: user.email))
+      }
     case 2:
       cell.setup(viewModel: InfoTextTableViewCellModel(type: .custom(NSLocalizedString("План питания", comment: "")), text: user.weightPlan.fullTitle))
     case 3:

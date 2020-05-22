@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0C18D0A22477BE4A0053680F /* VKManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C18D0A12477BE4A0053680F /* VKManager.swift */; };
 		0C3144EB2477087900B5BFAA /* Report.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C3144EA2477087900B5BFAA /* Report.swift */; };
 		0C3144EE247724EA00B5BFAA /* EatingQualityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C3144ED247724EA00B5BFAA /* EatingQualityViewController.swift */; };
 		0C3144F02477251100B5BFAA /* EatingQualityViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C3144EF2477251100B5BFAA /* EatingQualityViewModel.swift */; };
@@ -87,6 +88,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0C18D0A12477BE4A0053680F /* VKManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VKManager.swift; sourceTree = "<group>"; };
 		0C3144EA2477087900B5BFAA /* Report.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Report.swift; sourceTree = "<group>"; };
 		0C3144ED247724EA00B5BFAA /* EatingQualityViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EatingQualityViewController.swift; sourceTree = "<group>"; };
 		0C3144EF2477251100B5BFAA /* EatingQualityViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EatingQualityViewModel.swift; sourceTree = "<group>"; };
@@ -475,6 +477,7 @@
 				0CFCAA5524575D9F004AB0B1 /* TestInstances.swift */,
 				0CFCAA5724575E7D004AB0B1 /* DateHelper.swift */,
 				0CD6DA2F24640C4800369A67 /* FirebaseManager.swift */,
+				0C18D0A12477BE4A0053680F /* VKManager.swift */,
 				0CAE98792470994E0086D9EB /* APIManager.swift */,
 				0CF856F3246914B200E74B62 /* DBManager.swift */,
 				0CF856FA2469171F00E74B62 /* AuthManager.swift */,
@@ -681,6 +684,7 @@
 				0CC82607243A182100F1A047 /* UIColor+CustomColors.swift in Sources */,
 				0CC8262B243A2A4200F1A047 /* BigButtonTableViewCellModel.swift in Sources */,
 				0CC82637243A39E700F1A047 /* UIViewController+Alerts.swift in Sources */,
+				0C18D0A22477BE4A0053680F /* VKManager.swift in Sources */,
 				0CFCAA45245746F8004AB0B1 /* InfoTextTableViewCell.swift in Sources */,
 				0CC82617243A1CD600F1A047 /* DishTableViewCellModel.swift in Sources */,
 				0C7C6CB1247504F9006032BB /* UserListViewController.swift in Sources */,

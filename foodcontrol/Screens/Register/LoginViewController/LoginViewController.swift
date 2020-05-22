@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SwiftyVK
 
 class LoginViewController: UIViewController {
   
@@ -27,6 +28,12 @@ class LoginViewController: UIViewController {
     setupLabels()
     setupTextFields()
     setupButtons()
+  }
+  
+  override func viewDidAppear(_ animated: Bool) {
+    super.viewDidAppear(animated)
+    
+    VKManager.shared.delegate = self
   }
   
   private func setupNavigationBar() {
@@ -74,17 +81,34 @@ class LoginViewController: UIViewController {
     skipAuthButton.setTitleColor(UIColor.black.withAlphaComponent(0.5), for: .normal)
     skipAuthButton.titleLabel?.font = UIFont.systemFont(ofSize: 15.0, weight: .regular)
     
-    // TODO: заменить на иконку VK
-    vkAuthButton.setTitle("VK", for: .normal)
-    vkAuthButton.setTitleColor(UIColor.white, for: .normal)
+    vkAuthButton.setTitle(nil, for: .normal)
+    vkAuthButton.setImage(UIImage(named: "vkcom")?.withRenderingMode(.alwaysOriginal), for: .normal)
+    vkAuthButton.contentHorizontalAlignment = .fill
+    vkAuthButton.contentVerticalAlignment = .fill
     vkAuthButton.layer.cornerRadius = 10.0
     vkAuthButton.layer.masksToBounds = true
     vkAuthButton.backgroundColor = UIColor.additionalVkBlue
-    vkAuthButton.isHidden = true
+  }
+  
+  private func authorizeUsingVk(userId: String) {
+    viewModel.login(email: "\(userId)@vkauth.ru", password: userId) { [weak self] (success, error) in
+      guard !success else { return }
+      self?.showAlertError(error: error,
+                           desc: NSLocalizedString("Не удалось войти в аккаунт", comment: ""),
+                           critical: false)
+    }
   }
   
   @IBAction private func vkAuthButtonTapped() {
-    // TODO: настроить интеграцию с VK
+    VKManager.shared.login { [weak self] (userId, error) in
+      if let userId = userId {
+        self?.authorizeUsingVk(userId: userId)
+      } else {
+        self?.showAlertError(error: error,
+                             desc: NSLocalizedString("Не удалось авторизоваться через ВК", comment: ""),
+                             critical: false)
+      }
+    }
   }
   
   @IBAction private func loginButtonTapped() {
@@ -125,6 +149,12 @@ class LoginViewController: UIViewController {
                            desc: NSLocalizedString("Не удалось войти в аккаунт", comment: ""),
                            critical: false)
     }
+  }
+}
+
+extension LoginViewController: VKManagerDelegate {
+  func presentVkViewController(_ viewController: VKViewController) {
+    present(viewController, animated: true, completion: nil)
   }
 }
 

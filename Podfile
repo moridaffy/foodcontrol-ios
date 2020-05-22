@@ -14,6 +14,8 @@ target 'foodcontrol' do
   pod 'Firebase/Storage'
   pod 'FirebaseFirestoreSwift'
 
+  pod 'SwiftyVK'
+
   pod 'BarcodeScanner'
   pod 'ImageSlideshow'
   pod 'ImageSlideshow/Kingfisher'

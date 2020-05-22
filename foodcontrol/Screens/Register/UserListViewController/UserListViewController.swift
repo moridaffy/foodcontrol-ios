@@ -60,6 +60,12 @@ class UserListViewController: UIViewController {
   }
   
   private func setupBottomButton() {
+    guard viewModel.isMyList else {
+      addFriendButtonContainerView.isHidden = true
+      return
+    }
+    
+    addFriendButtonContainerView.isHidden = false
     addFriendButtonContainerView.backgroundColor = UIColor.additionalYellow
     addFriendButtonContainerView.layer.cornerRadius = 10.0
     addFriendButtonContainerView.layer.masksToBounds = true
@@ -85,7 +91,42 @@ class UserListViewController: UIViewController {
   }
   
   @objc private func addFriendButtonTapped() {
-    presentQrCodeScanner()
+    if AuthManager.shared.currentUser?.isVkConnected ?? false {
+      presentFriendSourceSelectionAlert()
+    } else {
+      presentQrCodeScanner()
+    }
+  }
+  
+  private func presentFriendSourceSelectionAlert() {
+    let scanAction = UIAlertAction(title: NSLocalizedString("Сканировать QR код друга", comment: ""), style: .default) { (_) in
+      self.presentQrCodeScanner()
+    }
+    let vkAction = UIAlertAction(title: NSLocalizedString("Поиск через ВК", comment: ""), style: .default) { (_) in
+      self.viewModel.findVkFriends { [weak self] (vkFriendIds, error) in
+        if let vkFriendIds = vkFriendIds {
+          
+          self?.viewModel.findUsers(withVkIds: vkFriendIds, completionHandler: { [weak self] (users, error) in
+            if let users = users {
+              self?.openUserListViewController(with: users)
+            } else {
+              self?.showAlertError(error: error,
+                                   desc: NSLocalizedString("Не удалось получить список друзей", comment: ""),
+                                   critical: false)
+            }
+          })
+          
+        } else {
+          self?.showAlertError(error: error,
+                               desc: NSLocalizedString("Не удалось получить список друзей", comment: ""),
+                               critical: false)
+        }
+      }
+    }
+    showAlert(title: NSLocalizedString("Добавить друга", comment: ""),
+              body: NSLocalizedString("Выберите источник добавления нового друга", comment: ""),
+              button: "Отмена",
+              actions: [scanAction, vkAction])
   }
   
   private func presentQrCodeScanner() {
@@ -118,6 +159,12 @@ class UserListViewController: UIViewController {
                              critical: false)
       }
     }
+  }
+  
+  private func openUserListViewController(with users: [User]) {
+    guard let userListViewController = UIStoryboard(name: "Auth", bundle: nil).instantiateViewController(withIdentifier: "UserListViewController") as? UserListViewController else { fatalError() }
+    userListViewController.setup(viewModel: UserListViewModel(rootUser: viewModel.rootUser, users: users))
+    navigationController?.pushViewController(userListViewController, animated: true)
   }
   
   private func openUserViewController(for user: User) {

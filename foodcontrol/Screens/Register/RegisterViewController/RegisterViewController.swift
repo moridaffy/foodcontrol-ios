@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SwiftyVK
 
 class RegisterViewController: UIViewController {
   
@@ -26,12 +27,12 @@ class RegisterViewController: UIViewController {
     setupLabels()
     setupTextFields()
     setupButtons()
+  }
+  
+  override func viewDidAppear(_ animated: Bool) {
+    super.viewDidAppear(animated)
     
-    #if DEBUG
-    usernameTextField.text = "moridaffy"
-    emailTextField.text = "moridaffy@icloud.com"
-    passwordTextField.text = "123456"
-    #endif
+    VKManager.shared.delegate = self
   }
   
   private func setupLabels() {
@@ -65,17 +66,54 @@ class RegisterViewController: UIViewController {
     registerButton.setTitleColor(UIColor.white, for: .normal)
     registerButton.titleLabel?.font = UIFont.systemFont(ofSize: 17.0, weight: .semibold)
     
-    // TODO: заменить на иконку VK
-    vkAuthButton.setTitle("VK", for: .normal)
-    vkAuthButton.setTitleColor(UIColor.white, for: .normal)
+    vkAuthButton.setTitle(nil, for: .normal)
+    vkAuthButton.setImage(UIImage(named: "vkcom")?.withRenderingMode(.alwaysOriginal), for: .normal)
+    vkAuthButton.contentHorizontalAlignment = .fill
+    vkAuthButton.contentVerticalAlignment = .fill
     vkAuthButton.layer.cornerRadius = 10.0
     vkAuthButton.layer.masksToBounds = true
     vkAuthButton.backgroundColor = UIColor.additionalVkBlue
-    vkAuthButton.isHidden = true
+  }
+  
+  private func authorizeUsingVk(userId: String) {
+    let alert = UIAlertController(title: NSLocalizedString("Готово", comment: "") + "!",
+                                  message: NSLocalizedString("Осталось лишь указать Ваш никнейм", comment: ""),
+                                  preferredStyle: .alert)
+    alert.addTextField { (textField) in
+      textField.keyboardType = .asciiCapable
+      textField.placeholder = "best_username"
+    }
+    alert.addAction(UIAlertAction(title: NSLocalizedString("Зарегистрироваться", comment: ""), style: .default, handler: { (_) in
+      guard let username = alert.textFields?.first?.text, username.isValidUsername() else {
+        self.showAlertError(error: nil,
+                            desc: NSLocalizedString("Введенный никнейм некорректный", comment: ""), critical: false)
+        self.authorizeUsingVk(userId: userId)
+        return
+      }
+      
+      self.viewModel.register(username: username, email: "\(userId)@vkauth.ru", password: userId) { [weak self] (success, error) in
+        guard !success else { return }
+        self?.showAlertError(error: error,
+                             desc: NSLocalizedString("Не удалось зарегистрироваться", comment: ""),
+                             critical: false)
+      }
+    }))
+    alert.addAction(UIAlertAction(title: NSLocalizedString("Отмена", comment: ""), style: .cancel, handler: { (_) in
+      alert.dismiss(animated: true, completion: nil)
+    }))
+    present(alert, animated: true, completion: nil)
   }
   
   @IBAction private func vkAuthButtonTapped() {
-    // TODO: настроить интеграцию с VK
+    VKManager.shared.login { [weak self] (userId, error) in
+      if let userId = userId {
+        self?.authorizeUsingVk(userId: userId)
+      } else {
+        self?.showAlertError(error: error,
+                             desc: NSLocalizedString("Не удалось авторизоваться через ВК", comment: ""),
+                             critical: false)
+      }
+    }
   }
   
   @IBAction private func registerButtonTapped() {
@@ -113,6 +151,14 @@ class RegisterViewController: UIViewController {
       self?.showAlertError(error: error,
                            desc: NSLocalizedString("Не удалось зарегистрироваться", comment: ""),
                            critical: false)
+    }
+  }
+}
+
+extension RegisterViewController: VKManagerDelegate {
+  func presentVkViewController(_ viewController: VKViewController) {
+    DispatchQueue.main.async {
+      self.present(viewController, animated: true, completion: nil)
     }
   }
 }
