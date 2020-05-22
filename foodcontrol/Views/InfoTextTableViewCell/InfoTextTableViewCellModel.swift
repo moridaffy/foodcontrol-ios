@@ -6,17 +6,19 @@
 //  Copyright © 2020 MSKR. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
 class InfoTextTableViewCellModel: FCTableViewCellModel {
   let type: InfoType
   let text: String?
   let editable: Bool
+  let valueColor: UIColor?
   
-  init(type: InfoType, text: String? = nil, editable: Bool = false) {
+  init(type: InfoType, text: String? = nil, editable: Bool = false, valueColor: UIColor? = nil) {
     self.type = type
     self.text = text
     self.editable = editable
+    self.valueColor = valueColor
   }
 }
 

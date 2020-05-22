@@ -589,6 +589,76 @@
             </objects>
             <point key="canvasLocation" x="1635" y="1476"/>
         </scene>
+        <!--Eating Quality View Controller-->
+        <scene sceneID="hm5-QZ-RJs">
+            <objects>
+                <viewController storyboardIdentifier="EatingQualityViewController" id="Eeq-Gd-Tt2" customClass="EatingQualityViewController" customModule="foodcontrol" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="JCy-hh-dzC">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VTO-P9-4OZ">
+                                <rect key="frame" x="16" y="796" width="50" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="50" id="dOh-Yu-fKV"/>
+                                    <constraint firstAttribute="width" secondItem="VTO-P9-4OZ" secondAttribute="height" multiplier="1:1" id="dp6-Q2-hfZ"/>
+                                </constraints>
+                                <state key="normal" title="Button"/>
+                                <connections>
+                                    <action selector="previousWeekButtonTapped" destination="Eeq-Gd-Tt2" eventType="touchUpInside" id="WqS-bG-7XV"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9Ci-cg-Hef">
+                                <rect key="frame" x="348" y="796" width="50" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="50" id="2SU-FJ-evM"/>
+                                    <constraint firstAttribute="width" secondItem="9Ci-cg-Hef" secondAttribute="height" multiplier="1:1" id="FSy-7n-Wth"/>
+                                </constraints>
+                                <state key="normal" title="Button"/>
+                                <connections>
+                                    <action selector="nextWeekButtonTapped" destination="Eeq-Gd-Tt2" eventType="touchUpInside" id="46N-hs-ixR"/>
+                                </connections>
+                            </button>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="mGx-sv-AcQ">
+                                <rect key="frame" x="0.0" y="88" width="414" height="692"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                            </tableView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9wl-ct-cvY">
+                                <rect key="frame" x="74" y="796" width="266" height="50"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="mGx-sv-AcQ" firstAttribute="leading" secondItem="BYH-49-OaF" secondAttribute="leading" id="5h3-TC-E5n"/>
+                            <constraint firstItem="VTO-P9-4OZ" firstAttribute="leading" secondItem="BYH-49-OaF" secondAttribute="leading" constant="16" id="8Xf-DV-sfk"/>
+                            <constraint firstItem="BYH-49-OaF" firstAttribute="bottom" secondItem="9Ci-cg-Hef" secondAttribute="bottom" constant="16" id="Euc-i8-fSW"/>
+                            <constraint firstItem="9Ci-cg-Hef" firstAttribute="leading" secondItem="9wl-ct-cvY" secondAttribute="trailing" constant="8" id="FQN-yr-5uO"/>
+                            <constraint firstItem="BYH-49-OaF" firstAttribute="trailing" secondItem="mGx-sv-AcQ" secondAttribute="trailing" id="N4l-rT-iMu"/>
+                            <constraint firstItem="BYH-49-OaF" firstAttribute="trailing" secondItem="9Ci-cg-Hef" secondAttribute="trailing" constant="16" id="Poq-ch-c7I"/>
+                            <constraint firstItem="BYH-49-OaF" firstAttribute="bottom" secondItem="VTO-P9-4OZ" secondAttribute="bottom" constant="16" id="Qdj-4x-ulY"/>
+                            <constraint firstItem="9wl-ct-cvY" firstAttribute="bottom" secondItem="VTO-P9-4OZ" secondAttribute="bottom" id="T2s-ss-klw"/>
+                            <constraint firstItem="9wl-ct-cvY" firstAttribute="leading" secondItem="VTO-P9-4OZ" secondAttribute="trailing" constant="8" id="Vby-Cb-Z7Z"/>
+                            <constraint firstItem="mGx-sv-AcQ" firstAttribute="top" secondItem="BYH-49-OaF" secondAttribute="top" id="fR1-LF-Ev5"/>
+                            <constraint firstItem="9wl-ct-cvY" firstAttribute="top" secondItem="mGx-sv-AcQ" secondAttribute="bottom" constant="16" id="iie-xO-PGu"/>
+                            <constraint firstItem="9wl-ct-cvY" firstAttribute="top" secondItem="VTO-P9-4OZ" secondAttribute="top" id="sRu-LA-6ag"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="BYH-49-OaF"/>
+                    </view>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
+                    <connections>
+                        <outlet property="currentWeekLabel" destination="9wl-ct-cvY" id="6f1-6A-lqT"/>
+                        <outlet property="nextWeekButton" destination="9Ci-cg-Hef" id="ZAM-Qt-eAA"/>
+                        <outlet property="previousWeekButton" destination="VTO-P9-4OZ" id="Mpt-Kh-fSQ"/>
+                        <outlet property="tableView" destination="mGx-sv-AcQ" id="fST-a0-a9a"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dKe-Qq-uXt" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2374" y="1476"/>
+        </scene>
         <!--Navigation Controller-->
         <scene sceneID="2qF-rW-hb0">
             <objects>

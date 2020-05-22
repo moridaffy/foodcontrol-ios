@@ -89,6 +89,12 @@ class UserViewController: UIViewController {
     navigationController?.pushViewController(userListViewController, animated: true)
   }
   
+  private func openEatingQualityViewController() {
+    guard let eatingQualityViewController = UIStoryboard(name: "Auth", bundle: nil).instantiateViewController(withIdentifier: "EatingQualityViewController") as? EatingQualityViewController else { fatalError() }
+    eatingQualityViewController.setup(viewModel: EatingQualityViewModel(meals: viewModel.meals, dailyCalories: viewModel.user.dailyCaloryAmount))
+    navigationController?.pushViewController(eatingQualityViewController, animated: true)
+  }
+  
   @objc private func qrButtonTapped() {
     let userQrViewController = UserQrViewController(qrValue: viewModel.user.id)
     present(userQrViewController, animated: true, completion: nil)
@@ -138,6 +144,8 @@ extension UserViewController: UITableViewDelegate {
     tableView.deselectRow(at: indexPath, animated: true)
     
     switch indexPath.row {
+    case 8:
+      openEatingQualityViewController()
     case 9:
       openUserListViewController()
     default:

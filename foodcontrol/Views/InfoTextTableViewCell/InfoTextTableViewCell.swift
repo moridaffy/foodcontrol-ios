@@ -42,7 +42,7 @@ class InfoTextTableViewCell: UITableViewCell {
                                              attributes: [.font: textViewFont])
     textViewHeightConstraint.constant = max(31.0, textViewHeight + 8.0)
     textView.text = textViewText
-    textView.textColor = UIColor.label
+    textView.textColor = viewModel.valueColor ?? UIColor.label
     textView.font = textViewFont
     textView.delegate = self
     textView.isScrollEnabled = false

@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		0C3144EB2477087900B5BFAA /* Report.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C3144EA2477087900B5BFAA /* Report.swift */; };
+		0C3144EE247724EA00B5BFAA /* EatingQualityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C3144ED247724EA00B5BFAA /* EatingQualityViewController.swift */; };
+		0C3144F02477251100B5BFAA /* EatingQualityViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C3144EF2477251100B5BFAA /* EatingQualityViewModel.swift */; };
 		0C49279D246DEC680036FD2E /* String+Size.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C49279C246DEC680036FD2E /* String+Size.swift */; };
 		0C53B76C246899EC0084B9A6 /* Double+Rounding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C53B76B246899EC0084B9A6 /* Double+Rounding.swift */; };
 		0C7C6CA72474F613006032BB /* Date+IDs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C7C6CA62474F613006032BB /* Date+IDs.swift */; };
@@ -84,6 +86,8 @@
 
 /* Begin PBXFileReference section */
 		0C3144EA2477087900B5BFAA /* Report.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Report.swift; sourceTree = "<group>"; };
+		0C3144ED247724EA00B5BFAA /* EatingQualityViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EatingQualityViewController.swift; sourceTree = "<group>"; };
+		0C3144EF2477251100B5BFAA /* EatingQualityViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EatingQualityViewModel.swift; sourceTree = "<group>"; };
 		0C49279C246DEC680036FD2E /* String+Size.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Size.swift"; sourceTree = "<group>"; };
 		0C53B76B246899EC0084B9A6 /* Double+Rounding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Double+Rounding.swift"; sourceTree = "<group>"; };
 		0C7C6CA62474F613006032BB /* Date+IDs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+IDs.swift"; sourceTree = "<group>"; };
@@ -174,6 +178,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0C3144EC247724B700B5BFAA /* EatingQualityViewController */ = {
+			isa = PBXGroup;
+			children = (
+				0C3144ED247724EA00B5BFAA /* EatingQualityViewController.swift */,
+				0C3144EF2477251100B5BFAA /* EatingQualityViewModel.swift */,
+			);
+			path = EatingQualityViewController;
+			sourceTree = "<group>";
+		};
 		0C7C6CA82474F693006032BB /* UserViewController */ = {
 			isa = PBXGroup;
 			children = (
@@ -362,6 +375,7 @@
 				0CF8570A2469284700E74B62 /* ProfileSetupViewController */,
 				0C7C6CA82474F693006032BB /* UserViewController */,
 				0C7C6CAF247504E3006032BB /* UserListViewController */,
+				0C3144EC247724B700B5BFAA /* EatingQualityViewController */,
 			);
 			path = Register;
 			sourceTree = "<group>";
@@ -619,7 +633,9 @@
 				0CF8570C2469286200E74B62 /* ProfileSetupViewController.swift in Sources */,
 				0C7C6CAA2474F6A9006032BB /* UserViewController.swift in Sources */,
 				0CAE98782470459D0086D9EB /* UIImage+Resizing.swift in Sources */,
+				0C3144EE247724EA00B5BFAA /* EatingQualityViewController.swift in Sources */,
 				0CF85700246917AC00E74B62 /* LoginViewModel.swift in Sources */,
+				0C3144F02477251100B5BFAA /* EatingQualityViewModel.swift in Sources */,
 				0C7C6CAC2474F6CC006032BB /* UserViewModel.swift in Sources */,
 				0CAE988024709D0A0086D9EB /* Bundle+Version.swift in Sources */,
 				0CC82602243A132F00F1A047 /* MealListViewController.swift in Sources */,
