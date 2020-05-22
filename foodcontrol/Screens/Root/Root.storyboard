@@ -171,6 +171,37 @@
             </objects>
             <point key="canvasLocation" x="845" y="740"/>
         </scene>
+        <!--Meal Info View Controller-->
+        <scene sceneID="ahm-sm-Zrj">
+            <objects>
+                <viewController storyboardIdentifier="MealInfoViewController" id="w87-hy-FeM" customClass="MealInfoViewController" customModule="foodcontrol" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="07c-zB-zmf">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Mql-E2-e0g">
+                                <rect key="frame" x="0.0" y="88" width="414" height="808"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstAttribute="bottom" secondItem="Mql-E2-e0g" secondAttribute="bottom" id="4Ma-lF-yzp"/>
+                            <constraint firstItem="Mql-E2-e0g" firstAttribute="leading" secondItem="mBG-d9-MZm" secondAttribute="leading" id="4Q1-qc-WDE"/>
+                            <constraint firstItem="Mql-E2-e0g" firstAttribute="top" secondItem="mBG-d9-MZm" secondAttribute="top" id="XBl-nW-IEa"/>
+                            <constraint firstItem="Mql-E2-e0g" firstAttribute="trailing" secondItem="mBG-d9-MZm" secondAttribute="trailing" id="rQp-CY-Ukh"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="mBG-d9-MZm"/>
+                    </view>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
+                    <connections>
+                        <outlet property="tableView" destination="Mql-E2-e0g" id="ldX-9G-Chf"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Uxo-xw-dSZ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1573.913043478261" y="739.95535714285711"/>
+        </scene>
         <!--Navigation Controller-->
         <scene sceneID="d9W-Zr-GDx">
             <objects>

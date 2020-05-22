@@ -133,7 +133,9 @@ class MealListViewController: UIViewController {
   }
   
   private func openMealViewController(for meal: Meal) {
-    // TODO: открывать DishInfoViewController
+    guard let mealInfoViewController = UIStoryboard(name: "Root", bundle: nil).instantiateViewController(withIdentifier: "MealInfoViewController") as? MealInfoViewController else { fatalError() }
+    mealInfoViewController.setup(viewModel: MealInfoViewModel(meal: meal))
+    navigationController?.pushViewController(mealInfoViewController, animated: true)
   }
   
   private func openDishViewController(for dish: Dish) {
