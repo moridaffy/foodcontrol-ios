@@ -20,11 +20,12 @@ class EatingQualityViewController: UIViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
     
-    currentWeekLabel.text = ""
+    viewModel.view = self
     title = NSLocalizedString("Качество питания", comment: "")
     
     setupTableView()
     setupButtons()
+    updateWeekSelector()
   }
   
   func setup(viewModel: EatingQualityViewModel) {
@@ -53,6 +54,21 @@ class EatingQualityViewController: UIViewController {
                             for: .normal)
   }
   
+  private func updateWeekSelector() {
+    if let currentWeekId = viewModel.currentWeekId {
+      currentWeekLabel.text = NSLocalizedString("Неделя", comment: "") + ":\n" + currentWeekId
+    } else {
+      currentWeekLabel.text = ""
+    }
+    
+    let previousWeekAvailable = viewModel.getPreviousWeekId() != nil
+    previousWeekButton.isUserInteractionEnabled = previousWeekAvailable
+    previousWeekButton.alpha = previousWeekAvailable ? 1.0 : 0.5
+    let nextWeekAvailable = viewModel.getNextWeekId() != nil
+    nextWeekButton.isUserInteractionEnabled = nextWeekAvailable
+    nextWeekButton.alpha = nextWeekAvailable ? 1.0 : 0.5
+  }
+  
   @IBAction private func previousWeekButtonTapped() {
     viewModel.switchToPreviousWeek()
   }
@@ -62,8 +78,8 @@ class EatingQualityViewController: UIViewController {
   }
   
   func reloadTableView() {
-    currentWeekLabel.text = viewModel.currentWeekId ?? ""
     tableView.reloadData()
+    updateWeekSelector()
   }
   
 }

@@ -52,7 +52,7 @@ class EatingQualityViewModel {
     guard let referenceDate = filteredMeals.first?.date else { return }
     var displayedDays: [EatingQualityDayCellModel] = []
     let calendar = Calendar.current
-    for i in 1...7 {
+    for i in 2...8 {
       var totalCalories: Double = 0.0
       let dayMeals = filteredMeals.filter({ calendar.component(.weekday, from: $0.date) == i })
       let date: Date = dayMeals.first?.date ?? referenceDate.addingTimeInterval(Double(i - calendar.component(.weekday, from: referenceDate)) * 86400.0)
@@ -66,7 +66,7 @@ class EatingQualityViewModel {
     self.displayedDays = displayedDays
   }
   
-  private func getPreviousWeekId() -> String? {
+  func getPreviousWeekId() -> String? {
     guard let currentWeek = Int(currentWeekId?.split(separator: ".").first ?? "") else { return nil }
     let previousWeekId = "\(currentWeek - 1).2020"
     if meals.filter({ $0.date.weekId == previousWeekId }).isEmpty {
@@ -76,7 +76,7 @@ class EatingQualityViewModel {
     }
   }
   
-  private func getNextWeekId() -> String? {
+  func getNextWeekId() -> String? {
     guard let currentWeek = Int(currentWeekId?.split(separator: ".").first ?? "") else { return nil }
     let previousWeekId = "\(currentWeek + 1).2020"
     if meals.filter({ $0.date.weekId == previousWeekId }).isEmpty {
