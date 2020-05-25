@@ -69,6 +69,12 @@ class UserViewController: UIViewController {
   }
   
   private func setupBottomButton() {
+    guard viewModel.user.id == AuthManager.shared.currentUser?.id else {
+      logoutButtonContainerView.isHidden = true
+      return
+    }
+    logoutButtonContainerView.isHidden = false
+    
     logoutButtonContainerView.backgroundColor = UIColor.additionalRed
     logoutButtonContainerView.layer.cornerRadius = 10.0
     logoutButtonContainerView.layer.masksToBounds = true
@@ -90,6 +96,12 @@ class UserViewController: UIViewController {
   }
   
   private func openEatingQualityViewController() {
+    guard !viewModel.meals.isEmpty else {
+      showAlertError(error: nil,
+                     desc: NSLocalizedString("Для отображения качества питания пользователя необходимо добавить хотя бы один прием пищи", comment: ""),
+                     critical: false)
+      return
+    }
     guard let eatingQualityViewController = UIStoryboard(name: "Auth", bundle: nil).instantiateViewController(withIdentifier: "EatingQualityViewController") as? EatingQualityViewController else { fatalError() }
     eatingQualityViewController.setup(viewModel: EatingQualityViewModel(meals: viewModel.meals, dailyCalories: viewModel.user.dailyCaloryAmount))
     navigationController?.pushViewController(eatingQualityViewController, animated: true)
