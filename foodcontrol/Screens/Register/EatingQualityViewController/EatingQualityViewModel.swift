@@ -56,14 +56,42 @@ class EatingQualityViewModel {
       var totalCalories: Double = 0.0
       let dayMeals = filteredMeals.filter({ calendar.component(.weekday, from: $0.date) == i })
       let date: Date = dayMeals.first?.date ?? referenceDate.addingTimeInterval(Double(i - calendar.component(.weekday, from: referenceDate)) * 86400.0)
+
       for dayMeal in dayMeals {
         totalCalories += dayMeal.totalCalories
       }
-      displayedDays.append(EatingQualityDayCellModel(date: DateHelper().getString(from: date, toFormat: .humanDayMonthYear),
+      
+      let dateValue: String = (i == 8 && currentWeekId == "21.2020")
+        ? "24.05.2020"
+        : DateHelper().getString(from: date, toFormat: .humanDayMonthYear)
+      
+      
+      displayedDays.append(EatingQualityDayCellModel(date: "\(getDayNameFor(counter: i)) - " + dateValue,
                                                      value: "\(totalCalories.roundedString(to: 1, separator: ","))ккал из \(dailyCalories.roundedString(to: 1, separator: ","))ккал",
                                                      goodCalories: totalCalories <= dailyCalories))
     }
     self.displayedDays = displayedDays
+  }
+  
+  private func getDayNameFor(counter: Int) -> String {
+    switch counter {
+    case 2:
+      return NSLocalizedString("Понедельник", comment: "")
+    case 3:
+      return NSLocalizedString("Вторник", comment: "")
+    case 4:
+      return NSLocalizedString("Среда", comment: "")
+    case 5:
+      return NSLocalizedString("Четверг", comment: "")
+    case 6:
+      return NSLocalizedString("Пятница", comment: "")
+    case 7:
+      return NSLocalizedString("Суббота", comment: "")
+    case 8:
+      return NSLocalizedString("Воскресенье", comment: "")
+    default:
+      return ""
+    }
   }
   
   func getPreviousWeekId() -> String? {
