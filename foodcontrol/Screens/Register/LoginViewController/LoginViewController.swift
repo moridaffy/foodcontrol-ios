@@ -34,14 +34,27 @@ class LoginViewController: UIViewController {
     super.viewDidAppear(animated)
     
     VKManager.shared.delegate = self
+    
+    let alertPresented = UserDefaults.standard.value(forKey: "help_alert_presented") as? Bool ?? false
+    if !alertPresented {
+      helpButtonTapped()
+    }
   }
   
   private func setupNavigationBar() {
+    title = "foodcontrol"
     navigationController?.navigationBar.isTranslucent = false
     
     let backButton = UIBarButtonItem(image: nil, style: .done, target: nil, action: nil)
     backButton.tintColor = UIColor.additionalYellow
     navigationItem.backBarButtonItem = backButton
+    
+    let helpButton = UIBarButtonItem(image: UIImage(systemName: "questionmark.circle")?.withRenderingMode(.alwaysTemplate),
+                                     style: .plain,
+                                     target: self,
+                                     action: #selector(helpButtonTapped))
+    helpButton.tintColor = UIColor.additionalYellow
+    navigationItem.rightBarButtonItem = helpButton
   }
   
   private func setupLabels() {
@@ -127,6 +140,15 @@ class LoginViewController: UIViewController {
   @IBAction private func registerButtonTapped() {
     guard let registerViewController = UIStoryboard(name: "Auth", bundle: nil).instantiateViewController(withIdentifier: "RegisterViewController") as? RegisterViewController else { fatalError() }
     navigationController?.pushViewController(registerViewController, animated: true)
+  }
+  
+  @objc private func helpButtonTapped() {
+    showAlert(title: NSLocalizedString("О приложении", comment: ""),
+              body: viewModel.getHelpText(),
+              button: NSLocalizedString("Закрыть", comment: ""),
+              actions: [],
+              preferredStyle: .alert)
+    UserDefaults.standard.set(true, forKey: "help_alert_presented")
   }
   
   private func tryToLogin() {
