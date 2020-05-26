@@ -35,7 +35,7 @@ class ProfileSetupViewModel {
       return
     }
     
-    let dailyCaloryAmount = calculateDailyCaloryAmount(weightPlan: weightPlan, activity: activity, sex: sex, weight: weight)
+    let dailyCaloryAmount = user.calculateDailyCalorieAmount(weightPlan: weightPlan, activity: activity, sex: sex, weight: weight)
     
     DBManager.shared.updateUser(user: user,
                                 weightPlanValue: weightPlan.rawValue,
@@ -51,50 +51,5 @@ class ProfileSetupViewModel {
         }
       }
     }
-  }
-  
-  private func calculateDailyCaloryAmount(weightPlan: User.WeightPlanType, activity: User.ActivityType, sex: User.SexType, weight: Double) -> Double {
-    var minValue: Double = 0.0
-    
-    let height: Double = 175.0
-    let age: Double = 30.0
-    var value: Double = {
-      switch sex {
-      case .male:
-        minValue = 1600.0
-        return 88.36 + (13.4 * weight) + (4.8 * height) - (5.7 * age)
-      case .female:
-        minValue = 1200.0
-        return 447.6 + (9.2 * weight) + (3.1 * height) - (4.3 * age)
-      default:
-        return 0.0
-      }
-    }()
-    
-    switch activity {
-    case .lowActivity:
-      value = value * 1.2
-    case .mediumActivity:
-      value = value * 1.5
-    case .highActivity:
-      value = value * 1.9
-    default:
-      break
-    }
-    
-    switch weightPlan {
-    case .loseWeight:
-      let newValue = value * 0.9
-      value = max(minValue, newValue)
-    case .keepWeight:
-      value = max(minValue, value)
-    case .gainWeight:
-      let newValue = value * 1.2
-      value = max(minValue, newValue)
-    default:
-      break
-    }
-    
-    return value
   }
 }

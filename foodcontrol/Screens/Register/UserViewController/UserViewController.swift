@@ -107,6 +107,89 @@ class UserViewController: UIViewController {
     navigationController?.pushViewController(eatingQualityViewController, animated: true)
   }
   
+  private func weightPlanCellTapped() {
+    let actions: [UIAlertAction] = [
+      UIAlertAction(title: User.WeightPlanType.loseWeight.title, style: .default, handler: { (_) in
+        self.viewModel.updateUser(weightPlan: .loseWeight)
+      }),
+      UIAlertAction(title: User.WeightPlanType.keepWeight.title, style: .default, handler: { (_) in
+        self.viewModel.updateUser(weightPlan: .keepWeight)
+      }),
+      UIAlertAction(title: User.WeightPlanType.gainWeight.title, style: .default, handler: { (_) in
+        self.viewModel.updateUser(weightPlan: .gainWeight)
+      })
+    ]
+    showAlert(title: NSLocalizedString("План питания", comment: ""),
+              body: ProfileSetupViewModel().getHelpText(for: 2),
+              button: NSLocalizedString("Отмена", comment: ""),
+              actions: actions)
+  }
+  
+  private func activityCellTapped() {
+    let actions: [UIAlertAction] = [
+      UIAlertAction(title: User.ActivityType.lowActivity.title, style: .default, handler: { (_) in
+        self.viewModel.updateUser(activity: .lowActivity)
+      }),
+      UIAlertAction(title: User.ActivityType.mediumActivity.title, style: .default, handler: { (_) in
+        self.viewModel.updateUser(activity: .mediumActivity)
+      }),
+      UIAlertAction(title: User.ActivityType.highActivity.title, style: .default, handler: { (_) in
+        self.viewModel.updateUser(activity: .highActivity)
+      })
+    ]
+    showAlert(title: NSLocalizedString("Уровень активности", comment: ""),
+              body: ProfileSetupViewModel().getHelpText(for: 3),
+              button: NSLocalizedString("Отмена", comment: ""),
+              actions: actions)
+  }
+  
+  private func sexCellTapped() {
+    let actions: [UIAlertAction] = [
+      UIAlertAction(title: User.SexType.female.title, style: .default, handler: { (_) in
+        self.viewModel.updateUser(sex: .female)
+      }),
+      UIAlertAction(title: User.SexType.male.title, style: .default, handler: { (_) in
+        self.viewModel.updateUser(sex: .male)
+      })
+    ]
+    showAlert(title: NSLocalizedString("Пол", comment: ""),
+              body: ProfileSetupViewModel().getHelpText(for: 4),
+              button: NSLocalizedString("Отмена", comment: ""),
+              actions: actions)
+  }
+  
+  private func weightCellTapped() {
+    let alert = UIAlertController(title: NSLocalizedString("Ваш вес", comment: ""),
+                                  message: ProfileSetupViewModel().getHelpText(for: 1),
+                                  preferredStyle: .alert)
+    alert.addTextField { (textField) in
+      textField.text = AuthManager.shared.currentUser?.weight.roundedString(to: 1, separator: ",")
+      textField.keyboardType = .numbersAndPunctuation
+    }
+    alert.addAction(UIAlertAction(title: NSLocalizedString("Отмена", comment: ""), style: .cancel, handler: { (_) in
+      alert.dismiss(animated: true, completion: nil)
+    }))
+    alert.addAction(UIAlertAction(title: NSLocalizedString("Сохранить", comment: ""), style: .default, handler: { (_) in
+      var newWeight: Double?
+      if var newWeightText = alert.textFields?.first?.text, !newWeightText.isEmpty {
+        newWeightText = newWeightText.replacingOccurrences(of: ",", with: ".")
+        if !newWeightText.contains(".") {
+          newWeightText += ".0"
+        }
+        newWeight = Double(newWeightText)
+      }
+      
+      guard newWeight != nil else {
+        self.showAlertError(error: nil,
+                            desc: NSLocalizedString("Введено некорректное значение веса", comment: ""),
+                            critical: false)
+        return
+      }
+      self.viewModel.updateUser(weight: newWeight)
+    }))
+    present(alert, animated: true, completion: nil)
+  }
+  
   @objc private func qrButtonTapped() {
     let userQrViewController = UserQrViewController(qrValue: viewModel.user.id)
     present(userQrViewController, animated: true, completion: nil)
@@ -156,6 +239,14 @@ extension UserViewController: UITableViewDelegate {
     tableView.deselectRow(at: indexPath, animated: true)
     
     switch indexPath.row {
+    case 2:
+      weightPlanCellTapped()
+    case 3:
+      activityCellTapped()
+    case 4:
+      sexCellTapped()
+    case 5:
+      weightCellTapped()
     case 8:
       openEatingQualityViewController()
     case 9:

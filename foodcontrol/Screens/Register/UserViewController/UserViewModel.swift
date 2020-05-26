@@ -47,6 +47,21 @@ class UserViewModel {
     }
   }
   
+  func updateUser(weightPlan: User.WeightPlanType? = nil, activity: User.ActivityType? = nil, sex: User.SexType? = nil, weight: Double? = nil) {
+    let newDailyAmount = user.calculateDailyCalorieAmount(weightPlan: weightPlan, activity: activity, sex: sex, weight: weight)
+    DBManager.shared.updateUser(user: user, weightPlanValue: weightPlan?.rawValue, activityValue: activity?.rawValue, sexValue: sex?.rawValue, weight: weight, dailyCaloryAmount: newDailyAmount) { (_) in
+      FirebaseManager.shared.uploadObject(self.user) { [weak self] (error) in
+        if let error = error {
+          self?.view?.showAlertError(error: error,
+                                     desc: NSLocalizedString("Не удалось обновить данные о пользователе", comment: ""),
+                                     critical: false)
+        } else {
+          self?.view?.reloadTableView()
+        }
+      }
+    }
+  }
+  
   func addFriend(completionHandler: @escaping (Error?) -> Void) {
     guard !isFollowingUser else {
       completionHandler(nil)
