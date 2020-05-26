@@ -35,7 +35,7 @@ class Meal: FirestoreObject {
     self.userId = userId ?? AuthManager.shared.currentUser?.id ?? "NO_USER_ID"
     self.dateValue = dateValue
     self.coordinates = coordinates
-    self.dishes = dishes
+    self.dishes = dishes.sorted(by: { $0.id > $1.id })
   }
   
   convenience init?(dictionary: [String: Any]) {

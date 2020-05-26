@@ -32,7 +32,7 @@ class MealListViewModel {
     var cellModels: [FCTableViewCellModel] = []
     for meal in meals.sorted(by: { $0.date > $1.date }) {
       cellModels.append(MealHeaderTableViewCellModel(meal: meal))
-      for dish in meal.dishes {
+      for dish in meal.dishes.sorted(by: { $0.id > $1.id }) {
         cellModels.append(DishTableViewCellModel(dish: dish))
       }
     }
